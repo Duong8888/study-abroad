@@ -10,8 +10,8 @@
                         <div class="col-cell">
                             <div class="logo-area">
                                 <a href="#">
-                                    <img class="normal-logo" src="@/assets/images/logo-dark.png" alt="logo">
-                                    <img class="sticky-logo" src="@/assets/images/logo-dark.png" alt="logo">
+                                    <img class="normal-logo" src="@/assets/images/common/logo.png" alt="logo">
+                                    <img class="sticky-logo" src="@/assets/images/common/logo.png" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                                     <nav class="rs-menu hidden-md">
                                         <ul class="nav-menu">
                                             <li class="menu-item-has-children current-menu-item">
-                                                <a href="index.html">Home</a>
+                                                <a href="index.html">Giới Thiệu</a>
                                                 <ul class="sub-menu">
                                                     <li class="menu-item-has-children current-menu-item">
                                                         <a href="#">Multipages</a>
@@ -43,7 +43,7 @@
                                                         </ul>
                                                     </li>
                                                     <li class="menu-item-has-children">
-                                                        <a href="#">Onepages</a>
+                                                        <a href="#">Tuyển sinh</a>
                                                         <ul class="sub-menu">
                                                             <li><a href="onepage1.html">Onepage One</a></li>
                                                             <li><a href="onepage2.html">Onepage Two</a></li>
@@ -56,7 +56,7 @@
                                                 </ul>
                                             </li>
                                             <li class="menu-item-has-children">
-                                                <a href="#">About</a>
+                                                <a href="#">Khóa học</a>
                                                 <ul class="sub-menu">
                                                     <li><a href="about.html">About One</a></li>
                                                     <li class="last-item"><a href="about2.html">About Two</a></li>
@@ -64,7 +64,7 @@
                                             </li>
 
                                             <li class="menu-item-has-children">
-                                                <a href="#">Services</a>
+                                                <a href="#">Thư viện</a>
                                                 <ul class="sub-menu">
                                                     <li><a href="seo-optimization.html">SEO Optimization</a></li>
                                                     <li><a href="content-marketing.html">Content Marketing</a></li>
@@ -76,55 +76,8 @@
                                                 </ul>
                                             </li>
 
-                                            <li class="menu-item-has-children">
-                                                <a href="#">pages</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="services.html">Services</a></li>
-                                                    <li><a href="our-team.html">Our Team</a></li>
-                                                    <li><a href="single-team.html">Single Team</a></li>
-                                                    <li class="last-item menu-item-has-children">
-                                                        <a href="#">Case Studies</a>
-                                                        <ul class="sub-menu">
-                                                            <li><a href="case-studies-style1.html">Case Studies Style
-                                                                1</a></li>
-                                                            <li><a href="case-studies-style2.html">Case Studies Style
-                                                                2</a></li>
-                                                            <li><a href="case-studies-style3.html">Case Studies Style
-                                                                3</a></li>
-                                                            <li><a href="case-studies-style4.html">Case Studies Style
-                                                                4</a></li>
-                                                            <li><a href="case-studies-style5.html">Case Studies Style
-                                                                5</a></li>
-                                                            <li><a href="case-studies-style6.html">Case Studies Style
-                                                                6</a></li>
-                                                            <li class="last-item"><a href="case-studies-style7.html">Case
-                                                                Studies Style 7</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="last-item menu-item-has-children">
-                                                        <a href="#">Shop</a>
-                                                        <ul class="sub-menu">
-                                                            <li><a href="shop.html">Shop</a></li>
-                                                            <li><a href="shop-single.html">Shop Single</a></li>
-                                                            <li><a href="cart.html">Cart</a></li>
-                                                            <li><a href="checkout.html">Checkout</a></li>
-                                                            <li class="last-item"><a href="my-account.html">My
-                                                                Account</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="pricing.html">Pricing</a></li>
-                                                    <li><a href="faq.html">FAQs</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children">
-                                                <a href="#">Blog</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
                                             <li>
-                                                <a href="contact.html">Contact</a>
+                                                <a href="contact.html">Liên hệ</a>
                                             </li>
                                         </ul> <!-- //.nav-menu -->
                                     </nav>
@@ -400,3 +353,9 @@ export default {
     }
 }
 </script>
+
+<style>
+.normal-logo, .sticky-logo {
+    transform: scale(5);
+}
+</style>

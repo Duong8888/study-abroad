@@ -4,8 +4,8 @@
         <div class="container flex-column d-flex align-items-center">
             <p class="text-white font-weight-bold fs-6">Đăng ký nhận tư vấn</p>
             <form class="newsletter-form mx-0 row w-100">
-                <input type="text" id="name" v-model="name" name="name" placeholder="Họ và tên" required="">
-                <input type="text" id="phone" v-model="phone" name="phone" placeholder="Số điện thoại" required="">
+                <input type="text" id="name" v-model="name" name="name" placeholder="Họ và tên" required="" autocomplete="off">
+                <input type="text" id="phone" v-model="phone" name="phone" placeholder="Số điện thoại" required="" autocomplete="off">
                 <button type="button" class="rounded relative h-100" @click="sendRequest()">Đăng ký</button>
             </form>
         </div>
@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
 .box-request {
-    transform: translateY(50%);
+    transform: translateY(-50%);
 }
 input{
     padding-left: 20px;

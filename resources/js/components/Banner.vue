@@ -1,37 +1,46 @@
 <template>
     <!-- Banner Section Start -->
-    <div class="rs-banner style5 h-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 pr-90 md-pr-15">
-                    <div class="banner-content">
-                        <h4>Marketing Agency</h4>
-                        <div class="description">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt</p>
-                        </div>
+    <div class=" style5 h-50">
+        <div class="container pt-100">
+<!--            <div id="carouselExample" class="carousel slide">-->
+<!--                <div class="carousel-inner">-->
+<!--                    <div class="carousel-item active">-->
+<!--                        <img src="@/assets/images/common/banner.jpg" alt="logo">-->
+<!--                    </div>-->
+<!--                    <div class="carousel-item">-->
+<!--                        <img src="@/assets/images/common/banner.jpg" alt="logo">-->
+<!--                    </div>-->
+<!--                    <div class="carousel-item">-->
+<!--                        <img src="@/assets/images/common/icon.jpg" alt="logo">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" fdprocessedid="al7imx">-->
+<!--                    <span class="carousel-control-prev-icon"></span>-->
+<!--                </button>-->
+<!--                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" fdprocessedid="baw31v">-->
+<!--                    <span class="carousel-control-next-icon"></span>-->
+<!--                </button>-->
+<!--            </div>-->
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item" data-bs-interval="10000">
+                        <img src="@/assets/images/common/banner.jpg" alt="logo">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="@/assets/images/common/banner.jpg" alt="logo">
+                    </div>
+                    <div class="carousel-item active">
+                        <img src="@/assets/images/common/banner.jpg" alt="logo">
                     </div>
                 </div>
-                <div class="col-lg-6"></div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev" fdprocessedid="bo6mnr">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next" fdprocessedid="vceocj">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
             </div>
             <FormRequest></FormRequest>
-        </div>
-        <div class="animate-part">
-            <div class="spiner triangle">
-                <img class="spine" src="@/assets/images/banner/style4/1.png" alt="images">
-            </div>
-            <div class="spiner dot-style">
-                <img class="dance2" src="@/assets/images/banner/style4/2.png" alt="images">
-            </div>
-            <div class="spiner horizontal">
-                <img class="scale horizontal" src="@/assets/images/banner/style4/3.png" alt="images">
-            </div>
-            <div class="spiner horizontal2">
-                <img class="scale" src="@/assets/images/banner/style4/4.png" alt="images">
-            </div>
-            <div class="spiner dot-style2">
-                <img class="dance2" src="@/assets/images/banner/style4/5.png" alt="images">
-            </div>
         </div>
     </div>
     <!-- Banner Section End -->
@@ -49,5 +58,13 @@ export default {
 </script>
 
 <style scoped>
+.carousel-control-prev, .carousel-control-next{
+    background: rgb(255, 255, 255,0);
+    border: none;
+    height: 400px;
+}
+.carousel-item{
+    height: 400px;
+}
 
 </style>
