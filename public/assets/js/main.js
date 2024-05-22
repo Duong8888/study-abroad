@@ -16,7 +16,6 @@
     var win = $(window);
 
     win.on('scroll', function() {
-        console.log(111111111111111);
        var scroll = win.scrollTop();
        if (scroll < 1) {
            header.removeClass("sticky");

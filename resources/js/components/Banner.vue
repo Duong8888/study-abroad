@@ -14,18 +14,7 @@
                 </div>
                 <div class="col-lg-6"></div>
             </div>
-            <!-- Seo Website Section Start -->
-            <div class="col-lg-8 rs-seo-website style1 bg25 pt-20 pb-30 md-pt-70 md-pb-80 border rounded mx-auto mb-200 box-request">
-                <div class="container flex-column d-flex align-items-center">
-                    <p class="text-white font-weight-bold fs-6">Đăng ký nhận tư vấn</p>
-                    <form class="newsletter-form mx-0 row w-100">
-                        <input type="email" id="email" name="email" placeholder="Họ và tên" required="">
-                        <input type="text" id="website" name="website" placeholder="Số điện thoại" required="">
-                        <button type="submit" class="rounded relative h-100">Đăng ký</button>
-                    </form>
-                </div>
-            </div>
-            <!-- Seo Website Section End -->
+            <FormRequest></FormRequest>
         </div>
         <div class="animate-part">
             <div class="spiner triangle">
@@ -50,13 +39,15 @@
 </template>
 
 <script>
+import FormRequest from "./FormRequest.vue"
 export default {
-    name: "Banner"
+    name: "Banner",
+    components:{
+        FormRequest
+    }
 }
 </script>
 
 <style scoped>
-.box-request{
-    transform: translateY(50%);
-}
+
 </style>
