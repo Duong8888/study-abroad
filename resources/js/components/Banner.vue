@@ -1,24 +1,23 @@
 <template>
     <!-- Banner Section Start -->
-    <div class=" style5 h-50">
-        <div class="pt-100">
-            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item" data-bs-interval="2000">
-                        <img class="w-100" src="@/assets/images/common/banner-2.jpg" alt="logo">
-                    </div>
-                    <div class="carousel-item active">
-                        <img class="w-100" src="@/assets/images/common/banner-3.jpg" alt="logo">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev" fdprocessedid="bo6mnr">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next" fdprocessedid="vceocj">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </button>
-            </div>
-            <FormRequest></FormRequest>
+    <div class=" style5 h-50 ">
+        <div class="custom-box">
+            <swiper
+                :spaceBetween="30"
+                :centeredSlides="true"
+                :autoplay="{
+          delay: 2500,
+          disableOnInteraction: false,
+        }"
+                :navigation="true"
+                :modules="modules"
+                class="mySwiper"
+            >
+                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo"></swiper-slide>
+                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-2.jpg" alt="logo"></swiper-slide>
+                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo"></swiper-slide>
+            </swiper>
+            <FormRequest style="z-index: 10;"></FormRequest>
         </div>
     </div>
     <!-- Banner Section End -->
@@ -26,13 +25,24 @@
 </template>
 
 <script>
-import FormRequest from "./FormRequest.vue"
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay, Navigation } from 'swiper/modules';
+import FormRequest from "@/components/FormRequest.vue";
 export default {
-    name: "Banner",
-    components:{
-        FormRequest
-    }
-}
+    components: {
+        FormRequest,
+        Swiper,
+        SwiperSlide,
+    },
+    setup() {
+        return {
+            modules: [Autoplay, Navigation],
+        };
+    },
+};
 </script>
 
 <style scoped>
@@ -44,5 +54,37 @@ export default {
 .carousel-item{
     height: 450px;
 }
+#app { height: 100% }
+html,
+body {
+    position: relative;
+    height: 100%;
+}
 
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper {
+    width: 100%;
+}
+.swiper-slide {
+    height: 350px;
+    line-height: 300px;
+    text-align: center;
+}
+.banner-img{
+    object-fit: contain;
+}
+
+@media screen and (min-width: 992px) {
+    .custom-box {
+        padding-top: 100px;
+    }
+}
 </style>

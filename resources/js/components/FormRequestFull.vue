@@ -1,6 +1,6 @@
 <template>
     <!-- Contact Section Start -->
-    <div class="rs-contact main-home gray-bg2 pt-120 pb-120 md-pt-80 md-pb-80">
+    <div class="rs-contact main-home gray-bg2 pt-120 pb-120 md-pt-80 md-pb-80 index-form">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 pr-60 md-pr-15">
