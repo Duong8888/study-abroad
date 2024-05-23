@@ -6,12 +6,12 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-x_FXHlrR.js",
+    "file": "assets/app-CebSTxmE.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-z1hJxA63.css"
+      "assets/app-8lSHlP6A.css"
     ],
     "assets": [
       "assets/logo-footer-P_X0FgRI.png",
@@ -21,18 +21,14 @@
       "assets/2-DtY3xOOg.jpg",
       "assets/3-DTdUL1b6.jpg",
       "assets/4-BC62O2Vm.jpg",
-      "assets/banner-2-64q1SVUB.jpg",
       "assets/banner-3-B8Vyo6ro.jpg",
+      "assets/banner-2-64q1SVUB.jpg",
       "assets/6-Dq-jpDbs.jpg",
       "assets/7-CfSS6-BC.jpg",
       "assets/8-Dudhg8qe.jpg",
       "assets/9-CH7Xyac5.jpg",
       "assets/5-Dvc8A2iE.jpg",
       "assets/4-DlGhyQFX.jpg",
-      "assets/about-3V0pxOqG.png",
-      "assets/1-ChzTIMVB.png",
-      "assets/2-B3yFTMb8.png",
-      "assets/3-DJ-VZpCX.png",
       "assets/1-C5281EN9.png",
       "assets/2-BsrVFm-p.png",
       "assets/3-CIMMsLMw.png",
@@ -46,22 +42,6 @@
       "assets/2-C28BPVEj.png",
       "assets/3-BwkjUzy5.png"
     ]
-  },
-  "resources/js/assets/images/about/home5/1.png": {
-    "file": "assets/1-ChzTIMVB.png",
-    "src": "resources/js/assets/images/about/home5/1.png"
-  },
-  "resources/js/assets/images/about/home5/2.png": {
-    "file": "assets/2-B3yFTMb8.png",
-    "src": "resources/js/assets/images/about/home5/2.png"
-  },
-  "resources/js/assets/images/about/home5/3.png": {
-    "file": "assets/3-DJ-VZpCX.png",
-    "src": "resources/js/assets/images/about/home5/3.png"
-  },
-  "resources/js/assets/images/about/home5/about.png": {
-    "file": "assets/about-3V0pxOqG.png",
-    "src": "resources/js/assets/images/about/home5/about.png"
   },
   "resources/js/assets/images/common/banner-2.jpg": {
     "file": "assets/banner-2-64q1SVUB.jpg",
