@@ -7,8 +7,9 @@
     <!--Preloader area End here-->
     <div class="main-content">
         <Header></Header>
-        <Banner></Banner>
     </div>
+    <Banner></Banner>
+    <Test></Test>
     <Footer></Footer>
 </template>
 
@@ -16,13 +17,15 @@
 import Footer from '@/components/Footer.vue';
 import Header from '@/components/Header.vue';
 import Banner from '@/components/Banner.vue';
+import Test from '@/components/Test.vue';
 
 export default {
     name: "Home",
     components: {
         Header,
         Banner,
-        Footer
+        Footer,
+        Test
     }
 }
 </script>

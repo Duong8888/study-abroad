@@ -1,17 +1,17 @@
 <template>
     <!-- Banner Section Start -->
     <div class=" style5 h-50">
-        <div class="container pt-100">
+        <div class="pt-100">
             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item" data-bs-interval="10000">
-                        <img src="@/assets/images/common/banner.jpg" alt="logo">
+                        <img class="w-100" src="@/assets/images/common/banner.jpg" alt="logo">
                     </div>
                     <div class="carousel-item" data-bs-interval="2000">
-                        <img src="@/assets/images/common/banner.jpg" alt="logo">
+                        <img class="w-100" src="@/assets/images/common/banner-2.jpg" alt="logo">
                     </div>
                     <div class="carousel-item active">
-                        <img src="@/assets/images/common/banner.jpg" alt="logo">
+                        <img class="w-100" src="@/assets/images/common/banner-3.jpg" alt="logo">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev" fdprocessedid="bo6mnr">
@@ -45,7 +45,7 @@ export default {
     height: 400px;
 }
 .carousel-item{
-    height: 400px;
+    height: 450px;
 }
 
 </style>

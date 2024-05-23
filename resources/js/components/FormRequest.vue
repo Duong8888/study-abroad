@@ -1,8 +1,8 @@
 <template>
     <div
-        class="col-lg-8 rs-seo-website style1 bg25 pt-20 pb-30 md-pt-70 md-pb-80 border rounded mx-auto mb-200 box-request">
+        class="col-lg-8 rs-seo-website style1 pt-20 pb-30 md-pt-70 md-pb-80 border rounded mx-auto mb-200 box-request custom-size">
         <div class="container flex-column d-flex align-items-center">
-            <p class="text-white font-weight-bold fs-6">Đăng ký nhận tư vấn</p>
+            <p class="font-weight-bold fs-6">Đăng ký nhận tư vấn</p>
             <form class="newsletter-form mx-0 row w-100">
                 <input type="text" id="name" v-model="name" name="name" placeholder="Họ và tên" required="" autocomplete="off">
                 <input type="text" id="phone" v-model="phone" name="phone" placeholder="Số điện thoại" required="" autocomplete="off">
@@ -52,5 +52,17 @@ input{
 }
 input[name="phone"]{
     border-left: 1px solid #cccc !important;
+}
+form{
+    border: 1px solid #cccc;
+}
+
+@media (min-width: 992px) {
+    .custom-size {
+        width: 800px;
+        height: 190px;
+        background: white;
+        box-shadow: 0px 0px 15px #11005833;
+    }
 }
 </style>
