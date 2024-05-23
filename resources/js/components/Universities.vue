@@ -1,6 +1,6 @@
 <template>
     <!-- Partner Start -->
-    <div class="rs-partner main-home gray-bg2 pt-110 pb-120 md-pt-70 md-pb-80">
+    <div class="rs-partner main-home gray-bg2 pb-80 md-pt-70 md-pb-80">
         <div class="container">
             <div class="sec-title text-center mb-60">
                 <h2 class="title title2 pb-13">

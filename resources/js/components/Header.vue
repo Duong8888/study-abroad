@@ -354,7 +354,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .normal-logo, .sticky-logo {
     transform: scale(5);
 }

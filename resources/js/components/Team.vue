@@ -1,5 +1,5 @@
 <template>
-    <div id="rs-about" class="rs-about main-home pt-120 pb-120 md-pt-80 md-pb-80">
+    <div id="rs-about" class="rs-about main-home pb-120 md-pt-80 md-pb-80">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -110,7 +110,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #app {
     height: 100%
 }

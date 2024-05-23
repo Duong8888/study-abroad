@@ -14,6 +14,7 @@
     <Universities></Universities>
     <Posts></Posts>
     <FormRequest></FormRequest>
+    <SubBanner></SubBanner>
     <Footer></Footer>
 </template>
 
@@ -26,6 +27,7 @@ import Posts from '@/components/Posts.vue';
 import Introduce from '@/components/Introduce.vue';
 import Universities from '@/components/Universities.vue';
 import FormRequest from '@/components/FormRequestFull.vue';
+import SubBanner from '@/components/SubBanner.vue';
 
 export default {
     name: "Home",
@@ -37,7 +39,8 @@ export default {
         FormRequest,
         Universities,
         Team,
-        Introduce
+        Introduce,
+        SubBanner
     }
 }
 </script>

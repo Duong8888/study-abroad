@@ -1,5 +1,5 @@
 <template>
-    <div id="rs-about" class="rs-about main-home pt-120 pb-120 md-pt-80 md-pb-80">
+    <div id="rs-about" class="rs-about main-home pt-50 pb-100 md-pt-80 md-pb-80">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -18,9 +18,9 @@
                         </div>
                         <div class="team-content">
                             <h3 class="team-name">
-                                Mincin Funosssssssssssssssssssssssssssss
+                                Đây là Tiếng nói Việt Nam, phát thanh từ Hà Nội, thủ đô nước Cộng hòa Xã
                             </h3>
-                            <p class="description">Dây là đài tiếng nói việt dsd dsd sd sd namsssssssssssss ưdqw qưd qư dqw dqw dqw dqwdqwd qư dssssssssss</p>
+                            <p class="description">Đây là Tiếng nói Việt Nam, phát thanh từ Hà Nội, thủ đô nước Cộng hòa Xã hội chủ nghĩa Việt Nam.</p>
                         </div>
                     </div>
                 </swiper-slide>
@@ -32,8 +32,9 @@
                         </div>
                         <div class="team-content">
                             <h3 class="team-name">
-                                Mincin Funo
+                                Posts 2
                             </h3>
+                            <p class="description">Đây là Tiếng nói Việt Nam, phát thanh từ Hà Nội, thủ đô nước Cộng hòa Xã hội chủ nghĩa Việt Nam.</p>
                         </div>
                     </div>
                 </swiper-slide>
@@ -45,8 +46,9 @@
                         </div>
                         <div class="team-content">
                             <h3 class="team-name">
-                                Mincin Funo
+                                Posts 3
                             </h3>
+                            <p class="description">Đây là Tiếng nói Việt Nam, phát thanh từ Hà Nội, thủ đô nước Cộng hòa Xã hội chủ nghĩa Việt Nam.</p>
                         </div>
                     </div>
                 </swiper-slide>
@@ -58,8 +60,9 @@
                         </div>
                         <div class="team-content">
                             <h3 class="team-name">
-                                Mincin Funo
+                                Posts 4
                             </h3>
+                            <p class="description">Đây là Tiếng nói Việt Nam, phát thanh từ Hà Nội, thủ đô nước Cộng hòa Xã hội chủ nghĩa Việt Nam.</p>
                         </div>
                     </div>
                 </swiper-slide>
@@ -71,8 +74,9 @@
                         </div>
                         <div class="team-content">
                             <h3 class="team-name">
-                                Mincin Funo
+                                Posts 5
                             </h3>
+                            <p class="description">Đây là Tiếng nói Việt Nam, phát thanh từ Hà Nội, thủ đô nước Cộng hòa Xã hội chủ nghĩa Việt Nam.</p>
                         </div>
                     </div>
                 </swiper-slide>
@@ -84,8 +88,9 @@
                         </div>
                         <div class="team-content">
                             <h3 class="team-name">
-                                Mincin Funo
+                                Posts 6
                             </h3>
+                            <p class="description">Đây là Tiếng nói Việt Nam, phát thanh từ Hà Nội, thủ đô nước Cộng hòa Xã hội chủ nghĩa Việt Nam.</p>
                         </div>
                     </div>
                 </swiper-slide>
