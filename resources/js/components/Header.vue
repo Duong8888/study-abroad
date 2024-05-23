@@ -1,6 +1,6 @@
 <template>
     <!--Full width header Start-->
-    <div class="full-width-header">
+    <div class="full-width-header gray-bg2">
         <!--Header Start-->
         <header id="rs-header" class="rs-header style1 modify1 header-transparent">
             <!-- Menu Start -->

@@ -13,8 +13,9 @@
     <Team></Team>
     <Universities></Universities>
     <Posts></Posts>
-    <FormRequest></FormRequest>
     <SubBanner></SubBanner>
+    <Comments></Comments>
+    <FormRequest></FormRequest>
     <Footer></Footer>
 </template>
 
@@ -28,6 +29,7 @@ import Introduce from '@/components/Introduce.vue';
 import Universities from '@/components/Universities.vue';
 import FormRequest from '@/components/FormRequestFull.vue';
 import SubBanner from '@/components/SubBanner.vue';
+import Comments from '@/components/Comments.vue';
 
 export default {
     name: "Home",
@@ -40,7 +42,8 @@ export default {
         Universities,
         Team,
         Introduce,
-        SubBanner
+        SubBanner,
+        Comments
     }
 }
 </script>

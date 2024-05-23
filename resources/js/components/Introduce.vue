@@ -1,7 +1,7 @@
 <template>
 
     <!-- About Section Start -->
-    <div id="rs-about" class="rs-about style1 md-pt-80 md-pb-80">
+    <div id="rs-about" class="rs-about style1 md-pt-80 md-pb-80 gray-bg2">
         <div class="container">
             <div class="row y-middle">
                 <div class="col-lg-6 md-mb-50">
@@ -32,7 +32,7 @@
     <!-- About Section End -->
 
     <!-- Services Section Start -->
-    <div id="rs-services" class="rs-services style10 pt-100 pb-50 md-pt-80 md-pb-75">
+    <div id="rs-services" class="rs-services style10 pt-100 pb-50 md-pt-80 md-pb-75 gray-bg2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 md-mb-50">

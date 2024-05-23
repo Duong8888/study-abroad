@@ -6,12 +6,12 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-rG9y7dW9.js",
+    "file": "assets/app-DqVpzRR8.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-CyS7SOsK.css"
+      "assets/app-CxmY648j.css"
     ],
     "assets": [
       "assets/logo-footer-P_X0FgRI.png",
@@ -43,7 +43,9 @@
       "assets/2-C28BPVEj.png",
       "assets/3-BwkjUzy5.png",
       "assets/sub-banner-BiLQ9IGi.jpg",
-      "assets/banner-CXwGdm21.jpg"
+      "assets/banner-CXwGdm21.jpg",
+      "assets/quote-fiXjn-DC.png",
+      "assets/1-BRo8ec-0.jpg"
     ]
   },
   "resources/js/assets/images/about/about-2.png": {
@@ -165,5 +167,13 @@
   "resources/js/assets/images/team/9.jpg": {
     "file": "assets/9-CH7Xyac5.jpg",
     "src": "resources/js/assets/images/team/9.jpg"
+  },
+  "resources/js/assets/images/testimonial/main-home/avatar/1.jpg": {
+    "file": "assets/1-BRo8ec-0.jpg",
+    "src": "resources/js/assets/images/testimonial/main-home/avatar/1.jpg"
+  },
+  "resources/js/assets/images/testimonial/main-home/quote.png": {
+    "file": "assets/quote-fiXjn-DC.png",
+    "src": "resources/js/assets/images/testimonial/main-home/quote.png"
   }
 }

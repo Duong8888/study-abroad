@@ -1,6 +1,6 @@
 <template>
     <!-- Banner Section Start -->
-    <div class=" style5 h-50 ">
+    <div class=" style5 h-50 gray-bg2">
         <div class="custom-box">
             <swiper
                 :spaceBetween="30"
