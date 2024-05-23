@@ -13,6 +13,7 @@ class ConsultationRequest extends Model
         'name',
         'phone_number',
         'content',
+        'email',
         'status',
     ];
 }

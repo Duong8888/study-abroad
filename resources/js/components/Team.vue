@@ -133,7 +133,6 @@ body {
 .swiper {
     width: 800px;
     height: 350px;
-    background: white !important;
 }
 .team-wrap{
     overflow: hidden;
