@@ -4,9 +4,6 @@
         <div class="pt-100">
             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item" data-bs-interval="10000">
-                        <img class="w-100" src="@/assets/images/common/banner.jpg" alt="logo">
-                    </div>
                     <div class="carousel-item" data-bs-interval="2000">
                         <img class="w-100" src="@/assets/images/common/banner-2.jpg" alt="logo">
                     </div>

@@ -40,7 +40,7 @@
 /* container control end */
 
 @media only screen and (max-width: 1700px) {
-  
+
 }
 
 @media only screen and (max-width: 1440px) {
@@ -49,13 +49,13 @@
     }
 }
 
-@media only screen and (max-width: 1366px) { 
+@media only screen and (max-width: 1366px) {
     .full-width-header .rs-header .menu-area .main-menu .rs-menu ul.nav-menu li {
         margin-right: 5px;
     }
     .full-width-header .rs-header .menu-area .main-menu .rs-menu ul.nav-menu li a {
         font-size: 14px;
-    } 
+    }
     .full-width-header .rs-header .expand-btn-inner ul .btn-quote a {
         padding: 10px 18px;
         font-size: 14px;
@@ -96,7 +96,7 @@
 @media only screen and (max-width: 1199px) {
     .lg-pl-pr-15,
     .lg-col-padding > [class*="col-"] {
-        padding-right: 15px !important; 
+        padding-right: 15px !important;
         padding-left: 15px !important;
     }
     .rs-services.style5 .flip-box-inner .flip-box-wrap .back-front {
@@ -307,7 +307,7 @@
 }
 
 @media screen and (min-width: 992px){
-    .nav-menu .rs-mega-menu > a:after, 
+    .nav-menu .rs-mega-menu > a:after,
     .nav-menu > .menu-item-has-children > a:after {
         content: "\f107";
         font-family: FontAwesome;
@@ -315,7 +315,7 @@
         margin: 2px 0 0 5px;
         display: none;
     }
-    .sticky{ 
+    .sticky{
         background: #fff !important;
         position: fixed !important;
         top: 0px;
@@ -376,7 +376,7 @@
         margin-top: 0;
         padding: 200px 0 220px;
     }
-    .full-width-header .rs-header .menu-area .main-menu .rs-menu ul.nav-menu li.menu-item-has-children::after, 
+    .full-width-header .rs-header .menu-area .main-menu .rs-menu ul.nav-menu li.menu-item-has-children::after,
     .full-width-header .rs-header .menu-area.sticky .logo-area a .sticky-logo {
         display: none;
     }
@@ -394,7 +394,7 @@
     }
     .full-width-header .rs-header .menu-area .main-menu .rs-menu ul.nav-menu li a:hover,
     .full-width-header .rs-header .menu-area .main-menu .rs-menu ul.nav-menu li.current-menu-item > a {
-        color: #fd6509;
+        color: #eb2026;
     }
     .full-width-header .rs-header.style1 .menu-area .main-menu .rs-menu ul.nav-menu li.menu-item-has-children > a::before,
     .full-width-header .rs-header.style2.modify1 .menu-area .main-menu .rs-menu ul.nav-menu li.menu-item-has-children > a::before,
@@ -410,11 +410,11 @@
         background: #333;
     }
     .full-width-header .menu-area.sticky .mobile-menu .rs-menu-toggle {
-        color: #fd6509;
+        color: #eb2026;
     }
     .full-width-header .mobile-menu .rs-menu-toggle.black-color{
         color: #131313;
-    } 
+    }
     .full-width-header .mobile-menu .rs-menu-toggle.purple-color{
         color: #7955e7;
     }
@@ -464,7 +464,7 @@
     .rs-project.style2 .project-item .project-content .portfolio-inner .category {
         font-size: 18px;
         line-height: 24px;
-    }   
+    }
     .md-pb-150{
         padding-bottom: 150px;
     }
@@ -620,14 +620,14 @@
     .rs-process.style1 .all-services {
         display: block;
         margin-bottom: 50px;
-    } 
+    }
     .rs-contact.style2 .map-canvas iframe {
         height: 394px;
     }
     .rs-video.style1 .images-part {
         padding: 200px 0 220px 0;
         margin-top: unset;
-    } 
+    }
     .rs-process.style1 .sec-title .title {
         font-size: 29px;
         line-height: 39px;
@@ -1056,7 +1056,7 @@
     .rs-services.style6 .sec-title3 .title {
         font-size: 30px;
         line-height: 1.2em;
-    } 
+    }
     .rs-services.style6 .services-item .services-content .services-text .title {
         font-size: 17px;
         line-height: 27px;
@@ -1611,7 +1611,7 @@
     }
     .rs-services.style6 .sec-title3 .title {
         font-size: 18px;
-    } 
+    }
     .rs-services.style6 .sec-title3 .sub-text {
         font-size: 14px;
         line-height: 26px;
@@ -1726,7 +1726,7 @@
     }
     .rs-slider.style1 .slider .slider-content {
         padding: 95px 0 100px;
-    } 
+    }
     .rs-slider.style1 .slider .slider-content .readon.get-in{
         font-size: 16px;
     }
@@ -1751,5 +1751,5 @@
 }
 
 @media only screen and (max-width: 320px) {
-    
+
 }

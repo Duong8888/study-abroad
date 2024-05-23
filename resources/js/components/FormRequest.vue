@@ -1,6 +1,6 @@
 <template>
     <div
-        class="col-lg-8 rs-seo-website style1 pt-20 pb-30 md-pt-70 md-pb-80 border rounded mx-auto mb-200 box-request custom-size">
+        class="col-lg-8 rs-seo-website style1 pt-20 pb-30 md-pt-70 md-pb-80 border rounded mx-auto box-request custom-size">
         <div class="container flex-column d-flex align-items-center">
             <p class="font-weight-bold fs-6">Đăng ký nhận tư vấn</p>
             <form class="newsletter-form mx-0 row w-100">

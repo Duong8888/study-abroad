@@ -9,7 +9,11 @@
         <Header></Header>
     </div>
     <Banner></Banner>
-    <Test></Test>
+    <Introduce></Introduce>
+    <Team></Team>
+    <Universities></Universities>
+    <Posts></Posts>
+    <FormRequest></FormRequest>
     <Footer></Footer>
 </template>
 
@@ -17,7 +21,11 @@
 import Footer from '@/components/Footer.vue';
 import Header from '@/components/Header.vue';
 import Banner from '@/components/Banner.vue';
-import Test from '@/components/Test.vue';
+import Team from '@/components/Team.vue';
+import Posts from '@/components/Posts.vue';
+import Introduce from '@/components/Introduce.vue';
+import Universities from '@/components/Universities.vue';
+import FormRequest from '@/components/FormRequestFull.vue';
 
 export default {
     name: "Home",
@@ -25,7 +33,11 @@ export default {
         Header,
         Banner,
         Footer,
-        Test
+        Posts,
+        FormRequest,
+        Universities,
+        Team,
+        Introduce
     }
 }
 </script>
