@@ -8,7 +8,7 @@
     @vite('resources/js/app.js')
     <!-- favicon -->
     {{--    <link rel="apple-touch-icon" href="apple-touch-icon.html">--}}
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/fav.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/logo.png')}}">
     <!-- Bootstrap v4.4.1 css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
     <!-- font-awesome css -->
