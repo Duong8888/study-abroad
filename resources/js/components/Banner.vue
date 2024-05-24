@@ -17,7 +17,7 @@
                 <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-2.jpg" alt="logo"></swiper-slide>
                 <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo"></swiper-slide>
             </swiper>
-            <FormRequest style="z-index: 10;"></FormRequest>
+            <FormRequest style="z-index: 10;" @send-request="senData" :statusBtn="statusBtn"></FormRequest>
         </div>
     </div>
     <!-- Banner Section End -->
@@ -32,6 +32,7 @@ import 'swiper/css/navigation';
 import { Autoplay, Navigation } from 'swiper/modules';
 import FormRequest from "@/components/FormRequest.vue";
 export default {
+    name: "Banner",
     components: {
         FormRequest,
         Swiper,
@@ -42,6 +43,14 @@ export default {
             modules: [Autoplay, Navigation],
         };
     },
+    props:{
+        statusBtn:Boolean,
+    },
+    methods: {
+        senData(data){
+            this.$emit('send-request',data);
+        }
+    }
 };
 </script>
 

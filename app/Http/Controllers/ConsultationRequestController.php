@@ -28,15 +28,27 @@ class ConsultationRequestController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        ConsultationRequest::Create([
-            'name' => $request->name,
-            'phone_number' => $request->phone,
-            'content' =>':C',
-            'status' => 0,
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'phone' => 'required',
+            'email' => 'email',
         ]);
-        return response()->json($data);
+
+        try {
+            ConsultationRequest::create([
+                'name' => $request->name,
+                'phone_number' => $request->phone,
+                'email' => $request->email ?? null,
+                'content' => 'SMARTEDU',
+                'status' => 0,
+            ]);
+//            sleep(2);
+            return response()->json(['success' => true, 'message' => 'Xin cảm ơn, form đã được gửi thành công.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
+
 
     /**
      * Display the specified resource.

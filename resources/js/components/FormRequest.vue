@@ -6,14 +6,18 @@
             <form class="newsletter-form mx-0 row w-100">
                 <input type="text" id="name" v-model="name" name="name" placeholder="Họ và tên" required="" autocomplete="off">
                 <input type="text" id="phone" v-model="phone" name="phone" placeholder="Số điện thoại" required="" autocomplete="off">
-                <button type="button" class="rounded relative h-100" @click="sendRequest()">Đăng ký</button>
+                <button type="button" class="rounded relative h-100 btn-custom" :class="{'btn-custom-disabled':statusBtn}" :disabled="statusBtn" @click="sendRequest()">
+                    Đăng ký
+                    <div v-if="statusBtn" class="spinner-border text-white spinner-custom" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
             </form>
         </div>
     </div>
 </template>
 
 <script>
-import { toast } from 'solid-toast';
 export default {
     name: "FormRequest",
     data(){
@@ -22,24 +26,18 @@ export default {
             phone:'',
         }
     },
+    props:{
+        statusBtn:Boolean,
+    },
     methods:{
-        async sendRequest(){
-            toast('Here is your toast.');
-            console.log("Here is your toast");
-            try {
-                const data = await axios.post('api/consultation-request', {
-                    name: this.name,
-                    phone: this.phone
-                })
-                if(data.status){
-
-                }
-            }catch (e) {
-                console.log(e);
-            }
-        },
-
-    }
+        sendRequest(){
+            const data = {
+                name: this.name,
+                phone: this.phone,
+            };
+            this.$emit('send-request',data);
+        }
+    },
 }
 </script>
 
@@ -65,4 +63,22 @@ form{
         box-shadow: 0px 0px 15px #11005833;
     }
 }
+.btn-custom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.spinner-custom{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+.btn-custom-disabled{
+    opacity: 0.5;
+    user-select: none;
+}
+.btn-custom-disabled:hover {
+    opacity: 0.5 !important;
+}
+
 </style>
