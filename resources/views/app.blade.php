@@ -36,6 +36,25 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+
+
+
+    {{--admin--}}
+    <!-- third party css -->
+    <link href="{{asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/libs/datatables.net-select-bs5/css//select.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- third party css end -->
+
+    <!-- App css -->
+
+    <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
+
+    <!-- icons -->
+    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    {{--admin--}}
+
     <title>Document</title>
 </head>
 <body>
@@ -96,6 +115,40 @@
 <script src="{{ asset('assets/js/contact.form.js') }}"></script>
 <!-- main js -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
+
+
+{{--admin--}}
+<!-- Vendor -->
+<script src="{{asset('admin/assets/libs/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/simplebar/simplebar.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/node-waves/waves.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/waypoints/lib/jquery.waypoints.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/jquery.counterup/jquery.counterup.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/feather-icons/feather.min.js')}}"></script>
+
+<!-- third party js -->
+<script src="{{asset('admin/assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/datatables.net-select/js/dataTables.select.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/pdfmake/build/pdfmake.min.js')}}"></script>
+<script src="{{asset('admin/assets/libs/pdfmake/build/vfs_fonts.js')}}"></script>
+<!-- third party js ends -->
+
+<!-- Datatables init -->
+<script src="{{asset('admin/assets/js/pages/datatables.init.js')}}"></script>
+
+<!-- App js -->
+<script src="{{asset('admin/assets/js/app.min.js')}}"></script>
+{{--admin--}}
 
 </body>
 </html>

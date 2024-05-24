@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('throttle:1,1')->group(function () {
-    Route::resource('/consultation-request', ConsultationRequestController::class);
-});
-//Route::resource('/consultation-request', ConsultationRequestController::class);
+//Route::middleware('throttle:1,1')->group(function () {
+//    Route::resource('/consultation-request', ConsultationRequestController::class);
+//});
+Route::resource('/consultation-request', ConsultationRequestController::class);
