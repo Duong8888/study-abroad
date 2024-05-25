@@ -8,6 +8,22 @@
     @vite('resources/js/app.js')
     <!-- favicon -->
     {{--    <link rel="apple-touch-icon" href="apple-touch-icon.html">--}}
+
+    {{--admin--}}
+    <!-- Custom fonts for this template -->
+    <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="{{asset('admin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    {{--admin--}}
+
+
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/logo.png')}}">
     <!-- Bootstrap v4.4.1 css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -37,25 +53,7 @@
     <![endif]-->
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 
-
-
-    {{--admin--}}
-    <!-- third party css -->
-    <link href="{{asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('assets/libs/datatables.net-select-bs5/css//select.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
-    <!-- third party css end -->
-
-    <!-- App css -->
-
-    <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
-
-    <!-- icons -->
-    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-    {{--admin--}}
-
-    <title>Document</title>
+    <title>SMART EDU</title>
 </head>
 <body>
 <div id="app"></div>
@@ -116,39 +114,23 @@
 <!-- main js -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
 
-
 {{--admin--}}
-<!-- Vendor -->
-<script src="{{asset('admin/assets/libs/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/simplebar/simplebar.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/node-waves/waves.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/waypoints/lib/jquery.waypoints.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/jquery.counterup/jquery.counterup.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/feather-icons/feather.min.js')}}"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-<!-- third party js -->
-<script src="{{asset('admin/assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/datatables.net-select/js/dataTables.select.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/pdfmake/build/pdfmake.min.js')}}"></script>
-<script src="{{asset('admin/assets/libs/pdfmake/build/vfs_fonts.js')}}"></script>
-<!-- third party js ends -->
+<!-- Core plugin JavaScript-->
+<script src="{{asset('admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
-<!-- Datatables init -->
-<script src="{{asset('admin/assets/js/pages/datatables.init.js')}}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{asset('admin/js/sb-admin-2.min.js')}}"></script>
 
-<!-- App js -->
-<script src="{{asset('admin/assets/js/app.min.js')}}"></script>
+<!-- Page level plugins -->
+<script src="{{asset('admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{{asset('admin/js/demo/datatables-demo.js')}}"></script>
 {{--admin--}}
-
 </body>
 </html>

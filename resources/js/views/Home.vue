@@ -1,9 +1,9 @@
 <template>
     <div class="offwrap"></div>
     <!--Preloader area start here-->
-    <div id="loader" class="loader">
-        <div class="loader-container"></div>
-    </div>
+<!--    <div id="loader" class="loader">-->
+<!--        <div class="loader-container"></div>-->
+<!--    </div>-->
     <!--Preloader area End here-->
     <div class="main-content">
         <Header></Header>

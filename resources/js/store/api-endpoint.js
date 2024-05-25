@@ -2,7 +2,7 @@ const API =  '/api';
 const ADMIN =  '/admin';
 export const API_ENDPOINT = {
     API_ADMIN: {
-        GET_LIST : `${API}${ADMIN}/get`,
+        LOGIN : `${API}${ADMIN}/login`,
     },
     API_USER: {
         SEND_REQUEST : `${API}/consultation-request`,

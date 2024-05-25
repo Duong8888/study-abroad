@@ -6,12 +6,12 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CAZZ7W9q.js",
+    "file": "assets/app-BNnQD5VF.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-CY4FHSrO.css"
+      "assets/app-Dgsp0byl.css"
     ],
     "assets": [
       "assets/logo-footer-P_X0FgRI.png",
@@ -45,7 +45,11 @@
       "assets/sub-banner-BiLQ9IGi.jpg",
       "assets/banner-CXwGdm21.jpg",
       "assets/quote-fiXjn-DC.png",
-      "assets/1-BRo8ec-0.jpg"
+      "assets/1-BRo8ec-0.jpg",
+      "assets/undraw_profile_1-BnCJJLVE.svg",
+      "assets/undraw_profile_2-mfzhZDAh.svg",
+      "assets/undraw_profile_3-28fYDfL0.svg",
+      "assets/undraw_profile-BdXq-kE7.svg"
     ]
   },
   "resources/js/assets/images/about/about-2.png": {
@@ -175,5 +179,21 @@
   "resources/js/assets/images/testimonial/main-home/quote.png": {
     "file": "assets/quote-fiXjn-DC.png",
     "src": "resources/js/assets/images/testimonial/main-home/quote.png"
+  },
+  "resources/js/assets/images/undraw_profile.svg": {
+    "file": "assets/undraw_profile-BdXq-kE7.svg",
+    "src": "resources/js/assets/images/undraw_profile.svg"
+  },
+  "resources/js/assets/images/undraw_profile_1.svg": {
+    "file": "assets/undraw_profile_1-BnCJJLVE.svg",
+    "src": "resources/js/assets/images/undraw_profile_1.svg"
+  },
+  "resources/js/assets/images/undraw_profile_2.svg": {
+    "file": "assets/undraw_profile_2-mfzhZDAh.svg",
+    "src": "resources/js/assets/images/undraw_profile_2.svg"
+  },
+  "resources/js/assets/images/undraw_profile_3.svg": {
+    "file": "assets/undraw_profile_3-28fYDfL0.svg",
+    "src": "resources/js/assets/images/undraw_profile_3.svg"
   }
 }
