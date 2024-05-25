@@ -28,5 +28,6 @@ Route::resource('/consultation-request', ConsultationRequestController::class);
 Route::post('/admin/login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::resource('/userList', UserController::class);
+    Route::resource('/user-list', UserController::class);
+    Route::resource('/request-list', ConsultationRequestController::class);
 });

@@ -1,16 +1,11 @@
-import {createStore} from 'vuex'
+import { createStore } from 'vuex';
+import request from './module/request.js';
+
 const store = createStore({
-    state: {
-       
+    modules: {
+        request,
     },
-    getters: {},
-
-    mutations: {
-        
-    },
-
-    actions: {
-    }
 });
 
 export default store;
+

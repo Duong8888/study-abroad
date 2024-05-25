@@ -76,11 +76,11 @@ export default {
                     type: 'success',
                     position: 'top'
                 });
-                this.$router.push('/admin/home');
+                this.$router.push('/admin/request');
                 this.statusBtn = false;
             } catch (e) {
                 this.$toast.open({
-                    message: 'Có lỗi xảy ra vui lòng thử lại.',
+                    message: 'Sai tên đăng nhập hoặc mật khẩu.',
                     type: 'error',
                     position: 'top'
                 });

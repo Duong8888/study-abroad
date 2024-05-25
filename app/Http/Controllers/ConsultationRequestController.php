@@ -12,7 +12,8 @@ class ConsultationRequestController extends Controller
      */
     public function index()
     {
-        //
+        $data = ConsultationRequest::all();
+        return response()->json($data);
     }
 
     /**

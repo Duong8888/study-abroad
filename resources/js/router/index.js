@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
 import About from '@/views/About.vue';
-import HomeAdmin from '@/views/admin/Home.vue';
+import Request from '@/views/admin/Request.vue';
 import Login from '@/views/admin/Login.vue';
+import Posts from '@/views/admin/Posts.vue';
 import NotFound from '@/views/NotFound.vue';
 
 const routes = [
@@ -17,9 +18,9 @@ const routes = [
         component: About
     },
     {
-        path: '/admin/home',
-        name: 'HomeAdmin',
-        component: HomeAdmin
+        path: '/admin/request',
+        name: 'Request',
+        component: Request
     },
     {
         path: '/admin/login',
@@ -27,7 +28,12 @@ const routes = [
         component: Login
     },
     {
-        path: '/:catchAll(.*)', // Bắt tất cả các route không khớp
+        path: '/admin/posts',
+        name: 'Posts',
+        component: Posts
+    },
+    {
+        path: '/:catchAll(.*)',
         name: 'NotFound',
         component: NotFound
     }
