@@ -1,31 +1,27 @@
 <template>
     <div class="container">
-        <Table :data="userAll" @update="updateData"></Table>
+        <TablePosts :data="postsAll"></TablePosts>
     </div>
 </template>
 
 <script>
 
-import Table from '../../components/admin/Table.vue'
+import TablePosts from '../../components/admin/TablePosts.vue'
 import {mapActions, mapGetters} from 'vuex';
 
 export default {
     name: "Posts",
     components: {
-        Table,
+        TablePosts,
     },
     computed: {
-        ...mapGetters('request', ['userAll']),
+        ...mapGetters('posts', ['postsAll']),
     },
     methods: {
-        ...mapActions('request', ['fetchRequest', "updateStatus"]),
-        updateData(id) {
-            this.updateStatus({id, toast: this.$toast});
-            this.fetchRequest();
-        }
+        ...mapActions('posts', ['fetchPost'])
     },
     created() {
-        this.fetchRequest();
+        this.fetchPost();
     },
 }
 </script>

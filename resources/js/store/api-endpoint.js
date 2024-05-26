@@ -5,6 +5,8 @@ export const API_ENDPOINT = {
     API_ADMIN: {
         LOGIN : `/login`,
         REQUEST : `/request-list`,
+        POSTS : `/posts`,
+        CATEGORY : `/category`,
     },
     API_USER: {
         SEND_REQUEST : `${API}/consultation-request`,

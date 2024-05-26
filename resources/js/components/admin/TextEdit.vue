@@ -37,7 +37,11 @@ export default {
                 fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather', 'Times New Roman'],
                 fontNamesIgnoreCheck: ['Merriweather'],
                 lang: 'vi-VN',
-                callbacks: {},
+                callbacks: {
+                    onChange: (contents) => {
+                        this.$emit('content', contents);
+                    }
+                }
             });
         },
         // save() {

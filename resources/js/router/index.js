@@ -7,6 +7,8 @@ import Posts from '@/views/admin/Posts.vue';
 import CreatePosts from '@/views/admin/CreatePosts.vue';
 import NotFound from '@/views/NotFound.vue';
 import AdminLayout from '@/views/admin/AdminLayout.vue';
+import Category from "@/views/admin/Category.vue";
+import PostsAdd from "@/views/admin/PostsAdd.vue";
 
 const routes = [
     {
@@ -39,10 +41,20 @@ const routes = [
                 name: 'Posts',
                 component: Posts
             },
+            // {
+            //     path: 'create-posts',
+            //     name: 'CreatePosts',
+            //     component: CreatePosts
+            // },
             {
                 path: 'create-posts',
                 name: 'CreatePosts',
-                component: CreatePosts
+                component: PostsAdd
+            },
+            {
+                path: 'category',
+                name: 'Category',
+                component: Category
             },
         ]
     },

@@ -103,6 +103,16 @@
         </li>
 
         <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <router-link :to="{name:'Category'}">
+                <span class="nav-link">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Category</span></span>
+            </router-link>
+
+        </li>
+
+        <!-- Nav Item - Tables -->
         <li class="nav-item active">
             <router-link :to="{name:'Request'}">
                 <span class="nav-link">
@@ -116,9 +126,9 @@
         <hr class="sidebar-divider d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
+<!--        <div class="text-center d-none d-md-inline">-->
+<!--            <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
+<!--        </div>-->
 
     </ul>
 </template>
