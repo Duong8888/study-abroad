@@ -50,7 +50,7 @@
 
 <script>
 import {API_ENDPOINT} from "../../store/api-endpoint.js";
-import router from "@/router/index.js";
+import api from '../../utils/axios.js';
 
 export default {
     name: "Login",
@@ -65,7 +65,7 @@ export default {
         async login() {
             this.statusBtn = true;
             try {
-                const response = await axios.post(API_ENDPOINT.API_ADMIN.LOGIN, {
+                const response = await api.post(API_ENDPOINT.API_ADMIN.LOGIN, {
                     email: this.email,
                     password: this.password
                 })
@@ -76,7 +76,7 @@ export default {
                     type: 'success',
                     position: 'top'
                 });
-                this.$router.push('/admin/request');
+                await this.$router.push('/admin/request');
                 this.statusBtn = false;
             } catch (e) {
                 this.$toast.open({

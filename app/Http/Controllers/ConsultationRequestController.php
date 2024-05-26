@@ -12,7 +12,7 @@ class ConsultationRequestController extends Controller
      */
     public function index()
     {
-        $data = ConsultationRequest::all();
+        $data = ConsultationRequest::query()->orderBy('created_at', 'desc')->get();
         return response()->json($data);
     }
 
@@ -72,7 +72,16 @@ class ConsultationRequestController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $data = ConsultationRequest::query()->findOrFail($id);
+            $data->update([
+                'status' => 1,
+            ]);
+//            sleep(2);
+            return response()->json(['success' => true, 'message' => 'Cập nhật thàng công.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     /**

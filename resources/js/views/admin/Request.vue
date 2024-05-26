@@ -4,7 +4,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <TopBar></TopBar>
-                <Table :data="userAll"></Table>
+                <Table :data="userAll" @update="updateData"></Table>
             </div>
             <Footer></Footer>
         </div>
@@ -29,7 +29,11 @@ export default {
         ...mapGetters('request', ['userAll']),
     },
     methods: {
-        ...mapActions('request', ['fetchRequest']),
+        ...mapActions('request', ['fetchRequest',"updateStatus"]),
+        updateData(id){
+            this.updateStatus({ id, toast: this.$toast });
+            this.fetchRequest();
+        }
     },
     created() {
         this.fetchRequest();

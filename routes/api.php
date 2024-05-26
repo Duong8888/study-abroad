@@ -30,4 +30,5 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::resource('/user-list', UserController::class);
     Route::resource('/request-list', ConsultationRequestController::class);
+
 });

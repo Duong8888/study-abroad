@@ -1,4 +1,5 @@
 import {API_ENDPOINT} from "../api-endpoint.js";
+import api from '../../utils/axios.js';
 const state = {
     request: [],
 };
@@ -15,21 +16,26 @@ const mutations = {
 const actions = {
     async fetchRequest({ commit }) {
         try {
-            const token = localStorage.getItem('authToken');
-            const response = await axios.get(API_ENDPOINT.API_ADMIN.GET_REQUEST,
-            {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
+            const response = await api.get(API_ENDPOINT.API_ADMIN.REQUEST);
             const user = response.data;
             commit('SET_REQUEST', user);
         } catch (error) {
             console.error('Error fetching user:', error);
         }
     },
-    updateStatus({ commit }, name) {
-        commit('SET_USER_NAME', name);
+    async updateStatus({ commit }, { id, toast }) {
+        try {
+            const response = await api.put(`${API_ENDPOINT.API_ADMIN.REQUEST}/${id}`);
+            if(response.data.success){
+                toast.open({
+                    message: response.data.message,
+                    type: 'success',
+                    position: 'top'
+                });
+            }
+        } catch (error) {
+            console.error('Error fetching user:', error);
+        }
     },
 };
 

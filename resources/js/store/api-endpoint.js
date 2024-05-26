@@ -1,9 +1,10 @@
 const API =  '/api';
 const ADMIN =  '/admin';
 export const API_ENDPOINT = {
+    BASE_URL: `${API}${ADMIN}`,
     API_ADMIN: {
-        LOGIN : `${API}${ADMIN}/login`,
-        GET_REQUEST : `${API}${ADMIN}/request-list`,
+        LOGIN : `/login`,
+        REQUEST : `/request-list`,
     },
     API_USER: {
         SEND_REQUEST : `${API}/consultation-request`,
