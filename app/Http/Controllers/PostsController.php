@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -60,5 +61,26 @@ class PostsController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function uploadImage(Request $request): \Illuminate\Http\JsonResponse
+    {
+        if ($request->hasFile('upload')) {
+            $file = $request->file('upload');
+            $path = $file->store('uploads/images', 'public');
+            $url = Storage::url($path);
+
+            return response()->json([
+                'uploaded' => true,
+                'url' => $url
+            ]);
+        }
+
+        return response()->json([
+            'uploaded' => false,
+            'error' => [
+                'message' => 'No file uploaded.'
+            ]
+        ], 400);
     }
 }

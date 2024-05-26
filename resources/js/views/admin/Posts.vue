@@ -1,41 +1,53 @@
 <template>
-    <div id="wrapper">
-        <SideBar></SideBar>
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                <TopBar></TopBar>
-                <ul>
-                    <li v-for="book in books" :key="book.id">{{ book.title }}</li>
-                </ul>
-                <PostsList></PostsList>
-            </div>
-            <Footer></Footer>
-        </div>
+    <div class="container">
+        <Table :data="userAll" @update="updateData"></Table>
     </div>
 </template>
 
 <script>
-import SideBar from '../../components/admin/SideBar.vue'
-import TopBar from "../../components/admin/TopBar.vue";
-import PostsList from '../../components/admin/Posts.vue'
-import Footer from "../../components/admin/Footer.vue";
+
+import Table from '../../components/admin/Table.vue'
+import {mapActions, mapGetters} from 'vuex';
+
 export default {
     name: "Posts",
     components: {
-        SideBar,
-        TopBar,
-        PostsList,
-        Footer
+        Table,
     },
     computed: {
-
+        ...mapGetters('request', ['userAll']),
     },
     methods: {
-
-    }
+        ...mapActions('request', ['fetchRequest', "updateStatus"]),
+        updateData(id) {
+            this.updateStatus({id, toast: this.$toast});
+            this.fetchRequest();
+        }
+    },
+    created() {
+        this.fetchRequest();
+    },
 }
 </script>
 
 <style scoped>
+.custom-img {
+    width: 100%;
+    height: 200px;
+}
 
+.box-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+}
+
+.box-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    border: 4px dashed #cccc;
+    border-radius: 10px;
+}
 </style>

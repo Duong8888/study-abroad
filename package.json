@@ -11,7 +11,12 @@
         "vite": "^5.2.11"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^41.4.2",
+        "@ckeditor/ckeditor5-editor-classic": "^41.4.2",
+        "@ckeditor/ckeditor5-image": "^41.4.2",
+        "@ckeditor/ckeditor5-vue": "^5.1.0",
         "@vitejs/plugin-vue": "^5.0.4",
+        "@vueform/multiselect": "^2.6.7",
         "datatables.net-vue3": "^3.0.1",
         "jquery": "^3.7.1",
         "owl.carousel": "^2.3.4",
