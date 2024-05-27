@@ -11,10 +11,6 @@
         "vite": "^5.2.11"
     },
     "dependencies": {
-        "@ckeditor/ckeditor5-build-classic": "^41.4.2",
-        "@ckeditor/ckeditor5-editor-classic": "^41.4.2",
-        "@ckeditor/ckeditor5-image": "^41.4.2",
-        "@ckeditor/ckeditor5-vue": "^5.1.0",
         "@tinymce/tinymce-vue": "^5.1.1",
         "@vitejs/plugin-vue": "^5.0.4",
         "@vueform/multiselect": "^2.6.7",
