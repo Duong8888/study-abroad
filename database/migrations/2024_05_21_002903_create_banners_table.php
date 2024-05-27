@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('title');
             $table->text('image_path');
+            $table->integer('type');
             $table->text('link');
             $table->timestamps();
         });

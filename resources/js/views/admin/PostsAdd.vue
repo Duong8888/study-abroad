@@ -1,3 +1,7 @@
+<script setup>
+    import Editor from '@tinymce/tinymce-vue';
+</script>
+
 <template>
     <div class="container">
         <div class="card shadow mb-4">
@@ -30,9 +34,13 @@
                     </div>
                 </div>
             </div>
-            <div class="px-4 col-12">
-                <TextEdit @content="updateContent"></TextEdit>
-            </div>
+            <main id="sample" class="p-4">
+                <Editor
+                    v-model="editorContent"
+                    :api-key="apiKey"
+                    :init="editorConfig"
+                />
+            </main>
             <div class="col-12">
                 <input hidden type="file" class="form-control" id="imageInput" ref="imageInput"
                        @change="previewImage"
@@ -64,7 +72,6 @@ import TextEdit from '../../components/admin/TextEdit.vue';
 import Multiselect from '@vueform/multiselect';
 import '@vueform/multiselect/themes/default.css';
 import {mapGetters, mapActions} from "vuex";
-
 export default {
     name: "PostsAdd",
     data() {
@@ -73,7 +80,45 @@ export default {
             slug: '',
             imageUrl: null,
             value: null,
-            content: null,
+            thumbnail: null,
+            editorContent: null,
+            apiKey: 'g00klohzu757d7qwuw6rupo7nuezdho9d9j9hcr083mmkpy1',
+            editorConfig:{
+                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                image_title: true,
+                automatic_uploads: true,
+                file_picker_types: 'image',
+
+                file_picker_callback: (cb, value, meta) => {
+                    const input = document.createElement('input');
+                    input.setAttribute('type', 'file');
+                    input.setAttribute('accept', 'image/*');
+
+                    input.addEventListener('change', (e) => {
+                        const file = e.target.files[0];
+                        const formData = new FormData();
+                        formData.append('upload', file);
+
+                        axios.post('/api/upload-image', formData)
+                            .then(response => {
+                                const imageUrl = response.data.url;
+
+                                // Insert the image into the editor content
+                                cb(imageUrl, { title: file.name });
+                                console.log('File uploaded successfully:', imageUrl);
+                            })
+                            .catch(error => {
+                                console.error('Error uploading file:', error);
+                            });
+                    });
+
+                    input.click();
+                },
+                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }',
+                tinycomments_mode: 'embedded',
+                tinycomments_author: 'Author name',
+            }
         };
     },
     watch: {
@@ -98,6 +143,16 @@ export default {
                 const reader = new FileReader();
                 reader.onload = () => {
                     this.imageUrl = reader.result;
+                    const formData = new FormData();
+                    formData.append('upload', file);
+                    axios.post('/api/upload-image', formData)
+                        .then(response => {
+                            this.thumbnail = response.data.url;
+                            console.log('File uploaded successfully:', response.data);
+                        })
+                        .catch(error => {
+                            console.error('Error uploading file:', error);
+                        });
                 };
                 reader.readAsDataURL(file);
             }
@@ -124,13 +179,13 @@ export default {
             }
             return dataCategory;
         },
-        getData(){
+        getData() {
             return {
                 title: this.title,
                 slug: this.slug,
-                thumbnail: this.imageUrl,
+                thumbnail: this.thumbnail,
                 category: this.value,
-                content: this.content,
+                content: this.editorContent,
             }
         }
     },

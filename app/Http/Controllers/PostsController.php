@@ -37,7 +37,7 @@ class PostsController extends Controller
 //                'content' => 'required',
 //                'slug' => 'required|unique',
 //                'thumbnail' => 'required',
-//                'category' => 'required',
+//                'post_type_id' => 'required',
 //            ]);
 
             Posts::create([
@@ -46,7 +46,7 @@ class PostsController extends Controller
                 'slug' => $request->slug,
                 'thumbnail' => $request->thumbnail,
                 'author_id' => 1,
-                'post_type_id' => 1,
+                'post_type_id' => json_encode($request->category),
             ]);
             return response()->json(['success' => true, 'message' => 'Create success.']);
         } catch (\Exception $e) {

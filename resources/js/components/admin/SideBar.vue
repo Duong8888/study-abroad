@@ -125,6 +125,19 @@
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
+        <div class="sidebar-heading">
+            Setings
+        </div>
+
+        <li class="nav-item">
+            <router-link :to="{name:'Home'}">
+                <span class="nav-link">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Email</span></span>
+            </router-link>
+
+        </li>
+
         <!-- Sidebar Toggler (Sidebar) -->
 <!--        <div class="text-center d-none d-md-inline">-->
 <!--            <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
