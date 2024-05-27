@@ -14,8 +14,6 @@
                         <tr>
                             <th>Title</th>
                             <th>Thumbnail</th>
-                            <th>Content</th>
-                            <th>Author</th>
                             <th>Posts Type</th>
                             <th>Time</th>
                             <th>Action</th>
@@ -25,8 +23,6 @@
                         <tr>
                             <th>Title</th>
                             <th>Thumbnail</th>
-                            <th>Content</th>
-                            <th>Author</th>
                             <th>Posts Type</th>
                             <th>Time</th>
                             <th>Action</th>
@@ -35,10 +31,9 @@
                         <tbody>
                         <tr v-for="item in data" :key="item.id">
                             <td>{{ item.title }}</td>
-                            <td>{{ item.thumbnail }}</td>
-                            <td v-html="item.content"></td>
-                            <td>{{ item.author_id }}</td>
-                            <td>{{ item.post_type_id }}</td>
+                            <td><img class="image-custom" :src="item.thumbnail"></td>
+                            <td><span class="badge badge-success mx-1" v-for="i in formatTypePost(item.post_type_id)"> {{ i.name }} </span clas>
+                            </td>
                             <td>{{ formatDateTime(item.created_at) }}</td>
                             <td>
                                 <div class="dropdown-center">
@@ -51,7 +46,15 @@
                                         </svg>
                                     </p>
                                     <ul class="dropdown-menu">
-                                        <li><a style="cursor: pointer" class="dropdown-item">View</a></li>
+                                        <router-link :to="{ name: 'EditPosts', params: { postsId: item.id }}">
+                                            <li><a style="cursor: pointer;color: black" class="dropdown-item">View</a>
+                                            </li>
+                                        </router-link>
+                                        <router-link :to="{ name: 'EditPosts', params: { postsId: item.id }}">
+                                            <li><a style="cursor: pointer;color: black" class="dropdown-item">Edit</a>
+                                            </li>
+                                        </router-link>
+                                        <li><a style="cursor: pointer;color: black" @click="(idDelete = item.id)" class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Delete</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -61,6 +64,7 @@
                 </div>
             </div>
         </div>
+        <Modal @delete="deletePosts"></Modal>
     </div>
     <div class="container" v-else>
         <p>Loading...</p>
@@ -68,6 +72,7 @@
 </template>
 
 <script>
+import Modal from "@/components/admin/Modal.vue";
 export default {
     name: "TablePosts",
     props: {
@@ -76,10 +81,14 @@ export default {
             default: [],
         }
     },
+    components:{
+        Modal,
+    },
     data() {
         return {
             loading: true,
-            dataTable: null
+            dataTable: null,
+            idDelete:null,
         }
     },
     watch: {
@@ -114,6 +123,12 @@ export default {
         },
         updateStatus(id) {
             this.$emit('update', id);
+        },
+        formatTypePost(data) {
+            return JSON.parse(data);
+        },
+        async deletePosts() {
+            this.$emit('delete', {id: this.idDelete, toast: this.$toast})
         }
     }
 }
@@ -132,5 +147,12 @@ export default {
 
 .status-1 {
     background: #28a745 !important;
+}
+
+.image-custom {
+    width: 180px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 </style>

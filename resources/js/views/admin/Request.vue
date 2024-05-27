@@ -16,9 +16,9 @@ export default {
     },
     methods: {
         ...mapActions('request', ['fetchRequest', "updateStatus"]),
-        updateData(id) {
-            this.updateStatus({id, toast: this.$toast});
-            this.fetchRequest();
+        async updateData(id) {
+            await this.updateStatus({id, toast: this.$toast});
+            await this.fetchRequest();
         }
     },
     created() {

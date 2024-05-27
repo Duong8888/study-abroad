@@ -42,19 +42,34 @@ const routes = [
                 name: 'Posts',
                 component: Posts
             },
-            // {
-            //     path: 'create-posts',
-            //     name: 'CreatePosts',
-            //     component: CreatePosts
-            // },
             {
-                path: 'create-posts',
+                path: 'posts/:postsId',
+                name: 'EditPosts',
+                component: PostsAdd
+            },
+            {
+                path: 'posts/create',
                 name: 'CreatePosts',
                 component: PostsAdd
             },
             {
                 path: 'category',
                 name: 'Category',
+                component: Category
+            },
+            {
+                path: 'email',
+                name: 'Email',
+                component: Category
+            },
+            {
+                path: 'ads-banner',
+                name: 'AdsBanner',
+                component: Category
+            },
+            {
+                path: 'top-banner',
+                name: 'TopBanner',
                 component: Category
             },
         ]

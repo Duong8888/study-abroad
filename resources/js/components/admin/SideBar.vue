@@ -6,7 +6,7 @@
             <span class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon rotate-n-15">
 <!--                    <i class="fas fa-laugh-wink"></i>-->
-<!--                    <img class="normal-logo" src="@/assets/images/common/logo.png" alt="logo">-->
+                    <img class="normal-logo" src="@/assets/images/common/logo-white.png" alt="logo">
                 </div>
                 <div class="sidebar-brand-text mx-3">SMART EDU</div>
             </span>
@@ -93,7 +93,7 @@
         <!--        </li>-->
 
         <!-- Nav Item - Charts -->
-        <li class="nav-item">
+        <li class="nav-item" :class="{ active: $route.name === 'Posts' }">
             <router-link :to="{name:'Posts'}">
                 <span class="nav-link">
                     <i class="fas fa-fw fa-chart-area"></i>
@@ -102,22 +102,23 @@
 
         </li>
 
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <router-link :to="{name:'Category'}">
-                <span class="nav-link">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Category</span></span>
-            </router-link>
 
-        </li>
 
         <!-- Nav Item - Tables -->
-        <li class="nav-item active">
+        <li class="nav-item" :class="{ active: $route.name === 'Request' }">
             <router-link :to="{name:'Request'}">
                 <span class="nav-link">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Request</span></span>
+            </router-link>
+        </li>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item" :class="{ active: $route.name === 'Category' }">
+            <router-link :to="{name:'Category'}">
+                <span class="nav-link">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Category</span></span>
             </router-link>
 
         </li>
@@ -129,14 +130,33 @@
             Setings
         </div>
 
-        <li class="nav-item">
-            <router-link :to="{name:'Home'}">
+        <li class="nav-item" :class="{ active: $route.name === 'Email' }">
+            <router-link :to="{name:'Email'}">
                 <span class="nav-link">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Email</span></span>
             </router-link>
-
         </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" @click="status = !status" data-toggle="collapse" data-target="#collapsePages"
+               aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Banners</span>
+            </a>
+            <div id="collapsePages" v-if="status" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <router-link :to="{name:'TopBanner'}">
+                        <a class="collapse-item" :class="{ active: $route.name === 'TopBanner' }" href="#">Top banner</a>
+                    </router-link>
+                    <router-link :to="{name:'AdsBanner'}">
+                        <a class="collapse-item" :class="{ active: $route.name === 'AdsBanner' }" href="#">Ads banner</a>
+                    </router-link>
+                </div>
+            </div>
+        </li>
+
 
         <!-- Sidebar Toggler (Sidebar) -->
 <!--        <div class="text-center d-none d-md-inline">-->
@@ -148,10 +168,19 @@
 
 <script>
 export default {
-    name: "SideBar"
+    name: "SideBar",
+    data(){
+        return{
+            status:true,
+        }
+    }
 }
 </script>
 
 <style scoped>
+.normal-logo{
+    width: 30px;
+    height: 30px;
+}
 
 </style>

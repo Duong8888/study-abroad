@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('content');
             $table->integer('author_id');
             $table->text('thumbnail');
+            $table->text('description');
             $table->json('post_type_id');
             $table->text('slug');
             $table->timestamps();

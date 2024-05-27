@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        NGUYEN ANH DUONG
+        <h4>Coming soon . . .</h4>
     </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <TablePosts :data="postsAll"></TablePosts>
+        <TablePosts :data="postsAll" @delete="postsDelete"></TablePosts>
     </div>
 </template>
 
@@ -18,7 +18,11 @@ export default {
         ...mapGetters('posts', ['postsAll']),
     },
     methods: {
-        ...mapActions('posts', ['fetchPost'])
+        ...mapActions('posts', ['fetchPost','deletePosts']),
+        async postsDelete(data){
+            await this.deletePosts(data);
+            await this.fetchPost();
+        }
     },
     created() {
         this.fetchPost();

@@ -20,6 +20,7 @@ class PostsTableSeeder extends Seeder
                 'author_id' => 1,
                 'thumbnail' => './images/1.png',
                 'post_type_id' => 1,
+                'description' => 'description',
                 'slug'=>'lich-nghi-le-30-4',
                 'created_at' => now(),
                 'updated_at' => now(),

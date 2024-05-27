@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Posts;
+use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class PostsController extends Controller
 {
@@ -32,21 +35,23 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         try {
-//            $validate = $request->validate([
-//                'title' => 'required',
-//                'content' => 'required',
-//                'slug' => 'required|unique',
-//                'thumbnail' => 'required',
-//                'post_type_id' => 'required',
-//            ]);
+            $validate = $request->validate([
+                'title' => 'required',
+                'content' => 'required',
+                'slug' => 'required|unique:posts,slug',
+                'thumbnail' => 'required',
+                'category' => 'required',
+                'description' => 'required'
+            ]);
 
             Posts::create([
-                'title' => $request->title,
-                'content' => $request->content,
-                'slug' => $request->slug,
-                'thumbnail' => $request->thumbnail,
-                'author_id' => 1,
-                'post_type_id' => json_encode($request->category),
+                'title' => $request->input('title'),
+                'content' => $request->input('content'),
+                'slug' => $request->input('slug'),
+                'thumbnail' => $request->input('thumbnail'),
+                'description' => $request->input('description'),
+                'author_id' => Auth::user()->id,
+                'post_type_id' => json_encode($request->input('category')),
             ]);
             return response()->json(['success' => true, 'message' => 'Create success.']);
         } catch (\Exception $e) {
@@ -67,7 +72,13 @@ class PostsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        try {
+            $data = Posts::query()->findOrFail($id);
+            return response()->json(['success' => true, 'data' => $data]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     /**
@@ -75,7 +86,35 @@ class PostsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $data = Posts::query()->findOrFail($id);
+            $validate = $request->validate([
+                'title' => 'required',
+                'content' => 'required',
+                'slug' => [
+                    'required',
+                    Rule::unique('posts')->ignore($data->id),
+                ],
+                'category' => 'required',
+                'description' => 'required'
+            ]);
+            $dataNew = [
+                'title' => $request->input('title'),
+                'content' => $request->input('content'),
+                'slug' => $request->input('slug'),
+                'description' => $request->input('description'),
+                'author_id' => Auth::user()->id,
+                'post_type_id' => json_encode($request->input('category')),
+            ];
+            if($request->input('thumbnail')){
+                $dataNew['thumbnail'] = $request->input('thumbnail');
+            };
+            $data->update($dataNew);
+            return response()->json(['success' => true, 'message' => 'Update success.']);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     /**
@@ -83,7 +122,14 @@ class PostsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $data = Posts::query()->findOrFail($id);
+            $data->delete();
+            return response()->json(['success' => true, 'message' => 'Delete success.']);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     public function uploadImage(Request $request): \Illuminate\Http\JsonResponse

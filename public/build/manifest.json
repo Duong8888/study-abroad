@@ -6,12 +6,12 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CU8UWWJc.js",
+    "file": "assets/app-DLmPGayh.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-gF4wJQxZ.css"
+      "assets/app-8LtgJWbL.css"
     ],
     "assets": [
       "assets/logo-footer-P_X0FgRI.png",
@@ -46,6 +46,7 @@
       "assets/banner-CXwGdm21.jpg",
       "assets/quote-fiXjn-DC.png",
       "assets/1-BRo8ec-0.jpg",
+      "assets/logo-white-MFJnTByU.png",
       "assets/undraw_profile_1-BnCJJLVE.svg",
       "assets/undraw_profile_2-mfzhZDAh.svg",
       "assets/undraw_profile_3-28fYDfL0.svg",
@@ -71,6 +72,10 @@
   "resources/js/assets/images/common/logo-footer.png": {
     "file": "assets/logo-footer-P_X0FgRI.png",
     "src": "resources/js/assets/images/common/logo-footer.png"
+  },
+  "resources/js/assets/images/common/logo-white.png": {
+    "file": "assets/logo-white-MFJnTByU.png",
+    "src": "resources/js/assets/images/common/logo-white.png"
   },
   "resources/js/assets/images/common/logo.png": {
     "file": "assets/logo-ncipMEg2.png",

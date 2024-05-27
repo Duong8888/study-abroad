@@ -15,6 +15,7 @@ class Posts extends Model
         'author_id',
         'thumbnail',
         'post_type_id',
+        'description',
         'slug',
     ];
 }

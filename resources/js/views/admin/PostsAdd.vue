@@ -1,12 +1,12 @@
 <script setup>
-    import Editor from '@tinymce/tinymce-vue';
+import Editor from '@tinymce/tinymce-vue';
 </script>
 
 <template>
     <div class="container">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Create posts</h6>
+                <h6 class="m-0 font-weight-bold text-primary">{{ formType ? "Create posts" : "Edit posts" }}</h6>
             </div>
             <div class="row p-4">
                 <div class="col-12">
@@ -30,11 +30,20 @@
                                      :searchable="true"
                                      :create-option="true"
                                      :options="category"
+                                     :taggable="true"
+                                     label="label"
                         />
+                    </div>
+
+                    <div class="w-100 mb-20">
+                        <label for="inputSlug" class="form-label ">Description</label>
+                        <textarea name="description" v-model="description" placeholder="Description"
+                                  class="form-control"></textarea>
                     </div>
                 </div>
             </div>
             <main id="sample" class="p-4">
+                <label for="inputSlug" class="form-label mb-20">Content</label>
                 <Editor
                     v-model="editorContent"
                     :api-key="apiKey"
@@ -60,8 +69,11 @@
                 </label>
             </div>
             <div class="col-12 py-4 d-flex justify-content-end">
-                <button class="btn btn-light mx-1">Cancel</button>
-                <button class="btn btn-primary" @click="addNewPosts(getData)">Save</button>
+                <router-link :to="{name:'Posts'}">
+                    <button class="btn btn-light mx-1">Cancel</button>
+                </router-link>
+                <button class="btn btn-primary" @click="actionBtn(getData)">{{ formType ? "Save" : "Update" }}
+                </button>
             </div>
         </div>
     </div>
@@ -72,6 +84,7 @@ import TextEdit from '../../components/admin/TextEdit.vue';
 import Multiselect from '@vueform/multiselect';
 import '@vueform/multiselect/themes/default.css';
 import {mapGetters, mapActions} from "vuex";
+
 export default {
     name: "PostsAdd",
     data() {
@@ -79,11 +92,15 @@ export default {
             title: '',
             slug: '',
             imageUrl: null,
-            value: null,
+            value: [],
+            description: null,
             thumbnail: null,
             editorContent: null,
+            formType: true,
+            id: null,
+
             apiKey: 'g00klohzu757d7qwuw6rupo7nuezdho9d9j9hcr083mmkpy1',
-            editorConfig:{
+            editorConfig: {
                 plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
                 toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
                 image_title: true,
@@ -103,9 +120,7 @@ export default {
                         axios.post('/api/upload-image', formData)
                             .then(response => {
                                 const imageUrl = response.data.url;
-
-                                // Insert the image into the editor content
-                                cb(imageUrl, { title: file.name });
+                                cb(imageUrl, {title: file.name});
                                 console.log('File uploaded successfully:', imageUrl);
                             })
                             .catch(error => {
@@ -124,14 +139,44 @@ export default {
     watch: {
         title: function (newTitle) {
             this.slug = this.createSlug(newTitle);
+        },
+        showData: {
+            handler(newValue) {
+                if (newValue && newValue.data) {
+                    const {title, slug, thumbnail, content, description, post_type_id} = newValue.data;
+                    this.title = title;
+                    this.slug = slug;
+                    this.value = JSON.parse(post_type_id);
+                    this.imageUrl = thumbnail;
+                    this.editorContent = content;
+                    this.description = description;
+                }
+            },
+            deep: true,
+            immediate: true
         }
     },
     created() {
         this.fetchCategory();
+        if (this.$route.params.postsId) {
+            this.formType = false;
+            this.id = this.$route.params.postsId;
+            const postsId = this.$route.params.postsId;
+            this.getDetailPosts(postsId);
+        } else {
+            this.title = '';
+            this.slug = '';
+            this.imageUrl = null;
+            this.value = [];
+            this.description = null;
+            this.thumbnail = null;
+            this.editorContent = null;
+            this.formType = true;
+        }
     },
     methods: {
         ...mapActions('category', ['fetchCategory',]),
-        ...mapActions('posts', ['addPost']),
+        ...mapActions('posts', ['addPost', 'getOnePost', 'updatePost']),
         createSlug(title) {
             let slug = title.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             slug = slug.toLowerCase().replace(/\s+/g, '-');
@@ -157,11 +202,22 @@ export default {
                 reader.readAsDataURL(file);
             }
         },
-        updateContent(newContent) {
-            this.content = newContent;
-        },
+
         addNewPosts(data) {
             this.addPost({data: data, toast: this.$toast})
+        },
+        updatePosts(data) {
+            this.updatePost({data: data, toast: this.$toast})
+        },
+        getDetailPosts(id) {
+            this.getOnePost(id);
+        },
+        actionBtn(data){
+            if (this.formType){
+                this.addNewPosts(data);
+            }else {
+                this.updatePosts(data);
+            }
         }
     },
     components: {
@@ -170,14 +226,21 @@ export default {
     },
     computed: {
         ...mapGetters('category', ['categoryAll']),
+        ...mapGetters('posts', ['posts']),
         category() {
             let dataCategory = [];
             for (const item of this.categoryAll) {
                 dataCategory.push({
-                    value: item.type_name, label: item.type_name
+                    value: {
+                        id: item.id,
+                        name: item.type_name,
+                    }, label: item.type_name
                 });
             }
             return dataCategory;
+        },
+        showData() {
+            return this.posts;
         },
         getData() {
             return {
@@ -186,6 +249,8 @@ export default {
                 thumbnail: this.thumbnail,
                 category: this.value,
                 content: this.editorContent,
+                description: this.description,
+                id: this.id
             }
         }
     },
