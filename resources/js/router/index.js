@@ -22,6 +22,11 @@ const routes = [
         component: About
     },
     {
+        path: '/admin/login',
+        name: 'Login',
+        component: Login
+    },
+    {
         path: '/admin',
         name: 'AdminLayout',
         component: AdminLayout,
@@ -31,11 +36,7 @@ const routes = [
                 name: 'Request',
                 component: Request
             },
-            {
-                path: 'login',
-                name: 'Login',
-                component: Login
-            },
+
             {
                 path: 'posts',
                 name: 'Posts',
