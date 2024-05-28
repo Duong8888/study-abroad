@@ -54,31 +54,31 @@
                         <div class="row mb-n8">
                             <div class="col-12 col-sm-6 col-lg-4 mb-8" v-for="item in postsList" :key="item">
                                 <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">
-                                    <p class="card p-3 h-100 overflow-hidden">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" :src="item?.thumbnail"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">{{ item?.title }}</h6>
-                                        <p class="card-text small text-light-dark mb-6 description">
-                                            {{ item?.description }}</p>
-                                        <div class="mt-auto">
+                                    <div class="card p-3 h-100 overflow-hidden">
+                                        <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
+                                            <img class="card-img-top rounded-0" :src="item?.thumbnail"
+                                                 alt="...">
+                                        </div>
+                                        <div class="card-body d-flex flex-column align-items-start mw-xs">
+                                            <h6 class="card-title mb-3">{{ item?.title }}</h6>
+                                            <p class="card-text small text-light-dark mb-6 description">
+                                                {{ item?.description }}</p>
+                                            <div class="mt-auto">
                                                 <span
                                                     class="me-3 small text-light-dark">{{
                                                         formatDateTime(item?.created_at)
                                                     }}</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span v-for="category in JSON.parse(item?.post_type_id)" :key="category"
-                                                  class="badge ms-3 small fw-medium text-light-dark border mr-2">{{
-                                                    category.name
-                                                }}</span>
+                                                <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
+                                                </svg>
+                                                <span v-for="category in JSON.parse(item?.post_type_id)" :key="category"
+                                                      class="badge ms-3 small fw-medium text-light-dark border mr-2">{{
+                                                        category.name
+                                                    }}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    </p>
                                 </router-link>
                             </div>
                         </div>
@@ -513,9 +513,23 @@ export default {
     name: "PostsList",
     data() {
         return {
-            postsList: [],
+            postsList: [
+                {
+                    slug: "posts",
+                    thumbnail: null,
+                    title: null,
+                    created_at: null,
+                    post_type_id: '[{"id": null, "name": null}]',
+                }
+            ],
             category: [],
-            postsNew: [],
+            postsNew: {
+                slug: "posts",
+                thumbnail: null,
+                title: null,
+                created_at: null,
+                post_type_id: '[{"id": null, "name": null}]',
+            },
         }
     },
     methods: {
@@ -538,10 +552,6 @@ export default {
     computed: {
         ...mapGetters('category', ['categoryAll']),
         ...mapGetters('posts', ['postsAll']),
-        setData() {
-            this.postsList = this.postsAll
-            this.category = this.categoryAll
-        }
     },
     watch: {
         postsAll: {
