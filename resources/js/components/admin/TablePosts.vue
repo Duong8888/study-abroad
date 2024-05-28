@@ -46,11 +46,11 @@
                                         </svg>
                                     </p>
                                     <ul class="dropdown-menu">
-                                        <router-link :to="{ name: 'EditPosts', params: { postsId: item.id }}">
+                                        <router-link :to="{ name: 'EditPosts', params: { postsId: item.slug }}">
                                             <li><a style="cursor: pointer;color: black" class="dropdown-item">View</a>
                                             </li>
                                         </router-link>
-                                        <router-link :to="{ name: 'EditPosts', params: { postsId: item.id }}">
+                                        <router-link :to="{ name: 'EditPosts', params: { postsId: item.slug }}">
                                             <li><a style="cursor: pointer;color: black" class="dropdown-item">Edit</a>
                                             </li>
                                         </router-link>

@@ -8,12 +8,14 @@
                 <div class="container-fluid">
                     <div class="row custom-row">
                         <div class="col-cell">
-                            <div class="logo-area">
-                                <a href="#">
-                                    <img class="normal-logo" src="@/assets/images/common/logo.png" alt="logo">
-                                    <img class="sticky-logo" src="@/assets/images/common/logo.png" alt="logo">
-                                </a>
-                            </div>
+                            <router-link :to="{name:'Home'}">
+                                <div class="logo-area">
+                                    <a href="#">
+                                        <img class="normal-logo" src="@/assets/images/common/logo.png" alt="logo">
+                                        <img class="sticky-logo" src="@/assets/images/common/logo.png" alt="logo">
+                                    </a>
+                                </div>
+                            </router-link>
                         </div>
                         <div class="col-cell">
                             <div class="rs-menu-area">
@@ -28,7 +30,7 @@
                                     </div>
                                     <nav class="rs-menu hidden-md">
                                         <ul class="nav-menu">
-                                            <li class="menu-item-has-children current-menu-item">
+                                            <li class="menu-item-has-children">
                                                 <a href="index.html">Giới Thiệu</a>
                                                 <ul class="sub-menu">
                                                     <li class="menu-item-has-children current-menu-item">
@@ -55,7 +57,7 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="menu-item-has-children">
+                                            <li class="menu-item-has-children ">
                                                 <a href="#">Khóa học</a>
                                                 <ul class="sub-menu">
                                                     <li><a href="about.html">About One</a></li>
@@ -63,17 +65,23 @@
                                                 </ul>
                                             </li>
 
-                                            <li class="menu-item-has-children">
-                                                <a href="#">Thư viện</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="seo-optimization.html">SEO Optimization</a></li>
-                                                    <li><a href="content-marketing.html">Content Marketing</a></li>
-                                                    <li><a href="social-media-marketing.html">Social Media Marketing</a>
-                                                    </li>
-                                                    <li><a href="ppc-advertising.html">PPC Advertising</a></li>
-                                                    <li><a href="email-marketing.html">Email Marketing</a></li>
-                                                    <li><a href="app-development.html">App Development</a></li>
-                                                </ul>
+<!--                                            <li class="menu-item-has-children">-->
+<!--                                                <a href="#">Thư viện</a>-->
+<!--                                                <ul class="sub-menu">-->
+<!--                                                    <li><a href="seo-optimization.html">SEO Optimization</a></li>-->
+<!--                                                    <li><a href="content-marketing.html">Content Marketing</a></li>-->
+<!--                                                    <li><a href="social-media-marketing.html">Social Media Marketing</a>-->
+<!--                                                    </li>-->
+<!--                                                    <li><a href="ppc-advertising.html">PPC Advertising</a></li>-->
+<!--                                                    <li><a href="email-marketing.html">Email Marketing</a></li>-->
+<!--                                                    <li><a href="app-development.html">App Development</a></li>-->
+<!--                                                </ul>-->
+<!--                                            </li>-->
+
+                                            <li>
+                                                <router-link :to="{name:'PostsList'}">
+                                                    <a href="contact.html">Bài viết</a>
+                                                </router-link>
                                             </li>
 
                                             <li>
@@ -323,9 +331,9 @@ export default {
         showMenu() {
             $('.mobile-menu, .line').on('click', function () {
                 const body = document.querySelector('body');
-                if(this.action){
+                if (this.action) {
                     body.classList.add('nav-expanded');
-                }else {
+                } else {
                     body.classList.remove('nav-expanded');
                 }
                 this.action = !this.action;

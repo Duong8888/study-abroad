@@ -1,31 +1,33 @@
 <template>
-    <Banner @send-request="sendRequest" :statusBtn="statusBtn"></Banner>
-    <Introduce></Introduce>
-    <Team></Team>
-    <Universities></Universities>
-    <Posts></Posts>
-    <SubBanner></SubBanner>
-    <Comments></Comments>
+    <div class="offwrap"></div>
+    <!--Preloader area start here-->
+    <!--    <div id="loader" class="loader">-->
+    <!--        <div class="loader-container"></div>-->
+    <!--    </div>-->
+    <!--Preloader area End here-->
+    <div class="main-content">
+        <Header></Header>
+    </div>
+    <router-view></router-view>
+    <FormRequest @send-request="sendRequest" :statusBtn="statusBtn"></FormRequest>
+    <Footer></Footer>
 </template>
 
 <script>
-import Banner from '@/components/Banner.vue';
-import Team from '@/components/Team.vue';
-import Posts from '@/components/Posts.vue';
-import Introduce from '@/components/Introduce.vue';
-import Universities from '@/components/Universities.vue';
-import SubBanner from '@/components/SubBanner.vue';
-import Comments from '@/components/Comments.vue';
-import {API_ENDPOINT} from "../store/api-endpoint";
+import Footer from '@/components/Footer.vue';
+import Header from '@/components/Header.vue';
+import FormRequest from '@/components/FormRequestFull.vue';
+import {API_ENDPOINT} from "@/store/api-endpoint.js";
+
 
 export default {
-    name: "Home",
+    name: "Layout",
     data() {
         return {
             statusBtn: false,
         }
     },
-    methods: {
+    methods:{
         async sendRequest(value) {
             this.statusBtn = true;
             try {
@@ -60,13 +62,9 @@ export default {
         }
     },
     components: {
-        Banner,
-        Posts,
-        Universities,
-        Team,
-        Introduce,
-        SubBanner,
-        Comments
+        Header,
+        Footer,
+        FormRequest,
     },
 }
 </script>

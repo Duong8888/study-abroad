@@ -28,11 +28,26 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //});
 Route::resource('/consultation-request', ConsultationRequestController::class);
 Route::post('/admin/login', [AuthController::class, 'login'])->name('login');
+Route::get('/admin/posts', [PostsController::class, 'index']);
+Route::get('/admin/posts/{post}/edit', [PostsController::class, 'edit']);
+Route::get('/admin/category', [PostsTypeController::class, 'index']);
+
 Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::resource('/user-list', UserController::class);
     Route::resource('/request-list', ConsultationRequestController::class);
-    Route::resource('/posts', PostsController::class);
-    Route::resource('/category', PostsTypeController::class);
+
+    Route::get('/posts/create', [PostsController::class, 'create']);
+    Route::post('/posts', [PostsController::class, 'store']);
+    Route::get('/posts/{post}', [PostsController::class, 'show']);
+    Route::put('/posts/{post}', [PostsController::class, 'update']);
+    Route::delete('/posts/{post}', [PostsController::class, 'destroy']);
+
+    Route::get('/category/create', [PostsTypeController::class, 'create']);
+    Route::post('/category', [PostsTypeController::class, 'store']);
+    Route::get('/category/{category}', [PostsTypeController::class, 'show']);
+    Route::get('/category/{category}/edit', [PostsTypeController::class, 'edit']);
+    Route::put('/category/{category}', [PostsTypeController::class, 'update']);
+    Route::delete('/category/{category}', [PostsTypeController::class, 'destroy']);
 });
 Route::post('/upload-image', [PostsController::class, 'uploadImage'])->name('upload-image');

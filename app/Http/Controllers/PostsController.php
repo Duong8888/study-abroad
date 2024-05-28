@@ -15,9 +15,10 @@ class PostsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $data = Posts::query()->orderBy('id', 'desc')->get();
+//        $data = Posts::whereJsonContains('post_type_id', [['id' => 1]])->get();
         return response()->json($data);
     }
 
@@ -70,10 +71,10 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
         try {
-            $data = Posts::query()->findOrFail($id);
+            $data = Posts::where('slug', $slug)->firstOrFail();
             return response()->json(['success' => true, 'data' => $data]);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
@@ -84,10 +85,10 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $slug)
     {
         try {
-            $data = Posts::query()->findOrFail($id);
+            $data = Posts::where('slug', $slug)->firstOrFail();
             $validate = $request->validate([
                 'title' => 'required',
                 'content' => 'required',

@@ -67,9 +67,9 @@ const actions = {
         }
     },
 
-    async getOnePost({commit}, id) {
+    async getOnePost({commit}, slug) {
         try {
-            const response = await api.get(`${API_ENDPOINT.API_ADMIN.POSTS}/${id}/edit`);
+            const response = await api.get(`${API_ENDPOINT.API_ADMIN.POSTS}/${slug}/edit`);
             const posts = response.data;
             commit('SET_POSTS', posts);
         } catch (error) {

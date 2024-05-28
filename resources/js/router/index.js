@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
-import About from '@/views/About.vue';
 import Request from '@/views/admin/Request.vue';
 import Login from '@/views/admin/Login.vue';
 import Posts from '@/views/admin/Posts.vue';
@@ -9,18 +8,35 @@ import NotFound from '@/views/NotFound.vue';
 import AdminLayout from '@/views/admin/AdminLayout.vue';
 import Category from "@/views/admin/Category.vue";
 import PostsAdd from "@/views/admin/PostsAdd.vue";
+import PostsList from "@/views/PostsList.vue";
+import Layout from "@/views/admin/Layout.vue";
+import PostsDetail from "@/views/PostsDetail.vue";
 
 const routes = [
+
     {
         path: '/',
-        name: 'Home',
-        component: Home
+        name: 'Layout',
+        component: Layout,
+        children: [
+            {
+                path: '',
+                name: 'Home',
+                component: Home
+            },
+            {
+                path: 'blogs',
+                name: 'PostsList',
+                component: PostsList
+            },
+            {
+                path: 'blogs/:slug',
+                name: 'PostsDetail',
+                component: PostsDetail
+            },
+        ]
     },
-    {
-        path: '/about',
-        name: 'About',
-        component: About
-    },
+
     {
         path: '/admin/login',
         name: 'Login',
@@ -91,6 +107,7 @@ router.beforeEach((to, from, next) => {
     if (to.name === 'Login' && isAuthenticated) {
         next({ name: 'Request' });
     } else {
+        window.scrollTo(0, 0);
         next();
     }
 });
