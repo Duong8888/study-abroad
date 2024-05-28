@@ -46,7 +46,7 @@
                                         </svg>
                                     </p>
                                     <ul class="dropdown-menu">
-                                        <router-link :to="{ name: 'EditPosts', params: { postsId: item.slug }}">
+                                        <router-link :to="{ name: 'PostsDetail', params: { slug: item.slug }}">
                                             <li><a style="cursor: pointer;color: black" class="dropdown-item">View</a>
                                             </li>
                                         </router-link>
