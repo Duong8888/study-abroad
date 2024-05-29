@@ -1,7 +1,7 @@
 <template>
     <!-- Banner Section Start -->
     <div class=" style5 h-50 gray-bg2">
-        <div class="custom-box">
+        <div :class="{'custom-box': form}">
             <swiper
                 :spaceBetween="30"
                 :centeredSlides="true"
@@ -13,12 +13,16 @@
                 :modules="modules"
                 class="mySwiper"
             >
-                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner.jpg" alt="logo"></swiper-slide>
-                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo"></swiper-slide>
-                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-2.jpg" alt="logo"></swiper-slide>
-                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo"></swiper-slide>
+                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner.jpg" alt="logo">
+                </swiper-slide>
+                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo">
+                </swiper-slide>
+                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-2.jpg" alt="logo">
+                </swiper-slide>
+                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo">
+                </swiper-slide>
             </swiper>
-            <FormRequest style="z-index: 10;" @send-request="senData" :statusBtn="statusBtn"></FormRequest>
+            <FormRequest v-if="form" style="z-index: 10;" @send-request="senData" :statusBtn="statusBtn"></FormRequest>
         </div>
     </div>
     <!-- Banner Section End -->
@@ -26,12 +30,13 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import {Swiper, SwiperSlide} from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Autoplay, Navigation } from 'swiper/modules';
+import {Autoplay, Navigation} from 'swiper/modules';
 import FormRequest from "@/components/FormRequest.vue";
+
 export default {
     name: "Banner",
     components: {
@@ -44,27 +49,36 @@ export default {
             modules: [Autoplay, Navigation],
         };
     },
-    props:{
-        statusBtn:Boolean,
+    props: {
+        statusBtn: Boolean,
+        form: {
+            type: Boolean,
+            default: true,
+        }
     },
     methods: {
-        senData(data){
-            this.$emit('send-request',data);
+        senData(data) {
+            this.$emit('send-request', data);
         }
     }
 };
 </script>
 
 <style scoped>
-.carousel-control-prev, .carousel-control-next{
-    background: rgb(255, 255, 255,0);
+.carousel-control-prev, .carousel-control-next {
+    background: rgb(255, 255, 255, 0);
     border: none;
     height: 400px;
 }
-.carousel-item{
+
+.carousel-item {
     height: 450px;
 }
-#app { height: 100% }
+
+#app {
+    height: 100%
+}
+
 html,
 body {
     position: relative;
@@ -84,12 +98,14 @@ body {
     width: 100%;
     height: 80vh;
 }
+
 .swiper-slide {
     height: 100%;
     line-height: 300px;
     text-align: center;
 }
-.banner-img{
+
+.banner-img {
     object-fit: contain;
 }
 

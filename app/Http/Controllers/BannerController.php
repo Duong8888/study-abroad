@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class BannerController extends Controller
@@ -28,23 +30,47 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->hasFile('upload')) {
-            $file = $request->file('upload');
-            $path = $file->store('uploads/images', 'public');
-            $url = Storage::url($path);
+        try {
+            $data = $request->data;
+            if (count($data) > 0) {
+                foreach ($data as $value) {
+                    if (isset($value['image'])) {
+                        $file = $value['image'];
+                        $path = $file->store('uploads/images', 'public');
+                        $url = Storage::url($path);
+                        Banner::create([
+                            'title' => 'SMARTEDU',
+                            'link' => $value['link'] ?? '',
+                            'image_path' => $url,
+                            'type' => $value['type'] ?? 0,
+                        ]);
+                    }else{
+                        break;
+                    }
+                }
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Thêm mới thành công.',
+                ]);
+            }
 
             return response()->json([
-                'uploaded' => true,
-                'url' => $url
-            ]);
+                'success' => false,
+                'error' => [
+                    'message' => 'No file uploaded.'
+                ]
+            ], 400);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json([
+                'success' => false,
+                'error' => [
+                    'message' => $e->getMessage()
+                ]
+            ], 400);
         }
 
-        return response()->json([
-            'uploaded' => false,
-            'error' => [
-                'message' => 'No file uploaded.'
-            ]
-        ], 400);
+
     }
 
     /**

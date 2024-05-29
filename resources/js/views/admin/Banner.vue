@@ -1,120 +1,32 @@
 <template>
     <div class="container">
-        <button class="btn btn-outline-primary mb-4" @click="saveImages">Lưu banner</button>
-        <div class="row">
-            <div class="col-sm-2 imgUp" v-for="(image, index) in images" :key="index">
-                <div class="imagePreview" :style="{ backgroundImage: 'url(' + image.url + ')' }"></div>
-                <button type="button" class="btn btn-primary btn-ct w-100" @click="openModal(index)">
-                    Tải ảnh lên
-                </button>
-                <i class="fa fa-times del" @click="removeImage(index)"></i>
-            </div>
-            <i class="fa fa-plus imgAdd" @click="addImage"></i>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Tải ảnh lên</h5>
-                        <button type="button" class="close" @click="closeModal">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <label class="w-100 mb-4">
-                            Đường dẫn liên kết của banner
-                            <input type="text" v-model="modalData.link" class="form-control">
-                        </label>
-                        <label class="w-100">
-                            Tải ảnh lên
-                            <input type="file" class="uploadFile img form-control" @change="onModalFileChange">
-                        </label>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" @click="closeModal">Close</button>
-                        <button type="button" class="btn btn-primary" @click="saveModalChanges">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <router-link :to="{name:'AddBanner'}">
+            <button class="btn btn-outline-primary float-right mb-4">Thêm mới banner</button>
+        </router-link>
+        <BannerView :form="false"></BannerView>
     </div>
 </template>
 
 <script>
-import axios from 'axios';
+import {mapGetters, mapActions} from "vuex";
+import BannerView from '@/components/Banner.vue';
 
 export default {
     data() {
         return {
-            images: [{ url: '', file: null, link: '' }],
-            formData: new FormData(),
-            modalData: {
-                index: null,
-                file: null,
-                url: '',
-                link: ''
-            }
+            images: [{url: '', file: null, link: ''}],
         };
     },
+    components: {
+        BannerView,
+    },
+    computed: {
+        ...mapGetters('banner', ['bannerAll']),
+    },
     methods: {
-        addImage() {
-            this.images.push({ url: '', file: null, link: '' });
-        },
-        removeImage(index) {
-            const removedFile = this.images[index].file;
-            this.images.splice(index, 1);
-            if (removedFile) {
-                this.formData.delete(`images[${index}]`);
-            }
-        },
-        openModal(index) {
-            this.modalData.index = index;
-            this.modalData.url = this.images[index].url;
-            this.modalData.link = this.images[index].link;
-            this.modalData.file = this.images[index].file;
-            $('#exampleModalCenter').modal('show');
-        },
-        onModalFileChange(event) {
-            const file = event.target.files[0];
-            if (file && file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    this.modalData.url = reader.result;
-                    this.modalData.file = file;
-                };
-                reader.readAsDataURL(file);
-            }
-        },
-        saveModalChanges() {
-            const index = this.modalData.index;
-            if (index !== null) {
-                this.images.splice(index, 1, {
-                    url: this.modalData.url,
-                    file: this.modalData.file,
-                    link: this.modalData.link
-                });
-                this.formData.append(`images[${index}]`, this.modalData.file);
-            }
-            $('#exampleModalCenter').modal('hide');
-        },
-        async saveImages() {
-            try {
-                const response = await axios.post('/your-upload-endpoint', this.formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                });
-                console.log('Upload successful', response.data);
-            } catch (error) {
-                console.error('Upload failed', error);
-            }
-        },
-        closeModal() {
-            $('#exampleModalCenter').modal('hide');
-        }
+        ...mapActions('banner', ['addBanner', 'updateBanner', 'deleteBanner']),
     }
+
 };
 </script>
 
@@ -123,6 +35,7 @@ export default {
 body {
     background-color: #f5f5f5;
 }
+
 .imagePreview {
     width: 100%;
     height: 180px;
@@ -133,16 +46,19 @@ body {
     display: inline-block;
     box-shadow: 0px -3px 6px 2px rgba(0, 0, 0, 0.2);
 }
+
 .btn-ct {
     display: block;
     border-radius: 0px;
     box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.2);
     margin-top: -5px;
 }
+
 .imgUp {
     margin-bottom: 15px;
     position: relative;
 }
+
 .del {
     position: absolute;
     top: 0px;
@@ -154,6 +70,7 @@ body {
     background-color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
 }
+
 .imgAdd {
     width: 30px;
     height: 30px;

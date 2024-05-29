@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ConsultationRequestController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PostsTypeController;
@@ -31,6 +32,8 @@ Route::post('/admin/login', [AuthController::class, 'login'])->name('login');
 Route::get('/admin/posts', [PostsController::class, 'index']);
 Route::get('/admin/posts/{post}/edit', [PostsController::class, 'edit']);
 Route::get('/admin/category', [PostsTypeController::class, 'index']);
+Route::get('/admin/banner', [BannerController::class, 'index'])->name('banner.index');
+
 
 Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -49,5 +52,14 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::get('/category/{category}/edit', [PostsTypeController::class, 'edit']);
     Route::put('/category/{category}', [PostsTypeController::class, 'update']);
     Route::delete('/category/{category}', [PostsTypeController::class, 'destroy']);
+
+    Route::get('/banner/create', [BannerController::class, 'create'])->name('banner.create');
+    Route::post('/banner', [BannerController::class, 'store'])->name('banner.store');
+    Route::get('/banner/{banner}', [BannerController::class, 'show'])->name('banner.show');
+    Route::get('/banner/{banner}/edit', [BannerController::class, 'edit'])->name('banner.edit');
+    Route::put('/banner/{banner}', [BannerController::class, 'update'])->name('banner.update');
+    Route::delete('/banner/{banner}', [BannerController::class, 'destroy'])->name('banner.destroy');
+
+
 });
 Route::post('/upload-image', [PostsController::class, 'uploadImage'])->name('upload-image');
