@@ -2,14 +2,14 @@
     <section class="py-12 py-md-16 py-lg-24 position-relative pt-100 pb-100">
         <div class="position-absolute top-0 start-0 w-100 bg-primary-light">
             <div class="d-flex justify-content-center overflow-hidden pt-12 pt-lg-24 pb-44 pb-md-64 pb-lg-80">
-                <div class="flex-shrink-0 mt-n40 mt-sm-n6 me-6 rounded-3"
-                     style="width: 324px; height: 340px; background: linear-gradient(180deg, rgba(255, 234, 194, 0.00) 0%, #FFEAC2 100%);"></div>
-                <div class="flex-shrink-0 mt-n40 mt-sm-n32 me-6 rounded-3"
-                     style="width: 324px; height: 340px; background: linear-gradient(180deg, rgba(255, 234, 194, 0.00) 0%, rgba(255, 234, 194, 0.50) 100%);"></div>
-                <div class="flex-shrink-0 mt-n40 mt-sm-n32 me-6 rounded-3"
-                     style="width: 324px; height: 340px; background: linear-gradient(180deg, rgba(255, 234, 194, 0.00) 0%, rgba(255, 234, 194, 0.50) 100%);"></div>
-                <div class="flex-shrink-0 mt-n40 mt-sm-n6 rounded-3"
-                     style="width: 324px; height: 340px; background: linear-gradient(180deg, rgba(255, 234, 194, 0.00) 0%, #FFEAC2 100%);"></div>
+                <div class="flex-shrink-0 mt-n40 mt-sm-n6 me-6 rounded"
+                     style="width: 324px; height: 340px; background: linear-gradient(180deg, rgba(255, 234, 194, 0.00) 0%, #be1510 100%);"></div>
+                <div class="flex-shrink-0 mt-n40 mt-sm-n32 me-6 rounded"
+                     style="width: 324px; height: 340px; background: linear-gradient(180deg, rgba(255, 234, 194, 0.00) 0%, #be1510 100%);"></div>
+                <div class="flex-shrink-0 mt-n40 mt-sm-n32 me-6 rounded"
+                     style="width: 324px; height: 340px; background: linear-gradient(180deg, rgba(255, 234, 194, 0.00) 0%, #be1510 100%);"></div>
+                <div class="flex-shrink-0 mt-n40 mt-sm-n6 rounded"
+                     style="width: 324px; height: 340px; background: linear-gradient(180deg, rgba(255, 234, 194, 0.00) 0%, #be1510 100%);"></div>
             </div>
         </div>
         <div class="container position-relative">

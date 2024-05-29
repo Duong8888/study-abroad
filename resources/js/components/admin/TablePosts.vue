@@ -2,9 +2,9 @@
     <div class="container" v-if="!loading">
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Posts List</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Danh sách bài viết</h6>
                 <router-link :to="{name:'CreatePosts'}">
-                    <buttons class="btn btn-outline-primary">Add new posts</buttons>
+                    <buttons class="btn btn-outline-primary">Thêm mới bài viết</buttons>
                 </router-link>
             </div>
             <div class="card-body">
@@ -12,27 +12,27 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Thumbnail</th>
-                            <th>Posts Type</th>
-                            <th>Time</th>
-                            <th>Action</th>
+                            <th>Tiêu đề</th>
+                            <th>Ảnh đại diện</th>
+                            <th>Loại bài</th>
+                            <th>Thời gian đăng</th>
+                            <th>Thao tác</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>Title</th>
-                            <th>Thumbnail</th>
-                            <th>Posts Type</th>
-                            <th>Time</th>
-                            <th>Action</th>
+                            <th>Tiêu đề</th>
+                            <th>Ảnh đại diện</th>
+                            <th>Loại bài</th>
+                            <th>Thời gian đăng</th>
+                            <th>Thao tác</th>
                         </tr>
                         </tfoot>
                         <tbody>
                         <tr v-for="item in data" :key="item.id">
                             <td>{{ item.title }}</td>
                             <td><img class="image-custom" :src="item.thumbnail"></td>
-                            <td><span class="badge badge-success mx-1" v-for="i in formatTypePost(item.post_type_id)"> {{ i.name }} </span clas>
+                            <td><span class="badge badge-success mx-1" v-for="i in formatTypePost(item.post_type_id)"> {{ i.name }} </span>
                             </td>
                             <td>{{ formatDateTime(item.created_at) }}</td>
                             <td>
@@ -47,14 +47,14 @@
                                     </p>
                                     <ul class="dropdown-menu">
                                         <router-link :to="{ name: 'PostsDetail', params: { slug: item.slug }}">
-                                            <li><a style="cursor: pointer;color: black" class="dropdown-item">View</a>
+                                            <li><a style="cursor: pointer;color: black" class="dropdown-item">Xem</a>
                                             </li>
                                         </router-link>
                                         <router-link :to="{ name: 'EditPosts', params: { postsId: item.slug }}">
-                                            <li><a style="cursor: pointer;color: black" class="dropdown-item">Edit</a>
+                                            <li><a style="cursor: pointer;color: black" class="dropdown-item">Sửa bài viết</a>
                                             </li>
                                         </router-link>
-                                        <li><a style="cursor: pointer;color: black" @click="(idDelete = item.id)" class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Delete</a></li>
+                                        <li><a style="cursor: pointer;color: black" @click="(idDelete = item.id)" class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Xóa bài viết</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -109,6 +109,23 @@ export default {
                 this.dataTable = $(this.$refs.dataTableContainer).find('table').DataTable({
                     "order": [[1, "desc"]],
                     scrollX: true,
+                    language: {
+                        "sProcessing": "Đang xử lý...",
+                        "sLengthMenu": "Xem _MENU_ mục",
+                        "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
+                        "sInfo": "Đang xem _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                        "sInfoEmpty": "Đang xem 0 đến 0 trong tổng số 0 mục",
+                        "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+                        "sInfoPostFix": "",
+                        "sSearch": "Tìm:",
+                        "sUrl": "",
+                        "oPaginate": {
+                            "sFirst": "Đầu",
+                            "sPrevious": "Trước",
+                            "sNext": "Tiếp",
+                            "sLast": "Cuối"
+                        }
+                    }
                 });
             });
         },
@@ -154,5 +171,8 @@ export default {
     height: 80px;
     object-fit: cover;
     border-radius: 5px;
+}
+.badge-success{
+    background: #be1510 !important;
 }
 </style>

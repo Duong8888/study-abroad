@@ -40,7 +40,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-12 col-sm-12 footer-widget">
                         <div class="footer-logo md-mb-30 mb-lg-4">
-                            <a href="index.html"><img src="@/assets/images/common/logo-footer.png" alt=""></a>
+                            <a href="index.html"><img src="@/assets/images/common/logo-6.png" alt=""></a>
                         </div>
                         <div class="textwidget"><p>Du học SMARTEDU có 4 năm kinh nghiệm trong lĩnh vực du học cả ở thị trường Việt Nam và Hàn Quốc</p>
                         </div>
@@ -66,8 +66,8 @@
                     <div class="col-lg-3 col-md-12 col-sm-12 pl-45 md-pl-15 md-mb-30">
                         <h3 class="widget-title">Liên hệ</h3>
                         <div class="textwidget"><p>SDT Hàn Quốc: 010 7621 1292</p></div>
-                        <div class="textwidget"><p>SDT Việt Nam: 0328 021 619</p></div>
-                        <div class="textwidget"><p>Email: visakrinfo@gmail.com</p></div>
+                        <div class="textwidget"><p>SDT Việt Nam: 032 915 5366</p></div>
+                        <div class="textwidget"><p>Email: duhochanquoc.smartedu@gmail.com</p></div>
                         <div class="textwidget"><p>Zalo: +840328021619</p></div>
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12 md-mb-30">
@@ -92,3 +92,8 @@ export default {
     name: "Footer"
 }
 </script>
+<style scoped>
+footer{
+    background-image: url("../assets/images/bg/footer-6.png") !important;
+}
+</style>

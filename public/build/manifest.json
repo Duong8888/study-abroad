@@ -6,14 +6,15 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-BoCwZbjh.js",
+    "file": "assets/app-D0tFLTIi.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-hVa6W0jO.css"
+      "assets/app-Dncvhoyh.css"
     ],
     "assets": [
+      "assets/banner-CXwGdm21.jpg",
       "assets/banner-3-B8Vyo6ro.jpg",
       "assets/banner-2-64q1SVUB.jpg",
       "assets/6-Dq-jpDbs.jpg",
@@ -32,7 +33,6 @@
       "assets/7-B2KQ4otq.png",
       "assets/8-biJfYop-.png",
       "assets/sub-banner-BiLQ9IGi.jpg",
-      "assets/banner-CXwGdm21.jpg",
       "assets/quote-fiXjn-DC.png",
       "assets/1-BRo8ec-0.jpg",
       "assets/logo-ncipMEg2.png",
@@ -41,7 +41,7 @@
       "assets/undraw_profile_2-mfzhZDAh.svg",
       "assets/undraw_profile_3-28fYDfL0.svg",
       "assets/undraw_profile-BdXq-kE7.svg",
-      "assets/logo-footer-P_X0FgRI.png",
+      "assets/logo-6-35kkcPcG.png",
       "assets/logo-dark-DVkJqhzs.png",
       "assets/1-CbzUgqai.jpg",
       "assets/2-DtY3xOOg.jpg",
@@ -50,12 +50,17 @@
       "assets/map-Cy_lGiZQ.jpg",
       "assets/1-CvuTRcEk.png",
       "assets/2-C28BPVEj.png",
-      "assets/3-BwkjUzy5.png"
+      "assets/3-BwkjUzy5.png",
+      "assets/footer-6-g5cpRxnP.png"
     ]
   },
   "resources/js/assets/images/about/about-2.png": {
     "file": "assets/about-2-Cd7Inago.png",
     "src": "resources/js/assets/images/about/about-2.png"
+  },
+  "resources/js/assets/images/bg/footer-6.png": {
+    "file": "assets/footer-6-g5cpRxnP.png",
+    "src": "resources/js/assets/images/bg/footer-6.png"
   },
   "resources/js/assets/images/common/banner-2.jpg": {
     "file": "assets/banner-2-64q1SVUB.jpg",
@@ -69,9 +74,9 @@
     "file": "assets/banner-CXwGdm21.jpg",
     "src": "resources/js/assets/images/common/banner.jpg"
   },
-  "resources/js/assets/images/common/logo-footer.png": {
-    "file": "assets/logo-footer-P_X0FgRI.png",
-    "src": "resources/js/assets/images/common/logo-footer.png"
+  "resources/js/assets/images/common/logo-6.png": {
+    "file": "assets/logo-6-35kkcPcG.png",
+    "src": "resources/js/assets/images/common/logo-6.png"
   },
   "resources/js/assets/images/common/logo-white.png": {
     "file": "assets/logo-white-MFJnTByU.png",

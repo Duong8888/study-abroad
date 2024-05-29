@@ -13,6 +13,7 @@
                 :modules="modules"
                 class="mySwiper"
             >
+                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner.jpg" alt="logo"></swiper-slide>
                 <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo"></swiper-slide>
                 <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-2.jpg" alt="logo"></swiper-slide>
                 <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo"></swiper-slide>
@@ -81,14 +82,15 @@ body {
 
 .swiper {
     width: 100%;
+    height: 80vh;
 }
 .swiper-slide {
-    height: 350px;
+    height: 100%;
     line-height: 300px;
     text-align: center;
 }
 .banner-img{
-    object-fit: cover;
+    object-fit: contain;
 }
 
 @media screen and (min-width: 992px) {

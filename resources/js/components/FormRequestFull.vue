@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="address-text">
                                     <h3 class="title">Email</h3>
-                                    <p class="desc"><a href="visakrinfo@gmail.com">visakrinfo@gmail.com</a></p>
+                                    <p class="desc"><a href="visakrinfo@gmail.com">Duhochanquoc.smartedu@gmail.com</a></p>
                                 </div>
                             </div>
                             <div class="address-box mb-25">
@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="address-text">
                                     <h3 class="title">Liên hệ</h3>
-                                    <p class="desc"><a href="tel%2b5559811444.html">(+84) 328 - 021 - 619</a></p>
+                                    <p class="desc"><a href="tel%2b5559811444.html">(+84) 329 - 155 - 366</a></p>
                                 </div>
                             </div>
                             <div class="address-box mb-25">

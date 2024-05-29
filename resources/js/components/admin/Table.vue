@@ -2,29 +2,29 @@
     <div class="container" v-if="!loading">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">User request</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Yêu cầu tư vấn</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive" ref="dataTableContainer">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Phone</th>
+                            <th>Họ tên</th>
+                            <th>Số điện thoại</th>
                             <th>Email</th>
-                            <th>Status</th>
-                            <th>Time request</th>
-                            <th>Action</th>
+                            <th>Trạng thái</th>
+                            <th>Thời gian gửi</th>
+                            <th>Thao tác</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>Name</th>
-                            <th>Phone</th>
+                            <th>Họ tên</th>
+                            <th>Số điện thoại</th>
                             <th>Email</th>
-                            <th>Status</th>
-                            <th>Time request</th>
-                            <th>Action</th>
+                            <th>Trạng thái</th>
+                            <th>Thời gian gửi</th>
+                            <th>Thao tác</th>
                         </tr>
                         </tfoot>
                         <tbody>
@@ -45,7 +45,7 @@
                                         </svg>
                                     </p>
                                     <ul class="dropdown-menu">
-                                        <li><a style="cursor: pointer" class="dropdown-item" @click="updateStatus(item.id)">Done</a></li>
+                                        <li><a style="cursor: pointer" class="dropdown-item" @click="updateStatus(item.id)">Xác nhận đã tư vấn</a></li>
 <!--                                        <li><a style="cursor: pointer" class="dropdown-item" >Action two</a></li>-->
                                     </ul>
                                 </div>
@@ -93,8 +93,25 @@ export default {
         initDataTable() {
             this.$nextTick(() => {
                 this.dataTable = $(this.$refs.dataTableContainer).find('table').DataTable({
-                    "order": [[ 4, "desc" ]],
+                    "order": [[1, "desc"]],
                     scrollX: true,
+                    language: {
+                        "sProcessing": "Đang xử lý...",
+                        "sLengthMenu": "Xem _MENU_ mục",
+                        "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
+                        "sInfo": "Đang xem _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                        "sInfoEmpty": "Đang xem 0 đến 0 trong tổng số 0 mục",
+                        "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+                        "sInfoPostFix": "",
+                        "sSearch": "Tìm:",
+                        "sUrl": "",
+                        "oPaginate": {
+                            "sFirst": "Đầu",
+                            "sPrevious": "Trước",
+                            "sNext": "Tiếp",
+                            "sLast": "Cuối"
+                        }
+                    }
                 });
             });
         },
@@ -116,7 +133,7 @@ export default {
 
 <style scoped>
 .status-0, .status-1{
-    background: #17a2b8;
+    background: #be1510 !important;
     color: white;
     padding: 5px;
     font-size: 10px;
@@ -126,5 +143,9 @@ export default {
 }
 .status-1{
     background: #28a745 !important;
+}
+.btn-outline-primary{
+    color: #be1510 !important;
+    background: #be1510 !important;
 }
 </style>

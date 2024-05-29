@@ -42,10 +42,10 @@
                 <h4 class="mb-10">Bài viết mới nhất</h4>
                 <ul class="nav mb-5">
                     <li><a data-toggle="tab" href="#home" @click="getData()">
-                        <button type="button" class="btn btn-outline-success mr-2 mb-2">Tất cả bài viết</button>
+                        <button type="button" class="btn-custom mr-2 mb-2">Tất cả bài viết</button>
                     </a></li>
                     <li v-for="(item,index) in category" :key="item"><a data-toggle="tab" :href="'#menu'+(index+1)">
-                        <button type="button" @click="getData(item.id)" class="btn btn-outline-success mr-2 mb-2">{{ item?.type_name }}</button>
+                        <button type="button" @click="getData(item.id)" class="btn-custom mr-2 mb-2">{{ item?.type_name }}</button>
                     </a></li>
                 </ul>
 
@@ -205,8 +205,16 @@ p, span {
 
 .active button {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745;
+    background-color: #be1510;
+    border-color: #be1510;
+}
+.btn-custom{
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+    background: white;
+    border: 1px solid #be1510;
+    color: #be1510;
 }
 
 .card-img-top {

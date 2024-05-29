@@ -97,7 +97,7 @@
             <router-link :to="{name:'Posts'}">
                 <span class="nav-link">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Posts</span></span>
+                    <span>Bài viết</span></span>
             </router-link>
 
         </li>
@@ -109,7 +109,7 @@
             <router-link :to="{name:'Request'}">
                 <span class="nav-link">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Request</span></span>
+                    <span>Yêu cầu tư vấn</span></span>
             </router-link>
         </li>
 
@@ -118,7 +118,7 @@
             <router-link :to="{name:'Category'}">
                 <span class="nav-link">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Category</span></span>
+                    <span>Danh mục</span></span>
             </router-link>
 
         </li>
@@ -181,6 +181,9 @@ export default {
 .normal-logo{
     width: 30px;
     height: 30px;
+}
+.bg-gradient-primary{
+    background: #be1510 !important;
 }
 
 </style>
