@@ -11,6 +11,7 @@ import PostsAdd from "@/views/admin/PostsAdd.vue";
 import PostsList from "@/views/PostsList.vue";
 import Layout from "@/views/admin/Layout.vue";
 import PostsDetail from "@/views/PostsDetail.vue";
+import TopBanner from "@/views/admin/Banner.vue";
 
 const routes = [
 
@@ -86,7 +87,7 @@ const routes = [
             {
                 path: 'top-banner',
                 name: 'TopBanner',
-                component: Category
+                component: TopBanner
             },
         ]
     },
