@@ -25,10 +25,10 @@
                         </router-link>
                     </a>
                     <div>
-
-<!--                        <span v-for="item in JSON.parse(postsDetail?.post_type_id)" :key="item" class="badge bg-white mb-4 me-3 text-dark-light fw-medium border border-light rounded-1">{{item.name}}</span>-->
+                        <span v-if="postsDetail" v-for="item in JSON.parse(postsDetail?.post_type_id)" :key="item"
+                              class="badge bg-white mb-4 me-3 text-dark-light fw-medium border border-light rounded-1">{{ item.name }}</span>
                     </div>
-                    <h3 class="font-heading">{{postsDetail?.title}}</h3>
+                    <h3 class="font-heading">{{ postsDetail?.title }}</h3>
                 </div>
                 <img class="img-fluid d-block mb-12 w-100 rounded" :src="postsDetail?.thumbnail" alt="">
                 <div class="d-flex mb-n6 flex-wrap align-items-center justify-content-between py-md-3">
@@ -47,11 +47,10 @@
                     </div>
                     <div class="mb-6">
                         <div class="d-flex align-items-center flex-wrap mb-n4">
-                            <a class="btn btn-sm mb-4 p-1 mr-2 me-4 btn-outline-light text-dark shadow" href="#">Share
-                                this post</a>
-                            <div class="mb-4 me-4">
-                                <a class="btn d-inline-flex p-1 mr-2 align-items-center btn-sm btn-outline-light text-dark shadow"
-                                   href="#">
+<!--                            <a class="btn btn-sm mb-4 p-1 mr-2 me-4 btn-outline-light text-dark shadow" href="#">Share-->
+<!--                                this post</a>-->
+                            <div class="mb-4 me-4" @click="copyUrl">
+                                <div class="btn d-inline-flex p-1 mr-2 align-items-center btn-sm btn-outline-light text-dark shadow">
                                     <svg width="20" height="20" viewbox="0 0 20 20" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -62,18 +61,18 @@
                                             fill="#D1D1D1"></path>
                                     </svg>
                                     <span class="ms-2">Copy link</span>
-                                </a>
+                                </div>
                             </div>
                             <div class="mb-4">
-                                <a class="btn me-3 p-1 mr-2 btn-outline-light shadow" href="#">
+                                <div class="btn me-3 p-1 mr-2 btn-outline-light shadow" @click="shareOnTwitter">
                                     <svg width="20" height="20" viewbox="0 0 20 20" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M6.2918 18.1251C13.8371 18.1251 17.9652 11.8724 17.9652 6.45167C17.9652 6.27589 17.9613 6.0962 17.9535 5.92042C18.7566 5.33967 19.4496 4.62033 20 3.7962C19.2521 4.12896 18.458 4.34627 17.6449 4.44074C18.5011 3.92755 19.1421 3.12135 19.4492 2.17159C18.6438 2.64892 17.763 2.98563 16.8445 3.1673C16.2257 2.50976 15.4075 2.07439 14.5164 1.9285C13.6253 1.78261 12.711 1.93433 11.9148 2.3602C11.1186 2.78607 10.4848 3.46238 10.1115 4.28455C9.73825 5.10672 9.64619 6.02897 9.84961 6.9087C8.21874 6.82686 6.62328 6.40321 5.16665 5.6652C3.71002 4.9272 2.42474 3.89132 1.39414 2.62472C0.870333 3.52782 0.710047 4.59649 0.945859 5.61353C1.18167 6.63057 1.79589 7.51966 2.66367 8.10011C2.01219 8.07943 1.37498 7.90402 0.804688 7.58839V7.63917C0.804104 8.58691 1.13175 9.50561 1.73192 10.2391C2.3321 10.9726 3.16777 11.4756 4.09687 11.6626C3.49338 11.8277 2.85999 11.8518 2.2457 11.7329C2.50788 12.548 3.01798 13.2609 3.70481 13.7721C4.39164 14.2833 5.22093 14.5673 6.07695 14.5845C4.62369 15.726 2.82848 16.3452 0.980469 16.3423C0.652739 16.3418 0.325333 16.3217 0 16.2821C1.87738 17.4866 4.06128 18.1263 6.2918 18.1251Z"
                                             fill="#D1D1D1"></path>
                                     </svg>
-                                </a>
-                                <a class="btn me-3 p-1 mr-2 btn-outline-light shadow" href="#">
+                                </div>
+                                <div class="btn me-3 p-1 mr-2 btn-outline-light shadow" @click="shareOnFacebook">
                                     <svg width="20" height="20" viewbox="0 0 20 20" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_915_35510)">
@@ -82,7 +81,7 @@
                                                 fill="#D1D1D1"></path>
                                         </g>
                                     </svg>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,12 +97,20 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+
 export default {
     name: "PostsDetail",
     data() {
         return {
-            postsDetail: [],
-            slug:null,
+            postsDetail: {
+                slug: "posts",
+                thumbnail: 'hello',
+                title: 'hello',
+                content: 'hello',
+                created_at: null,
+                post_type_id: '[{"id": 1, "name": "2"}]',
+            },
+            slug: null,
         }
     },
     methods: {
@@ -128,6 +135,19 @@ export default {
             const url = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href);
             window.open(url, '_blank');
         },
+        async copyUrl() {
+            try {
+                const url = window.location.href;
+                await navigator.clipboard.writeText(url);
+                this.$toast.open({
+                    message: 'Copy thành công',
+                    type: 'success',
+                    position: 'top',
+                });
+            } catch (error) {
+                console.error("Failed to copy URL:", error);
+            }
+        }
     },
     computed: {
         ...mapGetters('posts', ['posts']),

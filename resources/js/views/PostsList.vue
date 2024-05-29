@@ -41,11 +41,11 @@
                 </a>
                 <h4 class="mb-10">Bài viết mới nhất</h4>
                 <ul class="nav mb-5">
-                    <li><a data-toggle="tab" href="#home">
+                    <li><a data-toggle="tab" href="#home" @click="getData()">
                         <button type="button" class="btn btn-outline-success mr-2 mb-2">Tất cả bài viết</button>
                     </a></li>
                     <li v-for="(item,index) in category" :key="item"><a data-toggle="tab" :href="'#menu'+(index+1)">
-                        <button type="button" class="btn btn-outline-success mr-2 mb-2">{{ item?.type_name }}</button>
+                        <button type="button" @click="getData(item.id)" class="btn btn-outline-success mr-2 mb-2">{{ item?.type_name }}</button>
                     </a></li>
                 </ul>
 
@@ -83,423 +83,41 @@
                             </div>
                         </div>
                     </div>
-                    <div id="menu1" class="tab-pane fade">
-                        <div class="row mb-n8">
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Make Your Phone Your Best Study Tool</h6>
-                                        <p class="card-text small text-light-dark mb-6">How do we make our phone best
-                                            study
-                                            tool? Read on to find out more.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Tips</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">How to Maintain Good Wellbeing While Studying</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Wellbeing</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Atomic Habits: Tiny Changes, Remarkable Results</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span
-                                                class="badge ms-3 text-light-dark fw-medium border">Productivity</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
 
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Make Your Phone Your Best Study Tool</h6>
-                                        <p class="card-text small text-light-dark mb-6">How do we make our phone best
-                                            study
-                                            tool? Read on to find out more.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Tips</span>
+                    <div v-for="(item,index) in category" :key="item" :id="'menu'+(index+1)" class="tab-pane fade">
+                        <div class="row mb-n8">
+                            <div class="col-12 col-sm-6 col-lg-4 mb-8" v-for="item in postsList" :key="item">
+                                <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">
+                                    <div class="card p-3 h-100 overflow-hidden">
+                                        <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
+                                            <img class="card-img-top rounded-0" :src="item?.thumbnail"
+                                                 alt="...">
+                                        </div>
+                                        <div class="card-body d-flex flex-column align-items-start mw-xs">
+                                            <h6 class="card-title mb-3">{{ item?.title }}</h6>
+                                            <p class="card-text small text-light-dark mb-6 description">
+                                                {{ item?.description }}</p>
+                                            <div class="mt-auto">
+                                                <span
+                                                    class="me-3 small text-light-dark">{{
+                                                        formatDateTime(item?.created_at)
+                                                    }}</span>
+                                                <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
+                                                </svg>
+                                                <span v-for="category in JSON.parse(item?.post_type_id)" :key="category"
+                                                      class="badge ms-3 small fw-medium text-light-dark border mr-2">{{
+                                                        category.name
+                                                    }}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">How to Maintain Good Wellbeing While Studying</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Wellbeing</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Atomic Habits: Tiny Changes, Remarkable Results</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span
-                                                class="badge ms-3 text-light-dark fw-medium border">Productivity</span>
-                                        </div>
-                                    </div>
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>
-                    <div id="menu2" class="tab-pane fade">
-                        <div class="row mb-n8">
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Make Your Phone Your Best Study Tool</h6>
-                                        <p class="card-text small text-light-dark mb-6">How do we make our phone best
-                                            study
-                                            tool? Read on to find out more.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Tips</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">How to Maintain Good Wellbeing While Studying</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Wellbeing</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Atomic Habits: Tiny Changes, Remarkable Results</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span
-                                                class="badge ms-3 text-light-dark fw-medium border">Productivity</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
 
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Make Your Phone Your Best Study Tool</h6>
-                                        <p class="card-text small text-light-dark mb-6">How do we make our phone best
-                                            study
-                                            tool? Read on to find out more.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Tips</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">How to Maintain Good Wellbeing While Studying</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Wellbeing</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Atomic Habits: Tiny Changes, Remarkable Results</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span
-                                                class="badge ms-3 text-light-dark fw-medium border">Productivity</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="menu3" class="tab-pane fade">
-                        <div class="row mb-n8">
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Make Your Phone Your Best Study Tool</h6>
-                                        <p class="card-text small text-light-dark mb-6">How do we make our phone best
-                                            study
-                                            tool? Read on to find out more.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Tips</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">How to Maintain Good Wellbeing While Studying</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Wellbeing</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Atomic Habits: Tiny Changes, Remarkable Results</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span
-                                                class="badge ms-3 text-light-dark fw-medium border">Productivity</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Make Your Phone Your Best Study Tool</h6>
-                                        <p class="card-text small text-light-dark mb-6">How do we make our phone best
-                                            study
-                                            tool? Read on to find out more.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Tips</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">How to Maintain Good Wellbeing While Studying</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span class="badge ms-3 text-light-dark fw-medium border">Wellbeing</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8">
-                                <a class="card p-3 h-100 overflow-hidden" href="#">
-                                    <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
-                                        <img class="card-img-top rounded-0" src="@/assets/images/common/banner-3.jpg"
-                                             alt="...">
-                                    </div>
-                                    <div class="card-body d-flex flex-column align-items-start mw-xs">
-                                        <h6 class="card-title mb-3">Atomic Habits: Tiny Changes, Remarkable Results</h6>
-                                        <p class="card-text small text-light-dark mb-6">Here are some tips on how to
-                                            maintain
-                                            good wellbeing while studying.</p>
-                                        <div class="mt-auto">
-                                            <span class="me-3 small text-light-dark">17 Jul 2023</span>
-                                            <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
-                                            </svg>
-                                            <span
-                                                class="badge ms-3 text-light-dark fw-medium border">Productivity</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -519,7 +137,7 @@ export default {
                     thumbnail: null,
                     title: null,
                     created_at: null,
-                    post_type_id: '[{"id": null, "name": null}]',
+                    post_type_id: '[{"id": 1, "name": "posts"}]',
                 }
             ],
             category: [],
@@ -535,8 +153,10 @@ export default {
     methods: {
         ...mapActions('posts', ['fetchPost']),
         ...mapActions('category', ['fetchCategory']),
-        async getData() {
-            await this.fetchPost();
+        async getData(sort = null) {
+            await this.fetchPost(sort);
+        },
+        async getDataCategory() {
             await this.fetchCategory();
         },
         formatDateTime(dateTimeStr) {
@@ -573,6 +193,7 @@ export default {
     },
     created() {
         this.getData();
+        this.getDataCategory();
     },
 }
 </script>

@@ -18,7 +18,9 @@ class PostsController extends Controller
     public function index(Request $request)
     {
         $data = Posts::query()->orderBy('id', 'desc')->get();
-//        $data = Posts::whereJsonContains('post_type_id', [['id' => 1]])->get();
+        if ($request->sort) {
+            $data = Posts::whereJsonContains('post_type_id', [['id' => intval($request->sort)]])->get();
+        }
         return response()->json($data);
     }
 
@@ -107,7 +109,7 @@ class PostsController extends Controller
                 'author_id' => Auth::user()->id,
                 'post_type_id' => json_encode($request->input('category')),
             ];
-            if($request->input('thumbnail')){
+            if ($request->input('thumbnail')) {
                 $dataNew['thumbnail'] = $request->input('thumbnail');
             };
             $data->update($dataNew);

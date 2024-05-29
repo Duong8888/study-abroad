@@ -16,9 +16,13 @@ const mutations = {
 };
 
 const actions = {
-    async fetchPost({ commit }) {
+    async fetchPost({ commit }, sort = null) {
         try {
-            const response = await api.get(API_ENDPOINT.API_ADMIN.POSTS);
+            const params = {};
+            if (sort !== null) {
+                params.sort = sort;
+            }
+            const response = await api.get(API_ENDPOINT.API_ADMIN.POSTS,{ params });
             const posts = response.data;
             commit('SET_POSTS_LIST', posts);
         } catch (error) {

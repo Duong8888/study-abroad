@@ -88,7 +88,7 @@ body {
     text-align: center;
 }
 .banner-img{
-    object-fit: contain;
+    object-fit: cover;
 }
 
 @media screen and (min-width: 992px) {
