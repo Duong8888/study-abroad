@@ -1,5 +1,5 @@
 <template>
-    <div style="height: 100vh" class="container rounded">
+    <div class="container rounded">
         <div v-if="!formShow" class="sec-title text-center mb-60 md-mb-40">
             <h2 class="title title2 pb-13">
                 Một số hình ảnh của <span style="color: #ed1e24">SMARTEDU</span>

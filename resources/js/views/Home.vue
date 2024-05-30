@@ -30,15 +30,15 @@ export default {
         }
     },
     watch:{
-        bannerAll: function (newTitle) {
+        topBanner: function (newTitle) {
             this.images = newTitle;
         },
     },
     computed: {
-        ...mapGetters('banner', ['bannerAll']),
+        ...mapGetters('banner', ['topBanner']),
     },
     created() {
-        this.getBanner();
+        this.fetchBanner(0);
     },
     methods: {...mapActions('banner', ['fetchBanner',]),
         getBanner(){

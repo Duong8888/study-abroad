@@ -3,11 +3,16 @@ import api from '../../utils/axios.js';
 import router from '../../router';
 const state = {
     banner:[],
+    topBanner:[],
+    adsBanner:[],
 };
 
 const mutations = {
     SET_BANNER(state, request) {
-        state.banner = request;
+        state.banner = request.banner;
+        if(request.option.type == 0){
+            state.topBanner = request.banner;
+        }
     },
 };
 
@@ -20,7 +25,12 @@ const actions = {
             }
             const response = await api.get(API_ENDPOINT.API_ADMIN.BANNER,{ params });
             const banner = response.data;
-            commit('SET_BANNER', banner);
+            let option = {};
+            if(type !== null){
+                option.type = type;
+            }
+            console.log({banner , option});
+            commit('SET_BANNER', {banner , option});
         } catch (error) {
             console.error('Error fetching banner:', error);
         }
@@ -84,6 +94,7 @@ const actions = {
 
 const getters = {
     bannerAll: (state) => state.banner,
+    topBanner: (state) => state.topBanner,
 };
 
 export default {
