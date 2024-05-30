@@ -34,6 +34,7 @@ const actions = {
                     type: 'success',
                     position: 'top'
                 });
+                await router.push({name: 'TopBanner'})
             }
         } catch (error) {
             console.error('Error add banner:', error);
@@ -65,9 +66,9 @@ const actions = {
         }
     },
 
-    async deleteBanner({commit}, { id, toast }) {
+    async deleteBanner({commit}, { ids, toast }) {
         try {
-            const response = await api.delete(`${API_ENDPOINT.API_ADMIN.BANNER}/${id}`);
+            const response = await api.post(`${API_ENDPOINT.API_ADMIN.BANNER}/delete`,{ids:ids});
             if(response.data.success){
                 toast.open({
                     message: response.data.message,

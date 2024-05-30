@@ -4,12 +4,13 @@
             <router-link :to="{name:'TopBanner'}">
                 <button class="btn btn-outline-secondary mr-2">Quay lại</button>
             </router-link>
-            <button class="btn btn-outline-primary" @click="saveImages">Lưu banner</button>
+            <button class="btn btn-outline-primary" @click="saveImages">Lưu chỉnh sửa</button>
         </div>
+
         <hr>
         <div class="row">
             <div class="col-sm-2 imgUp" v-for="(image, index) in images" :key="index">
-                <div class="imagePreview" :style="{ backgroundImage: 'url(' + image.url + ')' }"></div>
+                <div class="imagePreview" :style="{ backgroundImage: 'url(' + image.image_path + ')' }"></div>
                 <button type="button" class="btn btn-primary btn-ct w-100" @click="openModal(index)">
                     Tải ảnh lên
                 </button>
@@ -49,18 +50,21 @@
     </div>
 </template>
 
+
+
 <script>
-import {mapGetters, mapActions} from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
     data() {
         return {
-            images: [{url: '', file: null, link: ''}],
-            formData: new FormData(),
+            images: [{ id: null, image_path: '', file: null, link: '' }],
+            deletedImages: [],
             modalData: {
                 index: null,
+                id: null,
                 file: null,
-                url: '',
+                image_path: '',
                 link: ''
             }
         };
@@ -68,17 +72,32 @@ export default {
     computed: {
         ...mapGetters('banner', ['bannerAll']),
     },
+    watch: {
+        bannerAll(newBanner) {
+            this.images = newBanner;
+        },
+    },
+    created() {
+        this.getBanner();
+    },
     methods: {
-        ...mapActions('banner', ['addBanner', 'updateBanner', 'deleteBanner']),
+        ...mapActions('banner', ['addBanner', 'updateBanner', 'deleteBanner', 'fetchBanner']),
+        getBanner() {
+            this.fetchBanner();
+        },
         addImage() {
-            this.images.push({url: '', file: null, link: ''});
+            this.images.push({ id: null, image_path: '', file: null, link: '' });
         },
         removeImage(index) {
+            if (this.images[index].id !== null) {
+                this.deletedImages.push(this.images[index].id);
+            }
             this.images.splice(index, 1);
         },
         openModal(index) {
             this.modalData.index = index;
-            this.modalData.url = this.images[index].url;
+            this.modalData.id = this.images[index].id;
+            this.modalData.image_path = this.images[index].image_path;
             this.modalData.link = this.images[index].link;
             this.modalData.file = this.images[index].file;
             $('#exampleModalCenter').modal('show');
@@ -88,7 +107,7 @@ export default {
             if (file && file.type.startsWith('image/')) {
                 const reader = new FileReader();
                 reader.onloadend = () => {
-                    this.modalData.url = reader.result;
+                    this.modalData.image_path = reader.result;
                     this.modalData.file = file;
                 };
                 reader.readAsDataURL(file);
@@ -98,7 +117,8 @@ export default {
             const index = this.modalData.index;
             if (index !== null) {
                 this.images.splice(index, 1, {
-                    url: this.modalData.url,
+                    id: this.modalData.id,
+                    image_path: this.modalData.image_path,
                     file: this.modalData.file,
                     link: this.modalData.link
                 });
@@ -108,21 +128,30 @@ export default {
         async saveImages() {
             const formData = new FormData();
             this.images.forEach((image, index) => {
+                if (image.id) {
+                    formData.append(`data[${index}][id]`, image.id);
+                }
                 formData.append(`data[${index}][link]`, image.link || '');
                 formData.append(`data[${index}][type]`, 0);
                 if (image.file) {
                     formData.append(`data[${index}][image]`, image.file);
                 }
             });
-            await this.addBanner({data: formData, toast: this.$toast});
+
+            if (this.deletedImages.length > 0) {
+                await this.deleteBanner({ ids: JSON.stringify(this.deletedImages), toast: this.$toast });
+            }
+            await this.addBanner({ data: formData, toast: this.$toast });
+            this.deletedImages = [];
         },
+
         closeModal() {
             $('#exampleModalCenter').modal('hide');
         }
     }
-
 };
 </script>
+
 
 
 <style scoped>
@@ -179,3 +208,4 @@ body {
     font-size: 15px;
 }
 </style>
+

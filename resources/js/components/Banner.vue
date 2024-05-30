@@ -13,13 +13,14 @@
                 :modules="modules"
                 class="mySwiper"
             >
-                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner.jpg" alt="logo">
+                <swiper-slide v-if="!defaultImg" v-for="(image,index) in images" :key="image">
+                    <a :href="image.link" target="_blank">
+                        <img class="w-100 h-100 banner-img" :src="image.image_path" :alt="image.title">
+                    </a>
                 </swiper-slide>
-                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo">
+                <swiper-slide v-if="defaultImg"><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-2.jpg" alt="logo">
                 </swiper-slide>
-                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-2.jpg" alt="logo">
-                </swiper-slide>
-                <swiper-slide><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo">
+                <swiper-slide v-if="defaultImg"><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo">
                 </swiper-slide>
             </swiper>
             <FormRequest v-if="form" style="z-index: 10;" @send-request="senData" :statusBtn="statusBtn"></FormRequest>
@@ -52,6 +53,21 @@ export default {
     props: {
         statusBtn: Boolean,
         form: {
+            type: Boolean,
+            default: true,
+        },
+        images: {
+            type: Array,
+            default: [
+                {
+                    id: 1,
+                    title: "Banner 1",
+                    image_path: "#",
+                    link: "#",
+                },
+            ],
+        },
+        defaultImg:{
             type: Boolean,
             default: true,
         }

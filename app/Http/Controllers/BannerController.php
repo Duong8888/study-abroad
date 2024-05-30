@@ -6,6 +6,8 @@ use App\Models\Banner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 
 class BannerController extends Controller
 {
@@ -14,7 +16,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        $data = Banner::query()->orderBy('id','DESC')->get();
+        return response()->json($data);
     }
 
     /**
@@ -32,34 +35,45 @@ class BannerController extends Controller
     {
         try {
             $data = $request->data;
-            if (count($data) > 0) {
-                foreach ($data as $value) {
-                    if (isset($value['image'])) {
-                        $file = $value['image'];
-                        $path = $file->store('uploads/images', 'public');
-                        $url = Storage::url($path);
-                        Banner::create([
-                            'title' => 'SMARTEDU',
-                            'link' => $value['link'] ?? '',
-                            'image_path' => $url,
-                            'type' => $value['type'] ?? 0,
-                        ]);
-                    }else{
-                        break;
+            if(!empty($data)){
+                if (count($data) > 0) {
+                    foreach ($data as $value) {
+                        if (isset($value['id']) && $value['id']) {
+                            // Update existing banner
+                            $banner = Banner::find($value['id']);
+                            if ($banner) {
+                                if (isset($value['image'])) {
+                                    $file = $value['image'];
+                                    $path = $file->store('uploads/images', 'public');
+                                    $url = Storage::url($path);
+                                    $banner->image_path = $url;
+                                }
+                                $banner->link = $value['link'] ?? '';
+                                $banner->type = $value['type'] ?? 0;
+                                $banner->save();
+                            }
+                        } else {
+                            // Create new banner
+                            if (isset($value['image'])) {
+                                $file = $value['image'];
+                                $path = $file->store('uploads/images', 'public');
+                                $url = Storage::url($path);
+                                Banner::create([
+                                    'title' => 'SMARTEDU',
+                                    'link' => $value['link'] ?? '',
+                                    'image_path' => $url,
+                                    'type' => $value['type'] ?? 0,
+                                ]);
+                            }
+                        }
                     }
                 }
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Thêm mới thành công.',
-                ]);
             }
 
             return response()->json([
-                'success' => false,
-                'error' => [
-                    'message' => 'No file uploaded.'
-                ]
-            ], 400);
+                'success' => true,
+                'message' => 'Thêm mới/Cập nhật thành công.',
+            ]);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return response()->json([
@@ -69,9 +83,8 @@ class BannerController extends Controller
                 ]
             ], 400);
         }
-
-
     }
+
 
     /**
      * Display the specified resource.
@@ -100,8 +113,26 @@ class BannerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $ids = json_decode($request->ids);
+            if (count($ids) > 0) {
+//                $banners = Banner::find($ids);
+//                foreach ($banners as $banner) {
+//                    $imagePath = $banner->image_path;
+//                    if (File::exists(public_path($imagePath))) {
+//                        File::delete($imagePath);
+//                    }
+//                }
+                Banner::destroy($ids);
+                return response()->json(true);
+            }
+            return response()->json(false);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(false);
+        }
     }
+
 }

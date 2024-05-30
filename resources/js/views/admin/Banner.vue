@@ -1,9 +1,15 @@
 <template>
     <div class="container">
-        <router-link :to="{name:'AddBanner'}">
-            <button class="btn btn-outline-primary float-right mb-4">Thêm mới banner</button>
-        </router-link>
-        <BannerView :form="false"></BannerView>
+        <div class="d-flex justify-content-end">
+            <router-link :to="{name:'EditBanner'}">
+                <button class="btn btn-outline-secondary float-right mr-2">Chỉnh sửa banner banner</button>
+            </router-link>
+            <router-link :to="{name:'AddBanner'}">
+                <button class="btn btn-outline-primary float-right">Thêm mới banner</button>
+            </router-link>
+        </div>
+        <hr>
+        <BannerView :images="images" :defaultImg="(images.length > 0) ? false : true" :form="false"></BannerView>
     </div>
 </template>
 
@@ -14,17 +20,29 @@ import BannerView from '@/components/Banner.vue';
 export default {
     data() {
         return {
-            images: [{url: '', file: null, link: ''}],
+            images: [{image_path: '', link: ''}],
         };
     },
     components: {
         BannerView,
     },
+    watch:{
+        bannerAll: function (newTitle) {
+            this.images = newTitle;
+        },
+    },
     computed: {
         ...mapGetters('banner', ['bannerAll']),
     },
+
     methods: {
-        ...mapActions('banner', ['addBanner', 'updateBanner', 'deleteBanner']),
+        ...mapActions('banner', ['fetchBanner',]),
+        getBanner(){
+            this.fetchBanner();
+        }
+    },
+    created() {
+        this.getBanner();
     }
 
 };

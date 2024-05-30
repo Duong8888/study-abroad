@@ -58,7 +58,7 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::get('/banner/{banner}', [BannerController::class, 'show'])->name('banner.show');
     Route::get('/banner/{banner}/edit', [BannerController::class, 'edit'])->name('banner.edit');
     Route::put('/banner/{banner}', [BannerController::class, 'update'])->name('banner.update');
-    Route::delete('/banner/{banner}', [BannerController::class, 'destroy'])->name('banner.destroy');
+    Route::post('/banner/delete', [BannerController::class, 'destroy'])->name('banner.destroy');
 
 
 });

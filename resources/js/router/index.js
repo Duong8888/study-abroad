@@ -13,6 +13,7 @@ import Layout from "@/views/admin/Layout.vue";
 import PostsDetail from "@/views/PostsDetail.vue";
 import TopBanner from "@/views/admin/Banner.vue";
 import AddBanner from "@/views/admin/AddBanner.vue";
+import EditBanner from "@/views/admin/EditBanner.vue";
 
 const routes = [
 
@@ -94,6 +95,11 @@ const routes = [
                 path: 'add-banner',
                 name: 'AddBanner',
                 component: AddBanner
+            },
+            {
+                path: 'edit-banner',
+                name: 'EditBanner',
+                component: EditBanner
             },
         ]
     },

@@ -1,5 +1,5 @@
 <template>
-    <Banner @send-request="sendRequest" :statusBtn="statusBtn"></Banner>
+    <Banner @send-request="sendRequest" :statusBtn="statusBtn" :images="images" :defaultImg="(images.length > 0) ? false : true"></Banner>
     <Introduce></Introduce>
     <Team></Team>
     <Universities></Universities>
@@ -17,15 +17,31 @@ import Universities from '@/components/Universities.vue';
 import SubBanner from '@/components/SubBanner.vue';
 import Comments from '@/components/Comments.vue';
 import {API_ENDPOINT} from "../store/api-endpoint";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
     name: "Home",
     data() {
         return {
             statusBtn: false,
+            images: [{image_path: '', link: ''}],
         }
     },
-    methods: {
+    watch:{
+        bannerAll: function (newTitle) {
+            this.images = newTitle;
+        },
+    },
+    computed: {
+        ...mapGetters('banner', ['bannerAll']),
+    },
+    created() {
+        this.getBanner();
+    },
+    methods: {...mapActions('banner', ['fetchBanner',]),
+        getBanner(){
+            this.fetchBanner();
+        },
         async sendRequest(value) {
             this.statusBtn = true;
             try {
