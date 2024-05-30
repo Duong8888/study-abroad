@@ -103,7 +103,6 @@
         </li>
 
 
-
         <!-- Nav Item - Tables -->
         <li class="nav-item" :class="{ active: $route.name === 'Request' }">
             <router-link :to="{name:'Request'}">
@@ -140,49 +139,71 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" @click="status = !status" data-toggle="collapse" data-target="#collapsePages"
+            <a class="nav-link collapsed" href="#" @click="status = !status" data-toggle="collapse"
+               data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Banners</span>
             </a>
-            <div id="collapsePages" v-if="status" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapsePages" v-if="status" class="collapse" aria-labelledby="headingPages"
+                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <router-link :to="{name:'TopBanner'}">
-                        <a class="collapse-item" :class="{ active: $route.name === 'TopBanner' }" href="#">Top banner</a>
+                        <a class="collapse-item" :class="{ active: $route.name === 'TopBanner' }" href="#">Top
+                            banner</a>
                     </router-link>
                     <router-link :to="{name:'AdsBanner'}">
-                        <a class="collapse-item" :class="{ active: $route.name === 'AdsBanner' }" href="#">Ads banner</a>
+                        <a class="collapse-item" :class="{ active: $route.name === 'AdsBanner' }" href="#">Ads
+                            banner</a>
                     </router-link>
                 </div>
             </div>
         </li>
 
+        <li class="nav-item" @click="logoutBtn">
+            <router-link :to="{name:'Login'}">
+                <span class="nav-link">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+                    <span>Logout</span>
+                </span>
+            </router-link>
+        </li>
+
 
         <!-- Sidebar Toggler (Sidebar) -->
-<!--        <div class="text-center d-none d-md-inline">-->
-<!--            <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
-<!--        </div>-->
+        <!--        <div class="text-center d-none d-md-inline">-->
+        <!--            <button class="rounded-circle border-0" id="sidebarToggle"></button>-->
+        <!--        </div>-->
 
     </ul>
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
     name: "SideBar",
-    data(){
-        return{
-            status:true,
+    data() {
+        return {
+            status: true,
         }
-    }
+    },
+    methods: {
+        ...mapActions('auth', ['logout']),
+        logoutBtn() {
+            this.logout();
+        }
+    },
 }
 </script>
 
 <style scoped>
-.normal-logo{
+.normal-logo {
     width: 30px;
     height: 30px;
 }
-.bg-gradient-primary{
+
+.bg-gradient-primary {
     background: #be1510 !important;
 }
 

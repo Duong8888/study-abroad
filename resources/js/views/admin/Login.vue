@@ -3,10 +3,13 @@
         <div class="col-md-8 col-lg-6 col-xl-4">
             <div class="card">
                 <div class="card-body p-4">
-                    <div class="text-center mb-4">
-                        <img src="@/assets/images/common/logo.png" alt="" height="22" class="mx-auto logo-custom">
-                        <h4 class="text-uppercase mt-0">Sign In</h4>
-                    </div>
+                    <router-link :to="{name:'Home'}">
+                        <div class="text-center mb-4">
+                            <img src="@/assets/images/common/logo.png" alt="" height="22" class="mx-auto logo-custom">
+                            <h4 class="text-uppercase mt-0">Sign In</h4>
+                        </div>
+                    </router-link>
+
 
                     <form action="#">
                         <div class="mb-3">
@@ -29,7 +32,7 @@
                         </div>
 
                         <div class="mb-3 d-grid text-center">
-                            <button class="btn btn-primary w-100" @click="login" type="button"> Log In</button>
+                            <button class="btn btn-primary w-100" @click="login({data: {email, password},toast: this.$toast})" type="button"> Log In</button>
                         </div>
                     </form>
 <!--                    <div class="col-12 text-center">-->
@@ -51,6 +54,7 @@
 <script>
 import {API_ENDPOINT} from "../../store/api-endpoint.js";
 import api from '../../utils/axios.js';
+import {mapActions} from "vuex";
 
 export default {
     name: "Login",
@@ -58,35 +62,32 @@ export default {
         return {
             email: '',
             password: '',
-            statusBtn: false
         }
     },
     methods: {
-        async login() {
-            this.statusBtn = true;
-            try {
-                const response = await api.post(API_ENDPOINT.API_ADMIN.LOGIN, {
-                    email: this.email,
-                    password: this.password
-                })
-                const token = response.data.token;
-                localStorage.setItem('authToken', token);
-                this.$toast.open({
-                    message: 'SMARTEDU xin chào admin.',
-                    type: 'success',
-                    position: 'top'
-                });
-                await this.$router.push('/admin/request');
-                this.statusBtn = false;
-            } catch (e) {
-                this.$toast.open({
-                    message: 'Sai tên đăng nhập hoặc mật khẩu.',
-                    type: 'error',
-                    position: 'top'
-                });
-                this.statusBtn = false;
-            }
-        }
+        ...mapActions('auth',['login']),
+        // async login() {
+        //     try {
+        //         const response = await api.post(API_ENDPOINT.API_ADMIN.LOGIN, {
+        //             email: this.email,
+        //             password: this.password
+        //         })
+        //         const token = response.data.token;
+        //         localStorage.setItem('authToken', token);
+        //         this.$toast.open({
+        //             message: 'SMARTEDU xin chào admin.',
+        //             type: 'success',
+        //             position: 'top'
+        //         });
+        //         await this.$router.push('/admin/request');
+        //     } catch (e) {
+        //         this.$toast.open({
+        //             message: 'Sai tên đăng nhập hoặc mật khẩu.',
+        //             type: 'error',
+        //             position: 'top'
+        //         });
+        //     }
+        // }
     },
 }
 </script>

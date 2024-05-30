@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {API_ENDPOINT} from "../store/api-endpoint.js";
 import router from "@/router/index.js";
+import store from "@/store/index.js";
 const api = axios.create({
     baseURL: API_ENDPOINT.BASE_URL,
     timeout: 5000
@@ -8,7 +9,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
     config => {
-        const token = localStorage.getItem('authToken');
+        const token = store.getters['auth/authToken'];
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
