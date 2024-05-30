@@ -49,7 +49,7 @@ const actions = {
         } catch (error) {
             console.error('Error add banner:', error);
             toast.open({
-                message: 'Thêm mới thất bại vui lòng nhập dủ dữ liệu.',
+                message: 'Thêm mới thất bại vui lòng thử lại.',
                 type: 'error',
                 position: 'top'
             });
