@@ -62,8 +62,15 @@ export default {
                 file: null,
                 url: '',
                 link: ''
-            }
+            },
+            type: 0,
         };
+    },
+    created() {
+        const query = this.$route.query;
+        if (query.type === 'ads') {
+            this.type = 1;
+        }
     },
     computed: {
         ...mapGetters('banner', ['bannerAll']),
@@ -109,7 +116,7 @@ export default {
             const formData = new FormData();
             this.images.forEach((image, index) => {
                 formData.append(`data[${index}][link]`, image.link || '');
-                formData.append(`data[${index}][type]`, 0);
+                formData.append(`data[${index}][type]`, this.type);
                 if (image.file) {
                     formData.append(`data[${index}][image]`, image.file);
                 }

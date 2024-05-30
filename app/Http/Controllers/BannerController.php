@@ -14,9 +14,12 @@ class BannerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $data = Banner::query()->orderBy('id','DESC')->get();
+        if (isset($request->type)) {
+            $data = Banner::query()->where('type',intval($request->type))->get();
+        }
         return response()->json($data);
     }
 

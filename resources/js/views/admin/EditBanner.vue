@@ -51,14 +51,13 @@
 </template>
 
 
-
 <script>
-import { mapGetters, mapActions } from "vuex";
+import {mapGetters, mapActions} from "vuex";
 
 export default {
     data() {
         return {
-            images: [{ id: null, image_path: '', file: null, link: '' }],
+            images: [{id: null, image_path: '', file: null, link: ''}],
             deletedImages: [],
             modalData: {
                 index: null,
@@ -66,7 +65,8 @@ export default {
                 file: null,
                 image_path: '',
                 link: ''
-            }
+            },
+            type: 0,
         };
     },
     computed: {
@@ -78,15 +78,16 @@ export default {
         },
     },
     created() {
-        this.getBanner();
+        const query = this.$route.query;
+        if (query.type == 'ads') {
+            this.type = 1;
+        }
+        this.fetchBanner(this.type);
     },
     methods: {
         ...mapActions('banner', ['addBanner', 'updateBanner', 'deleteBanner', 'fetchBanner']),
-        getBanner() {
-            this.fetchBanner();
-        },
         addImage() {
-            this.images.push({ id: null, image_path: '', file: null, link: '' });
+            this.images.push({id: null, image_path: '', file: null, link: ''});
         },
         removeImage(index) {
             if (this.images[index].id !== null) {
@@ -132,16 +133,16 @@ export default {
                     formData.append(`data[${index}][id]`, image.id);
                 }
                 formData.append(`data[${index}][link]`, image.link || '');
-                formData.append(`data[${index}][type]`, 0);
+                formData.append(`data[${index}][type]`, this.type);
                 if (image.file) {
                     formData.append(`data[${index}][image]`, image.file);
                 }
             });
 
             if (this.deletedImages.length > 0) {
-                await this.deleteBanner({ ids: JSON.stringify(this.deletedImages), toast: this.$toast });
+                await this.deleteBanner({ids: JSON.stringify(this.deletedImages), toast: this.$toast});
             }
-            await this.addBanner({ data: formData, toast: this.$toast });
+            await this.addBanner({data: formData, toast: this.$toast});
             this.deletedImages = [];
         },
 
@@ -151,7 +152,6 @@ export default {
     }
 };
 </script>
-
 
 
 <style scoped>

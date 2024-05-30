@@ -4,7 +4,8 @@
     <Team></Team>
     <Universities></Universities>
     <Posts></Posts>
-    <SubBanner></SubBanner>
+<!--    <SubBanner></SubBanner>-->
+    <AdsBanner :formShow="false"></AdsBanner>
     <Comments></Comments>
 </template>
 
@@ -18,6 +19,7 @@ import SubBanner from '@/components/SubBanner.vue';
 import Comments from '@/components/Comments.vue';
 import {API_ENDPOINT} from "../store/api-endpoint";
 import {mapActions, mapGetters} from "vuex";
+import AdsBanner from "@/views/admin/AdsBanner.vue";
 
 export default {
     name: "Home",
@@ -82,7 +84,8 @@ export default {
         Team,
         Introduce,
         SubBanner,
-        Comments
+        Comments,
+        AdsBanner
     },
 }
 </script>

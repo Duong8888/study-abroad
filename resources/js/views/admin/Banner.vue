@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <div class="d-flex justify-content-end">
-            <router-link :to="{name:'EditBanner'}">
+            <router-link :to="{name:'EditBanner',query: { type: 'top' }}">
                 <button class="btn btn-outline-secondary float-right mr-2">Chỉnh sửa banner banner</button>
             </router-link>
-            <router-link :to="{name:'AddBanner'}">
+            <router-link :to="{name:'AddBanner',query: { type: 'top' }}">
                 <button class="btn btn-outline-primary float-right">Thêm mới banner</button>
             </router-link>
         </div>
@@ -37,13 +37,10 @@ export default {
 
     methods: {
         ...mapActions('banner', ['fetchBanner',]),
-        getBanner(){
-            this.fetchBanner();
-        }
     },
     created() {
-        this.getBanner();
-    }
+        this.fetchBanner(0);
+    },
 
 };
 </script>
