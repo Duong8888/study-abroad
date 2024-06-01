@@ -122,6 +122,22 @@
 
         </li>
 
+        <li class="nav-item" :class="{ active: $route.name === 'University' }">
+            <router-link :to="{name:'University'}">
+                <span class="nav-link">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Các trường liên kết</span></span>
+            </router-link>
+        </li>
+
+        <li class="nav-item" :class="{ active: $route.name === 'Team' }">
+            <router-link :to="{name:'Team'}">
+                <span class="nav-link">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Đội ngũ</span></span>
+            </router-link>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 

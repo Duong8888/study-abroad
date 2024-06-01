@@ -66,7 +66,7 @@
         </div>
 
         <div class="mt-4">
-            <h3>Cấu trúc Menu</h3>
+            <h6>Cấu trúc Menu</h6>
             <ul class="list-group">
                 <li v-for="item in menuItems.filter(item => item.parent_id === null)" :key="item.id"
                     class="list-group-item">

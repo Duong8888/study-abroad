@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PostType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PostsTypeController extends Controller
 {
@@ -29,31 +30,42 @@ class PostsTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $request->validate([
+                'type_name' => 'required|string|max:255',
+            ]);
+            PostType::create($request->all());
+            return response()->json(['success' => true, 'message' => 'Thêm mới thành công.']);
+        }catch (\Exception $e) {
+            Log::error('post_type: '. $e->getMessage());
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(PostType $postType)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return response()->json($postType);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id): \Illuminate\Http\JsonResponse
     {
-        //
+        try {
+            $request->validate([
+                'type_name' => 'sometimes|required|string|max:255',
+            ]);
+            $postType = PostType::findOrFail($id);
+            $postType->update($request->all());
+            return response()->json(['success' => true, 'message' => 'Cập nhật thành công.']);
+        }catch (\Exception $e) {
+            Log::error('post_type: '. $e->getMessage());
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     /**
@@ -61,6 +73,13 @@ class PostsTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $postType = PostType::findOrFail($id);
+            $postType->delete();
+            return response()->json(['success' => true, 'message' => 'Xóa thành công.']);
+        } catch (\Exception $e) {
+            Log::error('post_type: '. $e->getMessage());
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 }

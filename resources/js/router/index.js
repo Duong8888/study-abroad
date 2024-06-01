@@ -16,6 +16,7 @@ import AddBanner from "@/views/admin/AddBanner.vue";
 import EditBanner from "@/views/admin/EditBanner.vue";
 import AdsBanner from "@/views/admin/AdsBanner.vue";
 import MenuManagement from "@/views/admin/MenuManagement.vue";
+import PostType from "@/views/admin/PostType.vue";
 
 const routes = [
 
@@ -76,12 +77,7 @@ const routes = [
             {
                 path: 'category',
                 name: 'Category',
-                component: Category
-            },
-            {
-                path: 'email',
-                name: 'Email',
-                component: Category
+                component: PostType
             },
             {
                 path: 'ads-banner',
@@ -107,6 +103,16 @@ const routes = [
                 path: 'menu',
                 name: 'Menu',
                 component: MenuManagement
+            },
+            {
+                path: 'university',
+                name: 'University',
+                component: Category
+            },
+            {
+                path: 'team',
+                name: 'Team',
+                component: Category
             },
         ]
     },
