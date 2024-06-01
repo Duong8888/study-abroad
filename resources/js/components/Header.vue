@@ -30,62 +30,17 @@
                                     </div>
                                     <nav class="rs-menu hidden-md">
                                         <ul class="nav-menu">
-                                            <li class="menu-item-has-children">
-                                                <a href="index.html">Giới Thiệu</a>
+                                            <li v-for="menu in menuItems.filter(item => item.parent_id === null)" :key="menu">
+                                                <a :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">
+                                                    {{menu.title}}
+                                                    <svg v-if="getChildItems(menu.id).length > 0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z"></path></svg>
+                                                </a>
                                                 <ul class="sub-menu">
-                                                    <li class="menu-item-has-children current-menu-item">
-                                                        <a href="#">Multipages</a>
-                                                        <ul class="sub-menu">
-                                                            <li><a href="index.html">Home One</a></li>
-                                                            <li><a href="index2.html">Home Two</a></li>
-                                                            <li><a href="index3.html">Home Three</a></li>
-                                                            <li><a href="index4.html">Home Four</a></li>
-                                                            <li><a href="index5.html">Home Five</a></li>
-                                                            <li class="active"><a href="index6.html">Home Six</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-has-children">
-                                                        <a href="#">Tuyển sinh</a>
-                                                        <ul class="sub-menu">
-                                                            <li><a href="onepage1.html">Onepage One</a></li>
-                                                            <li><a href="onepage2.html">Onepage Two</a></li>
-                                                            <li><a href="onepage3.html">Onepage Three</a></li>
-                                                            <li><a href="onepage4.html">Onepage Four</a></li>
-                                                            <li><a href="onepage5.html">Onepage Five</a></li>
-                                                            <li><a href="onepage6.html">Onepage Six</a></li>
-                                                        </ul>
+<!--                                                    class="menu-item-has-children current-menu-item"-->
+                                                    <li v-for="child in getChildItems(menu.id)" :key="child">
+                                                        <a :href="child.url">{{child.title}}</a>
                                                     </li>
                                                 </ul>
-                                            </li>
-                                            <li class="menu-item-has-children ">
-                                                <a href="#">Khóa học</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="about.html">About One</a></li>
-                                                    <li class="last-item"><a href="about2.html">About Two</a></li>
-                                                </ul>
-                                            </li>
-
-<!--                                            <li class="menu-item-has-children">-->
-<!--                                                <a href="#">Thư viện</a>-->
-<!--                                                <ul class="sub-menu">-->
-<!--                                                    <li><a href="seo-optimization.html">SEO Optimization</a></li>-->
-<!--                                                    <li><a href="content-marketing.html">Content Marketing</a></li>-->
-<!--                                                    <li><a href="social-media-marketing.html">Social Media Marketing</a>-->
-<!--                                                    </li>-->
-<!--                                                    <li><a href="ppc-advertising.html">PPC Advertising</a></li>-->
-<!--                                                    <li><a href="email-marketing.html">Email Marketing</a></li>-->
-<!--                                                    <li><a href="app-development.html">App Development</a></li>-->
-<!--                                                </ul>-->
-<!--                                            </li>-->
-
-                                            <li>
-                                                <router-link :to="{name:'PostsList'}">
-                                                    <a href="contact.html">Bài viết</a>
-                                                </router-link>
-                                            </li>
-
-                                            <li>
-                                                <a href="contact.html">Liên hệ</a>
                                             </li>
                                         </ul> <!-- //.nav-menu -->
                                     </nav>
@@ -179,128 +134,14 @@
                     </a>
                 </div>
                 <ul class="nav-menu">
-                    <li class="menu-item-has-children current-menu-item">
-                        <a href="index.html">Home</a>
+                    <li class="menu-item-has-children has-sub" v-for="menu in menuItems.filter(item => item.parent_id === null)" :key="menu">
+                        <a :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">{{menu.title}}</a>
+                        <span v-if="(getChildItems(menu.id).length > 0)" @click="showItem" class="submenu-button"></span>
                         <ul class="sub-menu">
-                            <li class="menu-item-has-children current-menu-item">
-                                <a href="#">Multipages</a>
-                                <ul class="sub-menu">
-                                    <li class="active"><a href="index.html">Home One</a></li>
-                                    <li><a href="index2.html">Home Two</a></li>
-                                    <li><a href="index3.html">Home Three</a></li>
-                                    <li><a href="index4.html">Home Four</a></li>
-                                    <li><a href="index5.html">Home Five</a></li>
-                                    <li><a href="index6.html">Home Six</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Onepages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="onepage1.html">Onepage One</a></li>
-                                    <li><a href="onepage2.html">Onepage Two</a></li>
-                                    <li><a href="onepage3.html">Onepage Three</a></li>
-                                    <li><a href="onepage4.html">Onepage Four</a></li>
-                                    <li><a href="onepage5.html">Onepage Five</a></li>
-                                    <li><a href="onepage6.html">Onepage Six</a></li>
-                                </ul>
-                            </li>
+                            <li v-for="child in getChildItems(menu.id)" :key="child"><a :href="child.url">{{child.title}}</a></li>
                         </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="#">About</a>
-                        <ul class="sub-menu">
-                            <li><a href="about.html">About One</a></li>
-                            <li class="last-item"><a href="about2.html">About Two</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item-has-children">
-                        <a href="#">Services</a>
-                        <ul class="sub-menu">
-                            <li><a href="seo-optimization.html">SEO Optimization</a></li>
-                            <li><a href="content-marketing.html">Content Marketing</a></li>
-                            <li><a href="social-media-marketing.html">Social Media Marketing</a></li>
-                            <li><a href="ppc-advertising.html">PPC Advertising</a></li>
-                            <li><a href="email-marketing.html">Email Marketing</a></li>
-                            <li><a href="app-development.html">App Development</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item-has-children">
-                        <a href="#">pages</a>
-                        <ul class="sub-menu">
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="our-team.html">Our Team</a></li>
-                            <li><a href="single-team.html">Single Team</a></li>
-                            <li class="last-item menu-item-has-children">
-                                <a href="#">Case Studies</a>
-                                <ul class="sub-menu">
-                                    <li><a href="case-studies-style1.html">Case Studies Style 1</a></li>
-                                    <li><a href="case-studies-style2.html">Case Studies Style 2</a></li>
-                                    <li><a href="case-studies-style3.html">Case Studies Style 3</a></li>
-                                    <li><a href="case-studies-style4.html">Case Studies Style 4</a></li>
-                                    <li><a href="case-studies-style5.html">Case Studies Style 5</a></li>
-                                    <li><a href="case-studies-style6.html">Case Studies Style 6</a></li>
-                                    <li class="last-item"><a href="case-studies-style7.html">Case Studies Style 7</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="last-item menu-item-has-children">
-                                <a href="#">Shop</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="shop-single.html">Shop Single</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li class="last-item"><a href="my-account.html">My Account</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                            <li><a href="faq.html">FAQs</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="#">Blog</a>
-                        <ul class="sub-menu">
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="blog-details.html">Blog Details</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
                     </li>
                 </ul> <!-- //.nav-menu -->
-                <div class="canvas-contact">
-                    <div class="address-area">
-                        <div class="address-list">
-                            <div class="info-icon">
-                                <i class="flaticon-location"></i>
-                            </div>
-                            <div class="info-content">
-                                <h4 class="title">Address</h4>
-                                <em>05 kandi BR. New York</em>
-                            </div>
-                        </div>
-                        <div class="address-list">
-                            <div class="info-icon">
-                                <i class="flaticon-email"></i>
-                            </div>
-                            <div class="info-content">
-                                <h4 class="title">Email</h4>
-                                <em><a href="mailto:support@rstheme.com">support@rstheme.com</a></em>
-                            </div>
-                        </div>
-                        <div class="address-list">
-                            <div class="info-icon">
-                                <i class="flaticon-call"></i>
-                            </div>
-                            <div class="info-content">
-                                <h4 class="title">Phone</h4>
-                                <em>+019988772</em>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </nav>
             <!-- Canvas Menu end -->
         </header>
@@ -311,12 +152,16 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from "vuex";
 
 export default {
     name: 'Header',
     data() {
         return {
             action: true,
+            menuItems: [
+                {id: 1, title: 'Home', url: '/', parent_id: null},
+            ],
         }
     },
     mounted() {
@@ -327,7 +172,28 @@ export default {
     beforeDestroy() {
         window.removeEventListener('scroll', this.handleScroll);
     },
+    computed:{
+      ...mapGetters('menu',['menuAll']),
+    },
+    watch: {
+        menuAll: function (newValue) {
+            if(newValue.length > 0){
+                this.menuItems = newValue;
+            }
+        },
+    },
+    created() {
+        this.fetchMenu();
+    },
     methods: {
+        ...mapActions('menu',['fetchMenu']),
+        getChildItems(parentId) {
+            return this.menuItems.filter(item => item.parent_id === parentId);
+        },
+        showItem() {
+            const subMenu = event.target.closest('.menu-item-has-children').querySelector('.sub-menu');
+            subMenu.style.display = (subMenu.style.display === 'block') ? 'none' : 'block';
+        },
         showMenu() {
             $('.mobile-menu, .line').on('click', function () {
                 const body = document.querySelector('body');

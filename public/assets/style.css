@@ -1862,10 +1862,23 @@ blockquote cite:before {
 }
 .full-width-header .rs-header.style1 .menu-area .main-menu .rs-menu ul.nav-menu li a {
   color: #161616;
+  font-size: 16px;
+  font-weight: bold;
 }
 .full-width-header .rs-header.style1 .menu-area .main-menu .rs-menu ul.nav-menu li a:hover {
   color: #7955e7;
 }
+
+.full-width-header .rs-header.style1 .menu-area .main-menu .rs-menu ul.nav-menu li a svg{
+    fill: #161616;
+    width: 10px;
+    height: 10px;
+}
+
+.full-width-header .rs-header.style1 .menu-area .main-menu .rs-menu ul.nav-menu li a:hover svg{
+    fill: #eb2026;
+}
+
 .full-width-header .rs-header.style1 .menu-area .main-menu .rs-menu ul.nav-menu li.menu-item-has-children > a {
   padding-right: 17px;
 }

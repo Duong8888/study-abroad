@@ -98,21 +98,6 @@
                                     </button>
                                 </div>
                             </div>
-                            <ul class="list-group mt-2">
-                                <li v-for="subChild in getChildItems(child.id)" :key="subChild.id"
-                                    class="list-group-item">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <a :href="subChild.url">{{ subChild.title }}</a>
-                                        </div>
-                                        <div>
-                                            <button class="btn btn-sm btn-outline-secondary"
-                                                    @click="openEditModal(subChild)">
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </li>
