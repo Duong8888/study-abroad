@@ -13,7 +13,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::all();
+        $menus = Menu::query()->orderBy('id','asc')->get();
         return response()->json($menus);
     }
 
