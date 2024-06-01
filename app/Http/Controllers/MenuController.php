@@ -86,6 +86,10 @@ class MenuController extends Controller
         try {
             $data = Menu::query()->findOrFail($id);
             $data->delete();
+            $childMenus = Menu::where('parent_id', $id)->get();
+            foreach ($childMenus as $childMenu) {
+                $this->destroy($childMenu->id);
+            }
             return response()->json(['success' => true, 'message' => 'Xóa thành công.']);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
