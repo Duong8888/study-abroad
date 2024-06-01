@@ -39,7 +39,7 @@
                         </router-link>
                     </div>
                 </a>
-                <h4 class="mb-10">Bài viết mới nhất</h4>
+                <h4 class="mb-10" id="main-home">Bài viết mới nhất</h4>
                 <ul class="nav mb-5">
                     <li><a data-toggle="tab" href="#home" @click="getData()">
                         <button type="button" class="btn-custom mr-2 mb-2">Tất cả bài viết</button>
@@ -52,7 +52,7 @@
                 <div class="tab-content">
                     <div id="home" class="tab-pane active">
                         <div class="row mb-n8">
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8" v-for="item in postsList" :key="item">
+                            <div class="col-12 col-sm-6 col-lg-4 mb-8" v-for="item in paginatedItems" :key="item">
                                 <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">
                                     <div class="card p-3 h-100 overflow-hidden">
                                         <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
@@ -86,7 +86,7 @@
 
                     <div v-for="(item,index) in category" :key="item" :id="'menu'+(index+1)" class="tab-pane fade">
                         <div class="row mb-n8">
-                            <div class="col-12 col-sm-6 col-lg-4 mb-8" v-for="item in postsList" :key="item">
+                            <div class="col-12 col-sm-6 col-lg-4 mb-8" v-for="item in paginatedItems" :key="item">
                                 <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">
                                     <div class="card p-3 h-100 overflow-hidden">
                                         <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
@@ -122,10 +122,17 @@
             </div>
         </div>
     </section>
+    <Pagination
+        v-if="postsList.length > 0"
+        :totalItems="postsList.length"
+        :itemsPerPage="itemsPerPage"
+        v-model:currentPage="currentPage"
+    />
 </template>
 
 <script>
 import {mapGetters, mapActions} from "vuex";
+import Pagination from '../components/Pagination.vue';
 
 export default {
     name: "PostsList",
@@ -148,13 +155,19 @@ export default {
                 created_at: null,
                 post_type_id: '[{"id": null, "name": null}]',
             },
+            itemsPerPage: 6,
+            currentPage: 1
         }
+    },
+    components:{
+        Pagination
     },
     methods: {
         ...mapActions('posts', ['fetchPost']),
         ...mapActions('category', ['fetchCategory']),
         async getData(sort = null) {
             await this.fetchPost(sort);
+            this.currentPage = 1;
         },
         async getDataCategory() {
             await this.fetchCategory();
@@ -172,6 +185,11 @@ export default {
     computed: {
         ...mapGetters('category', ['categoryAll']),
         ...mapGetters('posts', ['postsAll']),
+        paginatedItems() {
+            const start = (this.currentPage - 1) * this.itemsPerPage;
+            const end = start + this.itemsPerPage;
+            return this.postsList.slice(start, end);
+        }
     },
     watch: {
         postsAll: {

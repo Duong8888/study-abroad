@@ -4,6 +4,7 @@ import auth from './module/auth.js';
 import posts from './module/posts.js';
 import category from './module/category.js';
 import banner from './module/banner.js';
+import menu from './module/menu.js';
 
 const store = createStore({
     modules: {
@@ -12,6 +13,7 @@ const store = createStore({
         posts,
         category,
         banner,
+        menu,
     },
 });
 

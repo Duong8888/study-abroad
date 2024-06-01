@@ -15,6 +15,7 @@ import TopBanner from "@/views/admin/Banner.vue";
 import AddBanner from "@/views/admin/AddBanner.vue";
 import EditBanner from "@/views/admin/EditBanner.vue";
 import AdsBanner from "@/views/admin/AdsBanner.vue";
+import MenuManagement from "@/views/admin/MenuManagement.vue";
 
 const routes = [
 
@@ -101,6 +102,11 @@ const routes = [
                 path: 'edit-banner',
                 name: 'EditBanner',
                 component: EditBanner
+            },
+            {
+                path: 'menu',
+                name: 'Menu',
+                component: MenuManagement
             },
         ]
     },

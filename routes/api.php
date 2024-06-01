@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ConsultationRequestController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PostsTypeController;
 use App\Http\Controllers\UserController;
@@ -33,6 +34,7 @@ Route::get('/admin/posts', [PostsController::class, 'index']);
 Route::get('/admin/posts/{post}/edit', [PostsController::class, 'edit']);
 Route::get('/admin/category', [PostsTypeController::class, 'index']);
 Route::get('/admin/banner', [BannerController::class, 'index'])->name('banner.index');
+Route::get('/admin/menu', [MenuController::class, 'index'])->name('menu.index');
 
 
 Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () {
@@ -61,5 +63,11 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::post('/banner/delete', [BannerController::class, 'destroy'])->name('banner.destroy');
 
 
+    Route::get('/menu/create', [MenuController::class, 'create'])->name('menu.create');
+    Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
+    Route::get('/menu/{menu}', [MenuController::class, 'show'])->name('menu.show');
+    Route::get('/menu/{menu}/edit', [MenuController::class, 'edit'])->name('menu.edit');
+    Route::put('/menu/{menu}', [MenuController::class, 'update'])->name('menu.update');
+    Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy');
 });
 Route::post('/upload-image', [PostsController::class, 'uploadImage'])->name('upload-image');

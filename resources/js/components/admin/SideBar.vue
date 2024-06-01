@@ -129,11 +129,11 @@
             Setings
         </div>
 
-        <li class="nav-item" :class="{ active: $route.name === 'Email' }">
-            <router-link :to="{name:'Email'}">
+        <li class="nav-item" :class="{ active: $route.name === 'Menu' }">
+            <router-link :to="{name:'Menu'}">
                 <span class="nav-link">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Email</span></span>
+                    <span>Menu</span></span>
             </router-link>
         </li>
 

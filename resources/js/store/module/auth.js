@@ -32,7 +32,7 @@ const actions = {
                 type: 'success',
                 position: 'top'
             });
-            await router.push('/admin/request');
+            await router.push({name:'Request'});
         } catch (e) {
             toast.open({
                 message: 'Sai tên đăng nhập hoặc mật khẩu.',

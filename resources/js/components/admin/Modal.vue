@@ -13,7 +13,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Bài viết sẽ bị xóa khỏi hệ thống. Bạn có chắc chắn xóa chứ?
+                    Dữ liệu này sẽ bị xóa khỏi hệ thống. Bạn có chắc chắn xóa chứ?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
