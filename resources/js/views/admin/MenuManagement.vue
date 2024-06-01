@@ -207,7 +207,7 @@ export default {
             await this.fetchMenu();
         },
         getChildItems(parentId) {
-            return this.menuItems.filter(item => item.parent_id === parentId);
+            return this.menuItems.filter(item => item.parent_id == parentId);
         },
         clearUrl() {
             if (this.currentMenuItem.parent_id === null) {

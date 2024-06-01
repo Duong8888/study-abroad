@@ -188,7 +188,7 @@ export default {
     methods: {
         ...mapActions('menu',['fetchMenu']),
         getChildItems(parentId) {
-            return this.menuItems.filter(item => item.parent_id === parentId);
+            return this.menuItems.filter(item => item.parent_id == parentId);
         },
         showItem() {
             const subMenu = event.target.closest('.menu-item-has-children').querySelector('.sub-menu');
