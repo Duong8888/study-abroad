@@ -21,6 +21,9 @@ class PostsController extends Controller
         if ($request->sort) {
             $data = Posts::whereJsonContains('post_type_id', [['id' => intval($request->sort)]])->get();
         }
+        if ($request->limit) {
+            $data = Posts::query()->orderBy('id', 'desc')->limit(10)->get();
+        }
         return response()->json($data);
     }
 

@@ -6,22 +6,16 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CEAt6ltN.js",
+    "file": "assets/app-CMgcQ7RG.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-B_ydNQX_.css"
+      "assets/app-D7QTxXKc.css"
     ],
     "assets": [
       "assets/banner-2-64q1SVUB.jpg",
       "assets/banner-3-B8Vyo6ro.jpg",
-      "assets/6-Dq-jpDbs.jpg",
-      "assets/7-CfSS6-BC.jpg",
-      "assets/8-Dudhg8qe.jpg",
-      "assets/9-CH7Xyac5.jpg",
-      "assets/5-Dvc8A2iE.jpg",
-      "assets/4-DlGhyQFX.jpg",
       "assets/about-2-Cd7Inago.png",
       "assets/1-C5281EN9.png",
       "assets/2-BsrVFm-p.png",
@@ -157,30 +151,6 @@
   "resources/js/assets/images/partner/main-home/8.png": {
     "file": "assets/8-biJfYop-.png",
     "src": "resources/js/assets/images/partner/main-home/8.png"
-  },
-  "resources/js/assets/images/team/4.jpg": {
-    "file": "assets/4-DlGhyQFX.jpg",
-    "src": "resources/js/assets/images/team/4.jpg"
-  },
-  "resources/js/assets/images/team/5.jpg": {
-    "file": "assets/5-Dvc8A2iE.jpg",
-    "src": "resources/js/assets/images/team/5.jpg"
-  },
-  "resources/js/assets/images/team/6.jpg": {
-    "file": "assets/6-Dq-jpDbs.jpg",
-    "src": "resources/js/assets/images/team/6.jpg"
-  },
-  "resources/js/assets/images/team/7.jpg": {
-    "file": "assets/7-CfSS6-BC.jpg",
-    "src": "resources/js/assets/images/team/7.jpg"
-  },
-  "resources/js/assets/images/team/8.jpg": {
-    "file": "assets/8-Dudhg8qe.jpg",
-    "src": "resources/js/assets/images/team/8.jpg"
-  },
-  "resources/js/assets/images/team/9.jpg": {
-    "file": "assets/9-CH7Xyac5.jpg",
-    "src": "resources/js/assets/images/team/9.jpg"
   },
   "resources/js/assets/images/testimonial/main-home/avatar/1.jpg": {
     "file": "assets/1-BRo8ec-0.jpg",

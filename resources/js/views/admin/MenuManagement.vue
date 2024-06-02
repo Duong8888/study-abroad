@@ -15,6 +15,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="menuModalLabel">{{ isEdit ? 'Chỉnh sửa menu' : 'Thêm menu' }}</h5>
+                        <button type="button" class="close" @click="closeModal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <form @submit.prevent="validateAndSubmitMenuItem">
@@ -56,6 +59,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">{{ isEdit ? 'Lưu' : 'Thêm mới' }}</button>
+                            <button type="button" class="btn btn-secondary mx-2" @click="closeModal">Hủy</button>
                         </form>
                         <div v-if="errorMessage" class="alert alert-danger mt-2">
                             {{ errorMessage }}
@@ -213,6 +217,9 @@ export default {
             if (this.currentMenuItem.parent_id === null) {
                 this.currentMenuItem.url = '';
             }
+        },
+        closeModal() {
+            $('#menuModal').modal('hide');
         },
     },
     components:{

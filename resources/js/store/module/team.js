@@ -2,50 +2,42 @@ import {API_ENDPOINT} from "../api-endpoint.js";
 import api from '../../utils/axios.js';
 import router from '../../router';
 const state = {
-    postsList: [],
-    posts:[],
+    teamList: [],
 };
 
 const mutations = {
-    SET_POSTS_LIST(state, request) {
-        state.postsList = request;
-    },
-    SET_POSTS(state, request) {
-        state.posts = request;
+    SET_TEAM_LIST(state, request) {
+        state.teamList = request;
     },
 };
 
 const actions = {
-    async fetchPost({ commit }, sort = null) {
+    async fetchTeam({ commit }, sort = null) {
         try {
             const params = {};
             if (sort !== null) {
-                if(sort === 'limit'){
-                    params.limit = sort;
-                }else {
-                    params.sort = sort;
-                }
+                params.sort = sort;
             }
-            const response = await api.get(API_ENDPOINT.API_ADMIN.POSTS,{ params });
-            const posts = response.data;
-            commit('SET_POSTS_LIST', posts);
+            const response = await api.get(API_ENDPOINT.API_ADMIN.TEAM,{ params });
+            const team = response.data;
+            commit('SET_TEAM_LIST', team);
         } catch (error) {
             console.error('Error fetching user:', error);
         }
     },
-    async addPost({commit}, { data, toast }) {
+    async addTeam({commit}, { data, toast }) {
         try {
-            const response = await api.post(API_ENDPOINT.API_ADMIN.POSTS,data);
+            const response = await api.post(API_ENDPOINT.API_ADMIN.TEAM,data);
             if(response.data.success){
                 toast.open({
                     message: response.data.message,
                     type: 'success',
                     position: 'top'
                 });
-                await router.push({name: 'Posts'});
+                await router.push({name: 'Team'});
             }
         } catch (error) {
-            console.error('Error add posts:', error);
+            console.error('Error add team:', error);
             toast.open({
                 message: 'Error! An error occurred. Please try again later',
                 type: 'error',
@@ -54,19 +46,19 @@ const actions = {
         }
     },
 
-    async updatePost({commit}, { data, toast }) {
+    async updateTeam({commit}, { data, toast }) {
         try {
-            const response = await api.put(`${API_ENDPOINT.API_ADMIN.POSTS}/${data.id}`,data);
+            const response = await api.post(`${API_ENDPOINT.API_ADMIN.TEAM}/${data.get('id')}`,data);
             if(response.data.success){
                 toast.open({
                     message: response.data.message,
                     type: 'success',
                     position: 'top'
                 });
-                await router.push({name: 'Posts'});
+                await router.push({name: 'Team'});
             }
         } catch (error) {
-            console.error('Error add posts:', error);
+            console.error('Error add team:', error);
             toast.open({
                 message: 'Error! An error occurred. Please try again later',
                 type: 'error',
@@ -75,20 +67,10 @@ const actions = {
         }
     },
 
-    async getOnePost({commit}, slug) {
+    async deleteTeam({commit}, { id, toast }) {
         try {
-            const response = await api.get(`${API_ENDPOINT.API_ADMIN.POSTS}/${slug}/edit`);
-            const posts = response.data;
-            commit('SET_POSTS', posts);
-        } catch (error) {
-            console.error('Error add posts:', error);
-        }
-    },
-
-    async deletePosts({commit}, { id, toast }) {
-        try {
-            const response = await api.delete(`${API_ENDPOINT.API_ADMIN.POSTS}/${id}`);
-            const posts = response.data;
+            const response = await api.delete(`${API_ENDPOINT.API_ADMIN.TEAM}/${id}`);
+            const team = response.data;
             if(response.data.success){
                 toast.open({
                     message: response.data.message,
@@ -97,14 +79,13 @@ const actions = {
                 });
             }
         } catch (error) {
-            console.error('Error add posts:', error);
+            console.error('Error add team:', error);
         }
     },
 };
 
 const getters = {
-    postsAll: (state) => state.postsList,
-    posts:(state) => state.posts,
+    teamAll: (state) => state.teamList,
 };
 
 export default {

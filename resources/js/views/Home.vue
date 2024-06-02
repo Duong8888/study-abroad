@@ -1,9 +1,9 @@
 <template>
     <Banner @send-request="sendRequest" :statusBtn="statusBtn" :images="images" :defaultImg="(images.length > 0) ? false : true"></Banner>
     <Introduce></Introduce>
-    <Team></Team>
+    <Team :items="items"></Team>
     <Universities></Universities>
-    <Posts></Posts>
+    <Posts :items="posts"></Posts>
 <!--    <SubBanner></SubBanner>-->
     <AdsBanner :formShow="false"></AdsBanner>
     <Comments></Comments>
@@ -27,20 +27,40 @@ export default {
         return {
             statusBtn: false,
             images: [{image_path: '', link: ''}],
+            items: [
+                {name: 'Mincin Funo', avatar: ''},
+                {name: 'Mincin Funo', avatar: ''},
+                {name: 'Mincin Funo', avatar: ''},
+            ],
+            posts: [],
         }
     },
     watch:{
         topBanner: function (newTitle) {
             this.images = newTitle;
         },
+        teamAll: function (newValue) {
+            this.items = newValue
+        },
+        postsAll: function (newValue) {
+            this.posts = newValue
+        },
+
     },
     computed: {
         ...mapGetters('banner', ['topBanner']),
+        ...mapGetters('team', ['teamAll']),
+        ...mapGetters('posts', ['postsAll']),
     },
     created() {
         this.fetchBanner(0);
+        this.fetchTeam();
+        this.fetchPost('limit');
     },
-    methods: {...mapActions('banner', ['fetchBanner',]),
+    methods: {
+        ...mapActions('banner', ['fetchBanner',]),
+        ...mapActions('team', ['fetchTeam',]),
+        ...mapActions('posts', ['fetchPost',]),
         getBanner(){
             this.fetchBanner();
         },

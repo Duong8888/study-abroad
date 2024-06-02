@@ -17,6 +17,7 @@ import EditBanner from "@/views/admin/EditBanner.vue";
 import AdsBanner from "@/views/admin/AdsBanner.vue";
 import MenuManagement from "@/views/admin/MenuManagement.vue";
 import PostType from "@/views/admin/PostType.vue";
+import Team from "@/views/admin/Team.vue";
 
 const routes = [
 
@@ -112,7 +113,7 @@ const routes = [
             {
                 path: 'team',
                 name: 'Team',
-                component: Category
+                component: Team
             },
         ]
     },

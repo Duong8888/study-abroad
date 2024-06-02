@@ -9,6 +9,7 @@ export const API_ENDPOINT = {
         CATEGORY : `/category`,
         BANNER : `/banner`,
         MENU : `/menu`,
+        TEAM : `/team`,
     },
     API_USER: {
         SEND_REQUEST : `${API}/consultation-request`,

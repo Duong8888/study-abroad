@@ -6,6 +6,8 @@ use App\Http\Controllers\ConsultationRequestController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PostsTypeController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,14 +31,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    Route::resource('/consultation-request', ConsultationRequestController::class);
 //});
 Route::resource('/consultation-request', ConsultationRequestController::class);
-Route::post('/admin/login', [AuthController::class, 'login'])->name('login');
-Route::get('/admin/posts', [PostsController::class, 'index']);
-Route::get('/admin/posts/{post}/edit', [PostsController::class, 'edit']);
-Route::get('/admin/category', [PostsTypeController::class, 'index']);
-Route::get('/admin/banner', [BannerController::class, 'index'])->name('banner.index');
-Route::get('/admin/menu', [MenuController::class, 'index'])->name('menu.index');
-
-
+Route::group(['prefix' => 'admin'], function () {
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::get('/posts', [PostsController::class, 'index']);
+    Route::get('/posts/{post}/edit', [PostsController::class, 'edit']);
+    Route::get('/category', [PostsTypeController::class, 'index']);
+    Route::get('/banner', [BannerController::class, 'index'])->name('banner.index');
+    Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
+    Route::get('/team', [TeamController::class, 'index']);
+    Route::get('/university', [TeamController::class, 'index']);
+});
 Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::resource('/user-list', UserController::class);
@@ -48,12 +52,24 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::put('/posts/{post}', [PostsController::class, 'update']);
     Route::delete('/posts/{post}', [PostsController::class, 'destroy']);
 
-    Route::get('/category/create', [PostsTypeController::class, 'create']);
-    Route::post('/category', [PostsTypeController::class, 'store']);
-    Route::get('/category/{category}', [PostsTypeController::class, 'show']);
-    Route::get('/category/{category}/edit', [PostsTypeController::class, 'edit']);
-    Route::put('/category/{category}', [PostsTypeController::class, 'update']);
-    Route::delete('/category/{category}', [PostsTypeController::class, 'destroy']);
+    Route::get('/team/create', [TeamController::class, 'create']);
+    Route::post('/team', [TeamController::class, 'store']);
+    Route::get('/team/{post}', [TeamController::class, 'show']);
+    Route::put('/team/{post}', [TeamController::class, 'update']);
+    Route::delete('/team/{post}', [TeamController::class, 'destroy']);
+
+    Route::get('/team/create', [TeamController::class, 'create']);
+    Route::post('/team', [TeamController::class, 'store']);
+    Route::get('/team/{post}', [TeamController::class, 'show']);
+    Route::post('/team/{post}', [TeamController::class, 'update']);
+    Route::delete('/team/{post}', [TeamController::class, 'destroy']);
+
+    Route::get('/university/create', [UniversityController::class, 'create']);
+    Route::post('/university', [UniversityController::class, 'store']);
+    Route::get('/university/{university}', [UniversityController::class, 'show']);
+    Route::get('/university/{university}/edit', [UniversityController::class, 'edit']);
+    Route::put('/university/{university}', [UniversityController::class, 'update']);
+    Route::delete('/university/{university}', [UniversityController::class, 'destroy']);
 
     Route::get('/banner/create', [BannerController::class, 'create'])->name('banner.create');
     Route::post('/banner', [BannerController::class, 'store'])->name('banner.store');
