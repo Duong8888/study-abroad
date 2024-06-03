@@ -1,33 +1,34 @@
 <template>
     <!-- Banner Section Start -->
-    <div class=" style5 h-50 gray-bg2">
+    <div class="banner-section style5 h-50 gray-bg2">
         <div :class="{'custom-box': form}">
             <swiper
                 :spaceBetween="30"
                 :centeredSlides="true"
                 :autoplay="{
-          delay: 2500,
-          disableOnInteraction: false,
-        }"
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }"
                 :navigation="true"
                 :modules="modules"
                 class="mySwiper"
             >
-                <swiper-slide v-if="!defaultImg" v-for="(image,index) in images" :key="image">
+                <swiper-slide v-if="!defaultImg" v-for="(image, index) in images" :key="image.id">
                     <a :href="image.link" target="_blank">
                         <img class="w-100 h-100 banner-img" :src="image.image_path" :alt="image.title">
                     </a>
                 </swiper-slide>
-                <swiper-slide v-if="defaultImg"><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-2.jpg" alt="logo">
+                <swiper-slide v-if="defaultImg">
+                    <img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-2.jpg" alt="logo">
                 </swiper-slide>
-                <swiper-slide v-if="defaultImg"><img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo">
+                <swiper-slide v-if="defaultImg">
+                    <img class="w-100 h-100 banner-img" src="@/assets/images/common/banner-3.jpg" alt="logo">
                 </swiper-slide>
             </swiper>
-            <FormRequest v-if="form" style="z-index: 10;" @send-request="senData" :statusBtn="statusBtn"></FormRequest>
+            <FormRequest v-if="form" style="z-index: 10;" @send-request="sendData" :statusBtn="statusBtn"></FormRequest>
         </div>
     </div>
     <!-- Banner Section End -->
-
 </template>
 
 <script>
@@ -58,7 +59,7 @@ export default {
         },
         images: {
             type: Array,
-            default: [
+            default: () => [
                 {
                     id: 1,
                     title: "Banner 1",
@@ -67,13 +68,13 @@ export default {
                 },
             ],
         },
-        defaultImg:{
+        defaultImg: {
             type: Boolean,
             default: true,
         }
     },
     methods: {
-        senData(data) {
+        sendData(data) {
             this.$emit('send-request', data);
         }
     }
@@ -82,7 +83,7 @@ export default {
 
 <style scoped>
 .carousel-control-prev, .carousel-control-next {
-    background: rgb(255, 255, 255, 0);
+    background: rgba(255, 255, 255, 0);
     border: none;
     height: 400px;
 }
@@ -92,7 +93,7 @@ export default {
 }
 
 #app {
-    height: 100%
+    height: 100%;
 }
 
 html,
@@ -103,7 +104,7 @@ body {
 
 body {
     background: #eee;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 14px;
     color: #000;
     margin: 0;
@@ -116,6 +117,9 @@ body {
 }
 
 .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
     line-height: 300px;
     text-align: center;
@@ -123,6 +127,37 @@ body {
 
 .banner-img {
     object-fit: contain;
+}
+
+@media screen and (max-width: 991px) {
+    .swiper {
+        height: 60vh;
+    }
+    .swiper-slide {
+        line-height: 200px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .swiper {
+        height: 50vh;
+    }
+    .swiper-slide {
+        line-height: 150px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .swiper {
+        height: 40vh;
+    }
+    .swiper-slide {
+        line-height: 100px;
+    }
+    .banner-img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 @media screen and (min-width: 992px) {

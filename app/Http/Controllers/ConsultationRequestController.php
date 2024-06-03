@@ -43,7 +43,7 @@ class ConsultationRequestController extends Controller
                 'content' => 'SMARTEDU',
                 'status' => 0,
             ]);
-//            sleep(2);
+            sleep(2);
             return response()->json(['success' => true, 'message' => 'Xin cảm ơn, form đã được gửi thành công.']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
