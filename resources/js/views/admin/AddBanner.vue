@@ -4,7 +4,12 @@
             <router-link :to="{name:'TopBanner'}">
                 <button class="btn btn-outline-secondary mr-2">Quay lại</button>
             </router-link>
-            <button class="btn btn-outline-primary" @click="saveImages">Lưu banner</button>
+            <button class="btn btn-outline-primary" :class="{'btn-custom-disabled':status}" :disabled="status" @click="saveImages">
+                Lưu banner
+                <div v-if="status" class="spinner-border text-primary spinner-custom" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </button>
         </div>
         <hr>
         <div class="row">
@@ -64,6 +69,7 @@ export default {
                 link: ''
             },
             type: 0,
+            status: false,
         };
     },
     created() {
@@ -73,7 +79,12 @@ export default {
         }
     },
     computed: {
-        ...mapGetters('banner', ['bannerAll']),
+        ...mapGetters('banner', ['bannerAll','statusBtn']),
+    },
+    watch: {
+        statusBtn: function (newValue) {
+            this.status = newValue
+        }
     },
     methods: {
         ...mapActions('banner', ['addBanner', 'updateBanner', 'deleteBanner']),
@@ -184,5 +195,16 @@ body {
     margin-top: 0px;
     cursor: pointer;
     font-size: 15px;
+}
+.spinner-custom{
+    width: 20px;
+    height: 20px;
+}
+.btn-custom-disabled{
+    opacity: 0.5;
+    user-select: none;
+}
+.btn-custom-disabled:hover {
+    opacity: 0.5 !important;
 }
 </style>

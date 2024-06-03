@@ -77,9 +77,12 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" @click="closeModal">Hủy</button>
-                        <button type="button" class="btn btn-primary" @click="saveItem">{{
+                        <button type="button" class="btn btn-primary" :class="{'btn-custom-disabled':status}" :disabled="status" @click="saveItem">{{
                                 isEdit ? 'Lưu' : 'Thêm mới'
                             }}
+                            <div v-if="status" class="spinner-border text-white spinner-custom" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
                         </button>
                     </div>
                 </div>
@@ -128,10 +131,11 @@ export default {
             currentItem: {university_name: '', logo: '', id: '', logoFile: null},
             isEdit: false,
             idDelete: null,
+            status: false,
         };
     },
     computed: {
-        ...mapGetters('universities', ['universityAll'])
+        ...mapGetters('universities', ['universityAll','statusBtn'])
     },
     created() {
         this.fetchItem();
@@ -139,6 +143,9 @@ export default {
     watch: {
         universityAll: function (newValue) {
             this.items = newValue
+        },
+        statusBtn: function (newValue) {
+            this.status = newValue
         }
     },
     methods: {
@@ -198,5 +205,16 @@ export default {
     width: 50px;
     height: 50px;
     object-fit: cover;
+}
+.spinner-custom{
+    width: 20px;
+    height: 20px;
+}
+.btn-custom-disabled{
+    opacity: 0.5;
+    user-select: none;
+}
+.btn-custom-disabled:hover {
+    opacity: 0.5 !important;
 }
 </style>

@@ -5,6 +5,7 @@ const state = {
     banner:[],
     topBanner:[],
     adsBanner:[],
+    statusBtn: false,
 };
 
 const mutations = {
@@ -13,6 +14,9 @@ const mutations = {
         if(request.option.type == 0){
             state.topBanner = request.banner;
         }
+    },
+    SET_STATUS_BTN(state, value) {
+        state.statusBtn = value;
     },
 };
 
@@ -37,6 +41,7 @@ const actions = {
     },
     async addBanner({commit}, { data, toast }) {
         try {
+            commit('SET_STATUS_BTN', true);
             const response = await api.post(API_ENDPOINT.API_ADMIN.BANNER,data);
             if(response.data.success){
                 toast.open({
@@ -44,7 +49,8 @@ const actions = {
                     type: 'success',
                     position: 'top'
                 });
-                await router.push({name: 'TopBanner'})
+                await router.push({name: 'TopBanner'});
+                commit('SET_STATUS_BTN', false);
             }
         } catch (error) {
             console.error('Error add banner:', error);
@@ -53,11 +59,13 @@ const actions = {
                 type: 'error',
                 position: 'top'
             });
+            commit('SET_STATUS_BTN', false);
         }
     },
 
     async updateBanner({commit}, { data, toast }) {
         try {
+            commit('SET_STATUS_BTN', true);
             const response = await api.put(`${API_ENDPOINT.API_ADMIN.BANNER}/${data.id}`,data);
             if(response.data.success){
                 toast.open({
@@ -65,6 +73,7 @@ const actions = {
                     type: 'success',
                     position: 'top'
                 });
+                commit('SET_STATUS_BTN', false);
             }
         } catch (error) {
             console.error('Error add banner:', error);
@@ -73,6 +82,7 @@ const actions = {
                 type: 'error',
                 position: 'top'
             });
+            commit('SET_STATUS_BTN', false);
         }
     },
 
@@ -95,6 +105,7 @@ const actions = {
 const getters = {
     bannerAll: (state) => state.banner,
     topBanner: (state) => state.topBanner,
+    statusBtn: (state) => state.statusBtn,
 };
 
 export default {

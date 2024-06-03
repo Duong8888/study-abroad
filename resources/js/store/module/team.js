@@ -3,11 +3,15 @@ import api from '../../utils/axios.js';
 import router from '../../router';
 const state = {
     teamList: [],
+    statusBtn: false,
 };
 
 const mutations = {
     SET_TEAM_LIST(state, request) {
         state.teamList = request;
+    },
+    SET_STATUS_BTN(state, value) {
+        state.statusBtn = value;
     },
 };
 
@@ -27,6 +31,7 @@ const actions = {
     },
     async addTeam({commit}, { data, toast }) {
         try {
+            commit('SET_STATUS_BTN', true);
             const response = await api.post(API_ENDPOINT.API_ADMIN.TEAM,data);
             if(response.data.success){
                 toast.open({
@@ -35,6 +40,7 @@ const actions = {
                     position: 'top'
                 });
                 await router.push({name: 'Team'});
+                commit('SET_STATUS_BTN', false);
             }
         } catch (error) {
             console.error('Error add team:', error);
@@ -43,11 +49,13 @@ const actions = {
                 type: 'error',
                 position: 'top'
             });
+            commit('SET_STATUS_BTN', false);
         }
     },
 
     async updateTeam({commit}, { data, toast }) {
         try {
+            commit('SET_STATUS_BTN', true);
             const response = await api.post(`${API_ENDPOINT.API_ADMIN.TEAM}/${data.get('id')}`,data);
             if(response.data.success){
                 toast.open({
@@ -56,6 +64,7 @@ const actions = {
                     position: 'top'
                 });
                 await router.push({name: 'Team'});
+                commit('SET_STATUS_BTN', false);
             }
         } catch (error) {
             console.error('Error add team:', error);
@@ -64,6 +73,7 @@ const actions = {
                 type: 'error',
                 position: 'top'
             });
+            commit('SET_STATUS_BTN', false);
         }
     },
 
@@ -86,6 +96,7 @@ const actions = {
 
 const getters = {
     teamAll: (state) => state.teamList,
+    statusBtn: (state) => state.statusBtn,
 };
 
 export default {

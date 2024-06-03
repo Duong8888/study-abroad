@@ -3,11 +3,15 @@ import api from '../../utils/axios.js';
 import router from '../../router';
 const state = {
     university: [],
+    statusBtn: false,
 };
 
 const mutations = {
     SET_UNIVERSITY_LIST(state, request) {
         state.university = request;
+    },
+    SET_STATUS_BTN(state, value) {
+        state.statusBtn = value;
     },
 };
 
@@ -27,6 +31,7 @@ const actions = {
     },
     async addItem({commit}, { data, toast }) {
         try {
+            commit('SET_STATUS_BTN', true);
             const response = await api.post(API_ENDPOINT.API_ADMIN.UNIVERSITY,data);
             if(response.data.success){
                 toast.open({
@@ -34,6 +39,7 @@ const actions = {
                     type: 'success',
                     position: 'top'
                 });
+                commit('SET_STATUS_BTN', false);
                 await router.push({name: 'University'});
             }
         } catch (error) {
@@ -43,11 +49,13 @@ const actions = {
                 type: 'error',
                 position: 'top'
             });
+            commit('SET_STATUS_BTN', false);
         }
     },
 
     async updateItem({commit}, { data, toast }) {
         try {
+            commit('SET_STATUS_BTN', true);
             const response = await api.post(`${API_ENDPOINT.API_ADMIN.UNIVERSITY}/${data.get('id')}`,data);
             if(response.data.success){
                 toast.open({
@@ -56,6 +64,7 @@ const actions = {
                     position: 'top'
                 });
                 await router.push({name: 'University'});
+                commit('SET_STATUS_BTN', false);
             }
         } catch (error) {
             console.error('Error add team:', error);
@@ -64,6 +73,7 @@ const actions = {
                 type: 'error',
                 position: 'top'
             });
+            commit('SET_STATUS_BTN', false);
         }
     },
 
@@ -86,6 +96,7 @@ const actions = {
 
 const getters = {
     universityAll: (state) => state.university,
+    statusBtn: (state) => state.statusBtn,
 };
 
 export default {
