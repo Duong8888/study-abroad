@@ -113,13 +113,12 @@ body {
     width: 100%;
     height: 100%;
     background: white;
-    padding: 10px;
 }
 
 .image-wrap img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover !important;
 }
 
 .team-content {
