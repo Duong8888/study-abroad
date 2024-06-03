@@ -165,4 +165,9 @@ body {
         padding-top: 100px;
     }
 }
+/*.banner-img{*/
+/*    width: 100% !important;*/
+/*    height: 100% !important;*/
+/*    object-fit: cover;*/
+/*}*/
 </style>

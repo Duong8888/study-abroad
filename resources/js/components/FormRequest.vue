@@ -45,13 +45,16 @@ export default {
 .box-request {
     transform: translateY(-50%);
 }
-input{
+
+input {
     padding-left: 20px;
 }
-input[name="phone"]{
+
+input[name="phone"] {
     border-left: 1px solid #cccc !important;
 }
-form{
+
+form {
     border: 1px solid #cccc;
 }
 
@@ -63,22 +66,64 @@ form{
         box-shadow: 0px 0px 15px #11005833;
     }
 }
-.btn-custom{
+@media (max-width: 991px) {
+    .box-request {
+        transform: none;
+    }
+    .custom-size {
+        width: 90%;
+        height: auto;
+        padding: 10px 10px 30px 10px;
+        box-shadow: 0px 0px 15px #11005833;
+        background: white;
+    }
+}
+
+@media (max-width: 576px) {
+    .box-request {
+        transform: none;
+    }
+    .custom-size {
+        width: 90%;
+        height: auto;
+        padding: 10px 10px 30px 10px;
+        box-shadow: 0px 0px 15px #11005833;
+        background: white;
+    }
+
+    input[name="phone"] {
+        border-left: none;
+    }
+
+    input {
+        padding-left: 10px;
+        margin-bottom: 10px;
+        border-radius: 2px;
+        border: 1px solid #cccc !important;
+    }
+    form {
+        border: none;
+    }
+}
+
+.btn-custom {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.spinner-custom{
+
+.spinner-custom {
     width: 20px;
     height: 20px;
     margin-left: 10px;
 }
-.btn-custom-disabled{
+
+.btn-custom-disabled {
     opacity: 0.5;
     user-select: none;
 }
+
 .btn-custom-disabled:hover {
     opacity: 0.5 !important;
 }
-
 </style>
