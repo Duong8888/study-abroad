@@ -39,7 +39,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/banner', [BannerController::class, 'index'])->name('banner.index');
     Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
     Route::get('/team', [TeamController::class, 'index']);
-    Route::get('/university', [TeamController::class, 'index']);
+    Route::get('/university', [UniversityController::class, 'index']);
 });
 Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -51,6 +51,12 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::get('/posts/{post}', [PostsController::class, 'show']);
     Route::put('/posts/{post}', [PostsController::class, 'update']);
     Route::delete('/posts/{post}', [PostsController::class, 'destroy']);
+
+    Route::get('/category/create', [PostsTypeController::class, 'create']);
+    Route::post('/category', [PostsTypeController::class, 'store']);
+    Route::get('/category/{post}', [PostsTypeController::class, 'show']);
+    Route::put('/category/{post}', [PostsTypeController::class, 'update']);
+    Route::delete('/category/{post}', [PostsTypeController::class, 'destroy']);
 
     Route::get('/team/create', [TeamController::class, 'create']);
     Route::post('/team', [TeamController::class, 'store']);
@@ -68,7 +74,7 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::post('/university', [UniversityController::class, 'store']);
     Route::get('/university/{university}', [UniversityController::class, 'show']);
     Route::get('/university/{university}/edit', [UniversityController::class, 'edit']);
-    Route::put('/university/{university}', [UniversityController::class, 'update']);
+    Route::post('/university/{university}', [UniversityController::class, 'update']);
     Route::delete('/university/{university}', [UniversityController::class, 'destroy']);
 
     Route::get('/banner/create', [BannerController::class, 'create'])->name('banner.create');

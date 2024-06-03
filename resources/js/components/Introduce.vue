@@ -15,7 +15,7 @@
                         <h2 class="title pb-30">
                             Du học Hàn Quốc cùng <span style="color: #ed1e24">SMARTEDU</span>
                         </h2>
-                        <p class="margin-0 pb-55 md-pb-30">SMARTEDU được thành lập từ năm 2020, Công ty có trụ chính tại Seoul(Hàn Quốc) và có 3 chi nhánh tại Ansan(HÀn Quốc), Hà Nội, Thành phố Hồ Chí Mình. Chỉ sau sau vài năm hoạt động, Văn phòng đã có khá nhiều thành tích đáng kể như: kí hợp đồng liên kết với khoảng 10 trường đại học lớn tại Hàn Quốc, liên kết được với 5 trường đại học đào tạo ngôn ngữ Hàn tại Việt Nam và nhận được sự tín nhiệm từ rất nhiều du học sinh đang sống tại Hàn Quốc. Bên cạnh đó, Văn phòng còn chuyên xử lí các vấn đề liên quan đến visa và chuyển đổi visa như: visa xin việc bên Hàn Quốc, hỗ trợ làm thủ tục hợp pháp hóa giấy, visa thăm thân, visa kết hôn, visa du lịch,…</p>
+                        <p class="margin-0 pb-55 md-pb-30">SMARTEDU được thành lập từ năm 2020, Công ty có trụ chính tại Seoul(Hàn Quốc) và có 3 chi nhánh tại Ansan(HÀn Quốc), Hà Nội. Chỉ sau sau vài năm hoạt động, Văn phòng đã có khá nhiều thành tích đáng kể như: kí hợp đồng liên kết với khoảng 10 trường đại học lớn tại Hàn Quốc, liên kết được với 5 trường đại học đào tạo ngôn ngữ Hàn tại Việt Nam và nhận được sự tín nhiệm từ rất nhiều du học sinh đang sống tại Hàn Quốc. Bên cạnh đó, Văn phòng còn chuyên xử lí các vấn đề liên quan đến visa và chuyển đổi visa như: visa xin việc bên Hàn Quốc, hỗ trợ làm thủ tục hợp pháp hóa giấy, visa thăm thân, visa kết hôn, visa du lịch,…</p>
 
                         <h4 class="pb-13">
                             SỨ MỆNH

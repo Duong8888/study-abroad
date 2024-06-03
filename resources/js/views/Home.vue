@@ -2,7 +2,7 @@
     <Banner @send-request="sendRequest" :statusBtn="statusBtn" :images="images" :defaultImg="(images.length > 0) ? false : true"></Banner>
     <Introduce></Introduce>
     <Team :items="items"></Team>
-    <Universities></Universities>
+    <Universities :items="university"></Universities>
     <Posts :items="posts"></Posts>
 <!--    <SubBanner></SubBanner>-->
     <AdsBanner :formShow="false"></AdsBanner>
@@ -33,6 +33,7 @@ export default {
                 {name: 'Mincin Funo', avatar: ''},
             ],
             posts: [],
+            university: [],
         }
     },
     watch:{
@@ -45,22 +46,27 @@ export default {
         postsAll: function (newValue) {
             this.posts = newValue
         },
-
+        universityAll: function (newValue) {
+            this.university = newValue
+        }
     },
     computed: {
         ...mapGetters('banner', ['topBanner']),
         ...mapGetters('team', ['teamAll']),
         ...mapGetters('posts', ['postsAll']),
+        ...mapGetters('universities', ['universityAll'])
     },
     created() {
         this.fetchBanner(0);
         this.fetchTeam();
         this.fetchPost('limit');
+        this.fetchItem();
     },
     methods: {
         ...mapActions('banner', ['fetchBanner',]),
         ...mapActions('team', ['fetchTeam',]),
         ...mapActions('posts', ['fetchPost',]),
+        ...mapActions('universities', ['fetchItem',]),
         getBanner(){
             this.fetchBanner();
         },

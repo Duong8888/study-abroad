@@ -6,25 +6,17 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CMgcQ7RG.js",
+    "file": "assets/app-wJ8ab6_I.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-D7QTxXKc.css"
+      "assets/app-JtKycYCu.css"
     ],
     "assets": [
       "assets/banner-2-64q1SVUB.jpg",
       "assets/banner-3-B8Vyo6ro.jpg",
       "assets/about-2-Cd7Inago.png",
-      "assets/1-C5281EN9.png",
-      "assets/2-BsrVFm-p.png",
-      "assets/3-CIMMsLMw.png",
-      "assets/4-Da_TL6ic.png",
-      "assets/5-Cf_zwTKQ.png",
-      "assets/6-a7MHjXv2.png",
-      "assets/7-B2KQ4otq.png",
-      "assets/8-biJfYop-.png",
       "assets/sub-banner-BiLQ9IGi.jpg",
       "assets/banner-CXwGdm21.jpg",
       "assets/quote-fiXjn-DC.png",
@@ -119,38 +111,6 @@
   "resources/js/assets/images/logo-dark.png": {
     "file": "assets/logo-dark-DVkJqhzs.png",
     "src": "resources/js/assets/images/logo-dark.png"
-  },
-  "resources/js/assets/images/partner/main-home/1.png": {
-    "file": "assets/1-C5281EN9.png",
-    "src": "resources/js/assets/images/partner/main-home/1.png"
-  },
-  "resources/js/assets/images/partner/main-home/2.png": {
-    "file": "assets/2-BsrVFm-p.png",
-    "src": "resources/js/assets/images/partner/main-home/2.png"
-  },
-  "resources/js/assets/images/partner/main-home/3.png": {
-    "file": "assets/3-CIMMsLMw.png",
-    "src": "resources/js/assets/images/partner/main-home/3.png"
-  },
-  "resources/js/assets/images/partner/main-home/4.png": {
-    "file": "assets/4-Da_TL6ic.png",
-    "src": "resources/js/assets/images/partner/main-home/4.png"
-  },
-  "resources/js/assets/images/partner/main-home/5.png": {
-    "file": "assets/5-Cf_zwTKQ.png",
-    "src": "resources/js/assets/images/partner/main-home/5.png"
-  },
-  "resources/js/assets/images/partner/main-home/6.png": {
-    "file": "assets/6-a7MHjXv2.png",
-    "src": "resources/js/assets/images/partner/main-home/6.png"
-  },
-  "resources/js/assets/images/partner/main-home/7.png": {
-    "file": "assets/7-B2KQ4otq.png",
-    "src": "resources/js/assets/images/partner/main-home/7.png"
-  },
-  "resources/js/assets/images/partner/main-home/8.png": {
-    "file": "assets/8-biJfYop-.png",
-    "src": "resources/js/assets/images/partner/main-home/8.png"
   },
   "resources/js/assets/images/testimonial/main-home/avatar/1.jpg": {
     "file": "assets/1-BRo8ec-0.jpg",

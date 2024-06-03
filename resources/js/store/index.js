@@ -6,6 +6,7 @@ import category from './module/category.js';
 import banner from './module/banner.js';
 import menu from './module/menu.js';
 import team from './module/team.js';
+import universities from './module/universities.js';
 
 const store = createStore({
     modules: {
@@ -16,6 +17,7 @@ const store = createStore({
         banner,
         menu,
         team,
+        universities,
     },
 });
 

@@ -9,8 +9,7 @@ class University extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'video_title',
-        'video_url',
-        'author_username',
+        'logo',
+        'university_name'
     ];
 }
