@@ -124,8 +124,8 @@ export default {
     data() {
         return {
             items: [
-                {name: 'Mincin Funo', avatar: '/assets/images/team/6.jpg'},
-                {name: 'John Doe', avatar: '/assets/images/team/7.jpg'},
+                // {name: 'Mincin Funo', avatar: '/assets/images/team/6.jpg'},
+                // {name: 'John Doe', avatar: '/assets/images/team/7.jpg'},
             ],
             currentItem: {name: '', avatar: '', id: '', avatarFile: null},
             isEdit: false,

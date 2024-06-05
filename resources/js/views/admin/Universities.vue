@@ -125,8 +125,8 @@ export default {
     data() {
         return {
             items: [
-                {university_name: 'Mincin Funo', logo: '/assets/images/team/6.jpg'},
-                {university_name: 'John Doe', logo: '/assets/images/team/7.jpg'},
+                // {university_name: 'Mincin Funo', logo: '/assets/images/team/6.jpg'},
+                // {university_name: 'John Doe', logo: '/assets/images/team/7.jpg'},
             ],
             currentItem: {university_name: '', logo: '', id: '', logoFile: null},
             isEdit: false,

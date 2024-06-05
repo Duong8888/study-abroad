@@ -91,5 +91,9 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::get('/menu/{menu}/edit', [MenuController::class, 'edit'])->name('menu.edit');
     Route::put('/menu/{menu}', [MenuController::class, 'update'])->name('menu.update');
     Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy');
+
+    Route::get('/profile', [UserController::class, 'showProfile']);
+    Route::post('/profile', [UserController::class, 'updateProfile']);
+    Route::post('/profile/change-password', [UserController::class, 'changePassword']);
 });
 Route::post('/upload-image', [PostsController::class, 'uploadImage'])->name('upload-image');

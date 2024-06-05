@@ -1,163 +1,231 @@
 <template>
-    <div class="profile-container">
-        <h2>Profile</h2>
-        <form @submit.prevent="updateProfile" class="profile-form">
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" v-model="email" required />
+    <div class="container mt-4">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                        type="button" role="tab" aria-controls="profile" aria-selected="true">Thông tin
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="edit-tab" data-bs-toggle="tab" data-bs-target="#edit" type="button"
+                        role="tab" aria-controls="edit" aria-selected="false">Chỉnh sửa
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="change-password-tab" data-bs-toggle="tab" data-bs-target="#change-password"
+                        type="button"
+                        role="tab" aria-controls="change-password" aria-selected="false">Đổi mật khẩu
+                </button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5>Thông tin cá nhân</h5>
+                        <p>Họ tên: {{ name }}</p>
+                        <p>Email: {{ email }}</p>
+                        <!-- Thêm thông tin cá nhân khác tại đây -->
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="currentPassword">Current Password:</label>
-                <input type="password" id="currentPassword" v-model="currentPassword" required />
+            <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form id="formAccountSettings" method="POST" @submit.prevent="updateProfile"
+                              novalidate="novalidate">
+                            <div class="row">
+                                <div class="mb-3 col-md-12">
+                                    <div v-if="error" class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="name" class="form-label">Họ tên</label>
+                                    <input class="form-control" type="text" id="name" v-model="name" required/>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input class="form-control" type="email" id="email" v-model="email" required/>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <button type="submit" class="btn btn-primary me-2 waves-effect waves-light"
+                                        :class="{'btn-custom-disabled':btn}" :disabled="btn">
+                                    Lưu thay đổi
+                                    <div v-if="btn" class="spinner-border text-white spinner-custom" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="newPassword">New Password:</label>
-                <input type="password" id="newPassword" v-model="newPassword" required />
+            <div class="tab-pane fade" id="change-password" role="tabpanel" aria-labelledby="change-password-tab">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form id="formChangePassword" method="POST" @submit.prevent="changePassword"
+                              novalidate="novalidate">
+                            <div class="row">
+                                <div class="mb-3 col-md-12">
+                                    <div v-if="error" class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="currentPassword" class="form-label">Mật khẩu cũ</label>
+                                    <div class="input-group">
+                                        <input class="form-control" :type="!showPassword.currentPassword ?'password': 'text'" id="currentPassword"
+                                               v-model="currentPassword" required/>
+                                        <button class="btn btn-outline-secondary" type="button" @click="togglePassword('currentPassword')">
+                                            <i v-if="showPassword.currentPassword" class="fa fa-eye-slash"></i>
+                                            <i v-else class="fa fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="newPassword" class="form-label">Mật khẩu mới</label>
+                                    <div class="input-group">
+                                        <input class="form-control" :type="!showPassword.newPassword ?'password': 'text'" id="newPassword" v-model="newPassword"
+                                               required/>
+                                        <button class="btn btn-outline-secondary" type="button" @click="togglePassword('newPassword')">
+                                            <i v-if="showPassword.newPassword" class="fa fa-eye-slash"></i>
+                                            <i v-else class="fa fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="confirmNewPassword" class="form-label">Nhập lại mật khẩu mới</label>
+                                    <div class="input-group">
+                                        <input class="form-control" :type="!showPassword.confirmNewPassword ?'password': 'text'" id="confirmNewPassword"
+                                               v-model="confirmNewPassword" required/>
+                                        <button class="btn btn-outline-secondary" type="button" @click="togglePassword('confirmNewPassword')">
+                                            <i v-if="showPassword.confirmNewPassword" class="fa fa-eye-slash"></i>
+                                            <i v-else class="fa fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <button type="submit" class="btn btn-primary me-2 waves-effect waves-light"
+                                        :class="{'btn-custom-disabled':btn}" :disabled="btn">
+                                    Lưu thay đổi
+                                    <div v-if="btn" class="spinner-border text-white spinner-custom" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </button>
+                                <button type="reset" class="btn btn-secondary waves-effect">Hủy</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="confirmNewPassword">Confirm New Password:</label>
-                <input type="password" id="confirmNewPassword" v-model="confirmNewPassword" required />
-            </div>
-            <button type="submit" class="btn">Update Profile</button>
-        </form>
+        </div>
     </div>
 </template>
 
 <script>
+import {mapActions, mapGetters} from "vuex";
+
 export default {
     name: "Profile",
     data() {
         return {
+            name: "",
             email: "",
             currentPassword: "",
             newPassword: "",
-            confirmNewPassword: ""
+            confirmNewPassword: "",
+            error: "",
+            btn: false,
+            showPassword: {
+                currentPassword: false,
+                newPassword: false,
+                confirmNewPassword: false,
+            }
         };
     },
+    watch: {
+        userInfo: function (newValue) {
+            this.name = newValue.name;
+            this.email = newValue.email;
+        },
+        statusBtn: function (newValue) {
+            this.btn = newValue
+        }
+    },
+    computed: {
+        ...mapGetters('auth', ['userInfo', 'statusBtn']),
+    },
+    created() {
+        this.getUser();
+    },
     methods: {
-        async fetchProfile() {
-            try {
-                const response = await fetch('/api/profile');
-                const data = await response.json();
-                this.email = data.email;
-            } catch (error) {
-                console.error('An error occurred while fetching profile data.');
+        ...mapActions('auth', ['getUser', 'updateUser', 'changePass']),
+        togglePassword(field) {
+            this.showPassword[field] = !this.showPassword[field];
+        },
+        checkEmailFormat(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(this.email)) {
+                this.error = "Email không đúng định dạng.";
             }
         },
         async updateProfile() {
-            if (this.newPassword !== this.confirmNewPassword) {
-                alert('New passwords do not match.');
+            if (this.name === '' || this.email === '') {
+                this.error = "Vui lòng nhập đủ thông tin.";
                 return;
             }
-
-            try {
-                const response = await fetch('/api/profile', {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: this.email,
-                        currentPassword: this.currentPassword,
-                        newPassword: this.newPassword
-                    })
-                });
-                const result = await response.json();
-                if (result.success) {
-                    alert('Profile updated successfully!');
-                } else {
-                    alert('Failed to update profile.');
-                }
-            } catch (error) {
-                alert('An error occurred while updating your profile.');
+            this.checkEmailFormat(this.email);
+            await this.updateUser({data: {name: this.name, email: this.email}, toast: this.$toast})
+        },
+        async changePassword() {
+            if (this.newPassword !== this.confirmNewPassword) {
+                this.error = "Nhập lại mật khẩu mới không khớp !";
+                return;
             }
+            await this.changePass({
+                data: {
+                    current_password: this.currentPassword,
+                    new_password: this.newPassword,
+                    new_password_confirmation: this.confirmNewPassword
+                }, toast: this.$toast
+            })
         }
-    },
-    mounted() {
-        this.fetchProfile();
     }
 };
 </script>
 
 <style scoped>
-.profile-container {
-    max-width: 400px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    transition: all 0.3s ease;
+.container {
+    margin-top: 20px;
 }
 
-.profile-container:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.profile-container h2 {
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    color: #333333;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-}
-
-.profile-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-label {
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    color: #555555;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    color: #333333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none;
+.card {
+    margin-top: 20px;
 }
 
 .btn {
-    padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    margin-right: 10px;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.btn:hover {
-    background: linear-gradient(135deg, #0056b3, #003f7f);
-    transform: translateY(-2px);
+.spinner-custom {
+    width: 20px;
+    height: 20px;
 }
 
-.btn:active {
-    background: linear-gradient(135deg, #004080, #002d5f);
-    transform: translateY(0);
+.btn-custom-disabled {
+    opacity: 0.5;
+    user-select: none;
+}
+
+.btn-custom-disabled:hover {
+    opacity: 0.5 !important;
 }
 </style>

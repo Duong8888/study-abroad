@@ -11,6 +11,7 @@ export const API_ENDPOINT = {
         MENU : `/menu`,
         TEAM : `/team`,
         UNIVERSITY : `/university`,
+        PROFILE : `/profile`,
     },
     API_USER: {
         SEND_REQUEST : `${API}/consultation-request`,

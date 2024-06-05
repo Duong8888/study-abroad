@@ -4,7 +4,8 @@ import {API_ENDPOINT} from "@/store/api-endpoint.js";
 
 const state = {
     token: localStorage.getItem('authToken') || '',
-    // userId: [],
+    userInfo: [],
+    statusBtn: false,
 };
 
 const mutations = {
@@ -12,8 +13,14 @@ const mutations = {
         state.token = value.token;
         // state.userId = value.user_info.id;
     },
+    SET_USER(state, value) {
+        state.userInfo = value;
+    },
     CLEAR_TOKEN(state) {
         state.token = '';
+    },
+    SET_STATUS_BTN(state, value) {
+        state.statusBtn = value;
     },
 };
 
@@ -51,12 +58,70 @@ const actions = {
             dispatch('logout');
         }
     },
+
+    async getUser({commit}) {
+        try {
+            const response = await api.get(API_ENDPOINT.API_ADMIN.PROFILE)
+            const value = response.data;
+            commit('SET_USER', value);
+        } catch (e) {
+            console.log(e);
+        }
+    },
+
+    async updateUser({commit}, {data, toast}) {
+        try {
+            commit('SET_STATUS_BTN', true);
+            const response = await api.post(API_ENDPOINT.API_ADMIN.PROFILE,data)
+            const value = response.data;
+            if(value.success){
+                toast.open({
+                    message: response.data.message,
+                    type: 'success',
+                    position: 'top'
+                });
+                commit('SET_STATUS_BTN', false);
+            }
+        } catch (e) {
+            console.log(e);
+            commit('SET_STATUS_BTN', false);
+        }
+    },
+
+    async changePass({commit}, {data, toast}) {
+        try {
+            commit('SET_STATUS_BTN', true);
+            const response = await api.post(API_ENDPOINT.API_ADMIN.PROFILE+'/change-password',data)
+            const value = response.data;
+            if(value.success){
+                toast.open({
+                    message: response.data.message,
+                    type: 'success',
+                    position: 'top'
+                });
+            }else {
+                toast.open({
+                    message: response.data.message,
+                    type: 'error',
+                    position: 'top'
+                });
+            }
+            commit('SET_STATUS_BTN', false);
+        } catch (e) {
+            console.log(e);
+            commit('SET_STATUS_BTN', false);
+        }
+    },
+
+
+
 };
 
 const getters = {
     isAuthenticated: (state) => !!state.token,
     authToken: (state) => state.token,
-    // userId: (state) => state.userId,
+    userInfo: (state) => state.userInfo,
+    statusBtn: (state) => state.statusBtn,
 };
 
 export default {
