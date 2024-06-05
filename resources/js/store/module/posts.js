@@ -23,7 +23,7 @@ const actions = {
                 if(sort === 'limit'){
                     params.limit = sort;
                 }else {
-                    params.sort = sort;
+                    params.sort = JSON.stringify(sort);
                 }
             }
             const response = await api.get(API_ENDPOINT.API_ADMIN.POSTS,{ params });

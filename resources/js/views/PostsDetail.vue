@@ -92,14 +92,19 @@
                 </div>
             </div>
         </div>
+        <Posts :items="postsList" :title="title"></Posts>
     </section>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import Posts from '@/components/Posts.vue';
 
 export default {
     name: "PostsDetail",
+    components:{
+        Posts
+    },
     data() {
         return {
             postsDetail: {
@@ -111,10 +116,12 @@ export default {
                 post_type_id: '[{"id": 1, "name": "2"}]',
             },
             slug: null,
+            postsList: [],
+            title:"Bài viết liên quan",
         }
     },
     methods: {
-        ...mapActions('posts', ['getOnePost']),
+        ...mapActions('posts', ['getOnePost','fetchPost']),
         async getData(slug) {
             await this.getOnePost(slug);
         },
@@ -150,14 +157,25 @@ export default {
         }
     },
     computed: {
-        ...mapGetters('posts', ['posts']),
+        ...mapGetters('posts', ['posts','postsAll']),
     },
     watch: {
         posts: {
-            handler(newVal) {
+            async handler(newVal) {
                 this.postsDetail = newVal.data;
+                if(this.postsDetail?.post_type_id){
+                    var typeList = [];
+                    var data = JSON.parse(this.postsDetail?.post_type_id);
+                    for (var i = 0; i < data.length; i++){
+                        typeList.push(data[i].id);
+                    }
+                }
+                await this.fetchPost(typeList);
             },
             immediate: true
+        },
+        postsAll: function (newValue) {
+            this.postsList = newValue
         },
     },
     created() {

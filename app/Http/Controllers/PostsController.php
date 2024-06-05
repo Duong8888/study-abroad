@@ -19,7 +19,16 @@ class PostsController extends Controller
     {
         $data = Posts::query()->orderBy('id', 'desc')->get();
         if ($request->sort) {
-            $data = Posts::whereJsonContains('post_type_id', [['id' => intval($request->sort)]])->get();
+            $sortIds = json_decode($request->sort, true);
+            if (is_array($sortIds)) {
+                $data = Posts::where(function($query) use ($sortIds) {
+                    foreach ($sortIds as $sortId) {
+                        $query->orWhereJsonContains('post_type_id', [['id' => $sortId]]);
+                    }
+                })->get();
+            } else {
+                $data = Posts::whereJsonContains('post_type_id', [['id' => intval($request->sort)]])->get();
+            }
         }
         if ($request->limit) {
             $data = Posts::query()->orderBy('id', 'desc')->limit(10)->get();

@@ -5,7 +5,7 @@
                 <div class="col-lg-8">
                     <div class="sec-title2 mb-40">
                         <h2 class="title pb-25">
-                            Tin Tức và Sự Kiện
+                            {{title}}
                         </h2>
                     </div>
                 </div>
@@ -54,6 +54,10 @@ export default {
                 {title: 'Bài viết 5', description: 'Nội dung bài viết 5', avatar: '/assets/images/team/5.jpg'},
                 {title: 'Bài viết 6', description: 'Nội dung bài viết 6', avatar: '/assets/images/team/4.jpg'},
             ]
+        },
+        title:{
+            type: String,
+            default: "Tin Tức và Sự Kiện",
         }
     },
     methods: {
