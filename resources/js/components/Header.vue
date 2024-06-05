@@ -30,14 +30,14 @@
                                     </div>
                                     <nav class="rs-menu hidden-md">
                                         <ul class="nav-menu">
-                                            <li v-for="menu in menuItems.filter(item => item.parent_id === null)" :key="menu">
-                                                <a :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">
+                                            <li v-for="menu in menuItems.filter(item => item.parent_id === null)" :key="menu.id" :class="{ 'active-menu': isActiveMenu(menu) }">
+                                                <a class="mx-3 uppercase font-weight-bolder" :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">
                                                     {{menu.title}}
                                                     <svg v-if="getChildItems(menu.id).length > 0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z"></path></svg>
                                                 </a>
                                                 <ul class="sub-menu">
 <!--                                                    class="menu-item-has-children current-menu-item"-->
-                                                    <li v-for="child in getChildItems(menu.id)" :key="child">
+                                                    <li v-for="child in getChildItems(menu.id)" :key="child" :class="{ 'active-menu': isActiveMenu(child) }">
                                                         <a :href="child.url">{{child.title}}</a>
                                                     </li>
                                                 </ul>
@@ -162,18 +162,36 @@ export default {
             menuItems: [
                 {id: 1, title: 'Home', url: '/', parent_id: null},
             ],
+            currentUrl: ''
         }
     },
     mounted() {
         this.handleScroll();
         window.addEventListener('scroll', this.handleScroll);
         this.showMenu();
+        this.currentUrl = window.location.href;
+        console.log(this.currentUrl);
     },
     beforeDestroy() {
         window.removeEventListener('scroll', this.handleScroll);
     },
     computed:{
       ...mapGetters('menu',['menuAll']),
+        activeParent(){
+            return true;
+        },
+        isActiveMenu() {
+            return menu => {
+                if (menu.url === this.currentUrl) {
+                    return true;
+                }
+                const children = this.menuItems.filter(item => item.parent_id === menu.id);
+                if (children && children.length) {
+                    return children.some(child => child.url === this.currentUrl);
+                }
+                return false;
+            };
+        }
     },
     watch: {
         menuAll: function (newValue) {
@@ -231,5 +249,8 @@ export default {
 <style scoped>
 .normal-logo, .sticky-logo {
     transform: scale(5);
+}
+.active-menu{
+    border-bottom: 5px solid #ed1e24;
 }
 </style>

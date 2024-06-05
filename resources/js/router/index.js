@@ -19,6 +19,7 @@ import MenuManagement from "@/views/admin/MenuManagement.vue";
 import PostType from "@/views/admin/PostType.vue";
 import Team from "@/views/admin/Team.vue";
 import Universities from "@/views/admin/Universities.vue";
+import Profile from "@/views/admin/Profile.vue";
 
 const routes = [
 
@@ -115,6 +116,11 @@ const routes = [
                 path: 'team',
                 name: 'Team',
                 component: Team
+            },
+            {
+                path: 'profile',
+                name: 'Profile',
+                component: Profile
             },
         ]
     },

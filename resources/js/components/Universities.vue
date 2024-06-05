@@ -2,7 +2,7 @@
     <!-- Partner Start -->
     <div class="rs-partner main-home gray-bg2 pb-80 md-pt-70 md-pb-80">
         <div class="container">
-            <div class="sec-title text-center mb-60" v-if="showTitle">
+            <div class="sec-title text-center mb-60" v-if="showTitle && items.length > 0">
                 <h2 class="title title2 pb-13">
                     Các trường đại học <span style="color: #ed1e24">SMART EDU</span> liên kết
                 </h2>

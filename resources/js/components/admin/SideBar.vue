@@ -176,14 +176,14 @@
             </div>
         </li>
 
-        <li class="nav-item" @click="logoutBtn">
-            <router-link :to="{name:'Login'}">
-                <span class="nav-link">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
-                    <span>Logout</span>
-                </span>
-            </router-link>
-        </li>
+<!--        <li class="nav-item" @click="logoutBtn">-->
+<!--            <router-link :to="{name:'Login'}">-->
+<!--                <span class="nav-link">-->
+<!--                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>-->
+<!--                    <span>Logout</span>-->
+<!--                </span>-->
+<!--            </router-link>-->
+<!--        </li>-->
 
 
         <!-- Sidebar Toggler (Sidebar) -->
@@ -195,7 +195,7 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
+// import {mapActions} from "vuex";
 
 export default {
     name: "SideBar",
@@ -205,10 +205,10 @@ export default {
         }
     },
     methods: {
-        ...mapActions('auth', ['logout']),
-        logoutBtn() {
-            this.logout();
-        }
+        // ...mapActions('auth', ['logout']),
+        // logoutBtn() {
+        //     this.logout();
+        // }
     },
 }
 </script>

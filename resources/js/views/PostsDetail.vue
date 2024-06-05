@@ -1,5 +1,5 @@
 <template>
-    <section class="py-12 py-md-16 py-lg-24 position-relative pt-100 pb-100">
+    <section class="py-12 py-md-16 py-lg-24 position-relative pt-120 pb-100">
         <div class="position-absolute top-0 start-0 w-100 bg-primary-light">
             <div class="d-flex justify-content-center overflow-hidden pt-12 pt-lg-24 pb-44 pb-md-64 pb-lg-80">
                 <div class="flex-shrink-0 mt-n40 mt-sm-n6 me-6 rounded"

@@ -155,6 +155,11 @@ body {
     .swiper {
         height: auto;
     }
+    .image-wrap img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
 }
 
 @media (min-width: 992px) {

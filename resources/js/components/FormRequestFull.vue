@@ -1,5 +1,6 @@
 <template>
     <!-- Contact Section Start -->
+    <div id="form" style="height:100px"></div>
     <div class="rs-contact main-home gray-bg2 pb-80 md-pt-80 md-pb-80 index-form">
         <div class="container">
             <div class="row">
@@ -12,7 +13,10 @@
                     <div class="row">
                         <div class="col-md-6 pr-40 md-pr-15 md-mb-40">
                             <div class="images-map">
-                                <img src="@/assets/images/contact/map.jpg" alt="images">
+                                <div class="w-100">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d29791.850844462217!2d105.787858!3d21.033432!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4903f6e499%3A0xb7628e44bbaa27ac!2zNDUgUC4gVHLGsMahbmcgQ8O0bmcgR2lhaSwgROG7i2NoIFbhu41uZywgQ-G6p3UgR2nhuqV5LCBIw6AgTuG7mWksIFZpZXRuYW0!5e0!3m2!1sen!2sus!4v1717589240696!5m2!1sen!2sus" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+<!--                                <img src="@/assets/images/contact/map.jpg" alt="images">-->
                             </div>
                         </div>
                         <div class="col-md-6 md-pl-30 sm-pl-15">
@@ -130,6 +134,11 @@ export default {
 }
 .btn-custom-disabled:hover {
     opacity: 0.5 !important;
+}
+@media (max-width: 768px) {
+    #form {
+        height: 0px !important;
+    }
 }
 
 </style>

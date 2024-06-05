@@ -108,7 +108,7 @@ class PostsController extends Controller
                 'content' => 'required',
                 'slug' => [
                     'required',
-                    Rule::unique('posts')->ignore($data->id),
+                    Rule::unique('posts')->ignore($data->id,'id'),
                 ],
                 'category' => 'required',
                 'description' => 'required'

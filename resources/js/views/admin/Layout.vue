@@ -9,7 +9,6 @@
         <Header></Header>
     </div>
     <router-view></router-view>
-    <div id="form" style="height:100px"></div>
     <FormRequest @send-request="sendRequest" :statusBtn="statusBtn"></FormRequest>
     <Footer></Footer>
 </template>

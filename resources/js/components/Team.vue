@@ -1,7 +1,7 @@
 <template>
     <div id="rs-about" class="rs-about main-home pb-120 md-pt-80 md-pb-80 gray-bg2">
         <div class="container">
-            <div class="row" v-if="titleShow">
+            <div class="row" v-if="titleShow && items.length > 0">
                 <div class="col-lg-8">
                     <div class="sec-title2 mb-40">
                         <h2 class="title pb-25">

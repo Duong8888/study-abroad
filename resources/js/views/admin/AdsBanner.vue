@@ -1,5 +1,5 @@
 <template>
-    <div class="container rounded">
+    <div v-if="images.length > 0" class="container rounded">
         <div v-if="!formShow" class="sec-title text-center mb-60 md-mb-40">
             <h2 class="title title2 pb-13">
                 Một số hình ảnh của <span style="color: #ed1e24">SMARTEDU</span>
@@ -89,35 +89,6 @@ export default {
             const lightboxModal = new bootstrap.Modal(document.getElementById('lightbox-modal'));
             lightboxModal.show();
         },
-        nextSlide() {
-            this.currentIndex = (this.currentIndex + 1) % this.images.length;
-        },
-        prevSlide() {
-            this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
-        },
-        enterFS() {
-            const elem = document.querySelector('.lightbox-content');
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) {
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
-            }
-            document.querySelector('.btn-fullscreen-enlarge').classList.add('d-none');
-            document.querySelector('.btn-fullscreen-exit').classList.remove('d-none');
-        },
-        exitFS() {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-            document.querySelector('.btn-fullscreen-enlarge').classList.remove('d-none');
-            document.querySelector('.btn-fullscreen-exit').classList.add('d-none');
-        }
     }
 };
 </script>
