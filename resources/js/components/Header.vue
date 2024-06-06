@@ -28,7 +28,7 @@
                                     </div>
                                     <nav class="rs-menu hidden-md">
                                         <ul class="nav-menu">
-                                            <li v-for="menu in menuItems.filter(item => item.parent_id === null)" :class="{ 'active-menu': isActiveMenu(menu) }"
+                                            <li v-for="menu in menuItems.filter(item => item.parent_id == null)" :class="{ 'active-menu': isActiveMenu(menu) }"
                                                 :key="menu.id" >
                                                 <a style="font-weight: 900" class="mx-3 uppercase d-inline parent-menu"
                                                    :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">
@@ -140,7 +140,7 @@
                 </div>
                 <ul class="nav-menu">
                     <li class="menu-item-has-children has-sub"
-                        v-for="menu in menuItems.filter(item => item.parent_id === null)" :key="menu">
+                        v-for="menu in menuItems.filter(item => item.parent_id == null)" :key="menu">
                         <a :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">{{ menu.title }}</a>
                         <span v-if="(getChildItems(menu.id).length > 0)" @click="showItem"
                               class="submenu-button"></span>
@@ -190,12 +190,12 @@ export default {
         },
         isActiveMenu() {
             return menu => {
-                if (menu.url === this.currentUrl) {
+                if (menu.url == this.currentUrl) {
                     return true;
                 }
-                const children = this.menuItems.filter(item => item.parent_id === menu.id);
+                const children = this.menuItems.filter(item => item.parent_id == menu.id);
                 if (children && children.length) {
-                    return children.some(child => child.url === this.currentUrl);
+                    return children.some(child => child.url == this.currentUrl);
                 }
                 return false;
             };
@@ -218,7 +218,7 @@ export default {
         },
         showItem() {
             const subMenu = event.target.closest('.menu-item-has-children').querySelector('.sub-menu');
-            subMenu.style.display = (subMenu.style.display === 'block') ? 'none' : 'block';
+            subMenu.style.display = (subMenu.style.display == 'block') ? 'none' : 'block';
         },
         showMenu() {
             $('.mobile-menu, .line').on('click', function () {
