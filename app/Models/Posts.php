@@ -17,5 +17,7 @@ class Posts extends Model
         'post_type_id',
         'description',
         'slug',
+        'type',
+        'university_info'
     ];
 }

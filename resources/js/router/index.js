@@ -122,6 +122,11 @@ const routes = [
                 name: 'Profile',
                 component: Profile
             },
+            {
+                path: 'students-feelings',
+                name: 'StudentsFeelings',
+                component: Profile
+            },
         ]
     },
     {

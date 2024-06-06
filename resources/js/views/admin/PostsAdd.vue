@@ -151,7 +151,9 @@ export default {
     },
     watch: {
         title: function (newTitle) {
-            this.slug = this.createSlug(newTitle);
+            if(formType){
+                this.slug = this.createSlug(newTitle);
+            }
         },
         showData: {
             handler(newValue) {
@@ -217,7 +219,7 @@ export default {
         },
         validateForm() {
             this.errors = {};
-            const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+            const slugRegex = /^[a-z0-9đ]+(?:-[a-z0-9đ]+)*$/;
             if (!this.title) this.errors.title = "Vui lòng nhập tiêu đề.";
             if (!this.slug) {
                 this.errors.slug = "Vui lòng nhập slug.";

@@ -28,9 +28,9 @@
                                     </div>
                                     <nav class="rs-menu hidden-md">
                                         <ul class="nav-menu">
-                                            <li v-for="menu in menuItems.filter(item => item.parent_id === null)"
-                                                :key="menu.id" :class="{ 'active-menu': isActiveMenu(menu) }">
-                                                <a class="mx-3 uppercase font-weight-bolder"
+                                            <li v-for="menu in menuItems.filter(item => item.parent_id === null)" :class="{ 'active-menu': isActiveMenu(menu) }"
+                                                :key="menu.id" >
+                                                <a class="mx-3 uppercase font-weight-bolder d-inline parent-menu"
                                                    :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">
                                                     {{ menu.title }}
                                                     <svg v-if="getChildItems(menu.id).length > 0"
@@ -43,7 +43,7 @@
                                                     <!--                                                    class="menu-item-has-children current-menu-item"-->
                                                     <li v-for="child in getChildItems(menu.id)" :key="child"
                                                         :class="{ 'active-menu': isActiveMenu(child) }">
-                                                        <a class="uppercase" :href="child.url">{{ child.title }}</a>
+                                                        <a :href="child.url">{{ child.title }}</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -258,8 +258,18 @@ export default {
 .normal-logo, .sticky-logo {
     transform: scale(5);
 }
-
-.active-menu {
+.nav-menu > li:hover > .parent-menu{
+    color: #ed1e24 !important;
     border-bottom: 5px solid #ed1e24;
+}
+.nav-menu > li:hover > .parent-menu > svg{
+    fill: #ed1e24 !important;
+}
+.active-menu > .parent-menu{
+    border-bottom: 5px solid #ed1e24;
+}
+.active-menu > a, .active-menu svg{
+    color: #ed1e24 !important;
+    fill: #ed1e24 !important;
 }
 </style>
