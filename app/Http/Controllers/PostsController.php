@@ -56,7 +56,8 @@ class PostsController extends Controller
                 'slug' => 'required|unique:posts,slug',
                 'thumbnail' => 'required',
                 'category' => 'required',
-                'description' => 'required'
+                'description' => 'required',
+                'type' => 'required',
             ],[
                 'slug' => 'Slug này đã được sử dụng.'
             ]);
@@ -69,6 +70,8 @@ class PostsController extends Controller
                 'description' => $request->input('description'),
                 'author_id' => Auth::user()->id,
                 'post_type_id' => json_encode($request->input('category')),
+                'type' => $request->input('type'),
+                'university_info' => $request->input('contentUniversity',null),
             ]);
             return response()->json(['success' => true, 'message' => 'Create success.']);
         } catch (\Exception $e) {
@@ -113,7 +116,8 @@ class PostsController extends Controller
                     Rule::unique('posts')->ignore($data->id,'id'),
                 ],
                 'category' => 'required',
-                'description' => 'required'
+                'description' => 'required',
+                'type' => 'required',
             ],[
                 'slug' => 'Slug này đã được sử dụng.'
             ]);
@@ -124,6 +128,8 @@ class PostsController extends Controller
                 'description' => $request->input('description'),
                 'author_id' => Auth::user()->id,
                 'post_type_id' => json_encode($request->input('category')),
+                'type' => $request->input('type'),
+                'university_info' => $request->input('contentUniversity',null),
             ];
             if ($request->input('thumbnail')) {
                 $dataNew['thumbnail'] = $request->input('thumbnail');

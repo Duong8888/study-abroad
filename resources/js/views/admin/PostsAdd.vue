@@ -6,7 +6,9 @@ import Editor from '@tinymce/tinymce-vue';
     <div class="container">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">{{ formType ? "Tạo mới bài viết" : "Chỉnh sửa bài viết" }}</h6>
+                <h6 class="m-0 font-weight-bold text-primary">{{
+                        formType ? "Tạo mới bài viết" : "Chỉnh sửa bài viết"
+                    }}</h6>
             </div>
             <div class="row p-4">
                 <div class="col-12">
@@ -46,12 +48,26 @@ import Editor from '@tinymce/tinymce-vue';
                     </div>
                 </div>
             </div>
-            <main id="sample" class="p-4">
-                <label for="inputSlug" class="form-label mb-20">Content</label>
+            <main id="sample" class="p-4" style="padding-top: 0px !important;">
+                <label for="university" class="form-label mb-20 d-flex align-items-center">
+                    <span>Thông tin trường</span>
+                    <input style="margin-left: 5px; width: 15px;height: 15px;" :checked="subContent" v-model="subContent"
+                           type="checkbox" id="university">
+                </label>
+                <div v-show="subContent">
+                    <Editor
+                        v-model="contentUniversity"
+                        :api-key="apiKey"
+                        :init="{...editorConfig,height: 500}"
+                    />
+                </div>
+
+
+                <label for="inputSlug" class="form-label mb-20 mt-20">Nội dung bài</label>
                 <Editor
                     v-model="editorContent"
                     :api-key="apiKey"
-                    :init="editorConfig"
+                    :init="{...editorConfig,height: 800}"
                 />
                 <div v-if="errors.editorContent" class="text-danger">{{ errors.editorContent }}</div>
             </main>
@@ -111,7 +127,55 @@ export default {
             id: null,
             errors: {},
             globalError: '',
+            subContent: false,
+            contentUniversity:
+                `<div style="display: flex; border: 1px solid #ccc; padding: 20px; width: 100%; height: auto;box-sizing: border-box;">
+                    <div style="padding-right: 20px; width: 80%">
+                        <ul style="list-style-type: none; padding: 0;">
+                            <li style="padding-bottom: 15px; display: flex;align-items: center;line-height: 20px">
+                                <img width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAhBJREFUWEft1k1L3EAYB/D/kwg9VXA3C8WXWG3a9NKPUFZWwZPe7EE89FJEodBP0JdP4KUotLeeeit6VlhU9uJFBEHdaN3srZu4suzRZEo0KXGb7Ex2u2IhuYUJM7/555kXwj176J55kIJ4fyRNKE2IlwCv/f+sodqIPkgy61fOT46iZmipT6cUs7zJm71IOzehy1F9zHGdIggPXFnO534eH4c7tlXtE4D3xPA5UzXeigza7hsuyFa1AwAv/E5sAPmsaRx677URbVYirAcDMMKaUjGWu0FxQb+Gn2iyRDsAHvkDWQAmApStaisA3oUQXzOmsUgA6wTGBXmdeihJphIx5PxB6gBeBihrVFslhqUAQMC3AdN43QlKCOQNZD1+9hzM3Q6jJIkKA+fl/ev2f4QSBsWgGpJE+TgUiL5nKuX5JEklAsWhGHOnlOrZXlRSPmqBAEekphKDYlBNxtxCLIrRj0y1PCeC6ghUG9N1yXF2ASj+rJsgNp2tnJa8d1vVvgB48yeRa9DQK0LxipdSYlAUJpxONEYsHQ+bCBSBaYTr5y/MTVEL108iUBQmvMJiMIlWmDAoAlMP70GtmJ5ujBGY1qPjdgEDvT062h2uF6o2w4CNOz1cBa4fHwF8uLPrx801Qx9EHx623oWCZCx1fFIxz7Z4e4xIe6JlL9Jht9+kIF6CaUJpQrwEeO1pDfES+g1ZNQY0DySU7wAAAABJRU5ErkJggg=="/>
+                                <span style="font-weight: bold">Tên tiếng Hàn: </span>
+                            </li>
 
+                            <li style="padding-bottom: 15px; display: flex;align-items: center;line-height: 20px">
+                                <img width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAhBJREFUWEft1k1L3EAYB/D/kwg9VXA3C8WXWG3a9NKPUFZWwZPe7EE89FJEodBP0JdP4KUotLeeeit6VlhU9uJFBEHdaN3srZu4suzRZEo0KXGb7Ex2u2IhuYUJM7/555kXwj176J55kIJ4fyRNKE2IlwCv/f+sodqIPkgy61fOT46iZmipT6cUs7zJm71IOzehy1F9zHGdIggPXFnO534eH4c7tlXtE4D3xPA5UzXeigza7hsuyFa1AwAv/E5sAPmsaRx677URbVYirAcDMMKaUjGWu0FxQb+Gn2iyRDsAHvkDWQAmApStaisA3oUQXzOmsUgA6wTGBXmdeihJphIx5PxB6gBeBihrVFslhqUAQMC3AdN43QlKCOQNZD1+9hzM3Q6jJIkKA+fl/ev2f4QSBsWgGpJE+TgUiL5nKuX5JEklAsWhGHOnlOrZXlRSPmqBAEekphKDYlBNxtxCLIrRj0y1PCeC6ghUG9N1yXF2ASj+rJsgNp2tnJa8d1vVvgB48yeRa9DQK0LxipdSYlAUJpxONEYsHQ+bCBSBaYTr5y/MTVEL108iUBQmvMJiMIlWmDAoAlMP70GtmJ5ujBGY1qPjdgEDvT062h2uF6o2w4CNOz1cBa4fHwF8uLPrx801Qx9EHx623oWCZCx1fFIxz7Z4e4xIe6JlL9Jht9+kIF6CaUJpQrwEeO1pDfES+g1ZNQY0DySU7wAAAABJRU5ErkJggg=="/>
+                                <span style="font-weight: bold">Tên tiếng Anh: </span>
+                            </li>
+                            <li style="padding-bottom: 15px; display: flex;align-items: center;line-height: 20px">
+                                <img width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAhBJREFUWEft1k1L3EAYB/D/kwg9VXA3C8WXWG3a9NKPUFZWwZPe7EE89FJEodBP0JdP4KUotLeeeit6VlhU9uJFBEHdaN3srZu4suzRZEo0KXGb7Ex2u2IhuYUJM7/555kXwj176J55kIJ4fyRNKE2IlwCv/f+sodqIPkgy61fOT46iZmipT6cUs7zJm71IOzehy1F9zHGdIggPXFnO534eH4c7tlXtE4D3xPA5UzXeigza7hsuyFa1AwAv/E5sAPmsaRx677URbVYirAcDMMKaUjGWu0FxQb+Gn2iyRDsAHvkDWQAmApStaisA3oUQXzOmsUgA6wTGBXmdeihJphIx5PxB6gBeBihrVFslhqUAQMC3AdN43QlKCOQNZD1+9hzM3Q6jJIkKA+fl/ev2f4QSBsWgGpJE+TgUiL5nKuX5JEklAsWhGHOnlOrZXlRSPmqBAEekphKDYlBNxtxCLIrRj0y1PCeC6ghUG9N1yXF2ASj+rJsgNp2tnJa8d1vVvgB48yeRa9DQK0LxipdSYlAUJpxONEYsHQ+bCBSBaYTr5y/MTVEL108iUBQmvMJiMIlWmDAoAlMP70GtmJ5ujBGY1qPjdgEDvT062h2uF6o2w4CNOz1cBa4fHwF8uLPrx801Qx9EHx623oWCZCx1fFIxz7Z4e4xIe6JlL9Jht9+kIF6CaUJpQrwEeO1pDfES+g1ZNQY0DySU7wAAAABJRU5ErkJggg=="/>
+                                <span style="font-weight: bold">Đối tác tuyển sinh tại Việt Nam: </span>
+                            </li>
+                            <li style="padding-bottom: 15px; display: flex;align-items: center;line-height: 20px">
+                                <img width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAhBJREFUWEft1k1L3EAYB/D/kwg9VXA3C8WXWG3a9NKPUFZWwZPe7EE89FJEodBP0JdP4KUotLeeeit6VlhU9uJFBEHdaN3srZu4suzRZEo0KXGb7Ex2u2IhuYUJM7/555kXwj176J55kIJ4fyRNKE2IlwCv/f+sodqIPkgy61fOT46iZmipT6cUs7zJm71IOzehy1F9zHGdIggPXFnO534eH4c7tlXtE4D3xPA5UzXeigza7hsuyFa1AwAv/E5sAPmsaRx677URbVYirAcDMMKaUjGWu0FxQb+Gn2iyRDsAHvkDWQAmApStaisA3oUQXzOmsUgA6wTGBXmdeihJphIx5PxB6gBeBihrVFslhqUAQMC3AdN43QlKCOQNZD1+9hzM3Q6jJIkKA+fl/ev2f4QSBsWgGpJE+TgUiL5nKuX5JEklAsWhGHOnlOrZXlRSPmqBAEekphKDYlBNxtxCLIrRj0y1PCeC6ghUG9N1yXF2ASj+rJsgNp2tnJa8d1vVvgB48yeRa9DQK0LxipdSYlAUJpxONEYsHQ+bCBSBaYTr5y/MTVEL108iUBQmvMJiMIlWmDAoAlMP70GtmJ5ujBGY1qPjdgEDvT062h2uF6o2w4CNOz1cBa4fHwF8uLPrx801Qx9EHx623oWCZCx1fFIxz7Z4e4xIe6JlL9Jht9+kIF6CaUJpQrwEeO1pDfES+g1ZNQY0DySU7wAAAABJRU5ErkJggg=="/>
+                                <span style="font-weight: bold">Năm thành lập: </span>
+                            </li>
+                            <li style="padding-bottom: 15px; display: flex;align-items: center;line-height: 20px">
+                                <img width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAhBJREFUWEft1k1L3EAYB/D/kwg9VXA3C8WXWG3a9NKPUFZWwZPe7EE89FJEodBP0JdP4KUotLeeeit6VlhU9uJFBEHdaN3srZu4suzRZEo0KXGb7Ex2u2IhuYUJM7/555kXwj176J55kIJ4fyRNKE2IlwCv/f+sodqIPkgy61fOT46iZmipT6cUs7zJm71IOzehy1F9zHGdIggPXFnO534eH4c7tlXtE4D3xPA5UzXeigza7hsuyFa1AwAv/E5sAPmsaRx677URbVYirAcDMMKaUjGWu0FxQb+Gn2iyRDsAHvkDWQAmApStaisA3oUQXzOmsUgA6wTGBXmdeihJphIx5PxB6gBeBihrVFslhqUAQMC3AdN43QlKCOQNZD1+9hzM3Q6jJIkKA+fl/ev2f4QSBsWgGpJE+TgUiL5nKuX5JEklAsWhGHOnlOrZXlRSPmqBAEekphKDYlBNxtxCLIrRj0y1PCeC6ghUG9N1yXF2ASj+rJsgNp2tnJa8d1vVvgB48yeRa9DQK0LxipdSYlAUJpxONEYsHQ+bCBSBaYTr5y/MTVEL108iUBQmvMJiMIlWmDAoAlMP70GtmJ5ujBGY1qPjdgEDvT062h2uF6o2w4CNOz1cBa4fHwF8uLPrx801Qx9EHx623oWCZCx1fFIxz7Z4e4xIe6JlL9Jht9+kIF6CaUJpQrwEeO1pDfES+g1ZNQY0DySU7wAAAABJRU5ErkJggg=="/>
+                                <span style="font-weight: bold">Số lượng sinh viên: </span>
+                            </li>
+                            <li style="padding-bottom: 15px; display: flex;align-items: center;line-height: 20px">
+                                <img width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAhBJREFUWEft1k1L3EAYB/D/kwg9VXA3C8WXWG3a9NKPUFZWwZPe7EE89FJEodBP0JdP4KUotLeeeit6VlhU9uJFBEHdaN3srZu4suzRZEo0KXGb7Ex2u2IhuYUJM7/555kXwj176J55kIJ4fyRNKE2IlwCv/f+sodqIPkgy61fOT46iZmipT6cUs7zJm71IOzehy1F9zHGdIggPXFnO534eH4c7tlXtE4D3xPA5UzXeigza7hsuyFa1AwAv/E5sAPmsaRx677URbVYirAcDMMKaUjGWu0FxQb+Gn2iyRDsAHvkDWQAmApStaisA3oUQXzOmsUgA6wTGBXmdeihJphIx5PxB6gBeBihrVFslhqUAQMC3AdN43QlKCOQNZD1+9hzM3Q6jJIkKA+fl/ev2f4QSBsWgGpJE+TgUiL5nKuX5JEklAsWhGHOnlOrZXlRSPmqBAEekphKDYlBNxtxCLIrRj0y1PCeC6ghUG9N1yXF2ASj+rJsgNp2tnJa8d1vVvgB48yeRa9DQK0LxipdSYlAUJpxONEYsHQ+bCBSBaYTr5y/MTVEL108iUBQmvMJiMIlWmDAoAlMP70GtmJ5ujBGY1qPjdgEDvT062h2uF6o2w4CNOz1cBa4fHwF8uLPrx801Qx9EHx623oWCZCx1fFIxz7Z4e4xIe6JlL9Jht9+kIF6CaUJpQrwEeO1pDfES+g1ZNQY0DySU7wAAAABJRU5ErkJggg=="/>
+                                <span style="font-weight: bold">Học phí tiếng Hàn: </span>
+                            </li>
+                            <li style="padding-bottom: 15px; display: flex;align-items: center;line-height: 20px">
+                                <img width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAhBJREFUWEft1k1L3EAYB/D/kwg9VXA3C8WXWG3a9NKPUFZWwZPe7EE89FJEodBP0JdP4KUotLeeeit6VlhU9uJFBEHdaN3srZu4suzRZEo0KXGb7Ex2u2IhuYUJM7/555kXwj176J55kIJ4fyRNKE2IlwCv/f+sodqIPkgy61fOT46iZmipT6cUs7zJm71IOzehy1F9zHGdIggPXFnO534eH4c7tlXtE4D3xPA5UzXeigza7hsuyFa1AwAv/E5sAPmsaRx677URbVYirAcDMMKaUjGWu0FxQb+Gn2iyRDsAHvkDWQAmApStaisA3oUQXzOmsUgA6wTGBXmdeihJphIx5PxB6gBeBihrVFslhqUAQMC3AdN43QlKCOQNZD1+9hzM3Q6jJIkKA+fl/ev2f4QSBsWgGpJE+TgUiL5nKuX5JEklAsWhGHOnlOrZXlRSPmqBAEekphKDYlBNxtxCLIrRj0y1PCeC6ghUG9N1yXF2ASj+rJsgNp2tnJa8d1vVvgB48yeRa9DQK0LxipdSYlAUJpxONEYsHQ+bCBSBaYTr5y/MTVEL108iUBQmvMJiMIlWmDAoAlMP70GtmJ5ujBGY1qPjdgEDvT062h2uF6o2w4CNOz1cBa4fHwF8uLPrx801Qx9EHx623oWCZCx1fFIxz7Z4e4xIe6JlL9Jht9+kIF6CaUJpQrwEeO1pDfES+g1ZNQY0DySU7wAAAABJRU5ErkJggg=="/>
+                                <span style="font-weight: bold">Ký túc xá: </span>
+                            </li>
+                            <li style="padding-bottom: 15px; display: flex;align-items: center;line-height: 20px">
+                                <img width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAhBJREFUWEft1k1L3EAYB/D/kwg9VXA3C8WXWG3a9NKPUFZWwZPe7EE89FJEodBP0JdP4KUotLeeeit6VlhU9uJFBEHdaN3srZu4suzRZEo0KXGb7Ex2u2IhuYUJM7/555kXwj176J55kIJ4fyRNKE2IlwCv/f+sodqIPkgy61fOT46iZmipT6cUs7zJm71IOzehy1F9zHGdIggPXFnO534eH4c7tlXtE4D3xPA5UzXeigza7hsuyFa1AwAv/E5sAPmsaRx677URbVYirAcDMMKaUjGWu0FxQb+Gn2iyRDsAHvkDWQAmApStaisA3oUQXzOmsUgA6wTGBXmdeihJphIx5PxB6gBeBihrVFslhqUAQMC3AdN43QlKCOQNZD1+9hzM3Q6jJIkKA+fl/ev2f4QSBsWgGpJE+TgUiL5nKuX5JEklAsWhGHOnlOrZXlRSPmqBAEekphKDYlBNxtxCLIrRj0y1PCeC6ghUG9N1yXF2ASj+rJsgNp2tnJa8d1vVvgB48yeRa9DQK0LxipdSYlAUJpxONEYsHQ+bCBSBaYTr5y/MTVEL108iUBQmvMJiMIlWmDAoAlMP70GtmJ5ujBGY1qPjdgEDvT062h2uF6o2w4CNOz1cBa4fHwF8uLPrx801Qx9EHx623oWCZCx1fFIxz7Z4e4xIe6JlL9Jht9+kIF6CaUJpQrwEeO1pDfES+g1ZNQY0DySU7wAAAABJRU5ErkJggg=="/>
+                                <span style="font-weight: bold">Địa chỉ: </span>
+                            </li>
+                            <li style="padding-bottom: 15px; display: flex;align-items: center;line-height: 20px">
+                                <img width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAhBJREFUWEft1k1L3EAYB/D/kwg9VXA3C8WXWG3a9NKPUFZWwZPe7EE89FJEodBP0JdP4KUotLeeeit6VlhU9uJFBEHdaN3srZu4suzRZEo0KXGb7Ex2u2IhuYUJM7/555kXwj176J55kIJ4fyRNKE2IlwCv/f+sodqIPkgy61fOT46iZmipT6cUs7zJm71IOzehy1F9zHGdIggPXFnO534eH4c7tlXtE4D3xPA5UzXeigza7hsuyFa1AwAv/E5sAPmsaRx677URbVYirAcDMMKaUjGWu0FxQb+Gn2iyRDsAHvkDWQAmApStaisA3oUQXzOmsUgA6wTGBXmdeihJphIx5PxB6gBeBihrVFslhqUAQMC3AdN43QlKCOQNZD1+9hzM3Q6jJIkKA+fl/ev2f4QSBsWgGpJE+TgUiL5nKuX5JEklAsWhGHOnlOrZXlRSPmqBAEekphKDYlBNxtxCLIrRj0y1PCeC6ghUG9N1yXF2ASj+rJsgNp2tnJa8d1vVvgB48yeRa9DQK0LxipdSYlAUJpxONEYsHQ+bCBSBaYTr5y/MTVEL108iUBQmvMJiMIlWmDAoAlMP70GtmJ5ujBGY1qPjdgEDvT062h2uF6o2w4CNOz1cBa4fHwF8uLPrx801Qx9EHx623oWCZCx1fFIxz7Z4e4xIe6JlL9Jht9+kIF6CaUJpQrwEeO1pDfES+g1ZNQY0DySU7wAAAABJRU5ErkJggg=="/>
+                                <span style="font-weight: bold">Website: </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: space-between; width: 20%">
+                        <img src="https://via.placeholder.com/150" alt="Image 1" style="align-self: flex-end;">
+                        <img src="https://via.placeholder.com/150" alt="Image 2" style="align-self: flex-end;">
+                    </div>
+                </div>`,
             apiKey: 'g00klohzu757d7qwuw6rupo7nuezdho9d9j9hcr083mmkpy1',
             editorConfig: {
                 plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
@@ -144,27 +208,31 @@ export default {
                     input.click();
                 },
                 content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }',
-                tinycomments_mode: 'embedded',
-                tinycomments_author: 'Author name',
+                // tinycomments_mode: 'embedded',
+                // tinycomments_author: 'Author name',
             }
         };
     },
     watch: {
         title: function (newTitle) {
-            if(formType){
+            if (this.formType) {
                 this.slug = this.createSlug(newTitle);
             }
         },
         showData: {
             handler(newValue) {
                 if (newValue && newValue.data) {
-                    const {title, slug, thumbnail, content, description, post_type_id} = newValue.data;
+                    const {title, slug, thumbnail, content, description, post_type_id, type, university_info} = newValue.data;
+                    this.subContent = (type == "0") ? false : true;
                     this.title = title;
                     this.slug = slug;
                     this.value = JSON.parse(post_type_id);
                     this.imageUrl = thumbnail;
                     this.editorContent = content;
                     this.description = description;
+                    if(this.subContent){
+                        this.contentUniversity = university_info;
+                    }
                 }
             },
             deep: true,
@@ -242,11 +310,11 @@ export default {
         getDetailPosts(id) {
             this.getOnePost(id);
         },
-        actionBtn(data){
-            if (this.validateForm()){
-                if (this.formType){
+        actionBtn(data) {
+            if (this.validateForm()) {
+                if (this.formType) {
                     this.addNewPosts(data);
-                }else {
+                } else {
                     this.updatePosts(data);
                 }
             } else {
@@ -283,6 +351,8 @@ export default {
                 thumbnail: this.thumbnail,
                 category: this.value,
                 content: this.editorContent,
+                type: this.subContent,
+                contentUniversity: this.subContent ? this.contentUniversity: "",
                 description: this.description,
                 id: this.id
             }
@@ -311,6 +381,7 @@ export default {
     border: 4px dashed #cccc;
     border-radius: 10px;
 }
+
 .text-danger {
     color: red;
 }

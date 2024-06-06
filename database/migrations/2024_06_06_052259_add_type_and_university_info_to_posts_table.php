@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->string('type')->nullable();
-            $table->json('university_info')->nullable();
+            $table->longText('university_info')->nullable();
         });
     }
 

@@ -88,6 +88,7 @@
                 </div>
                 <div class="my-12 border-bottom"></div>
                 <div class="mw-4xl mx-auto show-content container">
+                    <div class="my-5" v-html="postsDetail?.university_info"></div>
                     <div v-html="postsDetail?.content"></div>
                 </div>
             </div>
