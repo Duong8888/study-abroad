@@ -43,7 +43,7 @@
                                                     <!--                                                    class="menu-item-has-children current-menu-item"-->
                                                     <li v-for="child in getChildItems(menu.id)" :key="child"
                                                         :class="{ 'active-menu': isActiveMenu(child) }">
-                                                        <a :href="child.url">{{ child.title }}</a>
+                                                        <a :href="child.url" class="child-menu">{{ child.title }}</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -272,8 +272,12 @@ export default {
 }
 .active-menu > .parent-menu{
     border-bottom: 5px solid #ed1e24;
+    color: #ed1e24 !important;
 }
-.active-menu > a, .active-menu svg{
+.active-menu > .parent-menu svg{
+    fill: #ed1e24 !important;
+}
+.active-menu > .child-menu, .child-menu svg{
     color: #ed1e24 !important;
     fill: #ed1e24 !important;
 }
