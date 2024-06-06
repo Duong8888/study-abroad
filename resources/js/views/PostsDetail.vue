@@ -93,6 +93,7 @@
                 </div>
             </div>
         </div>
+
         <Posts :items="postsList" :title="title"></Posts>
     </section>
 </template>
