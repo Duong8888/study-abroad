@@ -43,6 +43,12 @@ const actions = {
                     position: 'top'
                 });
                 await router.push({name: 'Posts'});
+            } else {
+                toast.open({
+                    message: response.data.message,
+                    type: 'error',
+                    position: 'top'
+                });
             }
         } catch (error) {
             console.error('Error add posts:', error);
@@ -64,6 +70,12 @@ const actions = {
                     position: 'top'
                 });
                 await router.push({name: 'Posts'});
+            } else {
+                toast.open({
+                    message: response.data.message,
+                    type: 'error',
+                    position: 'top'
+                });
             }
         } catch (error) {
             console.error('Error add posts:', error);

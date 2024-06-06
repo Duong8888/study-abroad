@@ -103,7 +103,14 @@ footer{
     background-image: url("../assets/images/bg/footer-bg4.jpg") !important;
 }
 p, a, .widget-title{
+    color: #101010 !important;
+    font-weight: bold;
+    margin-bottom: 5px !important;
+}
+.widget-title{
     color: #ed1e24 !important;
+    text-transform: uppercase;
+    margin-bottom: 60px !important;
 }
 .footer-social li a:hover{
     color: white!important;

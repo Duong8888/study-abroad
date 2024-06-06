@@ -8,14 +8,12 @@
                 <div class="container-fluid">
                     <div class="row custom-row">
                         <div class="col-cell">
-                            <router-link :to="{name:'Home'}">
-                                <div class="logo-area">
-                                    <a href="#">
-                                        <img class="normal-logo" src="@/assets/images/common/logo.png" alt="logo">
-                                        <img class="sticky-logo" src="@/assets/images/common/logo.png" alt="logo">
-                                    </a>
-                                </div>
-                            </router-link>
+                            <div class="logo-area">
+                                <a href="/">
+                                    <img class="normal-logo" src="@/assets/images/common/logo.png" alt="logo">
+                                    <img class="sticky-logo" src="@/assets/images/common/logo.png" alt="logo">
+                                </a>
+                            </div>
                         </div>
                         <div class="col-cell">
                             <div class="rs-menu-area">
@@ -30,15 +28,22 @@
                                     </div>
                                     <nav class="rs-menu hidden-md">
                                         <ul class="nav-menu">
-                                            <li v-for="menu in menuItems.filter(item => item.parent_id === null)" :key="menu.id" :class="{ 'active-menu': isActiveMenu(menu) }">
-                                                <a class="mx-3 uppercase font-weight-bolder" :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">
-                                                    {{menu.title}}
-                                                    <svg v-if="getChildItems(menu.id).length > 0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z"></path></svg>
+                                            <li v-for="menu in menuItems.filter(item => item.parent_id === null)"
+                                                :key="menu.id" :class="{ 'active-menu': isActiveMenu(menu) }">
+                                                <a class="mx-3 uppercase font-weight-bolder"
+                                                   :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">
+                                                    {{ menu.title }}
+                                                    <svg v-if="getChildItems(menu.id).length > 0"
+                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z"></path>
+                                                    </svg>
                                                 </a>
                                                 <ul class="sub-menu">
-<!--                                                    class="menu-item-has-children current-menu-item"-->
-                                                    <li v-for="child in getChildItems(menu.id)" :key="child" :class="{ 'active-menu': isActiveMenu(child) }">
-                                                        <a :href="child.url">{{child.title}}</a>
+                                                    <!--                                                    class="menu-item-has-children current-menu-item"-->
+                                                    <li v-for="child in getChildItems(menu.id)" :key="child"
+                                                        :class="{ 'active-menu': isActiveMenu(child) }">
+                                                        <a class="uppercase" :href="child.url">{{ child.title }}</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -134,11 +139,14 @@
                     </a>
                 </div>
                 <ul class="nav-menu">
-                    <li class="menu-item-has-children has-sub" v-for="menu in menuItems.filter(item => item.parent_id === null)" :key="menu">
-                        <a :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">{{menu.title}}</a>
-                        <span v-if="(getChildItems(menu.id).length > 0)" @click="showItem" class="submenu-button"></span>
+                    <li class="menu-item-has-children has-sub"
+                        v-for="menu in menuItems.filter(item => item.parent_id === null)" :key="menu">
+                        <a :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">{{ menu.title }}</a>
+                        <span v-if="(getChildItems(menu.id).length > 0)" @click="showItem"
+                              class="submenu-button"></span>
                         <ul class="sub-menu">
-                            <li v-for="child in getChildItems(menu.id)" :key="child"><a :href="child.url">{{child.title}}</a></li>
+                            <li v-for="child in getChildItems(menu.id)" :key="child"><a
+                                :href="child.url">{{ child.title }}</a></li>
                         </ul>
                     </li>
                 </ul> <!-- //.nav-menu -->
@@ -175,9 +183,9 @@ export default {
     beforeDestroy() {
         window.removeEventListener('scroll', this.handleScroll);
     },
-    computed:{
-      ...mapGetters('menu',['menuAll']),
-        activeParent(){
+    computed: {
+        ...mapGetters('menu', ['menuAll']),
+        activeParent() {
             return true;
         },
         isActiveMenu() {
@@ -195,7 +203,7 @@ export default {
     },
     watch: {
         menuAll: function (newValue) {
-            if(newValue.length > 0){
+            if (newValue.length > 0) {
                 this.menuItems = newValue;
             }
         },
@@ -204,7 +212,7 @@ export default {
         this.fetchMenu();
     },
     methods: {
-        ...mapActions('menu',['fetchMenu']),
+        ...mapActions('menu', ['fetchMenu']),
         getChildItems(parentId) {
             return this.menuItems.filter(item => item.parent_id == parentId);
         },
@@ -250,7 +258,8 @@ export default {
 .normal-logo, .sticky-logo {
     transform: scale(5);
 }
-.active-menu{
+
+.active-menu {
     border-bottom: 5px solid #ed1e24;
 }
 </style>

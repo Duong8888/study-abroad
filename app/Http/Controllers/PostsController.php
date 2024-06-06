@@ -57,6 +57,8 @@ class PostsController extends Controller
                 'thumbnail' => 'required',
                 'category' => 'required',
                 'description' => 'required'
+            ],[
+                'slug' => 'Slug này đã được sử dụng.'
             ]);
 
             Posts::create([
@@ -70,7 +72,7 @@ class PostsController extends Controller
             ]);
             return response()->json(['success' => true, 'message' => 'Create success.']);
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
         }
     }
 
@@ -112,6 +114,8 @@ class PostsController extends Controller
                 ],
                 'category' => 'required',
                 'description' => 'required'
+            ],[
+                'slug' => 'Slug này đã được sử dụng.'
             ]);
             $dataNew = [
                 'title' => $request->input('title'),
@@ -128,7 +132,7 @@ class PostsController extends Controller
             return response()->json(['success' => true, 'message' => 'Update success.']);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
-            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
         }
     }
 

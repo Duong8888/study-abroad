@@ -6,23 +6,25 @@ import Editor from '@tinymce/tinymce-vue';
     <div class="container">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">{{ formType ? "Create posts" : "Edit posts" }}</h6>
+                <h6 class="m-0 font-weight-bold text-primary">{{ formType ? "Tạo mới bài viết" : "Chỉnh sửa bài viết" }}</h6>
             </div>
             <div class="row p-4">
                 <div class="col-12">
                     <div class="w-100">
-                        <label for="inputTitle" class="form-label">Title</label>
-                        <input type="text" class="form-control mb-20" id="inputTitle" placeholder="Title"
+                        <label for="inputTitle" class="form-label mt-20">Tiêu đề</label>
+                        <input type="text" class="form-control" id="inputTitle" placeholder="Title"
                                v-model="title" aria-label="Title">
+                        <div v-if="errors.title" class="text-danger">{{ errors.title }}</div>
                     </div>
                     <div class="w-100">
-                        <label for="inputSlug" class="form-label">Slug</label>
-                        <input type="text" class="form-control mb-20" id="inputSlug" placeholder="Slug"
+                        <label for="inputSlug" class="form-label mt-20">Slug</label>
+                        <input type="text" class="form-control" id="inputSlug" placeholder="Slug"
                                v-model="slug"
                                aria-label="Slug">
+                        <div v-if="errors.slug" class="text-danger">{{ errors.slug }}</div>
                     </div>
                     <div class="w-100 mb-20">
-                        <label for="inputSlug" class="form-label">Category</label>
+                        <label for="inputSlug" class="form-label mt-20">Danh mục bài viết</label>
                         <Multiselect class="form-label"
                                      v-model="value"
                                      mode="tags"
@@ -33,12 +35,14 @@ import Editor from '@tinymce/tinymce-vue';
                                      :taggable="true"
                                      label="label"
                         />
+                        <div v-if="errors.category" class="text-danger">{{ errors.category }}</div>
                     </div>
 
                     <div class="w-100 mb-20">
-                        <label for="inputSlug" class="form-label ">Description</label>
+                        <label for="inputSlug" class="form-label">Mô tả ngắn</label>
                         <textarea name="description" v-model="description" placeholder="Description"
                                   class="form-control"></textarea>
+                        <div v-if="errors.description" class="text-danger">{{ errors.description }}</div>
                     </div>
                 </div>
             </div>
@@ -49,6 +53,7 @@ import Editor from '@tinymce/tinymce-vue';
                     :api-key="apiKey"
                     :init="editorConfig"
                 />
+                <div v-if="errors.editorContent" class="text-danger">{{ errors.editorContent }}</div>
             </main>
             <div class="col-12">
                 <input hidden type="file" class="form-control" id="imageInput" ref="imageInput"
@@ -67,12 +72,18 @@ import Editor from '@tinymce/tinymce-vue';
                     </p>
                     <img v-if="imageUrl" :src="imageUrl" class="" alt="Preview" style="max-width: 100%">
                 </label>
+                <div v-if="errors.imageUrl" class="text-danger">{{ errors.imageUrl }}</div>
+            </div>
+            <div class="col-12 py-4 d-flex justify-content-end">
+                <div class="alert alert-danger w-100" role="alert" v-if="globalError">
+                    {{ globalError }}
+                </div>
             </div>
             <div class="col-12 py-4 d-flex justify-content-end">
                 <router-link :to="{name:'Posts'}">
-                    <button class="btn btn-light mx-1">Cancel</button>
+                    <button class="btn btn-light mx-1">Hủy</button>
                 </router-link>
-                <button class="btn btn-primary" @click="actionBtn(getData)">{{ formType ? "Save" : "Update" }}
+                <button class="btn btn-primary" @click="actionBtn(getData)">{{ formType ? "Lưu" : "Cập nhật" }}
                 </button>
             </div>
         </div>
@@ -98,13 +109,13 @@ export default {
             editorContent: null,
             formType: true,
             id: null,
+            errors: {},
+            globalError: '',
 
             apiKey: 'g00klohzu757d7qwuw6rupo7nuezdho9d9j9hcr083mmkpy1',
             editorConfig: {
                 plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
                 toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-                // plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-                // toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
                 image_title: true,
                 automatic_uploads: true,
                 file_picker_types: 'image',
@@ -204,7 +215,22 @@ export default {
                 reader.readAsDataURL(file);
             }
         },
+        validateForm() {
+            this.errors = {};
+            const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+            if (!this.title) this.errors.title = "Vui lòng nhập tiêu đề.";
+            if (!this.slug) {
+                this.errors.slug = "Vui lòng nhập slug.";
+            } else if (!slugRegex.test(this.slug)) {
+                this.errors.slug = "Slug không hợp lệ. Chỉ chấp nhận chữ thường, số và dấu gạch ngang.";
+            }
+            if (!this.value.length) this.errors.category = "Vui lòng chọn danh mục.";
+            if (!this.description) this.errors.description = "Vui lòng nhập mô tả.";
+            if (!this.editorContent) this.errors.editorContent = "Vui lòng nhập nội dung.";
+            if (!this.imageUrl) this.errors.imageUrl = "Vui lòng chọn ảnh.";
 
+            return Object.keys(this.errors).length === 0;
+        },
         addNewPosts(data) {
             this.addPost({data: data, toast: this.$toast})
         },
@@ -215,10 +241,14 @@ export default {
             this.getOnePost(id);
         },
         actionBtn(data){
-            if (this.formType){
-                this.addNewPosts(data);
-            }else {
-                this.updatePosts(data);
+            if (this.validateForm()){
+                if (this.formType){
+                    this.addNewPosts(data);
+                }else {
+                    this.updatePosts(data);
+                }
+            } else {
+                this.globalError = "Vui lòng điền đầy đủ thông tin.";
             }
         }
     },
@@ -278,5 +308,8 @@ export default {
     height: 200px;
     border: 4px dashed #cccc;
     border-radius: 10px;
+}
+.text-danger {
+    color: red;
 }
 </style>
