@@ -111,6 +111,7 @@ p, a, .widget-title{
     color: #ed1e24 !important;
     text-transform: uppercase;
     margin-bottom: 60px !important;
+    font-weight: 900 !important;
 }
 .footer-social li a:hover{
     color: white!important;

@@ -30,7 +30,7 @@
                                         <ul class="nav-menu">
                                             <li v-for="menu in menuItems.filter(item => item.parent_id === null)" :class="{ 'active-menu': isActiveMenu(menu) }"
                                                 :key="menu.id" >
-                                                <a class="mx-3 uppercase font-weight-bolder d-inline parent-menu"
+                                                <a style="font-weight: 900" class="mx-3 uppercase d-inline parent-menu"
                                                    :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">
                                                     {{ menu.title }}
                                                     <svg v-if="getChildItems(menu.id).length > 0"
@@ -258,6 +258,11 @@ export default {
 .normal-logo, .sticky-logo {
     transform: scale(5);
 }
+.nav-menu > li a, .nav-menu > li svg{
+    color: #666 !important;
+    fill: #666 !important;
+}
+
 .nav-menu > li:hover > .parent-menu{
     color: #ed1e24 !important;
     border-bottom: 5px solid #ed1e24;
