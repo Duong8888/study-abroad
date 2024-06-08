@@ -11,6 +11,14 @@
     <router-view></router-view>
     <FormRequest @send-request="sendRequest" :statusBtn="statusBtn"></FormRequest>
     <Footer></Footer>
+    <div class="social-icon">
+        <a href="https://www.facebook.com/profile.php?id=61555208818668" target="_blank">
+            <img src="@/assets/images/common/Facebook.png">
+        </a>
+        <a href="https://zalo.me/0328021619" target="_blank">
+            <img src="@/assets/images/common/Logo-zalo.svg">
+        </a>
+    </div>
 </template>
 
 <script>
@@ -68,3 +76,26 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+.social-icon{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+.social-icon img{
+    width: 50px;
+    height: 50px;
+    margin: 10px 0px;
+}
+@media (max-width: 767px) {
+    .social-icon {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+</style>

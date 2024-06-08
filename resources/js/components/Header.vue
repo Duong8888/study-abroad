@@ -270,6 +270,17 @@ export default {
 .nav-menu > li:hover > .parent-menu > svg{
     fill: #ed1e24 !important;
 }
+
+.sub-menu{
+    padding: 0px !important;
+}
+.sub-menu > li > a{
+    border-bottom: 1px solid #f2f2f2;
+}
+.sub-menu > li:hover > a{
+    color: #ed1e24 !important;
+}
+
 .active-menu > .parent-menu{
     border-bottom: 5px solid #ed1e24;
     color: #ed1e24 !important;
