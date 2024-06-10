@@ -1,6 +1,6 @@
 <template>
-    <div v-if="images.length > 0" class="container rounded">
-        <div v-if="!formShow" class="sec-title text-center mb-60 md-mb-40">
+    <div class="container rounded">
+        <div v-if="!formShow && images.length > 0" class="sec-title text-center mb-60 md-mb-40">
             <h2 class="title title2 pb-13">
                 Một số hình ảnh của <span style="color: #ed1e24">SMARTEDU</span>
             </h2>
@@ -15,7 +15,7 @@
             </router-link>
         </div>
         <hr>
-        <section class="photo-gallery">
+        <section v-if="images.length > 0" class="photo-gallery">
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 gallery-grid">
                     <div v-for="(image, index) in images" :key="index" class="col p-4" style="width: 100%; height: 250px; overflow: hidden">
