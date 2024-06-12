@@ -5,19 +5,20 @@
                 <div v-for="(file,index) in paginatedItems" :key="index" class="col-lg-3 col-md-4 col-sm-12">
                     <div class="card">
                         <div class="file">
-                            <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModal" @click="fileDelete = file.split('/').pop()">
+                            <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModal" @click="fileDelete = (file.url).split('/').pop()">
                                 <div class="hover">
                                     <button type="button" class="btn btn-icon btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </div>
                                 <div class="image">
-                                    <img :src="file" alt="img"
+                                    <img :src="file.url" alt="img"
                                          class="img-fluid">
                                 </div>
                                 <div class="file-name">
-                                    <p class="m-b-5 text-muted">{{file.split('/').pop()}}</p>
-                                    <small>Size: 2MB <span class="date text-muted">Dec 11, 2017</span></small>
+                                    <p class="m-b-5 text-muted">{{(file.url).split('/').pop()}}</p>
+                                    <small>Size: {{file.size}}KB </small>
+                                    <p class="m-0"><span class="date text-muted">{{file.last_modified}}</span></p>
                                 </div>
                             </a>
                         </div>
