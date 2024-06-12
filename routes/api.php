@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ConsultationRequestController;
+use App\Http\Controllers\FileManagerController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PostsTypeController;
@@ -95,5 +96,13 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::get('/profile', [UserController::class, 'showProfile']);
     Route::post('/profile', [UserController::class, 'updateProfile']);
     Route::post('/profile/change-password', [UserController::class, 'changePassword']);
+
+    Route::get('/files', [FileManagerController::class, 'index']);
+    Route::post('/files', [FileManagerController::class, 'store']);
+    Route::get('/files/{files}', [FileManagerController::class, 'show']);
+    Route::get('/files/{files}/edit', [FileManagerController::class, 'edit']);
+    Route::post('/files/{files}', [FileManagerController::class, 'update']);
+    Route::delete('/files/{files}', [FileManagerController::class, 'destroy']);
+
 });
 Route::post('/upload-image', [PostsController::class, 'uploadImage'])->name('upload-image');

@@ -20,6 +20,7 @@ import PostType from "@/views/admin/PostType.vue";
 import Team from "@/views/admin/Team.vue";
 import Universities from "@/views/admin/Universities.vue";
 import Profile from "@/views/admin/Profile.vue";
+import FileManager from "@/views/admin/FileManager.vue";
 
 const routes = [
 
@@ -126,6 +127,11 @@ const routes = [
                 path: 'students-feelings',
                 name: 'StudentsFeelings',
                 component: Profile
+            },
+            {
+                path: 'files',
+                name: 'FileManager',
+                component: FileManager
             },
         ]
     },
