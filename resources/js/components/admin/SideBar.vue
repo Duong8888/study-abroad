@@ -176,6 +176,14 @@
             </div>
         </li>
 
+        <li class="nav-item" :class="{ active: $route.name === 'FileManager' }">
+            <router-link :to="{name:'FileManager'}">
+                <span class="nav-link">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>File Manager</span></span>
+            </router-link>
+        </li>
+
 <!--        <li class="nav-item" @click="logoutBtn">-->
 <!--            <router-link :to="{name:'Login'}">-->
 <!--                <span class="nav-link">-->
