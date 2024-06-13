@@ -94,9 +94,9 @@ export default {
 
 <style scoped>
 .logo-custom {
-    transform: scale(1.5);
     width: 50px;
     height: 50px;
+    margin-bottom: 15px;
     object-fit: cover;
 }
 
