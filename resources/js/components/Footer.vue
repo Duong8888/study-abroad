@@ -47,13 +47,19 @@
                         </div>
                         <ul class="footer-social md-mb-30">
                             <li>
-                                <a href="#" target="_blank"><span><i class="fa fa-facebook"></i></span></a>
+                                <a href="https://www.tiktok.com/@smarteduchuyn.du?_t=8mkQxX6ywT4&_r=1" target="_blank">
+                                    <img src="@/assets/images/common/tiktok_logo.png">
+                                </a>
                             </li>
                             <li>
-                                <a href="# " target="_blank"><span><i class="fa fa-twitter"></i></span></a>
+                                <a href="https://www.facebook.com/profile.php?id=61555208818668" target="_blank">
+                                    <img src="@/assets/images/common/Facebook.png">
+                                </a>
                             </li>
                             <li>
-                                <a href="# " target="_blank"><span><i class="fa fa-pinterest-p"></i></span></a>
+                                <a href="https://zalo.me/0328021619" target="_blank">
+                                    <img src="@/assets/images/common/Logo-zalo.svg">
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -203,7 +209,9 @@ p, a, .widget-title {
 }
 
 .footer-social li a:hover {
-    color: white !important;
+    background: white !important;
+    border: 1px solid white !important;
+    transform: scale(1.2);
 }
 
 .footer-bottom {
