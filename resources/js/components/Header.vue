@@ -11,7 +11,6 @@
                             <div class="logo-area">
                                 <a href="/">
                                     <img class="normal-logo" src="@/assets/images/common/logo.png" alt="logo">
-                                    <img class="sticky-logo" src="@/assets/images/common/logo.png" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -255,8 +254,10 @@ export default {
 </script>
 
 <style scoped>
-.normal-logo, .sticky-logo {
-    transform: scale(5);
+.normal-logo{
+    /*transform: scale(1.2);*/
+    width: 50px;
+    max-height: 100px !important;
 }
 .nav-menu > li a, .nav-menu > li svg{
     color: #666 !important;
@@ -291,5 +292,13 @@ export default {
 .active-menu > .child-menu, .child-menu svg{
     color: #ed1e24 !important;
     fill: #ed1e24 !important;
+}
+@media only screen and (max-width: 480px) {
+    .container-fluid {
+        padding-left: 30px;
+        padding-right: 30px;
+        position: fixed;
+        background: white;
+    }
 }
 </style>

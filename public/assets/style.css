@@ -1682,7 +1682,7 @@ blockquote cite:before {
   max-height: 24px;
 }
 .full-width-header .rs-header .menu-area.sticky .logo-area a .normal-logo {
-  display: none;
+  /*display: none;*/
 }
 .full-width-header .rs-header .menu-area.sticky .main-menu .rs-menu ul.nav-menu > li > a {
   color: #101010;

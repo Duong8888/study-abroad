@@ -14,7 +14,7 @@
                 <button class="btn btn-outline-primary float-right">Thêm mới banner</button>
             </router-link>
         </div>
-        <hr>
+        <hr v-if="formShow">
         <section v-if="images.length > 0" class="photo-gallery">
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 gallery-grid">

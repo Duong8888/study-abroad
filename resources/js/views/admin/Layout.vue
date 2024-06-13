@@ -12,6 +12,9 @@
     <FormRequest @send-request="sendRequest" :statusBtn="statusBtn"></FormRequest>
     <Footer></Footer>
     <div class="social-icon">
+        <a href="https://www.tiktok.com/@smarteduchuyn.du?_t=8mkQxX6ywT4&_r=1" target="_blank">
+            <img src="@/assets/images/common/tiktok_logo.png">
+        </a>
         <a href="https://www.facebook.com/profile.php?id=61555208818668" target="_blank">
             <img src="@/assets/images/common/Facebook.png">
         </a>
