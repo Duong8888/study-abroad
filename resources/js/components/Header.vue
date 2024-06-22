@@ -255,7 +255,7 @@ export default {
 
 <style scoped>
 .normal-logo{
-    /*transform: scale(1.2);*/
+    transform: scale(1.2);
     width: 50px;
     max-height: 100px !important;
 }
@@ -265,11 +265,11 @@ export default {
 }
 
 .nav-menu > li:hover > .parent-menu{
-    color: #ed1e24 !important;
-    border-bottom: 5px solid #ed1e24;
+    color: #be1510 !important;
+    border-bottom: 5px solid #be1510;
 }
 .nav-menu > li:hover > .parent-menu > svg{
-    fill: #ed1e24 !important;
+    fill: #be1510 !important;
 }
 
 .sub-menu{
@@ -279,19 +279,19 @@ export default {
     border-bottom: 1px solid #f2f2f2;
 }
 .sub-menu > li:hover > a{
-    color: #ed1e24 !important;
+    color: #be1510 !important;
 }
 
 .active-menu > .parent-menu{
-    border-bottom: 5px solid #ed1e24;
-    color: #ed1e24 !important;
+    border-bottom: 5px solid #be1510;
+    color: #be1510 !important;
 }
 .active-menu > .parent-menu svg{
-    fill: #ed1e24 !important;
+    fill: #be1510 !important;
 }
 .active-menu > .child-menu, .child-menu svg{
-    color: #ed1e24 !important;
-    fill: #ed1e24 !important;
+    color: #be1510 !important;
+    fill: #be1510 !important;
 }
 @media only screen and (max-width: 480px) {
     .container-fluid {
@@ -299,6 +299,9 @@ export default {
         padding-right: 30px;
         position: fixed;
         background: white;
+    }
+    .normal-logo{
+        transform: scale(1);
     }
 }
 </style>

@@ -13,7 +13,7 @@
                     <div class="sec-title2">
                         <div class="sub-text">Về chúng tôi</div>
                         <h2 class="title pb-30">
-                            Du học Hàn Quốc cùng <span style="color: #ed1e24">SMARTEDU</span>
+                            Du học Hàn Quốc cùng <span class="" style="color: #ed1e24">SMARTEDU</span>
                         </h2>
                         <p class="margin-0 pb-55 md-pb-30">SMARTEDU được thành lập từ năm 2020, Công ty có trụ chính tại
                             Seoul(Hàn Quốc) và có 2 chi nhánh tại Ansan(HÀn Quốc), Hà Nội. Chỉ sau sau vài năm hoạt
@@ -36,11 +36,11 @@
                         <h4 class="pb-13">
                             GIÁ TRỊ CỐT LÕI
                         </h4>
-                        <p class="margin-0 pb-55 md-pb-30">Để phát triển một cách vững chắc, SmartEdu luôn làm việc theo
+                        <p class="margin-0 md-pb-30">Để phát triển một cách vững chắc, SmartEdu luôn làm việc theo
                             quy chuẩn của 3 giá trị cốt lõi quan trọng.</p>
-                        <div class="btn-part">
-                            <a class="readon started" href="#">Về chúng tôi</a>
-                        </div>
+<!--                        <div class="btn-part pt-55">-->
+<!--                            <a class="readon started" href="#">Về chúng tôi</a>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -56,9 +56,9 @@
                     <div class="col-lg-4 col-md-6 mb-40">
                         <div class="services-item">
                             <div class="services-text">
-                                <div class="services-title">
-                                    <h4 class="title">TẬN TÂM</h4>
-                                </div>
+                                <h3 class="title custom-title" style="color: #ed1e24; font-weight: 900">
+                                    TẬN TÂM
+                                </h3>
                                 <p class="services-txt">Chúng tôi luôn cố gắng không ngừng và làm việc bằng cả trái tim
                                     của mình để mang lại những giá trị và hiệu quả cho khách hàng trong suốt quá trình
                                     học tập ở Smart Edu và cả sau khi sang Hàn Quốc học tập và làm việc.</p>
@@ -68,9 +68,9 @@
                     <div class="col-lg-4 col-md-6 mb-40">
                         <div class="services-item">
                             <div class="services-text">
-                                <div class="services-title">
-                                    <h4 class="title">CAM KẾT</h4>
-                                </div>
+                                <h3 class="title custom-title" style="color: #ed1e24; font-weight: 900">
+                                    CAM KẾT
+                                </h3>
                                 <p class="services-txt">Chúng tôi luôn cam kết thực hiện những điều chúng tôi nói với
                                     khách hàng. Chúng tôi cam kết đồng hành cùng phụ huynh, học sinh để đạt mục tiêu đề
                                     ra về thành tích học tập và có được tấm vé sang Hàn Quốc.</p>
@@ -80,9 +80,9 @@
                     <div class="col-lg-4 col-md-6 mb-40">
                         <div class="services-item">
                             <div class="services-text">
-                                <div class="services-title">
-                                    <h4 class="title">CẢI TIẾN</h4>
-                                </div>
+                                <h3 class="title custom-title" style="color: #ed1e24; font-weight: 900">
+                                    CẢI TIẾN
+                                </h3>
                                 <p class="services-txt">Chúng tôi không ngừng học hỏi, cập nhật kiến thức, lắng nghe ý
                                     kiến của bạn để đem lại sản phẩm và dịch vụ hoàn hảo nhất.</p>
                             </div>
@@ -103,5 +103,26 @@ export default {
 </script>
 
 <style scoped>
+.custom-title{
+    position: relative;
+}
+.custom-title:before{
+    content: "";
+    width: 20px;
+    height: 100%;
+    background: rgba(246,247,249,0.5);
+    position: absolute;
+    left: -20px;
+    transform: skew(40deg);
+    animation: animationText 3s infinite;
+}
 
+@keyframes animationText {
+    0%{
+        left: -30px;
+    }
+    50%,100% {
+        left: 100%;
+    }
+}
 </style>
