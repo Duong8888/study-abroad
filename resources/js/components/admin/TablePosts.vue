@@ -131,11 +131,29 @@ export default {
         },
         formatDateTime(dateTimeStr) {
             const date = new Date(dateTimeStr);
-            const hours = date.getUTCHours().toString().padStart(2, '0');
-            const minutes = date.getUTCMinutes().toString().padStart(2, '0');
-            const day = date.getUTCDate().toString().padStart(2, '0');
-            const month = (date.getUTCMonth() + 1).toString().padStart(2, '0'); // Tháng bắt đầu từ 0 nên cần +1
-            const year = date.getUTCFullYear();
+            let hours = date.getUTCHours();
+            let minutes = date.getUTCMinutes();
+            let day = date.getUTCDate();
+            let month = date.getUTCMonth() + 1;
+            let year = date.getUTCFullYear();
+            hours += 7;
+            if (hours >= 24) {
+                hours -= 24;
+                day += 1;
+                const daysInMonth = new Date(year, month, 0).getDate();
+                if (day > daysInMonth) {
+                    day = 1;
+                    month += 1;
+                    if (month > 12) {
+                        month = 1;
+                        year += 1;
+                    }
+                }
+            }
+            hours = hours.toString().padStart(2, '0');
+            minutes = minutes.toString().padStart(2, '0');
+            day = day.toString().padStart(2, '0');
+            month = month.toString().padStart(2, '0');
             return `${hours}:${minutes} ${day}/${month}/${year}`;
         },
         updateStatus(id) {
