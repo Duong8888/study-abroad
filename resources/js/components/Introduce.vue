@@ -1,6 +1,7 @@
 <template>
 
     <!-- About Section Start -->
+    <div id="about"></div>
     <div id="rs-about" class="rs-about style1 md-pt-80 md-pb-80 gray-bg2">
         <div class="container">
             <div class="row y-middle">

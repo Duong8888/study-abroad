@@ -54,7 +54,7 @@
                         <div class="row mb-n8">
                             <div class="col-12 col-sm-6 col-lg-4 mb-8" v-for="item in paginatedItems" :key="item">
                                 <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">
-                                    <div class="card p-3 h-100 overflow-hidden">
+                                    <div class="card p-3 h-100 overflow-hidden item-posts">
                                         <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
                                             <img class="card-img-top rounded-0" :src="item?.thumbnail"
                                                  alt="...">
@@ -65,7 +65,7 @@
                                                 {{ item?.description }}</p>
                                             <div class="mt-auto">
                                                 <span
-                                                    class="me-3 small text-light-dark">{{
+                                                    class="me-3 small text-light-dark date">{{
                                                         formatDateTime(item?.created_at)
                                                     }}</span>
                                                 <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
@@ -73,7 +73,7 @@
                                                     <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
                                                 </svg>
                                                 <span v-for="category in JSON.parse(item?.post_type_id)" :key="category"
-                                                      class="badge ms-3 small fw-medium text-light-dark border mr-2">{{
+                                                      class="badge ms-3 small fw-medium text-light-dark border mr-2 category">{{
                                                         category.name
                                                     }}</span>
                                             </div>
@@ -88,7 +88,7 @@
                         <div class="row mb-n8">
                             <div class="col-12 col-sm-6 col-lg-4 mb-8" v-for="item in paginatedItems" :key="item">
                                 <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">
-                                    <div class="card p-3 h-100 overflow-hidden">
+                                    <div class="card p-3 h-100 overflow-hidden item-posts">
                                         <div class="position-relative rounded-2 overflow-hidden" style="height: 184px;">
                                             <img class="card-img-top rounded-0" :src="item?.thumbnail"
                                                  alt="...">
@@ -99,7 +99,7 @@
                                                 {{ item?.description }}</p>
                                             <div class="mt-auto">
                                                 <span
-                                                    class="me-3 small text-light-dark">{{
+                                                    class="me-3 small text-light-dark date">{{
                                                         formatDateTime(item?.created_at)
                                                     }}</span>
                                                 <svg width="4" height="4" viewbox="0 0 4 4" fill="none"
@@ -107,7 +107,7 @@
                                                     <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>
                                                 </svg>
                                                 <span v-for="category in JSON.parse(item?.post_type_id)" :key="category"
-                                                      class="badge ms-3 small fw-medium text-light-dark border mr-2">{{
+                                                      class="badge ms-3 small fw-medium text-light-dark border mr-2 category">{{
                                                         category.name
                                                     }}</span>
                                             </div>
@@ -276,5 +276,24 @@ p, span {
     white-space: normal;
     text-overflow: ellipsis;
     width: 100%;
+}
+.item-posts{
+    transition: 0.5s;
+}
+.item-posts:hover{
+    background: #ed1e24 !important;
+}
+
+.item-posts:hover .card-text{
+    color: white !important;
+}
+
+.item-posts:hover .card-title{
+    color: white !important;
+    text-decoration: underline;
+}
+
+.item-posts:hover .date,.item-posts:hover .category{
+    color: white !important;
 }
 </style>

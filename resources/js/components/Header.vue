@@ -255,7 +255,7 @@ export default {
 
 <style scoped>
 .normal-logo{
-    transform: scale(1.2);
+    transform: scale(1.5);
     width: 50px;
     max-height: 100px !important;
 }

@@ -128,6 +128,7 @@ body {
     justify-content: start;
     align-items: self-start;
     padding: 10px;
+    transition: 0.5s;
 }
 
 .team-wrap:hover .team-content{
