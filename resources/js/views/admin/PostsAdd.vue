@@ -172,14 +172,14 @@ export default {
                         </ul>
                     </div>
                     <div style="display: flex; flex-direction: column; justify-content: space-between; width: 20%">
-                        <img src="https://via.placeholder.com/150" alt="Image 1" style="align-self: flex-end;">
-                        <img src="https://via.placeholder.com/150" alt="Image 2" style="align-self: flex-end;">
+                        <img src="https://via.placeholder.com/150" alt="logo-university" style="align-self: flex-end;">
+                        <img src="https://via.placeholder.com/150" alt="qr-university" style="align-self: flex-end;">
                     </div>
                 </div>`,
             apiKey: 'g00klohzu757d7qwuw6rupo7nuezdho9d9j9hcr083mmkpy1',
             editorConfig: {
                 plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
-                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                toolbar: 'undo redo | blocks fontfamily fontsize | forecolor bold italic underline strikethrough | link image media table | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
                 image_title: true,
                 automatic_uploads: true,
                 file_picker_types: 'image',

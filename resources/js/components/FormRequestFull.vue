@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="address-text">
                                     <h3 class="title">Văn Phòng</h3>
-                                    <p class="desc">Số 46, đường Nguyễn Khang, quận Cầu Giấy, Hà Nội</p>
+                                    <p class="desc">Số 48, đường Nguyễn Khang, quận Cầu Giấy, Hà Nội</p>
                                 </div>
                             </div>
                         </div>

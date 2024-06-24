@@ -130,11 +130,27 @@ body {
     padding: 10px;
 }
 
+.team-wrap:hover .team-content{
+    background: #ed1e24;
+}
+
+.team-wrap:hover .team-name{
+    color: white;
+    text-decoration: underline;
+}
+
+.team-wrap:hover .description{
+    color: white !important;
+}
+
 .team-name {
     font-size: 20px;
     margin: 0;
-    white-space: nowrap;
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
     text-overflow: ellipsis;
     width: 100%;
 }

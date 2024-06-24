@@ -176,9 +176,9 @@
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" @click="isShow = !isShow" href="#" id="userDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{name}}</span>
+                    <span class="mr-4 d-none d-lg-inline text-gray-600 small">{{name}}</span>
                     <img class="img-profile rounded-circle"
-                         src="@/assets/images/undraw_profile.svg">
+                         src="@/assets/images/common/logo-admin.jpg">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div :class="{'showModal':isShow}" class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -238,5 +238,10 @@ export default {
 .showModal{
     display: block;
 }
-
+.img-profile{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    transform: scale(1.5);
+}
 </style>
