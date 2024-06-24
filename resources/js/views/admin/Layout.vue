@@ -18,7 +18,7 @@
         <a href="https://www.facebook.com/profile.php?id=61555208818668" target="_blank">
             <img src="@/assets/images/common/Facebook.png">
         </a>
-        <a href="https://zalo.me/0328021619" target="_blank">
+        <a href="https://zalo.me/0329155366" target="_blank">
             <img src="@/assets/images/common/Logo-zalo.svg">
         </a>
     </div>
