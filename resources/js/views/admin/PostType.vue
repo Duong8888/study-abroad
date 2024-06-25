@@ -96,9 +96,7 @@ export default {
     },
     watch: {
         categoryAll: function (newValue) {
-            this.postTypes.id = newValue.id;
-            this.postTypes.type_name = newValue.type_name;
-            this.postTypes.status = newValue.status == 0 ? false : true;
+            this.postTypes = newValue;
         },
         category: function (newValue) {
             this.editType = newValue.data;
