@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Smart Edu du học hàn quốc.">
     @vite('resources/js/app.js')
     <!-- favicon -->
     {{--    <link rel="apple-touch-icon" href="apple-touch-icon.html">--}}
