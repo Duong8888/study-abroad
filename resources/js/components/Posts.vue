@@ -1,10 +1,10 @@
 <template>
-    <div id="rs-about" class="rs-about main-home pt-50 pb-100 md-pt-80 md-pb-80 gray-bg2">
+    <div id="rs-about" class="rs-about main-home pb-100 md-pt-80 md-pb-80 gray-bg2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="sec-title2 mb-40">
-                        <h2 class="title pb-25">
+                        <h2 class="title">
                             {{title}}
                         </h2>
                     </div>
@@ -12,16 +12,40 @@
             </div>
             <swiper :watchSlidesProgress="true" :slidesPerView="getSlidesPerView()" class="mySwiper">
                 <swiper-slide v-for="(item, index) in items" :key="index">
+<!--                    <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">-->
+<!--                        <div class="team-wrap">-->
+<!--                            <div class="image-wrap">-->
+<!--                                <a href="#"><img :src="item.thumbnail" alt="Images" class="team-image"></a>-->
+<!--                            </div>-->
+<!--                            <div class="team-content">-->
+<!--                                <h3 class="team-name">-->
+<!--                                    {{ item.title }}-->
+<!--                                </h3>-->
+<!--                                <p class="description text-black-50">{{ item.description }}</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </router-link>-->
+
                     <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">
-                        <div class="team-wrap">
-                            <div class="image-wrap">
-                                <a href="#"><img :src="item.thumbnail" alt="Images" class="team-image"></a>
+                        <div class="card p-3 h-100 overflow-hidden item-posts" style="margin: 0 5px">
+                            <div class="position-relative rounded-2 overflow-hidden" style="height: 200px;">
+                                <img class="card-img-top rounded-0" :src="item?.thumbnail"
+                                     alt="...">
                             </div>
-                            <div class="team-content">
-                                <h3 class="team-name">
-                                    {{ item.title }}
-                                </h3>
-                                <p class="description text-black-50">{{ item.description }}</p>
+                            <div class="card-body d-flex flex-column align-items-start mw-xs">
+                                <h6 class="card-title mb-3">{{ item?.title }}</h6>
+                                <p class="card-text small text-light-dark mb-6 description">
+                                    {{ item?.description }}</p>
+<!--                                <div class="mt-auto">-->
+<!--                                    <svg width="4" height="4" viewbox="0 0 4 4" fill="none"-->
+<!--                                         xmlns="http://www.w3.org/2000/svg">-->
+<!--                                        <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>-->
+<!--                                    </svg>-->
+<!--                                    <span v-for="category in JSON.parse(item?.post_type_id)" :key="category"-->
+<!--                                          class="badge ms-3 small fw-medium text-light-dark border mr-2 category">{{-->
+<!--                                            category.name-->
+<!--                                        }}</span>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </router-link>
@@ -48,11 +72,6 @@ export default {
             type: Array,
             default: [
                 {title: 'Bài viết 1', description: 'Nội dung bài viết 1', avatar: '/assets/images/team/6.jpg'},
-                {title: 'Bài viết 2', description: 'Nội dung bài viết 2', avatar: '/assets/images/team/7.jpg'},
-                {title: 'Bài viết 3', description: 'Nội dung bài viết 3', avatar: '/assets/images/team/8.jpg'},
-                {title: 'Bài viết 4', description: 'Nội dung bài viết 4', avatar: '/assets/images/team/9.jpg'},
-                {title: 'Bài viết 5', description: 'Nội dung bài viết 5', avatar: '/assets/images/team/5.jpg'},
-                {title: 'Bài viết 6', description: 'Nội dung bài viết 6', avatar: '/assets/images/team/4.jpg'},
             ]
         },
         title:{
@@ -95,7 +114,7 @@ body {
 
 .swiper {
     width: 100%;
-    height: 350px;
+    height: 400px;
 }
 
 .team-wrap {
@@ -166,11 +185,14 @@ body {
     white-space: normal;
     text-overflow: ellipsis;
     width: 100%;
+    color: #4a5568;
 }
 
 @media (max-width: 768px) {
     .swiper {
         height: auto;
+        padding: 0 10px;
+        display: none;
     }
     .image-wrap img {
         width: 100%;
@@ -183,6 +205,43 @@ body {
     .swiper-slide {
         width: calc(100% / 3);
     }
+}
+
+.card-img-top {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px !important;
+}
+
+.description {
+    font-size: 14px;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+.item-posts{
+    transition: 0.5s;
+}
+.item-posts:hover{
+    background: #ed1e24 !important;
+}
+
+.item-posts:hover .card-text{
+    color: white !important;
+}
+
+.item-posts:hover .card-title{
+    color: white !important;
+    text-decoration: underline;
+}
+
+.item-posts:hover .category{
+    color: white !important;
 }
 
 </style>

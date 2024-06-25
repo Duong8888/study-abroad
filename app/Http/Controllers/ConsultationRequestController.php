@@ -40,7 +40,7 @@ class ConsultationRequestController extends Controller
                 'name' => $request->name,
                 'phone_number' => $request->phone,
                 'email' => $request->email ?? null,
-                'content' => 'SMARTEDU',
+                'content' =>  $request->content ?? '',
                 'status' => 0,
             ]);
             sleep(2);

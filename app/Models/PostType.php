@@ -10,6 +10,7 @@ class PostType extends Model
     use HasFactory;
     protected $fillable = [
         'type_name',
-        'parent_id'
+        'parent_id',
+        'status'
     ];
 }

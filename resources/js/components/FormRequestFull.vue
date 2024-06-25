@@ -1,6 +1,6 @@
 <template>
     <!-- Contact Section Start -->
-    <div id="form" style="height:100px"></div>
+    <div id="form" style="height:100px;background:#f6f7f9"></div>
     <div class="rs-contact main-home gray-bg2 pb-80 md-pt-80 md-pb-80 index-form">
         <div class="container">
             <div class="row">
@@ -53,11 +53,11 @@
                 <div class="col-lg-4">
                     <div class="contact-wrap">
                         <div class="content-part text-center mb-25">
-                            <h5 class="mb-15" >ĐĂNG KÝ TƯ VẤN MIỄN PHÍ</h5>
+                            <h5 class="mb-15 text-white" >ĐĂNG KÝ TƯ VẤN MIỄN PHÍ</h5>
                         </div>
                         <div id="form-messages"></div>
                         <form id="contact-form" method="post"
-                              action="https://rstheme.com/products/html/topkie/mailer.php">
+                              action="">
                             <fieldset>
                                 <div class="row">
                                     <div class="col-lg-12 mb-15">
@@ -71,6 +71,10 @@
                                     <div class="col-lg-12 mb-15">
                                         <input class="from-control" v-model="phone" type="text" id="phone" name="phone"
                                                placeholder="Số điện thoại" required="">
+                                    </div>
+
+                                    <div class="col-lg-12 mb-15">
+                                        <textarea name="content" class="from-control" placeholder="Nội dung tư vấn" id="" cols="30" v-model="content" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group mb-0">
@@ -99,6 +103,7 @@ export default {
             name: '',
             email: '',
             phone: '',
+            content: '',
         }
     },
     props:{
@@ -110,6 +115,7 @@ export default {
                 name: this.name,
                 email: this.email,
                 phone: this.phone,
+                content: this.content,
             };
             this.$emit('send-request',data);
         }
@@ -122,6 +128,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: white;
+    color: #eb2026;
+    font-weight: bold;
 }
 .spinner-custom{
     width: 20px;
@@ -141,4 +150,10 @@ export default {
     }
 }
 
+.contact-wrap{
+    background: #eb2026 !important;
+}
+input, textarea{
+    background: white !important;
+}
 </style>

@@ -14,7 +14,7 @@
                 <li class="list-group-item d-flex justify-content-between" v-for="type in postTypes" :key="type.id">
                     <span>{{ type.type_name }}</span>
                     <div>
-                        <button class="btn btn-sm" @click="openEditModal(type)">
+                        <button class="btn btn-sm" @click="openEditModal(type.id)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  style="fill: rgb(0,123,255);transform: ;msFilter:;">
                                 <path
@@ -53,6 +53,10 @@
                                 <input type="text" class="form-control" id="id" v-model="editType.id" hidden>
                                 <input type="text" class="form-control" id="type_name" v-model="editType.type_name"
                                        required>
+                                <label for="status" class="mt-20">
+                                    <input type="checkbox" id="status" v-model="editType.status" :checked="editType.status">
+                                    Hiển thị mục này ở trang chủ
+                                </label>
                             </div>
                             <button type="submit" class="btn btn-primary">{{ mode === 'add' ? 'Thêm' : 'Lưu' }}</button>
                         </form>
@@ -78,6 +82,7 @@ export default {
             editType: {
                 id:'',
                 type_name: '',
+                status: false,
             },
             idDelete: '',
         }
@@ -86,26 +91,30 @@ export default {
         Modal
     },
     computed: {
-        ...mapGetters('category', ['categoryAll']),
+        ...mapGetters('category', ['categoryAll','category']),
     },
     watch: {
         categoryAll: function (newValue) {
             this.postTypes = newValue;
+        },
+        category: function (newValue) {
+            this.editType = newValue.data;
         }
     },
     created() {
         this.fetchCategory();
     },
     methods: {
-        ...mapActions('category', ['fetchCategory', 'addType', 'deleteType', 'updateType']),
+        ...mapActions('category', ['fetchCategory', 'addType', 'deleteType', 'updateType','getOneCategory']),
         openAddModal() {
             this.mode = 'add';
             this.editType.type_name = '';
+            this.editType.status = false;
             $('#postTypeModal').modal('show');
         },
-        openEditModal(type) {
+        openEditModal(id) {
+            this.getOneCategory(id)
             this.mode = 'edit';
-            this.editType = {...type};
             $('#postTypeModal').modal('show');
         },
         async deleteItem() {
@@ -116,7 +125,8 @@ export default {
         async submitForm() {
             const data = {
                 id: this.editType.id,
-                type_name: this.editType.type_name
+                type_name: this.editType.type_name,
+                status: this.editType.status,
             };
             if (this.mode == 'add') {
                 await this.addType({data, toast: this.$toast});

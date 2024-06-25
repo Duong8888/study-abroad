@@ -12,6 +12,7 @@
                             <th>Họ tên</th>
                             <th>Số điện thoại</th>
                             <th>Email</th>
+                            <th>Nội dung tư vấn</th>
                             <th>Trạng thái</th>
                             <th>Thời gian gửi</th>
                             <th>Thao tác</th>
@@ -22,6 +23,7 @@
                             <th>Họ tên</th>
                             <th>Số điện thoại</th>
                             <th>Email</th>
+                            <th>Nội dung tư vấn</th>
                             <th>Trạng thái</th>
                             <th>Thời gian gửi</th>
                             <th>Thao tác</th>
@@ -32,6 +34,7 @@
                             <td>{{ item.name }}</td>
                             <td>{{ item.phone_number }}</td>
                             <td>{{ item.email }}</td>
+                            <td>{{ item.content }}</td>
                             <td><p :class="{'status-0':(item.status == 0),'status-1':(item.status == 1)}">{{ (item.status == 0) ? "Đơn đang ký mới ": "Đã tư vấn" }}</p></td>
                             <td>{{ formatDateTime(item.created_at) }}</td>
                             <td>

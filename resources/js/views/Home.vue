@@ -3,8 +3,10 @@
     <Introduce></Introduce>
     <Team :items="items"></Team>
     <Universities :items="university"></Universities>
-    <Posts :items="posts"></Posts>
-<!--    <SubBanner></SubBanner>-->
+    <div v-for="(item, index) in postsByCategory" :key="item.id">
+        <Posts :items="item.posts" :title="category[index].type_name"></Posts>
+    </div>
+    <!--    <SubBanner></SubBanner>-->
     <AdsBanner :formShow="false"></AdsBanner>
     <Comments></Comments>
 </template>
@@ -33,33 +35,44 @@ export default {
                 {name: 'Mincin Funo', avatar: ''},
             ],
             posts: [],
+            category: [],
             university: [],
+            postsByCategory: [],
         }
     },
     watch:{
         topBanner: function (newTitle) {
             this.images = newTitle;
         },
+        categoryAll: function (newValue){
+            this.category = newValue.filter(item => item.status == 1);
+            this.fetchPostsByCategory();
+        },
         teamAll: function (newValue) {
             this.items = newValue
         },
         postsAll: function (newValue) {
             this.posts = newValue
+            console.log(newValue);
+            this.$nextTick(() => {
+                (this.postsByCategory).push({ posts: this.posts });
+            });
         },
         universityAll: function (newValue) {
             this.university = newValue
-        }
+        },
     },
     computed: {
         ...mapGetters('banner', ['topBanner']),
         ...mapGetters('team', ['teamAll']),
         ...mapGetters('posts', ['postsAll']),
-        ...mapGetters('universities', ['universityAll'])
+        ...mapGetters('universities', ['universityAll']),
+        ...mapGetters('category', ['categoryAll'])
     },
     created() {
         this.fetchBanner(0);
+        this.fetchCategory();
         this.fetchTeam();
-        this.fetchPost('limit');
         this.fetchItem();
     },
     methods: {
@@ -67,6 +80,12 @@ export default {
         ...mapActions('team', ['fetchTeam',]),
         ...mapActions('posts', ['fetchPost',]),
         ...mapActions('universities', ['fetchItem',]),
+        ...mapActions('category', ['fetchCategory']),
+        fetchPostsByCategory() {
+            this.category.forEach(category => {
+                this.fetchPost({ sort: category.id, limit: 10 });
+            });
+        },
         getBanner(){
             this.fetchBanner();
         },

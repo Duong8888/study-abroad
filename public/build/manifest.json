@@ -6,17 +6,19 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-C-F6c59V.js",
+    "file": "assets/app-Bj7m6W4q.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-DmVAZWnO.css"
+      "assets/app-CN9ATFKM.css"
     ],
     "assets": [
       "assets/banner-2-64q1SVUB.jpg",
       "assets/banner-3-B8Vyo6ro.jpg",
       "assets/about-2-Cd7Inago.png",
+      "assets/1-DzqkITyt.svg",
+      "assets/2-Ct69gZck.svg",
       "assets/sub-banner-BiLQ9IGi.jpg",
       "assets/banner-CXwGdm21.jpg",
       "assets/quote-fiXjn-DC.png",
@@ -46,6 +48,14 @@
   "resources/js/assets/images/bg/footer-bg4.jpg": {
     "file": "assets/footer-bg4-tVscUBJJ.jpg",
     "src": "resources/js/assets/images/bg/footer-bg4.jpg"
+  },
+  "resources/js/assets/images/common/1.svg": {
+    "file": "assets/1-DzqkITyt.svg",
+    "src": "resources/js/assets/images/common/1.svg"
+  },
+  "resources/js/assets/images/common/2.svg": {
+    "file": "assets/2-Ct69gZck.svg",
+    "src": "resources/js/assets/images/common/2.svg"
   },
   "resources/js/assets/images/common/Facebook.png": {
     "file": "assets/Facebook-qmfsK7Y5.png",

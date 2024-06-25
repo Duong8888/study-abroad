@@ -42,12 +42,15 @@ class PostsTypeController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(PostType $postType)
+    public function show(string $id)
     {
-        return response()->json($postType);
+        try {
+            $data = PostType::where('id', $id)->firstOrFail();
+            return response()->json(['success' => true, 'data' => $data]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
     /**

@@ -25,7 +25,11 @@ class PostsController extends Controller
                     foreach ($sortIds as $sortId) {
                         $query->orWhereJsonContains('post_type_id', [['id' => $sortId]]);
                     }
-                })->get();
+                });
+                if(isset($sortIds['limit'])){
+                    $data->limit($sortIds['limit']);
+                }
+                $data = $data->get();
             } else {
                 $data = Posts::whereJsonContains('post_type_id', [['id' => intval($request->sort)]])->get();
             }

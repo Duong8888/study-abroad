@@ -3,15 +3,28 @@ import api from '../../utils/axios.js';
 import router from "@/router/index.js";
 const state = {
     category: [],
+    categoryOne:[],
 };
 
 const mutations = {
     SET_CATEGORY(state, request) {
         state.category = request;
     },
+    SET_ONE_CATEGORY(state, request) {
+        state.categoryOne = request;
+    },
 };
 
 const actions = {
+    async getOneCategory({commit}, id) {
+        try {
+            const response = await api.get(`${API_ENDPOINT.API_ADMIN.CATEGORY}/${id}`);
+            const category = response.data;
+            commit('SET_ONE_CATEGORY', category);
+        } catch (error) {
+            console.error('Error add category:', error);
+        }
+    },
     async fetchCategory({ commit }) {
         try {
             const response = await api.get(API_ENDPOINT.API_ADMIN.CATEGORY);
@@ -82,6 +95,7 @@ const actions = {
 
 const getters = {
     categoryAll: (state) => state.category,
+    category: (state) => state.categoryOne,
 };
 
 export default {
