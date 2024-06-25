@@ -6,7 +6,6 @@
     <template v-for="(item, index) in postsByCategory" :key="item.id">
         <Posts :items="item.posts" :title="category[index].type_name"></Posts>
     </template>
-    <Posts :items="posts"></Posts>
     <!--    <SubBanner></SubBanner>-->
     <AdsBanner :formShow="false"></AdsBanner>
     <Comments></Comments>
