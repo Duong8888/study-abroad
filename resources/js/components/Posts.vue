@@ -27,7 +27,7 @@
 <!--                    </router-link>-->
 
                     <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">
-                        <div class="card p-3 h-100 overflow-hidden item-posts" style="margin: 0 5px">
+                        <div class="card p-3 h-100 overflow-hidden item-posts">
                             <div class="position-relative rounded-2 overflow-hidden" style="height: 200px;">
                                 <img class="card-img-top rounded-0" :src="item?.thumbnail"
                                      alt="...">
@@ -205,7 +205,9 @@ body {
         width: calc(100% / 3);
     }
 }
-
+.card{
+    margin: 0 5px;
+}
 .card-img-top {
     height: 100%;
     object-fit: cover;
@@ -243,7 +245,7 @@ body {
     color: white !important;
 }
 .bg-custom{
-    /*background-image: url("../assets/images/common/bg-1.jpg");*/
-    background: linear-gradient(90deg, #ed1e24 0%, #ffffff 100%);
+    background-image: url("../assets/images/common/bg-1.jpg");
+    /*background: linear-gradient(90deg, #ed1e24 0%, #ffffff 100%);*/
 }
 </style>
