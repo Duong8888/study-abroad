@@ -53,15 +53,9 @@
                                 <input type="text" class="form-control" id="id" v-model="editType.id" hidden>
                                 <input type="text" class="form-control" id="type_name" v-model="editType.type_name"
                                        required>
-                                <label for="status1" class="mt-20">
-                                    {{typeof editType.status}}
-                                    <input type="radio" id="status1" name="status" @click="editType.status = true" v-bind:checked="editType.status == 1">
-                                    Hiển thị mục này ở trang chủ
-                                </label>
-                                <label for="status2" class="mt-20">
-                                    {{editType.status}}
-                                    <input type="radio" id="status2" name="status" @click="editType.status = false" v-bind:checked="!editType.status == 0">
-                                    Không hiển thị mục này ở trang chủ
+                                <label for="status" class="mt-20">
+                                    <input type="checkbox" id="status" name="status" v-model="editType.status" v-bind:checked="editType.status">
+                                    Hiển thị mục này ở trang chủ.
                                 </label>
                             </div>
                             <button type="submit" class="btn btn-primary">{{ mode === 'add' ? 'Thêm' : 'Lưu' }}</button>
@@ -104,7 +98,9 @@ export default {
             this.postTypes = newValue;
         },
         category: function (newValue) {
-            this.editType = newValue.data;
+            this.editType.id = newValue.data.id;
+            this.editType.type_name = newValue.data.type_name;
+            this.editType.status = newValue.data.status;
         }
     },
     created() {
@@ -141,6 +137,7 @@ export default {
             }
             await this.fetchCategory();
             $('#postTypeModal').modal('hide');
+            window.location.reload();
         }
     }
 }
