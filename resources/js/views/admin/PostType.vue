@@ -54,7 +54,7 @@
                                 <input type="text" class="form-control" id="type_name" v-model="editType.type_name"
                                        required>
                                 <label for="status" class="mt-20">
-                                    <input type="checkbox" id="status" v-model="editType.status" :checked="(editType.status == 1)">
+                                    <input type="checkbox" id="status" v-model="editType.status"  v-bind:checked="editType.status">
                                     Hiển thị mục này ở trang chủ
                                 </label>
                             </div>
@@ -82,7 +82,7 @@ export default {
             editType: {
                 id:'',
                 type_name: '',
-                status: '',
+                status: false,
             },
             idDelete: '',
         }
