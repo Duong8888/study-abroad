@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="sec-title2 mb-40">
+                    <div class="sec-title2 mb-20">
                         <h2 class="title">
                             {{title}}
                         </h2>
@@ -247,5 +247,8 @@ body {
 .bg-custom{
     background-image: url("../assets/images/common/bg-1.jpg");
     /*background: linear-gradient(90deg, #ed1e24 0%, #ffffff 100%);*/
+}
+.title{
+    font-size: 40px !important;
 }
 </style>
