@@ -82,7 +82,7 @@ export default {
             editType: {
                 id:'',
                 type_name: '',
-                status: false,
+                status: '',
             },
             idDelete: '',
         }
