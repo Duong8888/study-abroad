@@ -53,10 +53,15 @@
                                 <input type="text" class="form-control" id="id" v-model="editType.id" hidden>
                                 <input type="text" class="form-control" id="type_name" v-model="editType.type_name"
                                        required>
-                                <label for="status" class="mt-20">
+                                <label for="status1" class="mt-20">
                                     {{editType.status}}
-                                    <input type="checkbox" id="status" v-model="editType.status" v-bind:checked="editType.status">
+                                    <input type="radio" id="status1" name="status" @click="editType.status = true" v-bind:checked="editType.status">
                                     Hiển thị mục này ở trang chủ
+                                </label>
+                                <label for="status2" class="mt-20">
+                                    {{editType.status}}
+                                    <input type="radio" id="status2" name="status" @click="editType.status = false" v-bind:checked="!editType.status">
+                                    Không hiển thị mục này ở trang chủ
                                 </label>
                             </div>
                             <button type="submit" class="btn btn-primary">{{ mode === 'add' ? 'Thêm' : 'Lưu' }}</button>
