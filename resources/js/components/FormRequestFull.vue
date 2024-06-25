@@ -128,8 +128,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: white;
-    color: #eb2026;
+    background: white !important;
+    color: #eb2026 !important;
     font-weight: bold;
 }
 .spinner-custom{
