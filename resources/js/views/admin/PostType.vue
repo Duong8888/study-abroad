@@ -54,13 +54,13 @@
                                 <input type="text" class="form-control" id="type_name" v-model="editType.type_name"
                                        required>
                                 <label for="status1" class="mt-20">
-                                    {{editType.status}}
-                                    <input type="radio" id="status1" name="status" @click="editType.status = true" v-bind:checked="editType.status">
+                                    {{typeof editType.status}}
+                                    <input type="radio" id="status1" name="status" @click="editType.status = true" v-bind:checked="editType.status == 1">
                                     Hiển thị mục này ở trang chủ
                                 </label>
                                 <label for="status2" class="mt-20">
                                     {{editType.status}}
-                                    <input type="radio" id="status2" name="status" @click="editType.status = false" v-bind:checked="!editType.status">
+                                    <input type="radio" id="status2" name="status" @click="editType.status = false" v-bind:checked="!editType.status == 0">
                                     Không hiển thị mục này ở trang chủ
                                 </label>
                             </div>
