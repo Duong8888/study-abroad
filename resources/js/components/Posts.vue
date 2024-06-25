@@ -1,5 +1,5 @@
 <template>
-    <div id="rs-about" class="rs-about main-home pb-20 md-pt-80 md-pb-80 gray-bg2 pt-20" style="background: red">
+    <div id="rs-about" class="rs-about main-home pb-20 md-pt-80 md-pb-80 gray-bg2 pt-20 bg-custom">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -12,43 +12,43 @@
             </div>
             <swiper :watchSlidesProgress="true" :slidesPerView="getSlidesPerView()" class="mySwiper">
                 <swiper-slide v-for="(item, index) in items" :key="index">
-                    <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">
-                        <div class="team-wrap">
-                            <div class="image-wrap">
-                                <a href="#"><img :src="item.thumbnail" alt="Images" class="team-image"></a>
-                            </div>
-                            <div class="team-content">
-                                <h3 class="team-name">
-                                    {{ item.title }}
-                                </h3>
-                                <p class="description text-black-50">{{ item.description }}</p>
-                            </div>
-                        </div>
-                    </router-link>
-
 <!--                    <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">-->
-<!--                        <div class="card p-3 h-100 overflow-hidden item-posts" style="margin: 0 5px">-->
-<!--                            <div class="position-relative rounded-2 overflow-hidden" style="height: 200px;">-->
-<!--                                <img class="card-img-top rounded-0" :src="item?.thumbnail"-->
-<!--                                     alt="...">-->
+<!--                        <div class="team-wrap">-->
+<!--                            <div class="image-wrap">-->
+<!--                                <a href="#"><img :src="item.thumbnail" alt="Images" class="team-image"></a>-->
 <!--                            </div>-->
-<!--                            <div class="card-body d-flex flex-column align-items-start mw-xs">-->
-<!--                                <h6 class="card-title mb-3">{{ item?.title }}</h6>-->
-<!--                                <p class="card-text small text-light-dark mb-6 description">-->
-<!--                                    {{ item?.description }}</p>-->
-<!--&lt;!&ndash;                                <div class="mt-auto">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <svg width="4" height="4" viewbox="0 0 4 4" fill="none"&ndash;&gt;-->
-<!--&lt;!&ndash;                                         xmlns="http://www.w3.org/2000/svg">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </svg>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <span v-for="category in JSON.parse(item?.post_type_id)" :key="category"&ndash;&gt;-->
-<!--&lt;!&ndash;                                          class="badge ms-3 small fw-medium text-light-dark border mr-2 category">{{&ndash;&gt;-->
-<!--&lt;!&ndash;                                            category.name&ndash;&gt;-->
-<!--&lt;!&ndash;                                        }}</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                            <div class="team-content">-->
+<!--                                <h3 class="team-name">-->
+<!--                                    {{ item.title }}-->
+<!--                                </h3>-->
+<!--                                <p class="description text-black-50">{{ item.description }}</p>-->
 <!--                            </div>-->
 <!--                        </div>-->
 <!--                    </router-link>-->
+
+                    <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">
+                        <div class="card p-3 h-100 overflow-hidden item-posts" style="margin: 0 5px">
+                            <div class="position-relative rounded-2 overflow-hidden" style="height: 200px;">
+                                <img class="card-img-top rounded-0" :src="item?.thumbnail"
+                                     alt="...">
+                            </div>
+                            <div class="card-body d-flex flex-column align-items-start mw-xs">
+                                <h6 class="card-title mb-3">{{ item?.title }}</h6>
+                                <p class="card-text small text-light-dark mb-6 description">
+                                    {{ item?.description }}</p>
+<!--                                <div class="mt-auto">-->
+<!--                                    <svg width="4" height="4" viewbox="0 0 4 4" fill="none"-->
+<!--                                         xmlns="http://www.w3.org/2000/svg">-->
+<!--                                        <circle cx="2" cy="2" r="2" fill="#D1D1D1"></circle>-->
+<!--                                    </svg>-->
+<!--                                    <span v-for="category in JSON.parse(item?.post_type_id)" :key="category"-->
+<!--                                          class="badge ms-3 small fw-medium text-light-dark border mr-2 category">{{-->
+<!--                                            category.name-->
+<!--                                        }}</span>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </router-link>
                 </swiper-slide>
             </swiper>
         </div>
@@ -192,7 +192,6 @@ body {
     .swiper {
         height: auto;
         padding: 0 10px;
-        display: none;
     }
     .image-wrap img {
         width: 100%;
@@ -243,5 +242,8 @@ body {
 .item-posts:hover .category{
     color: white !important;
 }
-
+.bg-custom{
+    /*background-image: url("../assets/images/common/bg-1.jpg");*/
+    background: linear-gradient(90deg, #ed1e24 0%, #ffffff 100%);
+}
 </style>

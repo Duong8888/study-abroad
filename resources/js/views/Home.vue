@@ -3,9 +3,10 @@
     <Introduce></Introduce>
     <Team :items="items"></Team>
     <Universities :items="university"></Universities>
-    <div v-for="(item, index) in postsByCategory" :key="item.id">
+    <template v-for="(item, index) in postsByCategory" :key="item.id">
         <Posts :items="item.posts" :title="category[index].type_name"></Posts>
-    </div>
+    </template>
+    <Posts :items="posts"></Posts>
     <!--    <SubBanner></SubBanner>-->
     <AdsBanner :formShow="false"></AdsBanner>
     <Comments></Comments>
