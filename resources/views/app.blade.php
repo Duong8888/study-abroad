@@ -6,6 +6,32 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Smart Edu du học hàn quốc.">
+
+    <!-- Meta Description -->
+    <meta name="description" content="SMART EDU - Cổng thông tin du học Hàn Quốc. Khám phá các trường đại học hàng đầu, tìm kiếm học bổng và nhận hướng dẫn từ chuyên gia. Bắt đầu hành trình du học của bạn ngay hôm nay với SMART EDU.">
+
+    <!-- Other Meta Tags -->
+    <meta name="keywords" content="du học Hàn Quốc, SMART EDU, học bổng, hướng dẫn du học, trường đại học Hàn Quốc">
+    <meta name="author" content="SMART EDU">
+
+    <!-- Open Graph Meta Tags for social media -->
+    <meta property="og:title" content="SMART EDU - Du Học Hàn Quốc">
+    <meta property="og:description" content="SMART EDU - Cổng thông tin du học Hàn Quốc. Khám phá các trường đại học hàng đầu, tìm kiếm học bổng và nhận hướng dẫn từ chuyên gia. Bắt đầu hành trình du học của bạn ngay hôm nay với SMART EDU.">
+    <meta property="og:image" content="URL_tới_hình_ảnh_của_bạn">
+    <meta property="og:url" content="https://smartedu.com.vn">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SMART EDU - Du Học Hàn Quốc">
+    <meta name="twitter:description" content="SMART EDU - Cổng thông tin du học Hàn Quốc. Khám phá các trường đại học hàng đầu, tìm kiếm học bổng và nhận hướng dẫn từ chuyên gia. Bắt đầu hành trình du học của bạn ngay hôm nay với SMART EDU.">
+    <meta name="twitter:image" content="https://smartedu.com.vn/storage/uploads/images/ZEAtvCQmGrHS2fzmDHTifv7AF3rxdg4sjZ69ZePF.png">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://smartedu.com.vn">
+
+
+    <!-- Favicon -->
     @vite('resources/js/app.js')
     <!-- favicon -->
     {{--    <link rel="apple-touch-icon" href="apple-touch-icon.html">--}}
