@@ -17,7 +17,7 @@
     <!-- Open Graph Meta Tags for social media -->
     <meta property="og:title" content="SMART EDU - Du Học Hàn Quốc">
     <meta property="og:description" content="SMART EDU - Cổng thông tin du học Hàn Quốc. Khám phá các trường đại học hàng đầu, tìm kiếm học bổng và nhận hướng dẫn từ chuyên gia. Bắt đầu hành trình du học của bạn ngay hôm nay với SMART EDU.">
-    <meta property="og:image" content="URL_tới_hình_ảnh_của_bạn">
+    <meta property="og:image" content="https://smartedu.com.vn/storage/uploads/images/ZEAtvCQmGrHS2fzmDHTifv7AF3rxdg4sjZ69ZePF.png">
     <meta property="og:url" content="https://smartedu.com.vn">
     <meta property="og:type" content="website">
 
