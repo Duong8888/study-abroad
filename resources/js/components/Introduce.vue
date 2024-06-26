@@ -13,7 +13,7 @@
                 <div class="col-lg-6 pl-70 md-pl-15">
                     <div class="sec-title2">
                         <div class="sub-text">Về chúng tôi</div>
-                        <h2 class="title pb-30">
+                        <h2 class="title pb-30" style="font-weight: 900">
                             Du học Hàn Quốc cùng <span class="" style="color: #ed1e24">SMARTEDU</span>
                         </h2>
                         <p class="margin-0 pb-55 md-pb-30 text-custom">SMARTEDU được thành lập từ năm 2020, Công ty có
@@ -72,7 +72,7 @@
                 </div>
                 <div class="sec-title text-center mb-60 w-100">
                     <h2 class="title title2 pb-13">
-                        Thông tin du học bạn cần biết.
+                        Thông tin du học bạn cần biết
                     </h2>
                     <div class="heading-border-line"></div>
                 </div>
@@ -80,9 +80,9 @@
                     <div class="col-lg-3 col-md-6 mb-40">
                         <div class="services-item">
                             <div class="services-text">
-                                <h4 class="title custom-title" style="color: #ed1e24; font-weight: 900">
+                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
                                     <span>01. </span>Điều Kiện
-                                </h4>
+                                </p>
                                 <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, sed!</p>
                                 <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
                             </div>
@@ -91,9 +91,9 @@
                     <div class="col-lg-3 col-md-6 mb-40">
                         <div class="services-item">
                             <div class="services-text">
-                                <h4 class="title custom-title" style="color: #ed1e24; font-weight: 900">
+                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
                                     <span>02. </span>Chọn Trường
-                                </h4>
+                                </p>
                                 <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, error.</p>
                                 <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
                             </div>
@@ -102,9 +102,9 @@
                     <div class="col-lg-3 col-md-6 mb-40">
                         <div class="services-item">
                             <div class="services-text">
-                                <h4 class="title custom-title" style="color: #ed1e24; font-weight: 900">
+                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
                                     <span>03. </span>Chi Phí
-                                </h4>
+                                </p>
                                 <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, in?</p>
                                 <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
                             </div>
@@ -113,9 +113,9 @@
                     <div class="col-lg-3 col-md-6 mb-40">
                         <div class="services-item">
                             <div class="services-text">
-                                <h4 class="title custom-title" style="color: #ed1e24; font-weight: 900">
+                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
                                     <span>04. </span>Học Bổng
-                                </h4>
+                                </p>
                                 <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, nam.</p>
                                 <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
                             </div>
@@ -167,6 +167,9 @@ export default {
 }
 
 .custom-title > span {
-    font-size: 25px;
+    font-size: 35px;
+}
+.title.custom-title{
+    font-size: 20px;
 }
 </style>
