@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Smart Edu du học hàn quốc.">
-
+    <meta name="google-site-verification" content="yj1x6SGJRnxEqoaHXndBbDlvseWoVRMAzxteRSuu23U" />
     <!-- Meta Description -->
     <meta name="description" content="SMART EDU - Cổng thông tin du học Hàn Quốc. Khám phá các trường đại học hàng đầu, tìm kiếm học bổng và nhận hướng dẫn từ chuyên gia. Bắt đầu hành trình du học của bạn ngay hôm nay với SMART EDU.">
 
