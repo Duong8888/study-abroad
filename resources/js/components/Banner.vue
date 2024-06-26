@@ -9,7 +9,7 @@
                     delay: 2500,
                     disableOnInteraction: false,
                 }"
-                :navigation="true"
+                :navigation="isNavigationEnabled"
                 :modules="modules"
                 class="mySwiper"
             >
@@ -38,6 +38,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import {Autoplay, Navigation} from 'swiper/modules';
 import FormRequest from "@/components/FormRequest.vue";
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 
 export default {
     name: "Banner",
@@ -47,8 +48,29 @@ export default {
         SwiperSlide,
     },
     setup() {
+        const modules = [Autoplay, Navigation];
+        const isNavigationEnabled = ref(true);
+
+        const updateNavigation = () => {
+            if (window.innerWidth <= 576) {
+                isNavigationEnabled.value = false;
+            } else {
+                isNavigationEnabled.value = true;
+            }
+        };
+
+        onMounted(() => {
+            updateNavigation();
+            window.addEventListener('resize', updateNavigation);
+        });
+
+        onUnmounted(() => {
+            window.removeEventListener('resize', updateNavigation);
+        });
+
         return {
-            modules: [Autoplay, Navigation],
+            modules,
+            isNavigationEnabled,
         };
     },
     props: {

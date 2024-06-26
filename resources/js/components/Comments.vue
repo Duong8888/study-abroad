@@ -1,6 +1,6 @@
 <template>
     <div id="comment"></div>
-    <div id="rs-about" class="rs-about main-home pt-50 pb-100 md-pt-80 md-pb-80 gray-bg2">
+    <div id="rs-about" class="rs-about main-home pt-50 pb-100 md-pt-80 md-pb-0 gray-bg2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">

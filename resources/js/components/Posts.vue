@@ -1,5 +1,5 @@
 <template>
-    <div id="rs-about" class="rs-about main-home pb-20 md-pt-80 md-pb-80 gray-bg2 pt-20 bg-custom">
+    <div id="rs-about" class="rs-about main-home pb-20 md-pt-20 md-pb-20 gray-bg2 pt-20 bg-custom">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">

@@ -2,7 +2,7 @@
 
     <!-- About Section Start -->
     <div id="about"></div>
-    <div id="rs-about" class="rs-about style1 md-pt-80 md-pb-80 gray-bg2">
+    <div id="rs-about" class="rs-about style1 md-pt-80  gray-bg2">
         <div class="container">
             <div class="row y-middle">
                 <div class="col-lg-6 md-mb-50">
@@ -16,7 +16,7 @@
                         <h2 class="title pb-30" style="font-weight: 900">
                             Du học Hàn Quốc cùng <span class="" style="color: #ed1e24">SMARTEDU</span>
                         </h2>
-                        <p class="margin-0 pb-55 md-pb-30 text-custom">SMARTEDU được thành lập từ năm 2020, Công ty có
+                        <p class="margin-0 pb-55 md-pb-20 text-custom">SMARTEDU được thành lập từ năm 2020, Công ty có
                             trụ chính tại
                             Seoul(Hàn Quốc) và có 2 chi nhánh tại Ansan(HÀn Quốc), Hà Nội. Chỉ sau sau vài năm hoạt
                             động, Văn phòng đã có khá nhiều thành tích đáng kể như: kí hợp đồng liên kết với khoảng 10
@@ -33,12 +33,12 @@
     <!-- About Section End -->
 
     <!-- Services Section Start -->
-    <div id="rs-services" class="rs-services style10 pt-100 pb-50 md-pt-80 md-pb-75 gray-bg2">
+    <div id="rs-services" class="rs-services style10 pt-100 pb-50 md-pt-10 md-pb-75 gray-bg2">
         <div class="container">
             <div class="row">
-                <div class="row md-pl-15">
+                <div class="row">
                     <div class="col-lg-6 col-md-6 mb-40">
-                        <div class="services-item">
+                        <div class="services-item md-pl-15 md-pr-15">
                             <div class="services-text">
                                 <div class="text-center">
                                     <img class="icon-title" src="@/assets/images/common/1.svg" alt="logo">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 mb-40">
-                        <div class="services-item">
+                        <div class="services-item md-pl-15 md-pr-15">
                             <div class="services-text">
                                 <div class="text-center">
                                     <img class="icon-title" src="@/assets/images/common/2.svg" alt="logo">
