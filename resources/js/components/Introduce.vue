@@ -70,7 +70,12 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="sec-title text-center mb-60 w-100">
+                    <h2 class="title title2 pb-13">
+                        Thông tin du học bạn cần biết.
+                    </h2>
+                    <div class="heading-border-line"></div>
+                </div>
                 <div class="row md-pl-15">
                     <div class="col-lg-3 col-md-6 mb-40">
                         <div class="services-item">
@@ -79,6 +84,7 @@
                                     <span>01. </span>Điều Kiện
                                 </h4>
                                 <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, sed!</p>
+                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -89,6 +95,7 @@
                                     <span>02. </span>Chọn Trường
                                 </h4>
                                 <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, error.</p>
+                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -99,6 +106,7 @@
                                     <span>03. </span>Chi Phí
                                 </h4>
                                 <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, in?</p>
+                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -109,6 +117,7 @@
                                     <span>04. </span>Học Bổng
                                 </h4>
                                 <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, nam.</p>
+                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
                             </div>
                         </div>
                     </div>
