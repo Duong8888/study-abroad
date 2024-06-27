@@ -176,7 +176,7 @@ export default {
                         <img src="https://via.placeholder.com/150" alt="qr-university" style="align-self: flex-end;">
                     </div>
                 </div>`,
-            apiKey: 'g00klohzu757d7qwuw6rupo7nuezdho9d9j9hcr083mmkpy1',
+            apiKey: 'ok7t7t5acz8af0vod6gap5of3whu45jtqowlv37j3kao6s7y',
             editorConfig: {
                 plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
                 toolbar: 'undo redo | blocks fontfamily fontsize | forecolor bold italic underline strikethrough | link image media table | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
