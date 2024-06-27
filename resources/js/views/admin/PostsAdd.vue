@@ -265,6 +265,21 @@ export default {
             slug = slug.toLowerCase().replace(/\s+/g, '-');
             return slug;
         },
+        transformData(rawData) {
+            let parsedData;
+            try {
+                parsedData = JSON.parse(rawData);
+            } catch (error) {
+                console.error('Invalid JSON string:', error);
+                return [];
+            }
+            return parsedData.map(item => {
+                return {
+                    value: { id: item.id, name: item.name },
+                    label: item.name
+                };
+            });
+        },
         previewImage(event) {
             const file = event.target.files[0];
             if (file) {

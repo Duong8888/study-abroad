@@ -5,6 +5,61 @@
     <div id="rs-about" class="rs-about style1 md-pt-80  gray-bg2">
         <div class="container">
             <div class="row y-middle">
+                <div class="sec-title text-center mb-60 w-100">
+                    <h2 class="title title2 pb-13">
+                        Thông tin du học bạn cần biết
+                    </h2>
+                    <div class="heading-border-line"></div>
+                </div>
+                <div class="row md-pl-15">
+                    <div class="col-lg-3 col-md-6 mb-40">
+                        <div class="services-item">
+                            <div class="services-text">
+                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
+                                    <span>01. </span>Điều Kiện
+                                </p>
+                                <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, sed!</p>
+                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-40">
+                        <div class="services-item">
+                            <div class="services-text">
+                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
+                                    <span>02. </span>Chọn Trường
+                                </p>
+                                <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, error.</p>
+                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-40">
+                        <div class="services-item">
+                            <div class="services-text">
+                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
+                                    <span>03. </span>Chi Phí
+                                </p>
+                                <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, in?</p>
+                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-40">
+                        <div class="services-item">
+                            <div class="services-text">
+                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
+                                    <span>04. </span>Học Bổng
+                                </p>
+                                <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, nam.</p>
+                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row y-middle">
                 <div class="col-lg-6 md-mb-50">
                     <div class="images-part">
                         <img src="@/assets/images/about/about-2.png" alt="images">
@@ -66,58 +121,6 @@
                                     tôi nói với
                                     khách hàng. Chúng tôi cam kết đồng hành cùng phụ huynh, học sinh để đạt mục tiêu đề
                                     ra về thành tích học tập và có được tấm vé sang Hàn Quốc.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="sec-title text-center mb-60 w-100">
-                    <h2 class="title title2 pb-13">
-                        Thông tin du học bạn cần biết
-                    </h2>
-                    <div class="heading-border-line"></div>
-                </div>
-                <div class="row md-pl-15">
-                    <div class="col-lg-3 col-md-6 mb-40">
-                        <div class="services-item">
-                            <div class="services-text">
-                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
-                                    <span>01. </span>Điều Kiện
-                                </p>
-                                <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, sed!</p>
-                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-40">
-                        <div class="services-item">
-                            <div class="services-text">
-                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
-                                    <span>02. </span>Chọn Trường
-                                </p>
-                                <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, error.</p>
-                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-40">
-                        <div class="services-item">
-                            <div class="services-text">
-                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
-                                    <span>03. </span>Chi Phí
-                                </p>
-                                <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, in?</p>
-                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-40">
-                        <div class="services-item">
-                            <div class="services-text">
-                                <p class="title custom-title" style="color: #ed1e24; font-weight: 900">
-                                    <span>04. </span>Học Bổng
-                                </p>
-                                <p class="services-txt text-custom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, nam.</p>
-                                <a href="https://smartedu.com.vn/blogs">Xem thêm</a>
                             </div>
                         </div>
                     </div>
