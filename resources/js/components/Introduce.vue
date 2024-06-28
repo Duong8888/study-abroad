@@ -1,4 +1,5 @@
 <template>
+    <div class="w-100 gray-bg2">
     <div class="container mb-5 md-mt-50 gray-bg2">
         <div class="row text-center">
             <div class="col-12 mb-5">
@@ -254,7 +255,7 @@
         </div>
     </div>
     <!-- Services Section End -->
-
+    </div>
 </template>
 
 <script>
