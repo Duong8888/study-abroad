@@ -17,7 +17,7 @@
                                 <div class="feature-title text-white">20+</div>
                             </div>
                         </div>
-                        <div class="feature-subtitle mt-5 mb-5">TRƯỜNG, ĐH LIÊN KẾT</div>
+                        <div class="feature-subtitle mt-5 mb-5">TRƯỜNG ĐẠI HỌC LIÊN KẾT</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
@@ -497,31 +497,11 @@ export default {
     border-bottom-right-radius: 100%;
 }
 
-@media only screen and (max-width: 575px) {
-    .quadrant:hover {
-        transform: scale(1.1);
-    }
-
-    .inner-circle {
-        transform: scale(0.8);
-    }
-
-    .outer-circle {
-        width: 300px;
-        height: 300px;
-    }
-
-    .icon-box img {
-        transform: translateY(5px);
-        width: 30px;
-        height: 30px;
-    }
-}
 
 .box-img {
     background: #ed1e24;
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 180px;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -565,10 +545,13 @@ export default {
     width: 80%;
     text-align: center;
     font-weight: 900;
+    font-size: 20px;
 }
 
 .feature-title {
     font-weight: 900;
+    font-size: 25px;
+    margin-top: 10px;
 }
 .box-img-left img{
     width: 100%;
@@ -592,5 +575,57 @@ export default {
     linear-gradient(to right, red, rgba(255, 255, 255, 0)) 0% 0% / 100% 4px no-repeat;
     z-index: 1;
     transform: translate(-4px, -4px);
+}
+
+@media only screen and (max-width: 575px) {
+    .quadrant:hover {
+        transform: scale(1.1);
+    }
+
+    .inner-circle {
+        transform: scale(0.8);
+    }
+
+    .outer-circle {
+        width: 300px;
+        height: 300px;
+    }
+
+    .icon-box img {
+        transform: translateY(5px);
+        width: 30px;
+        height: 30px;
+    }
+
+    .box-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .quadrant:hover {
+        transform: scale(1.1);
+    }
+
+    .inner-circle {
+        transform: scale(0.8);
+    }
+
+    .outer-circle {
+        width: 300px;
+        height: 300px;
+    }
+
+    .icon-box img {
+        transform: translateY(5px);
+        width: 30px;
+        height: 30px;
+    }
+
+    .box-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
 }
 </style>
