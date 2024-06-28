@@ -581,7 +581,6 @@ export default {
     display: inline-block;
     padding: 20px;
     margin: 20px;
-    background: white;
 }
 .title-border {
     position: absolute;
