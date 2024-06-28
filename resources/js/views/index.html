@@ -3,65 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMART EDU</title>
+    <title>Title with Border</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .feature-box {
-            text-align: center;
+        .title-container {
+            position: relative;
+            display: inline-block;
             padding: 20px;
-            margin: 10px 0;
+            margin: 20px;
+            background: white;
         }
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 10px;
-        }
-        .feature-title {
-            font-weight: bold;
-        }
-        .feature-subtitle {
-            font-size: 14px;
+        .title-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
+            background: linear-gradient(to bottom, red, rgba(255, 255, 255, 0)) 0% 0% / 10px 100% no-repeat,
+            linear-gradient(to right, red, rgba(255, 255, 255, 0)) 0% 0% / 100% 10px no-repeat;
+            z-index: -1;
+            transform: translate(-4px, -4px);
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="row text-center">
-        <div class="col-12 mb-4">
-            <h2 class="font-weight-bold text-danger">SMART EDU</h2>
-            <h4>Có Gì?</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-md-3">
-            <div class="feature-box">
-                <img src="@/assets/images/common/43.svg" alt="logo">
-                <div class="feature-title text-danger">20+</div>
-                <div class="feature-subtitle">TRƯỜNG, ĐH LIÊN KẾT</div>
-            </div>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="feature-box">
-                <img src="@/assets/images/common/43.svg" alt="logo">
-                <div class="feature-title text-danger">1000+</div>
-                <div class="feature-subtitle">SỐ LƯỢNG HỌC VIÊN</div>
-            </div>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="feature-box">
-                <img src="@/assets/images/common/43.svg" alt="logo">
-                <div class="feature-title text-danger">99%</div>
-                <div class="feature-subtitle">TỶ LỆ ĐỖ VISA</div>
-            </div>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="feature-box">
-                <img src="@/assets/images/common/43.svg" alt="logo">
-                <div class="feature-title text-danger">100%</div>
-                <div class="feature-subtitle">HOÀN PHÍ DỊCH VỤ NẾU TRƯỢT VISA</div>
-            </div>
-        </div>
+<div class="container mb-80 md-mb-0 gray-bg2">
+    <div class="title-container">
+        <h2 class="title pb-25 md-pb-15">
+            <span>SMART EDU</span> <span style="font-weight: 900; font-size: 30px">có gì ?</span>
+        </h2>
+        <div class="title-border"></div>
     </div>
 </div>
 

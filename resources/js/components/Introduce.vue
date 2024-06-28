@@ -1,9 +1,12 @@
 <template>
     <div class="w-100 gray-bg2">
         <div class="container mb-5 md-mt-50 gray-bg2">
-            <h2 class="title pb-25 md-pb-15" style="font-weight: 900">
-                <span style="color: #ed1e24">SMART EDU</span> có gì ?
-            </h2>
+            <div class="title-container">
+                <h2 class="title pb-25 md-pb-15" style="font-weight: 900">
+                    <span style="color: #ed1e24">SMART EDU</span> <span style="font-weight: 900; font-size: 30px">có gì ?</span>
+                </h2>
+                <div class="title-border"></div>
+            </div>
             <div class="row">
                 <div class="col-6 col-md-3">
                     <div class="feature-box d-flex justify-content-center align-items-center flex-column">
@@ -572,5 +575,23 @@ export default {
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+}
+.title-container {
+    position: relative;
+    display: inline-block;
+    padding: 20px;
+    margin: 20px;
+    background: white;
+}
+.title-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(50%);
+    height: calc(80%);
+    background: linear-gradient(to bottom, red, rgba(255, 255, 255, 0)) 0% 0% / 4px 100% no-repeat,
+    linear-gradient(to right, red, rgba(255, 255, 255, 0)) 0% 0% / 100% 4px no-repeat;
+    z-index: 1;
+    transform: translate(-4px, -4px);
 }
 </style>
