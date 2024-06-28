@@ -55,8 +55,8 @@
                     </div>
                 </div>
             </div>
+            <hr>
         </div>
-
 
         <div class="container mb-80 md-mb-0 gray-bg2">
             <div class="row">
