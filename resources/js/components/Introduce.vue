@@ -1,8 +1,66 @@
 <template>
-    <div class="container mb-80 md-mb-0">
-        <h2 class="title pb-30" style="font-weight: 900">
-            <span class="" style="color: #ed1e24">SMARTEDU</span> Có Gì ?
-        </h2>
+    <div class="container mb-5 md-mt-50 gray-bg2">
+        <div class="row text-center">
+            <div class="col-12 mb-5">
+                <h2 class="title" style="font-weight: 900;color: #ed1e24">SMART EDU</h2>
+                <h4>Có Gì?</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <div class="feature-box d-flex justify-content-center align-items-center flex-column">
+                    <div class="box-img">
+                        <div class="bg"></div>
+                        <div class="icon-content">
+                            <img src="@/assets/images/common/icon-1.svg" alt="logo">
+                            <div class="feature-title text-white">20+</div>
+                        </div>
+                    </div>
+                    <div class="feature-subtitle mt-5 mb-5">TRƯỜNG, ĐH LIÊN KẾT</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="feature-box d-flex justify-content-center align-items-center flex-column">
+                    <div class="box-img">
+                        <div class="bg"></div>
+                        <div class="icon-content">
+                            <img src="@/assets/images/common/icon-2.svg" alt="logo">
+                            <div class="feature-title text-white">1000+</div>
+                        </div>
+                    </div>
+                    <div class="feature-subtitle mt-5 mb-5">SỐ LƯỢNG HỌC VIÊN</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="feature-box d-flex justify-content-center align-items-center flex-column">
+                    <div class="box-img">
+                        <div class="bg"></div>
+                        <div class="icon-content">
+                            <img src="@/assets/images/common/icon-3.svg" alt="logo">
+                            <div class="feature-title text-white">99%</div>
+                        </div>
+
+                    </div>
+                    <div class="feature-subtitle mt-5 mb-5">TỶ LỆ ĐỖ VISA</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="feature-box d-flex justify-content-center align-items-center flex-column">
+                    <div class="box-img">
+                        <div class="bg"></div>
+                        <div class="icon-content">
+                            <img src="@/assets/images/common/icon-4.svg" alt="logo">
+                            <div class="feature-title text-white">100%</div>
+                        </div>
+                    </div>
+                    <div class="feature-subtitle mt-5 mb-5">HOÀN PHÍ DỊCH VỤ NẾU TRƯỢT VISA</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mb-80 md-mb-0 gray-bg2">
         <div class="d-flex align-items-center justify-content-center w-100">
             <div class="outer-circle">
                 <div class="inner-circle">
@@ -432,5 +490,56 @@ export default {
         width: 30px;
         height: 30px;
     }
+}
+
+.box-img{
+    background: #ed1e24;
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.icon-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.bg{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ed1e24;
+    transform: rotate(45deg);
+}
+
+.box-img img{
+    width: 50%;
+    height: 50%;
+}
+.feature-subtitle{
+    width: 80%;
+    text-align: center;
+    font-weight: 900;
+}
+.feature-title{
+    font-weight: 900;
 }
 </style>
