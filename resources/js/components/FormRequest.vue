@@ -34,9 +34,9 @@ export default {
     data(){
         return{
             texts: [
-                "Đăng ký nhận tư vấn.",
-                "Đăng ký học thử miễn phí.",
-                "Nhận thông tin khóa học mới nhất."
+                "Đăng ký nhận tư vấn",
+                "Đăng ký học thử miễn phí",
+                "Nhận thông tin khóa học mới nhất"
             ],
             currentIndex: 0,
             currentText: "",
@@ -208,7 +208,7 @@ form {
 }
 
 .text-cursor {
-    display: inline-block;
+    display: none;
     vertical-align: middle;
     width: 4px;
     height: 1em;

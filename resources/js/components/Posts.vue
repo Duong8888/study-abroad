@@ -26,7 +26,7 @@
 <!--                        </div>-->
 <!--                    </router-link>-->
 
-                    <router-link :to="{name: 'PostsDetail', params: {slug: item?.slug}}">
+                    <a :href="'/blogs/'+item?.slug">
                         <div class="card p-3 h-100 overflow-hidden item-posts">
                             <div class="position-relative rounded-2 overflow-hidden" style="height: 200px;">
                                 <img class="card-img-top rounded-0" :src="item?.thumbnail"
@@ -48,7 +48,7 @@
 <!--                                </div>-->
                             </div>
                         </div>
-                    </router-link>
+                    </a>
                 </swiper-slide>
             </swiper>
         </div>

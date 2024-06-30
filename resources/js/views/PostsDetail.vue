@@ -89,7 +89,7 @@
                 <div class="my-12 border-bottom"></div>
                 <div class="mw-4xl mx-auto show-content container">
                     <div class="my-5" v-html="postsDetail?.university_info"></div>
-                    <div v-html="postsDetail?.content"></div>
+                    <div class="responsive-table" v-html="postsDetail?.content"></div>
                 </div>
             </div>
         </div>
@@ -206,5 +206,31 @@ export default {
 </script>
 
 <style scoped>
+.responsive-table >>> table td{
+    padding: 10px 30px;
+}
+.responsive-table >>> table{
+    width: 100%;
+    height: 400px;
+}
+.responsive-table {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+@media only screen and (max-width: 600px) {
+    .responsive-table >>> table,
+    .responsive-table /deep/ table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 
+    .responsive-table >>> table td,
+    .responsive-table /deep/ table td,
+    .responsive-table >>> table th,
+    .responsive-table /deep/ table th {
+        white-space: nowrap;
+    }
+}
 </style>
