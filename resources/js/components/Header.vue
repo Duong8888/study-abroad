@@ -292,11 +292,11 @@ export default {
 }
 
 .active-menu > .parent-menu{
-    border-bottom: 5px solid #be1510;
-    color: #be1510 !important;
+    border-bottom: 5px solid #FFFFFF;
+    color: #FFFFFF !important;
 }
 .active-menu > .parent-menu svg{
-    fill: #be1510 !important;
+    fill: #FFFF !important;
 }
 
 .bg-new {
