@@ -174,7 +174,26 @@ export default {
             } catch (error) {
                 console.error("Failed to copy URL:", error);
             }
+        },
+        addOverflowXToTables() {
+            // Lấy tất cả các bảng trong component
+            const tables = this.$el.querySelectorAll('table');
+            tables.forEach((table) => {
+                console.log('anhduong');
+                // Tính số cột của bảng
+                const columns = table.querySelectorAll('th, td');
+                const numColumns = columns.length / table.querySelectorAll('tr').length;
+
+                // Thêm thuộc tính CSS overflow-x: auto nếu số cột > 4
+                if (numColumns > 4) {
+                    table.style.display = "block";
+                    table.style.overflowX = "auto";
+                }
+            });
         }
+    },
+    updated() {
+        this.addOverflowXToTables();
     },
     computed: {
         ...mapGetters('posts', ['posts','postsAll']),
@@ -209,28 +228,9 @@ export default {
 .responsive-table >>> table td{
     padding: 10px 30px;
 }
-.responsive-table >>> table{
-    width: 100%;
-    height: 400px;
-}
-.responsive-table {
-    overflow-x: auto;
-    overflow-y: hidden;
-}
 @media only screen and (max-width: 600px) {
-    .responsive-table >>> table,
-    .responsive-table /deep/ table {
-        width: 100%;
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    .responsive-table >>> table td,
-    .responsive-table /deep/ table td,
-    .responsive-table >>> table th,
-    .responsive-table /deep/ table th {
-        white-space: nowrap;
+    .responsive-table >>> table td{
+        padding: 5px 20px;
     }
 }
 </style>
