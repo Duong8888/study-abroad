@@ -129,7 +129,7 @@ export default {
     justify-content: center;
     align-items: center;
     background: white !important;
-    color: #eb2026 !important;
+    color: #B21818 !important;
     font-weight: bold;
 }
 .spinner-custom{
@@ -151,7 +151,7 @@ export default {
 }
 
 .contact-wrap{
-    background: #eb2026 !important;
+    background: #B21818 !important;
 }
 input, textarea{
     background: white !important;

@@ -229,7 +229,7 @@ body {
     transition: 0.5s;
 }
 .item-posts:hover{
-    background: #ed1e24 !important;
+    background: #B21818 !important;
 }
 
 .item-posts:hover .card-text{

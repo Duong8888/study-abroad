@@ -499,7 +499,7 @@ export default {
 
 
 .box-img {
-    background: #ed1e24;
+    background: #B21818;
     width: 180px;
     height: 180px;
     padding: 20px;
@@ -532,7 +532,7 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    background: #ed1e24;
+    background: #B21818;
     transform: rotate(45deg);
 }
 
@@ -571,8 +571,8 @@ export default {
     left: 0;
     width: calc(50%);
     height: calc(80%);
-    background: linear-gradient(to bottom, red, rgba(255, 255, 255, 0)) 0% 0% / 4px 100% no-repeat,
-    linear-gradient(to right, red, rgba(255, 255, 255, 0)) 0% 0% / 100% 4px no-repeat;
+    background: linear-gradient(to bottom, #B21818, rgba(255, 255, 255, 0)) 0% 0% / 4px 100% no-repeat,
+    linear-gradient(to right, #B21818, rgba(255, 255, 255, 0)) 0% 0% / 100% 4px no-repeat;
     z-index: 1;
     transform: translate(-4px, -4px);
 }

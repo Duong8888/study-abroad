@@ -13,9 +13,18 @@
                 :modules="modules"
                 class="mySwiper"
             >
-                <swiper-slide v-if="!defaultImg" v-for="(image, index) in images" :key="image.id">
-                    <a :href="image.link" target="_blank">
-                        <img class="w-100 h-100 banner-img" :src="image.image_path" :alt="image.title">
+                <swiper-slide v-if="!defaultImg" v-for="(image, index) in images"
+                              :key="image.id"
+                              :style="{
+                                'background-image': 'url(' + image.image_path + ')',
+                                'background-size': 'cover',
+                                'background-position': 'center',
+                                'background-repeat': 'no-repeat',
+                                'background-size': 'contain',
+                                'background-position': 'top',
+                              }">
+                    <a :href="image.link" target="_blank" class="full-link">
+
                     </a>
                 </swiper-slide>
                 <swiper-slide v-if="defaultImg">
@@ -150,28 +159,42 @@ body {
 .banner-img {
     object-fit: contain;
 }
-
+.full-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    text-indent: -9999px;
+}
 @media screen and (max-width: 991px) {
     .swiper {
-        height: 60vh;
+        height: 25vh;
     }
     .swiper-slide {
         line-height: 200px;
+    }
+    .custom-box {
+        padding-top: 70px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .swiper {
-        height: 50vh;
+        height: 25vh;
     }
     .swiper-slide {
         line-height: 150px;
+    }
+    .custom-box {
+        padding-top: 70px;
     }
 }
 
 @media screen and (max-width: 576px) {
     .swiper {
-        height: 40vh;
+        height: 25vh;
     }
     .swiper-slide {
         line-height: 100px;
@@ -179,6 +202,9 @@ body {
     .banner-img {
         width: 100%;
         height: auto;
+    }
+    .custom-box {
+        padding-top: 70px;
     }
 }
 

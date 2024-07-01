@@ -176,13 +176,14 @@ export default {
             }
         },
         addOverflowXToTables() {
-            // Lấy tất cả các bảng trong component
             const tables = this.$el.querySelectorAll('table');
+            const maxColumns = window.innerWidth <= 768 ? 4 : 8;
             tables.forEach((table) => {
                 const columns = table.querySelectorAll('th, td');
                 const numColumns = columns.length / table.querySelectorAll('tr').length;
 
-                if (numColumns > 4) {
+                if (numColumns > maxColumns)  {
+                    table.style.display = "block";
                     table.style.overflowX = "auto";
                 }
             });
@@ -224,11 +225,16 @@ export default {
 .responsive-table >>> table td{
     padding: 10px 30px;
 }
+.responsive-table >>> table {
+    width: 100%;
+    overflow-x: auto;
+}
 @media only screen and (max-width: 600px) {
     .responsive-table >>> table td{
         padding: 5px 20px;
     }
     .responsive-table >>> table {
+        width: 100%;
         display: block;
     }
 }

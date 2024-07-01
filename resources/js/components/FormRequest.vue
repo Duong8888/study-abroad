@@ -6,7 +6,7 @@
                 <p class="font-weight-bold fs-6 text-form">{{ displayText }} <span class="text-cursor" :class="{run:cursor}"></span></p>
                 <p class="d-flex align-items-center font-weight-bold fs-6 text-form hotline">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                         style="fill: #ed1e24;transform: ;msFilter:;">
+                         style="fill: #FFFFFF;transform: ;msFilter:;">
                         <path
                             d="M16.57 22a2 2 0 0 0 1.43-.59l2.71-2.71a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0l-1.6 1.59a7.55 7.55 0 0 1-3-1.59 7.62 7.62 0 0 1-1.59-3l1.59-1.6a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0L2.59 6A2 2 0 0 0 2 7.43 15.28 15.28 0 0 0 6.3 17.7 15.28 15.28 0 0 0 16.57 22zM6 5.41 8.59 8 7.3 9.29a1 1 0 0 0-.3.91 10.12 10.12 0 0 0 2.3 4.5 10.08 10.08 0 0 0 4.5 2.3 1 1 0 0 0 .91-.27L16 15.41 18.59 18l-2 2a13.28 13.28 0 0 1-8.87-3.71A13.28 13.28 0 0 1 4 7.41zM20 11h2a8.81 8.81 0 0 0-9-9v2a6.77 6.77 0 0 1 7 7z"></path>
                         <path d="M13 8c2.1 0 3 .9 3 3h2c0-3.22-1.78-5-5-5z"></path>
@@ -91,6 +91,7 @@ export default {
 <style scoped>
 .box-request {
     transform: translateY(-50%);
+    background: #B21818 !important;
 }
 
 input {
@@ -105,7 +106,7 @@ form {
     border: 1px solid #cccc;
 }
 .text-form{
-
+    color: white !important;
 }
 
 @media (min-width: 992px) {
@@ -127,6 +128,16 @@ form {
 
     input {
         height: 40px;
+        width: 40%;
+    }
+    input[name="phone"] {
+        border-right: 28px solid #B21818 !important;
+    }
+    input[name="phone"] {
+        border-left: 1px solid #B21818 !important;
+    }
+    .btn-custom{
+        width: 20%;
     }
     .title-form{
         display: flex;
@@ -145,22 +156,30 @@ form {
         box-shadow: 0px 0px 15px #11005833;
         background: white;
     }
+    .title-form{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
 }
 
 @media (max-width: 576px) {
     .box-request {
         transform: none;
     }
+    .rs-seo-website.style1 .newsletter-form {
+        background: #B21818;
+    }
     .custom-size {
         width: 90%;
         height: auto;
         padding: 10px 10px 30px 10px;
         box-shadow: 0px 0px 15px #11005833;
-        background: white;
     }
 
     input[name="phone"] {
         border-left: none;
+        border-right: none;
     }
 
     input {
@@ -176,6 +195,7 @@ form {
         margin: 0;
     }
     .title-form{
+        display: block;
         width: 100%;
         margin-bottom: 20px;
     }
@@ -185,6 +205,9 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #FFFFFF !important;
+    color: #B21818 !important;
+    font-weight: 900 !important;
 }
 
 .spinner-custom {
@@ -208,13 +231,17 @@ form {
 }
 
 .text-cursor {
-    display: none;
+    display: inline-block;
     vertical-align: middle;
     width: 4px;
     height: 1em;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0);
 }
 .text-cursor.run{
     animation: blink 1s infinite;
 }
 </style>
+
+
+<!--#B21818-->
+<!--AA1B17-->

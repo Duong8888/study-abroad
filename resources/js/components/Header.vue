@@ -4,8 +4,8 @@
         <!--Header Start-->
         <header id="rs-header" class="rs-header style1 modify1 header-transparent">
             <!-- Menu Start -->
-            <div class="menu-area menu-sticky">
-                <div class="container-fluid">
+            <div class="menu-area menu-sticky bg-new">
+                <div class="container-fluid bg-new">
                     <div class="row custom-row">
                         <div class="col-cell">
                             <div class="logo-area">
@@ -254,22 +254,31 @@ export default {
 </script>
 
 <style scoped>
+.logo-area{
+    width: 80px;
+    height: 80px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
 .normal-logo{
-    transform: scale(1.5);
-    width: 50px;
+    transform: scale(1) translateY(-4px) translateX(1px);
+    width: 60px;
     max-height: 100px !important;
 }
-.nav-menu > li a, .nav-menu > li svg{
-    color: #666 !important;
-    fill: #666 !important;
+.nav-menu > li svg{
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+}
+.parent-menu{
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
 }
 
 .nav-menu > li:hover > .parent-menu{
-    color: #be1510 !important;
-    border-bottom: 5px solid #be1510;
-}
-.nav-menu > li:hover > .parent-menu > svg{
-    fill: #be1510 !important;
+    border-bottom: 5px solid #FFFFFF;
 }
 
 .sub-menu{
@@ -289,19 +298,36 @@ export default {
 .active-menu > .parent-menu svg{
     fill: #be1510 !important;
 }
+
+.bg-new {
+    background: #B21818 !important;
+}
 .active-menu > .child-menu, .child-menu svg{
     color: #be1510 !important;
     fill: #be1510 !important;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 990px) {
     .container-fluid {
         padding-left: 30px;
         padding-right: 30px;
         position: fixed;
         background: white;
     }
+    .logo-area{
+        width: 50px;
+        height: 50px;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
     .normal-logo{
-        transform: scale(1);
+        width: 35px;
+        transform: scale(1) translateY(-1px);
+        max-height: 100px !important;
     }
 }
 </style>
