@@ -11,7 +11,6 @@
         <div class="mt-4">
             <h6>Danh mục bài viết</h6>
             <ul class="list-group">
-                {{formattedPostTypes}}
                 <li class="list-group-item d-flex justify-content-between" v-for="type in formattedPostTypes" :key="type.id">
                     <span>{{ type.type_name }}</span>
                     <div class="d-flex align-items-center justify-content-center">
