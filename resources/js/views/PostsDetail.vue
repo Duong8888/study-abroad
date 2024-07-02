@@ -34,14 +34,10 @@
                 <div class="d-flex mb-n6 flex-wrap align-items-center justify-content-between py-md-3">
                     <div class="mb-6">
                         <div class="d-flex align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
-                                 style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
-                                <path
-                                    d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path>
-                            </svg>
+                            <img class="img-profile" src="@/assets/images/common/logo.png">
                             <div class="ms-4">
                                 <span class="d-block fw-semibold">Admin</span>
-                                <span class="text-light-dark fw-medium">Content Writer, Solstice</span>
+                                <span class="text-light-dark fw-medium">Content Writer</span>
                             </div>
                         </div>
                     </div>
@@ -88,27 +84,30 @@
                 </div>
                 <div class="my-12 border-bottom"></div>
                 <div class="mw-4xl mx-auto show-content container">
-                    {{toc}}
                     <div v-if="toc.length" class="toc-container">
-                        <h2>Mục lục</h2>
-                        <ul>
+                        <h2 @click="tocOpen = !tocOpen">
+                            Nội dung chính
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
+                        </h2>
+                        <ul v-show="tocOpen">
+                            <hr>
                             <li v-for="(item, index) in toc" :key="index">
-                                <a :href="`#${item.id}`">{{ item.text }}</a>
+                                <a :href="`#${item.id}`">{{ item.number }} {{ item.text }}</a>
                                 <ul v-if="item.children && item.children.length">
                                     <li v-for="(child, childIndex) in item.children" :key="childIndex">
-                                        <a :href="`#${child.id}`">{{ child.text }}</a>
+                                        <a :href="`#${child.id}`">{{ child.number }} {{ child.text }}</a>
                                         <ul v-if="child.children && child.children.length">
                                             <li v-for="(grandChild, grandChildIndex) in child.children" :key="grandChildIndex">
-                                                <a :href="`#${grandChild.id}`">{{ grandChild.text }}</a>
+                                                <a :href="`#${grandChild.id}`">{{ grandChild.number }} {{ grandChild.text }}</a>
                                                 <ul v-if="grandChild.children && grandChild.children.length">
                                                     <li v-for="(greatGrandChild, greatGrandChildIndex) in grandChild.children" :key="greatGrandChildIndex">
-                                                        <a :href="`#${greatGrandChild.id}`">{{ greatGrandChild.text }}</a>
+                                                        <a :href="`#${greatGrandChild.id}`">{{ greatGrandChild.number }} {{ greatGrandChild.text }}</a>
                                                         <ul v-if="greatGrandChild.children && greatGrandChild.children.length">
                                                             <li v-for="(greatGreatGrandChild, greatGreatGrandChildIndex) in greatGrandChild.children" :key="greatGreatGrandChildIndex">
-                                                                <a :href="`#${greatGreatGrandChild.id}`">{{ greatGreatGrandChild.text }}</a>
+                                                                <a :href="`#${greatGreatGrandChild.id}`">{{ greatGreatGrandChild.number }} {{ greatGreatGrandChild.text }}</a>
                                                                 <ul v-if="greatGreatGrandChild.children && greatGreatGrandChild.children.length">
                                                                     <li v-for="(greatGreatGreatGrandChild, greatGreatGreatGrandChildIndex) in greatGreatGrandChild.children" :key="greatGreatGreatGrandChildIndex">
-                                                                        <a :href="`#${greatGreatGreatGrandChild.id}`">{{ greatGreatGreatGrandChild.text }}</a>
+                                                                        <a :href="`#${greatGreatGreatGrandChild.id}`">{{ greatGreatGreatGrandChild.number }} {{ greatGreatGreatGrandChild.text }}</a>
                                                                     </li>
                                                                 </ul>
                                                             </li>
@@ -155,6 +154,7 @@ export default {
             postsList: [],
             title:"Bài viết liên quan",
             toc: [],
+            tocOpen: true,
         }
     },
     methods: {
@@ -230,22 +230,24 @@ export default {
             this.toc = [];
 
             let tocData = [];
-            let preTocItem = null;
             let tocStack = [];
+            let numberStack = [];
 
             headings.forEach((heading) => {
                 const hLevel = parseInt(heading.tagName.substring(1));
                 const titleText = heading.innerText.trim();
                 let id = heading.id || titleText.replace(/\s+/g, '-').toLowerCase();
                 heading.id = id;
-
+                numberStack[hLevel - 1] = (numberStack[hLevel - 1] || 0) + 1;
+                numberStack.fill(0, hLevel);
+                const number = numberStack.slice(0, hLevel).join('.');
                 const tocItem = {
                     id: id,
                     text: titleText,
                     level: hLevel,
                     children: [],
+                    number: number,
                 };
-
                 if (tocStack.length === 0) {
                     tocData.push(tocItem);
                 } else {
@@ -263,20 +265,6 @@ export default {
             });
             this.toc = tocData;
         },
-
-        addIdsToHeadings() {
-            const headings = this.$el.querySelectorAll('h1, h2, h3, h4, h5, h6');
-            headings.forEach((heading) => {
-                const id = heading.id || heading.innerText.replace(/\s+/g, '-').toLowerCase();
-                heading.id = id;
-            });
-        },
-    },
-    async mounted() {
-        await this.$nextTick(() => {
-            this.addIdsToHeadings();
-            this.generateToc();
-        });
     },
     updated() {
         this.addOverflowXToTables();
@@ -288,6 +276,11 @@ export default {
         posts: {
             async handler(newVal) {
                 this.postsDetail = newVal.data;
+                if (newVal) {
+                    await this.$nextTick(() => {
+                        this.generateToc();
+                    });
+                }
                 if(this.postsDetail?.post_type_id){
                     var typeList = [];
                     var data = JSON.parse(this.postsDetail?.post_type_id);
@@ -330,23 +323,23 @@ export default {
 
 /* CSS để tạo mục lục */
 .toc-container {
-    position: fixed;
+    margin-top: 20px;
     top: 0;
     right: 0;
-    width: 250px;
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #dddd;
     background-color: #f9f9f9;
     z-index: 1000;
-    max-height: 100vh;
-    overflow-y: auto;
 }
 
 .toc-container h2 {
-    font-size: 1.2em;
-    margin-bottom: 0.5em;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.5em;
+    color: #b21818;
+    font-size: 25px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .toc-container ul {
@@ -367,6 +360,10 @@ export default {
     display: block;
     padding: 0.5em 0;
     margin-left: 0;
+}
+.toc-container li a:hover{
+    text-decoration: underline !important;
+    color: #b21818;
 }
 
 .toc-container li a.active {
@@ -400,5 +397,9 @@ export default {
 
 .responsive-table {
     overflow: auto;
+}
+.img-profile {
+    width: 50px;
+    margin-right: 10px;
 }
 </style>
