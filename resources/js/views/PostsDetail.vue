@@ -89,25 +89,25 @@
                             Nội dung chính
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
                         </h2>
-                        <ul v-show="tocOpen">
+                        <ul ref="tocList" v-show="tocOpen">
                             <hr>
                             <li v-for="(item, index) in toc" :key="index">
-                                <a :href="`#${item.id}`">{{ item.number }} {{ item.text }}</a>
+                                <a :href="`#${item.id}`" @click.prevent="scrollToSection(item.id)">{{ item.number }} {{ item.text }}</a>
                                 <ul v-if="item.children && item.children.length">
                                     <li v-for="(child, childIndex) in item.children" :key="childIndex">
-                                        <a :href="`#${child.id}`">{{ child.number }} {{ child.text }}</a>
+                                        <a :href="`#${child.id}`" @click.prevent="scrollToSection(child.id)">{{ child.number }} {{ child.text }}</a>
                                         <ul v-if="child.children && child.children.length">
                                             <li v-for="(grandChild, grandChildIndex) in child.children" :key="grandChildIndex">
-                                                <a :href="`#${grandChild.id}`">{{ grandChild.number }} {{ grandChild.text }}</a>
+                                                <a :href="`#${grandChild.id}`" @click.prevent="scrollToSection(grandChild.id)">{{ grandChild.number }} {{ grandChild.text }}</a>
                                                 <ul v-if="grandChild.children && grandChild.children.length">
                                                     <li v-for="(greatGrandChild, greatGrandChildIndex) in grandChild.children" :key="greatGrandChildIndex">
-                                                        <a :href="`#${greatGrandChild.id}`">{{ greatGrandChild.number }} {{ greatGrandChild.text }}</a>
+                                                        <a :href="`#${greatGrandChild.id}`" @click.prevent="scrollToSection(greatGrandChild.id)">{{ greatGrandChild.number }} {{ greatGrandChild.text }}</a>
                                                         <ul v-if="greatGrandChild.children && greatGrandChild.children.length">
                                                             <li v-for="(greatGreatGrandChild, greatGreatGrandChildIndex) in greatGrandChild.children" :key="greatGreatGrandChildIndex">
-                                                                <a :href="`#${greatGreatGrandChild.id}`">{{ greatGreatGrandChild.number }} {{ greatGreatGrandChild.text }}</a>
+                                                                <a :href="`#${greatGreatGrandChild.id}`" @click.prevent="scrollToSection(greatGreatGrandChild.id)">{{ greatGreatGrandChild.number }} {{ greatGreatGrandChild.text }}</a>
                                                                 <ul v-if="greatGreatGrandChild.children && greatGreatGrandChild.children.length">
                                                                     <li v-for="(greatGreatGreatGrandChild, greatGreatGreatGrandChildIndex) in greatGreatGrandChild.children" :key="greatGreatGreatGrandChildIndex">
-                                                                        <a :href="`#${greatGreatGreatGrandChild.id}`">{{ greatGreatGreatGrandChild.number }} {{ greatGreatGreatGrandChild.text }}</a>
+                                                                        <a :href="`#${greatGreatGreatGrandChild.id}`" @click.prevent="scrollToSection(greatGreatGreatGrandChild.id)">{{ greatGreatGreatGrandChild.number }} {{ greatGreatGreatGrandChild.text }}</a>
                                                                     </li>
                                                                 </ul>
                                                             </li>
@@ -265,6 +265,15 @@ export default {
             });
             this.toc = tocData;
         },
+        scrollToSection(id) {
+            const targetElement = document.getElementById(id);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50,
+                    behavior: 'smooth',
+                });
+            }
+        }
     },
     updated() {
         this.addOverflowXToTables();
