@@ -10,7 +10,7 @@
                         <div class="col-cell">
                             <div class="logo-area">
                                 <a href="/">
-                                    <img class="normal-logo" src="@/assets/images/common/logo.png" alt="logo">
+                                    <img class="normal-logo" src="@/assets/images/common/logo-new.png" alt="logo">
                                 </a>
                             </div>
                         </div>
