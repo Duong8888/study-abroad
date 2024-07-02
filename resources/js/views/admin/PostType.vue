@@ -17,6 +17,7 @@
                         <div class="btn-holder">
                             <div class="toggle-switch">
                                 <label :for="'cb-switch-'+type.id">
+                                    {{type.status}}
                                     <input type="checkbox" @change="updateStatus(type)" :checked="type.status" :id="'cb-switch-'+type.id" value="">
                                     <span>
                                     <small></small>
