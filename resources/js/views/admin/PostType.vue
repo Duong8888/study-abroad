@@ -104,6 +104,8 @@ export default {
             return this.postTypes.map(type => ({
                 ...type,
                 status: Boolean(type.status),
+                status1: Boolean(Number(type.status)),
+                status2: type.status === "0",
             }));
         },
     },
