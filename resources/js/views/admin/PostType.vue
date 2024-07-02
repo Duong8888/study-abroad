@@ -18,7 +18,6 @@
                         <div class="btn-holder">
                             <div class="toggle-switch">
                                 <label :for="'cb-switch-'+type.id">
-                                    {{type.status}}
                                     <input type="checkbox" @change="updateStatus(type)" :checked="type.status" :id="'cb-switch-'+type.id" value="">
                                     <span>
                                     <small></small>
@@ -103,9 +102,7 @@ export default {
         formattedPostTypes() {
             return this.postTypes.map(type => ({
                 ...type,
-                status0: Boolean(type.status),
                 status: Boolean(Number(type.status)),
-                status2: type.status === "0",
             }));
         },
     },
