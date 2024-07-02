@@ -17,7 +17,7 @@
                                 <div class="feature-title text-white">20+</div>
                             </div>
                         </div>
-                        <div class="feature-subtitle mt-5 mb-5">TRƯỜNG ĐẠI HỌC LIÊN KẾT</div>
+                        <div class="feature-subtitle mt-5 mb-5">TRƯỜNG LIÊN KẾT</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
@@ -54,7 +54,7 @@
                                 <div class="feature-title text-white">100%</div>
                             </div>
                         </div>
-                        <div class="feature-subtitle mt-5 mb-5">HOÀN PHÍ DỊCH VỤ NẾU TRƯỢT VISA</div>
+                        <div class="feature-subtitle mt-5 mb-5">HOÀN PHÍ NẾU TRƯỢT</div>
                     </div>
                 </div>
             </div>
