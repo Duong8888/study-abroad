@@ -158,7 +158,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: auto 100%;
+    background-size: contain;
     background-position: top;
 }
 .full-link {
@@ -174,6 +174,9 @@ body {
     .swiper {
         height: 35vh;
     }
+    .ct-swiper-slide{
+        background-size: auto 100%;
+    }
     .swiper-slide {
         line-height: 200px;
     }
@@ -186,6 +189,9 @@ body {
     .swiper {
         height: 35vh;
     }
+    .ct-swiper-slide{
+        background-size: auto 100%;
+    }
     .swiper-slide {
         line-height: 150px;
     }
@@ -196,7 +202,10 @@ body {
 
 @media screen and (max-width: 576px) {
     .swiper {
-        height: 45vh;
+        height: 40vh;
+    }
+    .ct-swiper-slide{
+        background-size: auto 100%;
     }
     .swiper-slide {
         line-height: 100px;

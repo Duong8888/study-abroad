@@ -204,21 +204,7 @@
                             <h2 class="title pb-30" style="font-weight: 900">
                                 Du học Hàn Quốc cùng <span class="" style="color: #ed1e24">SMARTEDU</span>
                             </h2>
-                            <p class="margin-0 pb-55 md-pb-20 text-custom">SMARTEDU được thành lập từ năm 2020, Công ty
-                                có
-                                trụ chính tại
-                                Seoul(Hàn Quốc) và có 2 chi nhánh tại Ansan(HÀn Quốc), Hà Nội. Chỉ sau sau vài năm hoạt
-                                động, Văn phòng đã có khá nhiều thành tích đáng kể như: kí hợp đồng liên kết với khoảng
-                                10
-                                trường đại học lớn tại Hàn Quốc, liên kết được với 5 trường đại học đào tạo ngôn ngữ Hàn
-                                tại
-                                Việt Nam và nhận được sự tín nhiệm từ rất nhiều du học sinh đang sống tại Hàn Quốc. Bên
-                                cạnh
-                                đó, Văn phòng còn chuyên xử lí các vấn đề liên quan đến visa và chuyển đổi visa như:
-                                visa
-                                xin việc bên Hàn Quốc, hỗ trợ làm thủ tục hợp pháp hóa giấy, visa thăm thân, visa kết
-                                hôn,
-                                visa du lịch,…</p>
+                            <p class="margin-0 pb-55 md-pb-20 text-custom">SMART EDU được thành lập từ năm 2020, có trụ sở chính đặt tại Seoul (Hàn Quốc), 3 chi nhánh tại Ansan (Hàn Quốc) và Hà Nội, Thái Nguyên (Việt Nam). Chỉ sau vài năm hoạt động, chúng tôi đã có nhiều thành tích đáng kể như ký hợp đồng liên kết với hơn 20 trường Đại học, Cao đẳng lớn, nhỏ tại Hàn Quốc; đào tạo được rất nhiều học viên du học Hàn Quốc thành công.  Một điều vô cùng trân trọng nữa là Smart Edu đã nhận được sự ủng hộ nhiệt tình từ các bậc phụ huynh, các bạn học sinh, sinh viên. Bởi lẽ đó chúng tôi luôn ý thức được sứ mệnh và tầm nhìn của mình.</p>
                         </div>
                     </div>
                 </div>
@@ -240,12 +226,7 @@
                                     <h3 class="title custom-title text-center" style="color: #ed1e24; font-weight: 900">
                                         SỨ MỆNH
                                     </h3>
-                                    <p class="services-txt text-custom">Chúng tôi luôn cố gắng không ngừng và làm việc
-                                        bằng
-                                        cả trái tim
-                                        của mình để mang lại những giá trị và hiệu quả cho khách hàng trong suốt quá
-                                        trình
-                                        học tập ở Smart Edu và cả sau khi sang Hàn Quốc học tập và làm việc.</p>
+                                    <p class="services-txt text-custom">SMART EDU ra đời với khao khát hiện thực hóa ước mơ Du học Hàn Quốc của các bạn học sinh, sinh viên cùng với đó là mong muốn kết nối tri thức, góp một phần nhỏ sức lực nâng cao chất lượng giáo dục tại Việt Nam.</p>
                                 </div>
                             </div>
                         </div>
@@ -258,12 +239,7 @@
                                     <h3 class="title custom-title text-center" style="color: #ed1e24; font-weight: 900">
                                         TẦM NHÌN
                                     </h3>
-                                    <p class="services-txt text-custom">Chúng tôi luôn cam kết thực hiện những điều
-                                        chúng
-                                        tôi nói với
-                                        khách hàng. Chúng tôi cam kết đồng hành cùng phụ huynh, học sinh để đạt mục tiêu
-                                        đề
-                                        ra về thành tích học tập và có được tấm vé sang Hàn Quốc.</p>
+                                    <p class="services-txt text-custom">SMART EDU luôn nỗ lực phấn đấu để trở thành niềm tin của mọi người trong lĩnh vực du học Hàn Quốc bằng sự tận tậm, trách nhiệm và quá trình trau dồi kỹ năng để mang đến cho học viên nhiều giá trị hữu ích nhất.</p>
                                 </div>
                             </div>
                         </div>
@@ -627,5 +603,9 @@ export default {
         width: 120px !important;
         height: 120px !important;
     }
+}
+
+.text-custom{
+    font-size: 20px !important;
 }
 </style>
