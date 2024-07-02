@@ -11,7 +11,7 @@
         <div class="mt-4">
             <h6>Danh mục bài viết</h6>
             <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between" v-for="type in postTypes" :key="type.id">
+                <li class="list-group-item d-flex justify-content-between" v-for="type in formattedPostTypes" :key="type.id">
                     <span>{{ type.type_name }}</span>
                     <div class="d-flex align-items-center justify-content-center">
                         <div class="btn-holder">
@@ -98,6 +98,12 @@ export default {
     },
     computed: {
         ...mapGetters('category', ['categoryAll','category']),
+        formattedPostTypes() {
+            return this.postTypes.map(type => ({
+                ...type,
+                status: Boolean(type.status),
+            }));
+        },
     },
     watch: {
         categoryAll: function (newValue) {
