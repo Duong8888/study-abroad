@@ -1,15 +1,15 @@
 <template>
-    <section class="py-12 py-md-16 py-lg-24 position-relative pt-120 pb-100">
+    <section class="py-12 py-md-16 py-lg-24 position-relative md-pt-60 pt-90 pb-100">
         <div class="position-absolute top-0 start-0 w-100 bg-primary-light">
             <div class="d-flex justify-content-center overflow-hidden pt-lg-24 pb-44 pb-md-64 pb-lg-80">
                 <div class="flex-shrink-0 mt-n40 mt-sm-n6 me-6"
-                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #be1510 100%);"></div>
+                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #b21818 100%);"></div>
                 <div class="flex-shrink-0 mt-n40 mt-sm-n32 me-6"
-                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #be1510 100%);"></div>
+                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #b21818 100%);"></div>
                 <div class="flex-shrink-0 mt-n40 mt-sm-n32 me-6"
-                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #be1510 100%);"></div>
+                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #b21818 100%);"></div>
                 <div class="flex-shrink-0 mt-n40 mt-sm-n6"
-                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #be1510 100%);"></div>
+                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #b21818 100%);"></div>
             </div>
         </div>
         <div class="container position-relative">

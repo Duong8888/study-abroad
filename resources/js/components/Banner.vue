@@ -13,15 +13,10 @@
                 :modules="modules"
                 class="mySwiper"
             >
-                <swiper-slide v-if="!defaultImg" v-for="(image, index) in images"
+                <swiper-slide class="ct-swiper-slide" v-if="!defaultImg" v-for="(image, index) in images"
                               :key="image.id"
                               :style="{
-                                'background-image': 'url(' + image.image_path + ')',
-                                'background-size': 'cover',
-                                'background-position': 'center',
-                                'background-repeat': 'no-repeat',
-                                'background-size': 'contain',
-                                'background-position': 'top',
+                                'background-image': 'url(' + image.image_path + ')'
                               }">
                     <a :href="image.link" target="_blank" class="full-link">
 
@@ -159,6 +154,13 @@ body {
 .banner-img {
     object-fit: contain;
 }
+.ct-swiper-slide{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: top;
+}
 .full-link {
     position: absolute;
     top: 0;
@@ -170,7 +172,7 @@ body {
 }
 @media screen and (max-width: 991px) {
     .swiper {
-        height: 25vh;
+        height: 35vh;
     }
     .swiper-slide {
         line-height: 200px;
@@ -182,7 +184,7 @@ body {
 
 @media screen and (max-width: 768px) {
     .swiper {
-        height: 25vh;
+        height: 35vh;
     }
     .swiper-slide {
         line-height: 150px;
@@ -194,7 +196,7 @@ body {
 
 @media screen and (max-width: 576px) {
     .swiper {
-        height: 25vh;
+        height: 45vh;
     }
     .swiper-slide {
         line-height: 100px;

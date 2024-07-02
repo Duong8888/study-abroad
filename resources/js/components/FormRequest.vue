@@ -148,6 +148,7 @@ form {
 @media (max-width: 991px) {
     .box-request {
         transform: none;
+        margin-top: 20px;
     }
     .custom-size {
         width: 90%;
@@ -166,6 +167,7 @@ form {
 @media (max-width: 576px) {
     .box-request {
         transform: none;
+        margin-top: 20px;
     }
     .rs-seo-website.style1 .newsletter-form {
         background: #B21818;
