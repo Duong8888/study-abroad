@@ -13,7 +13,17 @@
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between" v-for="type in postTypes" :key="type.id">
                     <span>{{ type.type_name }}</span>
-                    <div>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <div class="btn-holder">
+                            <div class="toggle-switch">
+                                <label :for="'cb-switch-'+type.id">
+                                    <input type="checkbox" @change="updateStatus(type)" :checked="type.status" :id="'cb-switch-'+type.id" value="">
+                                    <span>
+                                    <small></small>
+                                  </span>
+                                </label>
+                            </div>
+                        </div>
                         <button class="btn btn-sm" @click="openEditModal(type.id)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  style="fill: rgb(0,123,255);transform: ;msFilter:;">
@@ -53,10 +63,6 @@
                                 <input type="text" class="form-control" id="id" v-model="editType.id" hidden>
                                 <input type="text" class="form-control" id="type_name" v-model="editType.type_name"
                                        required>
-                                <label for="status" class="mt-20">
-                                    <input type="checkbox" id="status" name="status" v-model="editType.status" v-bind:checked="editType.status">
-                                    Hiển thị mục này ở trang chủ.
-                                </label>
                             </div>
                             <button type="submit" class="btn btn-primary">{{ mode === 'add' ? 'Thêm' : 'Lưu' }}</button>
                         </form>
@@ -119,6 +125,13 @@ export default {
             this.mode = 'edit';
             $('#postTypeModal').modal('show');
         },
+        async updateStatus(dataOld){
+            this.editType.id = dataOld.id;
+            this.editType.type_name = dataOld.type_name;
+            this.editType.status = !(dataOld.status);
+            this.mode = 'edit'
+            await this.submitForm()
+        },
         async deleteItem() {
             await this.deleteType({id: this.idDelete, toast: this.$toast});
             await this.fetchCategory();
@@ -142,3 +155,117 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.btn-holder {
+    width: 40px;
+    height: 30px;
+}
+.btn-lg.btn-toggle {
+    padding: 0;
+    margin: 0 5rem;
+    position: relative;
+    height: 20px;
+    width: 30px;
+    border-radius: 15px;
+    color: #6b7381;
+    background: #bdc1c8;
+    margin-bottom: 30px;
+}
+.btn-toggle.btn-lg > .switch {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 18px;
+    height: 18px;
+    border-radius: 15px;
+    background: #fff;
+    transition: left .25s;
+}
+.btn-toggle.active {
+    background-color: #B21818;
+}
+.btn-toggle.btn-lg.active > .switch {
+    left: 11px;
+    transition: left .25s;
+}
+
+.btn-lg.btn-toggle:after {
+    content: "";
+    right: -5rem;
+    opacity: 0.5;
+    line-height: 20px;
+    width: 5rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    position: absolute;
+    bottom: 0;
+    transition: opacity .25s;
+}
+
+.btn-lg.btn-toggle.active:after {
+    opacity: 1;
+}
+
+.toggle-switch {
+    width: 40px;
+    position: relative;
+}
+.toggle-switch label {
+    padding: 0;
+}
+input[type="checkbox"] {
+    display: none;
+}
+.toggle-switch label input + span {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    width: 30px;
+    height: 20px;
+    background: #bdc1c8;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: inset 0 0 5px #828282;
+}
+.toggle-switch label input + span small {
+    position: absolute;
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 15px;
+    background: #fff;
+    transition: all 0.3s ease-in-out;
+    top: 1px;
+    left: 1px;
+}
+.toggle-switch label input:checked + span {
+    background-color: #B21818;
+}
+.toggle-switch label input:checked + span small {
+    left: 11px;
+    transition: left .25s;
+}
+.toggle-switch span:after {
+    content: "";
+    line-height: 20px;
+    width: 5rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    position: absolute;
+    bottom: 0;
+    transition: opacity .25s;
+    left: 30px;
+    opacity: 0.5;
+    color: #6b7381;
+}
+.toggle-switch label input:checked + span:after {
+    opacity: 1;
+}
+
+</style>
