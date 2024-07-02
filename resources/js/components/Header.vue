@@ -254,17 +254,8 @@ export default {
 </script>
 
 <style scoped>
-.logo-area{
-    width: 80px;
-    height: 80px;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
 .normal-logo{
-    transform: scale(1) translateY(-4px) translateX(1px);
+    transform: scale(1.3);
     width: 60px;
     max-height: 100px !important;
 }
@@ -313,20 +304,9 @@ export default {
         position: fixed;
         background: white;
     }
-    .logo-area{
-        width: 50px;
-        height: 50px;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        background: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-    }
     .normal-logo{
         width: 35px;
-        transform: scale(1) translateY(-1px);
+        transform: scale(1.2);
         max-height: 100px !important;
     }
 }

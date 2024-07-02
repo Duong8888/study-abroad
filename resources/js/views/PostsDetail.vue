@@ -88,6 +88,40 @@
                 </div>
                 <div class="my-12 border-bottom"></div>
                 <div class="mw-4xl mx-auto show-content container">
+                    {{toc}}
+                    <div v-if="toc.length" class="toc-container">
+                        <h2>Mục lục</h2>
+                        <ul>
+                            <li v-for="(item, index) in toc" :key="index">
+                                <a :href="`#${item.id}`">{{ item.text }}</a>
+                                <ul v-if="item.children && item.children.length">
+                                    <li v-for="(child, childIndex) in item.children" :key="childIndex">
+                                        <a :href="`#${child.id}`">{{ child.text }}</a>
+                                        <ul v-if="child.children && child.children.length">
+                                            <li v-for="(grandChild, grandChildIndex) in child.children" :key="grandChildIndex">
+                                                <a :href="`#${grandChild.id}`">{{ grandChild.text }}</a>
+                                                <ul v-if="grandChild.children && grandChild.children.length">
+                                                    <li v-for="(greatGrandChild, greatGrandChildIndex) in grandChild.children" :key="greatGrandChildIndex">
+                                                        <a :href="`#${greatGrandChild.id}`">{{ greatGrandChild.text }}</a>
+                                                        <ul v-if="greatGrandChild.children && greatGrandChild.children.length">
+                                                            <li v-for="(greatGreatGrandChild, greatGreatGrandChildIndex) in greatGrandChild.children" :key="greatGreatGrandChildIndex">
+                                                                <a :href="`#${greatGreatGrandChild.id}`">{{ greatGreatGrandChild.text }}</a>
+                                                                <ul v-if="greatGreatGrandChild.children && greatGreatGrandChild.children.length">
+                                                                    <li v-for="(greatGreatGreatGrandChild, greatGreatGreatGrandChildIndex) in greatGreatGrandChild.children" :key="greatGreatGreatGrandChildIndex">
+                                                                        <a :href="`#${greatGreatGreatGrandChild.id}`">{{ greatGreatGreatGrandChild.text }}</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="my-5" v-html="postsDetail?.university_info"></div>
                     <div class="responsive-table" v-html="postsDetail?.content"></div>
                 </div>
@@ -120,6 +154,7 @@ export default {
             slug: null,
             postsList: [],
             title:"Bài viết liên quan",
+            toc: [],
         }
     },
     methods: {
@@ -187,7 +222,61 @@ export default {
                     table.style.overflowX = "auto";
                 }
             });
-        }
+        },
+        generateToc() {
+            const contentDiv = this.$el.querySelector('.responsive-table');
+            const headings = contentDiv.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+            this.toc = [];
+
+            let tocData = [];
+            let preTocItem = null;
+            let tocStack = [];
+
+            headings.forEach((heading) => {
+                const hLevel = parseInt(heading.tagName.substring(1));
+                const titleText = heading.innerText.trim();
+                let id = heading.id || titleText.replace(/\s+/g, '-').toLowerCase();
+                heading.id = id;
+
+                const tocItem = {
+                    id: id,
+                    text: titleText,
+                    level: hLevel,
+                    children: [],
+                };
+
+                if (tocStack.length === 0) {
+                    tocData.push(tocItem);
+                } else {
+                    while (tocStack.length > 0 && tocStack[tocStack.length - 1].level >= hLevel) {
+                        tocStack.pop();
+                    }
+                    if (tocStack.length > 0) {
+                        tocStack[tocStack.length - 1].children.push(tocItem);
+                    } else {
+                        tocData.push(tocItem);
+                    }
+                }
+
+                tocStack.push(tocItem);
+            });
+            this.toc = tocData;
+        },
+
+        addIdsToHeadings() {
+            const headings = this.$el.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            headings.forEach((heading) => {
+                const id = heading.id || heading.innerText.replace(/\s+/g, '-').toLowerCase();
+                heading.id = id;
+            });
+        },
+    },
+    async mounted() {
+        await this.$nextTick(() => {
+            this.addIdsToHeadings();
+            this.generateToc();
+        });
     },
     updated() {
         this.addOverflowXToTables();
@@ -237,5 +326,79 @@ export default {
         width: 100%;
         display: block;
     }
+}
+
+/* CSS để tạo mục lục */
+.toc-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    z-index: 1000;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.toc-container h2 {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5em;
+}
+
+.toc-container ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.toc-container li {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.toc-container li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 0.5em 0;
+    margin-left: 0;
+}
+
+.toc-container li a.active {
+    font-weight: bold;
+    color: #42b983;
+}
+
+.toc-container ul ul {
+    padding-left: 20px;
+}
+
+.toc-container ul ul ul {
+    padding-left: 20px;
+}
+
+.toc-container ul ul ul ul {
+    padding-left: 20px;
+}
+
+.toc-container ul ul ul ul ul {
+    padding-left: 20px;
+}
+
+.toc-container ul ul ul ul ul ul {
+    padding-left: 20px;
+}
+
+.toc-container ul ul ul ul ul ul ul {
+    padding-left: 20px;
+}
+
+.responsive-table {
+    overflow: auto;
 }
 </style>
