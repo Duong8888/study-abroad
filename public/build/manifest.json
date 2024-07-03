@@ -6,12 +6,12 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CV8zI8jS.js",
+    "file": "assets/app-BYSdEcGo.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-eqQzkhlO.css"
+      "assets/app-B9SQVs21.css"
     ],
     "assets": [
       "assets/banner-2-64q1SVUB.jpg",
@@ -52,7 +52,7 @@
       "assets/1-CvuTRcEk.png",
       "assets/2-C28BPVEj.png",
       "assets/3-BwkjUzy5.png",
-      "assets/footer-bg4-tVscUBJJ.jpg"
+      "assets/footer-bg4-CvV5pQPD.jpg"
     ]
   },
   "resources/js/assets/images/about/about-2.png": {
@@ -60,7 +60,7 @@
     "src": "resources/js/assets/images/about/about-2.png"
   },
   "resources/js/assets/images/bg/footer-bg4.jpg": {
-    "file": "assets/footer-bg4-tVscUBJJ.jpg",
+    "file": "assets/footer-bg4-CvV5pQPD.jpg",
     "src": "resources/js/assets/images/bg/footer-bg4.jpg"
   },
   "resources/js/assets/images/common/1.svg": {
