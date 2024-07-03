@@ -19,7 +19,7 @@
                 <input type="text" id="phone" v-model="phone" name="phone" placeholder="Số điện thoại" required="" autocomplete="off">
                 <button type="button" class="rounded relative h-100 btn-custom" :class="{'btn-custom-disabled':statusBtn}" :disabled="statusBtn" @click="sendRequest()">
                     Đăng ký
-                    <div v-if="statusBtn" class="spinner-border text-white spinner-custom" role="status">
+                    <div v-if="statusBtn" class="spinner-border spinner-custom" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>
                 </button>
@@ -216,16 +216,17 @@ form {
     width: 20px;
     height: 20px;
     margin-left: 10px;
+    color: #B21818;
 }
 
 .btn-custom-disabled {
-    opacity: 0.5;
+    /*opacity: 0.5;*/
     user-select: none;
 }
 
-.btn-custom-disabled:hover {
-    opacity: 0.5 !important;
-}
+/*.btn-custom-disabled:hover {*/
+/*    opacity: 0.5 !important;*/
+/*}*/
 
 @keyframes blink {
     0%, 100% { opacity: 1; }

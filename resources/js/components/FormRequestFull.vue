@@ -80,7 +80,7 @@
                                 <div class="form-group mb-0">
                                     <button type="button" class="readon submit btn-custom" :class="{'btn-custom-disabled':statusBtn}" :disabled="statusBtn"  @click="sendRequest()">
                                         Đăng ký
-                                        <div v-if="statusBtn" class="spinner-border text-white spinner-custom" role="status">
+                                        <div v-if="statusBtn" class="spinner-border spinner-custom" role="status">
                                             <span class="sr-only">Loading...</span>
                                         </div>
                                     </button>
@@ -136,6 +136,7 @@ export default {
     width: 20px;
     height: 20px;
     margin-left: 10px;
+    color: #B21818 !important;
 }
 .btn-custom-disabled{
     opacity: 0.5;

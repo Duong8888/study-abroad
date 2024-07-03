@@ -77,7 +77,7 @@ class PostsController extends Controller
                 'type' => $request->input('type'),
                 'university_info' => $request->input('contentUniversity',null),
             ]);
-            return response()->json(['success' => true, 'message' => 'Create success.']);
+            return response()->json(['success' => true, 'message' => 'Thêm mới thành công.']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()]);
         }
@@ -139,7 +139,7 @@ class PostsController extends Controller
                 $dataNew['thumbnail'] = $request->input('thumbnail');
             };
             $data->update($dataNew);
-            return response()->json(['success' => true, 'message' => 'Update success.']);
+            return response()->json(['success' => true, 'message' => 'Cập nhật thành công.']);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['success' => false, 'message' => $e->getMessage()]);
@@ -154,7 +154,7 @@ class PostsController extends Controller
         try {
             $data = Posts::query()->findOrFail($id);
             $data->delete();
-            return response()->json(['success' => true, 'message' => 'Delete success.']);
+            return response()->json(['success' => true, 'message' => 'Xóa thành công.']);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);

@@ -10,7 +10,12 @@ import Editor from '@tinymce/tinymce-vue';
                         formType ? "Tạo mới bài viết" : "Chỉnh sửa bài viết"
                     }}</h6>
             </div>
-            <div class="row p-4">
+            <div class="col-12 pt-2 d-flex justify-content-end">
+                <div class="alert alert-danger w-100" role="alert" v-if="globalError">
+                    {{ globalError }}
+                </div>
+            </div>
+            <div class="row p-4" style="padding-top: 0 !important;">
                 <div class="col-12">
                     <div class="w-100">
                         <label for="inputTitle" class="form-label mt-20">Tiêu đề</label>
@@ -89,11 +94,6 @@ import Editor from '@tinymce/tinymce-vue';
                     <img v-if="imageUrl" :src="imageUrl" class="" alt="Preview" style="max-width: 100%">
                 </label>
                 <div v-if="errors.imageUrl" class="text-danger">{{ errors.imageUrl }}</div>
-            </div>
-            <div class="col-12 py-4 d-flex justify-content-end">
-                <div class="alert alert-danger w-100" role="alert" v-if="globalError">
-                    {{ globalError }}
-                </div>
             </div>
             <div class="col-12 py-4 d-flex justify-content-end">
                 <router-link :to="{name:'Posts'}">
@@ -226,7 +226,7 @@ export default {
                     this.subContent = (type == "0") ? false : true;
                     this.title = title;
                     this.slug = slug;
-                    this.value = JSON.parse(post_type_id);
+                    // this.value = JSON.parse(post_type_id);
                     this.imageUrl = thumbnail;
                     this.editorContent = content;
                     this.description = description;
@@ -314,7 +314,11 @@ export default {
             if (!this.editorContent) this.errors.editorContent = "Vui lòng nhập nội dung.";
             if (!this.imageUrl) this.errors.imageUrl = "Vui lòng chọn ảnh.";
 
-            return Object.keys(this.errors).length === 0;
+            const isValid = Object.keys(this.errors).length === 0;
+            if (!isValid) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            return isValid;
         },
         addNewPosts(data) {
             this.addPost({data: data, toast: this.$toast})
