@@ -242,6 +242,9 @@ form {
 .text-cursor.run{
     animation: blink 1s infinite;
 }
+.rs-seo-website.style1 .newsletter-form button:hover{
+    opacity: 1;
+}
 </style>
 
 
