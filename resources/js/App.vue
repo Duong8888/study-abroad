@@ -12,8 +12,16 @@ export default {
 }
 </script>
 
-<style scoped>
-    *{
-        background:#f8fafc;
+<style>
+    body {
+        font-family: 'Roboto', sans-serif !important;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Montserrat', sans-serif !important;
+    }
+
+    p, a , div{
+        font-family: 'Open Sans', sans-serif !important;
     }
 </style>

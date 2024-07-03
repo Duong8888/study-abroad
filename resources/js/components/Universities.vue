@@ -4,7 +4,7 @@
         <div class="container">
             <div class="sec-title text-center mb-60" v-if="showTitle && items.length > 0">
                 <h2 class="title title2 pb-13">
-                    Các trường đại học <span style="color: #ed1e24">SMART EDU</span> liên kết
+                    Các trường đại học <span style="color: #B21818">SMART EDU</span> liên kết
                 </h2>
                 <div class="heading-border-line"></div>
             </div>

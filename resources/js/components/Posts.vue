@@ -245,8 +245,7 @@ body {
     color: white !important;
 }
 .bg-custom{
-    background-image: url("../assets/images/common/bg-1.jpg");
-    /*background: linear-gradient(90deg, #ed1e24 0%, #ffffff 100%);*/
+    background: #FBEFEF;
 }
 .title{
     font-size: 40px !important;

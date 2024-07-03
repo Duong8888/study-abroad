@@ -3,7 +3,7 @@
         <div class="container mb-5 md-mt-50 gray-bg2">
             <div class="title-container">
                 <h2 class="title pb-25 md-pb-15" style="font-weight: 900">
-                    <span style="color: #ed1e24">SMART EDU</span> <span style="font-weight: 900; font-size: 30px">có gì ?</span>
+                    <span style="color: #B21818">SMART EDU</span> <span style="font-weight: 900; font-size: 30px">có gì ?</span>
                 </h2>
                 <div class="title-border"></div>
             </div>
@@ -14,10 +14,10 @@
                             <div class="bg"></div>
                             <div class="icon-content">
                                 <img src="@/assets/images/common/icon-1.svg" alt="logo">
-                                <div class="feature-title text-white">20+</div>
+                                <div class="feature-title">20+</div>
                             </div>
                         </div>
-                        <div class="feature-subtitle mt-5 mb-5">TRƯỜNG LIÊN KẾT</div>
+                        <div class="feature-subtitle mt-3 mb-3">TRƯỜNG LIÊN KẾT</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
@@ -26,10 +26,10 @@
                             <div class="bg"></div>
                             <div class="icon-content">
                                 <img src="@/assets/images/common/icon-2.svg" alt="logo">
-                                <div class="feature-title text-white">1000+</div>
+                                <div class="feature-title">1000+</div>
                             </div>
                         </div>
-                        <div class="feature-subtitle mt-5 mb-5">SỐ LƯỢNG HỌC VIÊN</div>
+                        <div class="feature-subtitle mt-3 mb-3">SỐ LƯỢNG HỌC VIÊN</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
@@ -38,11 +38,11 @@
                             <div class="bg"></div>
                             <div class="icon-content">
                                 <img src="@/assets/images/common/icon-3.svg" alt="logo">
-                                <div class="feature-title text-white">99%</div>
+                                <div class="feature-title">99%</div>
                             </div>
 
                         </div>
-                        <div class="feature-subtitle mt-5 mb-5">TỶ LỆ ĐỖ VISA</div>
+                        <div class="feature-subtitle mt-3 mb-3">TỶ LỆ ĐỖ VISA</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
@@ -51,10 +51,10 @@
                             <div class="bg"></div>
                             <div class="icon-content">
                                 <img src="@/assets/images/common/icon-4.svg" alt="logo">
-                                <div class="feature-title text-white">100%</div>
+                                <div class="feature-title">100%</div>
                             </div>
                         </div>
-                        <div class="feature-subtitle mt-5 mb-5">HOÀN PHÍ NẾU TRƯỢT</div>
+                        <div class="feature-subtitle mt-3 mb-3">HOÀN PHÍ NẾU TRƯỢT</div>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                 <div class="col-md-6 col-12 d-flex align-items-center justify-content-center">
                     <div class="outer-circle">
                         <div class="inner-circle">
-                            <div class="center text-center" style="font-weight: 900">Thông tin du học sinh cần biết
+                            <div class="center text-center" style="font-weight: 900; font-size: 20px">Du học sinh cần biết
                             </div>
                             <div class="quadrant quadrant1">
                                 <div class="box c-1">
@@ -202,7 +202,7 @@
                         <div class="sec-title2">
                             <div class="sub-text">Về chúng tôi</div>
                             <h2 class="title pb-30" style="font-weight: 900">
-                                Du học Hàn Quốc cùng <span class="" style="color: #ed1e24">SMARTEDU</span>
+                                Du học Hàn Quốc cùng <span class="" style="color: #B21818">SMARTEDU</span>
                             </h2>
                             <p class="margin-0 pb-55 md-pb-20 text-custom">SMART EDU được thành lập từ năm 2020, có trụ sở chính đặt tại Seoul (Hàn Quốc), 3 chi nhánh tại Ansan (Hàn Quốc) và Hà Nội, Thái Nguyên (Việt Nam). Chỉ sau vài năm hoạt động, chúng tôi đã có nhiều thành tích đáng kể như ký hợp đồng liên kết với hơn 20 trường Đại học, Cao đẳng lớn, nhỏ tại Hàn Quốc; đào tạo được rất nhiều học viên du học Hàn Quốc thành công.  Một điều vô cùng trân trọng nữa là Smart Edu đã nhận được sự ủng hộ nhiệt tình từ các bậc phụ huynh, các bạn học sinh, sinh viên. Bởi lẽ đó chúng tôi luôn ý thức được sứ mệnh và tầm nhìn của mình.</p>
                         </div>
@@ -223,7 +223,7 @@
                                     <div class="text-center">
                                         <img class="icon-title" src="@/assets/images/common/1.svg" alt="logo">
                                     </div>
-                                    <h3 class="title custom-title text-center" style="color: #ed1e24; font-weight: 900">
+                                    <h3 class="title custom-title text-center" style="color: #B21818; font-weight: 900">
                                         SỨ MỆNH
                                     </h3>
                                     <p class="services-txt text-custom">SMART EDU ra đời với khao khát hiện thực hóa ước mơ Du học Hàn Quốc của các bạn học sinh, sinh viên cùng với đó là mong muốn kết nối tri thức, góp một phần nhỏ sức lực nâng cao chất lượng giáo dục tại Việt Nam.</p>
@@ -236,7 +236,7 @@
                                     <div class="text-center">
                                         <img class="icon-title" src="@/assets/images/common/2.svg" alt="logo">
                                     </div>
-                                    <h3 class="title custom-title text-center" style="color: #ed1e24; font-weight: 900">
+                                    <h3 class="title custom-title text-center" style="color: #B21818; font-weight: 900">
                                         TẦM NHÌN
                                     </h3>
                                     <p class="services-txt text-custom">SMART EDU luôn nỗ lực phấn đấu để trở thành niềm tin của mọi người trong lĩnh vực du học Hàn Quốc bằng sự tận tậm, trách nhiệm và quá trình trau dồi kỹ năng để mang đến cho học viên nhiều giá trị hữu ích nhất.</p>
@@ -475,7 +475,7 @@ export default {
 
 
 .box-img {
-    background: #B21818;
+    /*background: #B21818;*/
     width: 180px;
     height: 180px;
     padding: 20px;
@@ -484,6 +484,8 @@ export default {
     justify-content: center;
     flex-direction: column;
     position: relative;
+    border: 4px solid #B21818;
+    border-radius: 50%;
 }
 
 .icon-content {
@@ -501,7 +503,8 @@ export default {
 .bg {
     width: 100%;
     height: 100%;
-    display: flex;
+    /*display: flex;*/
+    display: none;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -528,6 +531,7 @@ export default {
     font-weight: 900;
     font-size: 25px;
     margin-top: 10px;
+    color: #B21818;
 }
 .box-img-left img{
     width: 100%;
@@ -563,8 +567,10 @@ export default {
     }
 
     .outer-circle {
-        width: 300px;
-        height: 300px;
+        width: 100%;
+        height: auto;
+        transform: scale(1.4) rotate(45deg);
+        margin: 50px 0;
     }
 
     .icon-box img {

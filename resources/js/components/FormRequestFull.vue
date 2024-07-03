@@ -7,7 +7,7 @@
                 <div class="col-lg-8 pr-60 md-pr-15">
                     <div class="sec-title2 mb-60 md-mb-40">
                         <h2 class="title pb-25 md-pb-15">
-                            <span style="color: #ed1e24">SMART EDU</span> du học quốc tế
+                            <span style="color: #B21818">SMART EDU</span> du học quốc tế
                         </h2>
                     </div>
                     <div class="row">

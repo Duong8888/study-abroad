@@ -27,7 +27,8 @@
 
     <!-- Canonical Link -->
     <link rel="canonical" href="https://smartedu.com.vn">
-
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
     @vite('resources/js/app.js')
