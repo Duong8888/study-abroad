@@ -271,21 +271,21 @@ export default {
             this.description = null;
             this.editorContent = `
 
-            <h1 style="color: #b21818">I. Smart edu</h1>
-            <h2 style="color: #b21818">1 Smart edu</h2>
-            <h3 style="color: #b21818">1.1 Smart edu</h3>
-            <h3 style="color: #b21818">1.2 Smart edu</h3>
-            <h2 style="color: #b21818">2 Smart edu</h2>
-            <h3 style="color: #b21818">2.1 Smart edu</h3>
-            <h3 style="color: #b21818">2.2 Smart edu</h3>
+            <h1 style="color: #b21818;text-transform: uppercase">I. Smart edu</h1>
+            <h2 style="color: #b21818;font-weight: 200">1 Smart edu</h2>
+            <h3 style="color: #b21818;font-weight: 200">1.1 Smart edu</h3>
+            <h3 style="color: #b21818;font-weight: 200">1.2 Smart edu</h3>
+            <h2 style="color: #b21818;font-weight: 200">2 Smart edu</h2>
+            <h3 style="color: #b21818;font-weight: 200">2.1 Smart edu</h3>
+            <h3 style="color: #b21818;font-weight: 200">2.2 Smart edu</h3>
 
-            <h1 style="color: #b21818">II. Smart edu</h1>
-            <h2 style="color: #b21818">1 Smart edu</h2>
-            <h3 style="color: #b21818">1.1 Smart edu</h3>
-            <h3 style="color: #b21818">1.2 Smart edu</h3>
-            <h2 style="color: #b21818">2 Smart edu</h2>
-            <h3 style="color: #b21818">2.1 Smart edu</h3>
-            <h3 style="color: #b21818">2.2 Smart edu</h3>
+            <h1 style="color: #b21818;text-transform: uppercase">II. Smart edu</h1>
+            <h2 style="color: #b21818;font-weight: 200">1 Smart edu</h2>
+            <h3 style="color: #b21818;font-weight: 200">1.1 Smart edu</h3>
+            <h3 style="color: #b21818;font-weight: 200">1.2 Smart edu</h3>
+            <h2 style="color: #b21818;font-weight: 200">2 Smart edu</h2>
+            <h3 style="color: #b21818;font-weight: 200">2.1 Smart edu</h3>
+            <h3 style="color: #b21818;font-weight: 200">2.2 Smart edu</h3>
             `;
             this.thumbnail = null;
             this.formType = true;

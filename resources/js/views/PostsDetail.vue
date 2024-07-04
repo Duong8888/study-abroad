@@ -37,7 +37,10 @@
                             <img class="img-profile" src="@/assets/images/common/logo.png">
                             <div class="ms-4">
                                 <span class="d-block fw-semibold">Admin</span>
-                                <span class="text-light-dark fw-medium">Content Writer</span>
+                                <span class="text-light-dark fw-medium d-flex align-items-center justify-content-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 0.5);transform: ;msFilter:;"><path d="M21 20V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2zM9 18H7v-2h2v2zm0-4H7v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm2-5H5V7h14v2z"></path></svg>
+                                    {{ formatDateTime(postsDetail?.created_at) }}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -187,7 +190,8 @@ export default {
             minutes = minutes.toString().padStart(2, '0');
             day = day.toString().padStart(2, '0');
             month = month.toString().padStart(2, '0');
-            return `${hours}:${minutes} ${day}/${month}/${year}`;
+            // return `${hours}:${minutes} ${day}/${month}/${year}`;
+            return `${day}/${month}/${year}`;
         },
         shareOnFacebook() {
             const url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href);
