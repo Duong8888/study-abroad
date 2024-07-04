@@ -70,7 +70,7 @@
                 <div class="col-md-6 col-12 d-flex align-items-center justify-content-center">
                     <div class="outer-circle">
                         <div class="inner-circle">
-                            <div class="center text-center" style="font-weight: 900; font-size: 20px">Du học sinh cần biết
+                            <div class="center text-center" style="font-weight: 900; font-size: 20px">Du học sinh <br> cần biết
                             </div>
                             <div class="quadrant quadrant1">
                                 <div class="box c-1">
