@@ -28,7 +28,6 @@ const actions = {
     async fetchCategory({ commit }) {
         try {
             const response = await api.get(API_ENDPOINT.API_ADMIN.CATEGORY);
-            console.log(response);
             const category = response.data;
             commit('SET_CATEGORY', category);
         } catch (error) {
@@ -78,7 +77,6 @@ const actions = {
 
     async deleteType({commit}, { id, toast }) {
         try {
-            console.log(id);
             const response = await api.delete(`${API_ENDPOINT.API_ADMIN.CATEGORY}/${id}`);
             if(response.data.success){
                 toast.open({

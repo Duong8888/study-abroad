@@ -15,7 +15,6 @@ const actions = {
     async fetchMenu({ commit }) {
         try {
             const response = await api.get(API_ENDPOINT.API_ADMIN.MENU);
-            console.log(response);
             const menu = response.data;
             commit('SET_MENU', menu);
         } catch (error) {

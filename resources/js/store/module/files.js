@@ -15,7 +15,6 @@ const actions = {
     async fetchFiles({ commit }) {
         try {
             const response = await api.get(API_ENDPOINT.API_ADMIN.FILES);
-            console.log(response);
             const files = response.data;
             commit('SET_FILES', files);
         } catch (error) {

@@ -1,6 +1,6 @@
-<script setup>
-import Editor from '@tinymce/tinymce-vue';
-</script>
+<!--<script setup>-->
+<!--import Editor from '@tinymce/tinymce-vue';-->
+<!--</script>-->
 
 <template>
     <div class="container">
@@ -33,7 +33,7 @@ import Editor from '@tinymce/tinymce-vue';
                     <div class="w-100 mb-20">
                         <label for="inputSlug" class="form-label mt-20">Danh mục bài viết</label>
                         <Multiselect class="form-label"
-                                     v-model="value"
+                                     v-model="values"
                                      mode="tags"
                                      :close-on-select="false"
                                      :searchable="true"
@@ -60,20 +60,22 @@ import Editor from '@tinymce/tinymce-vue';
                            type="checkbox" id="university">
                 </label>
                 <div v-show="subContent">
-                    <Editor
-                        v-model="contentUniversity"
-                        :api-key="apiKey"
-                        :init="{...editorConfig,height: 500}"
-                    />
+                    <textarea ref="editor1">{{ contentUniversity }}</textarea>
+<!--                    <Editor-->
+<!--                        v-model="contentUniversity"-->
+<!--                        :api-key="apiKey"-->
+<!--                        :init="{...editorConfig,height: 500}"-->
+<!--                    />-->
                 </div>
 
 
                 <label for="inputSlug" class="form-label mb-20 mt-20">Nội dung bài</label>
-                <Editor
-                    v-model="editorContent"
-                    :api-key="apiKey"
-                    :init="{...editorConfig,height: 800}"
-                />
+                <textarea ref="editor2">{{ editorContent }}</textarea>
+<!--                <Editor-->
+<!--                    v-model="editorContent"-->
+<!--                    :api-key="apiKey"-->
+<!--                    :init="{...editorConfig,height: 800}"-->
+<!--                />-->
                 <div v-if="errors.editorContent" class="text-danger">{{ errors.editorContent }}</div>
             </main>
             <div class="col-12">
@@ -119,10 +121,10 @@ export default {
             title: '',
             slug: '',
             imageUrl: null,
-            value: [],
+            values: [],
             description: null,
             thumbnail: null,
-            editorContent: null,
+            editorContent: this.value,
             formType: true,
             id: null,
             errors: {},
@@ -176,7 +178,7 @@ export default {
                         <img src="https://via.placeholder.com/150" alt="qr-university" style="align-self: flex-end;">
                     </div>
                 </div>`,
-            apiKey: 'ok7t7t5acz8af0vod6gap5of3whu45jtqowlv37j3kao6s7y',
+            // apiKey: 'ok7t7t5acz8af0vod6gap5of3whu45jtqowlv37j3kao6s7y',
             editorConfig: {
                 plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
                 toolbar: 'undo redo | blocks fontfamily fontsize | forecolor bold italic underline strikethrough | link image media table | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
@@ -219,6 +221,16 @@ export default {
                 this.slug = this.createSlug(newTitle);
             }
         },
+        contentUniversity(newContent) {
+            if (this.$refs.editor1 && tinymce.get(this.$refs.editor1.id)) {
+                tinymce.get(this.$refs.editor1.id).setContent(newContent);
+            }
+        },
+        editorContent(newContent) {
+            if (this.$refs.editor2 && tinymce.get(this.$refs.editor2.id)) {
+                tinymce.get(this.$refs.editor2.id).setContent(newContent);
+            }
+        },
         showData: {
             handler(newValue) {
                 if (newValue && newValue.data) {
@@ -250,12 +262,15 @@ export default {
             this.title = '';
             this.slug = '';
             this.imageUrl = null;
-            this.value = [];
+            this.values = [];
             this.description = null;
             this.thumbnail = null;
             this.editorContent = null;
             this.formType = true;
         }
+    },
+    mounted() {
+        this.initTinyMCE();
     },
     methods: {
         ...mapActions('category', ['fetchCategory',]),
@@ -264,6 +279,33 @@ export default {
             let slug = title.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             slug = slug.toLowerCase().replace(/\s+/g, '-');
             return slug;
+        },
+        initTinyMCE() {
+            tinymce.init({
+                target: this.$refs.editor2,
+                ...this.editorConfig,
+                setup: (editor) => {
+                    editor.on('change', () => {
+                        this.editorContent = editor.getContent();
+                    });
+                    editor.on('init', () => {
+                        editor.setContent(this.editorContent || '');
+                    });
+                },
+            });
+
+            tinymce.init({
+                target: this.$refs.editor1,
+                ...this.editorConfig,
+                setup: (editor) => {
+                    editor.on('change', () => {
+                        this.contentUniversity = editor.getContent();
+                    });
+                    editor.on('init', () => {
+                        editor.setContent(this.contentUniversity || '');
+                    });
+                },
+            });
         },
         transformData(rawData) {
             let parsedData;
@@ -309,7 +351,7 @@ export default {
             } else if (!slugRegex.test(this.slug)) {
                 this.errors.slug = "Slug không hợp lệ. Chỉ chấp nhận chữ thường, số và dấu gạch ngang.";
             }
-            if (!this.value.length) this.errors.category = "Vui lòng chọn danh mục.";
+            if (!this.values.length) this.errors.category = "Vui lòng chọn danh mục.";
             if (!this.description) this.errors.description = "Vui lòng nhập mô tả.";
             if (!this.editorContent) this.errors.editorContent = "Vui lòng nhập nội dung.";
             if (!this.imageUrl) this.errors.imageUrl = "Vui lòng chọn ảnh.";
@@ -368,7 +410,7 @@ export default {
                 title: this.title,
                 slug: this.slug,
                 thumbnail: this.thumbnail,
-                category: this.value,
+                category: this.values,
                 content: this.editorContent,
                 type: this.subContent,
                 contentUniversity: this.subContent ? this.contentUniversity: "",
@@ -377,6 +419,15 @@ export default {
             }
         }
     },
+    beforeDestroy() {
+        if (this.$refs.editor1 && tinymce.get(this.$refs.editor1.id)) {
+            tinymce.remove(this.$refs.editor1);
+        }
+        if (this.$refs.editor2 && tinymce.get(this.$refs.editor2.id)) {
+            tinymce.remove(this.$refs.editor2);
+        }
+    }
+
 }
 </script>
 

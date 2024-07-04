@@ -33,7 +33,6 @@ const actions = {
             if(type !== null){
                 option.type = type;
             }
-            console.log({banner , option});
             commit('SET_BANNER', {banner , option});
         } catch (error) {
             console.error('Error fetching banner:', error);
