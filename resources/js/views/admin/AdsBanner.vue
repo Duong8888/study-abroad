@@ -1,7 +1,7 @@
 <template>
     <div class="container rounded">
         <div v-if="!formShow && images.length > 0" class="sec-title text-center mb-60 md-mb-40">
-            <h2 class="title title2 pb-13">
+            <h2 class="title title2 pb-13 pt-4">
                 Một số hình ảnh của <span style="color: #B11B1C">SMARTEDU</span>
             </h2>
             <div class="heading-border-line"></div>
