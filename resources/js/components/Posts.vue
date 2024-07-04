@@ -188,23 +188,6 @@ body {
     color: #4a5568;
 }
 
-@media (max-width: 768px) {
-    .swiper {
-        height: auto;
-        padding: 0 10px;
-    }
-    .image-wrap img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-    }
-}
-
-@media (min-width: 992px) {
-    .swiper-slide {
-        width: calc(100% / 3);
-    }
-}
 .card{
     margin: 0 5px;
 }
@@ -249,5 +232,27 @@ body {
 }
 .title{
     font-size: 40px !important;
+}
+
+
+@media (max-width: 768px) {
+    .swiper {
+        height: auto;
+        padding: 0 10px;
+    }
+    .image-wrap img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+    .title{
+        font-size: 30px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .swiper-slide {
+        width: calc(100% / 3);
+    }
 }
 </style>

@@ -6,12 +6,12 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-DzMHnJ4p.js",
+    "file": "assets/app-BM4eQKOS.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-gQiOnFLr.css"
+      "assets/app-OtRMbnx5.css"
     ],
     "assets": [
       "assets/banner-2-64q1SVUB.jpg",
@@ -39,7 +39,7 @@
       "assets/logo-CC-onA3W.png",
       "assets/logo-white-MFJnTByU.png",
       "assets/logo-admin-BInM1UjF.jpg",
-      "assets/logo-footer-P_X0FgRI.png",
+      "assets/logo-footer-D9qcsRGd.png",
       "assets/tiktok_logo-BIo8F8g6.png",
       "assets/Facebook-qmfsK7Y5.png",
       "assets/Logo-zalo-w-ijL263.svg",
@@ -132,7 +132,7 @@
     "src": "resources/js/assets/images/common/logo-admin.jpg"
   },
   "resources/js/assets/images/common/logo-footer.png": {
-    "file": "assets/logo-footer-P_X0FgRI.png",
+    "file": "assets/logo-footer-D9qcsRGd.png",
     "src": "resources/js/assets/images/common/logo-footer.png"
   },
   "resources/js/assets/images/common/logo-new.png": {
