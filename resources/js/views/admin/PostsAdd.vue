@@ -124,7 +124,23 @@ export default {
             values: [],
             description: null,
             thumbnail: null,
-            editorContent: this.value,
+            editorContent: `
+            <h1>I. Smart edu</h1>
+            <h2>1 Smart edu</h2>
+            <h3>1.1 Smart edu</h3>
+            <h3>1.2 Smart edu</h3>
+            <h2>2 Smart edu</h2>
+            <h3>2.1 Smart edu</h3>
+            <h3>2.2 Smart edu</h3>
+
+            <h1>II. Smart edu</h1>
+            <h2>1 Smart edu</h2>
+            <h3>1.1 Smart edu</h3>
+            <h3>1.2 Smart edu</h3>
+            <h2>2 Smart edu</h2>
+            <h3>2.1 Smart edu</h3>
+            <h3>2.2 Smart edu</h3>
+            `,
             formType: true,
             id: null,
             errors: {},
@@ -265,7 +281,6 @@ export default {
             this.values = [];
             this.description = null;
             this.thumbnail = null;
-            this.editorContent = null;
             this.formType = true;
         }
     },
