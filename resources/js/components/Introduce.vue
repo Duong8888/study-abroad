@@ -37,7 +37,7 @@
                         <div class="box-img">
                             <div class="bg"></div>
                             <div class="icon-content">
-                                <img src="@/assets/images/common/icon-3.svg" alt="logo">
+                                <img src="@/assets/images/common/icon-3.svg" style="transform: translateY(10px)" alt="logo">
                                 <div class="feature-title">99%</div>
                             </div>
 
@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="content">
                                     <a href="#">
-                                        <div class="text">
+                                        <div class="text text-ct">
                                             <img src="@/assets/images/common/text-1.svg" alt="logo">
                                         </div>
                                         <div class="icon-box">
@@ -557,6 +557,10 @@ export default {
     transform: translate(-4px, -4px);
 }
 
+.text-ct{
+    transform: translateY(10px) scale(1.2);
+}
+
 @media only screen and (max-width: 575px) {
     .quadrant:hover {
         transform: scale(1.1);
@@ -608,6 +612,9 @@ export default {
     .box-img {
         width: 120px !important;
         height: 120px !important;
+    }
+    .text-ct{
+        transform: translateY(0px) scale(1.2);
     }
 }
 
