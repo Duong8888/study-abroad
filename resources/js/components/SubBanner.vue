@@ -3,7 +3,7 @@
     <div id="rs-services" class="rs-services main-home gray-bg pb-120 md-pt-70 md-pb-80">
         <div class="container">
             <div class="sec-title text-center mb-60 md-mb-40">
-                <h2 class="title title2 pb-13">
+                <h2 class="title title2 pb-13 pt-2">
                     Một số hình ảnh của <span style="color: #B11B1C">SMARTEDU</span>
                 </h2>
                 <div class="heading-border-line"></div>
