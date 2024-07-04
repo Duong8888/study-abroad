@@ -124,23 +124,7 @@ export default {
             values: [],
             description: null,
             thumbnail: null,
-            editorContent: `
-            <h1>I. Smart edu</h1>
-            <h2>1 Smart edu</h2>
-            <h3>1.1 Smart edu</h3>
-            <h3>1.2 Smart edu</h3>
-            <h2>2 Smart edu</h2>
-            <h3>2.1 Smart edu</h3>
-            <h3>2.2 Smart edu</h3>
-
-            <h1>II. Smart edu</h1>
-            <h2>1 Smart edu</h2>
-            <h3>1.1 Smart edu</h3>
-            <h3>1.2 Smart edu</h3>
-            <h2>2 Smart edu</h2>
-            <h3>2.1 Smart edu</h3>
-            <h3>2.2 Smart edu</h3>
-            `,
+            editorContent: this.value,
             formType: true,
             id: null,
             errors: {},
@@ -285,6 +269,24 @@ export default {
             this.imageUrl = null;
             this.values = [];
             this.description = null;
+            this.editorContent = `
+
+            <h1 style="color: #b21818">I. Smart edu</h1>
+            <h2 style="color: #b21818">1 Smart edu</h2>
+            <h3 style="color: #b21818">1.1 Smart edu</h3>
+            <h3 style="color: #b21818">1.2 Smart edu</h3>
+            <h2 style="color: #b21818">2 Smart edu</h2>
+            <h3 style="color: #b21818">2.1 Smart edu</h3>
+            <h3 style="color: #b21818">2.2 Smart edu</h3>
+
+            <h1 style="color: #b21818">II. Smart edu</h1>
+            <h2 style="color: #b21818">1 Smart edu</h2>
+            <h3 style="color: #b21818">1.1 Smart edu</h3>
+            <h3 style="color: #b21818">1.2 Smart edu</h3>
+            <h2 style="color: #b21818">2 Smart edu</h2>
+            <h3 style="color: #b21818">2.1 Smart edu</h3>
+            <h3 style="color: #b21818">2.2 Smart edu</h3>
+            `;
             this.thumbnail = null;
             this.formType = true;
         }
