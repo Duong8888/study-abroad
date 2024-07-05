@@ -231,23 +231,23 @@ export default {
             });
         },
         handleScroll() {
-            const header = document.querySelector('.menu-sticky');
-            const sections = document.querySelectorAll('section');
-            const headerHeight = document.querySelector('#rs-header').offsetHeight;
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-            if (scrollTop < 1) {
-                header.classList.remove('sticky');
-            } else {
-                header.classList.add('sticky');
-            }
-
-            sections.forEach(section => {
-                const elementTop = section.offsetTop - headerHeight;
-                if (scrollTop >= elementTop) {
-                    section.classList.add('loaded');
-                }
-            });
+            // const header = document.querySelector('.menu-sticky');
+            // const sections = document.querySelectorAll('section');
+            // const headerHeight = document.querySelector('#rs-header').offsetHeight;
+            // const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            //
+            // if (scrollTop < 1) {
+            //     header.classList.remove('sticky');
+            // } else {
+            //     header.classList.add('sticky');
+            // }
+            //
+            // sections.forEach(section => {
+            //     const elementTop = section.offsetTop - headerHeight;
+            //     if (scrollTop >= elementTop) {
+            //         section.classList.add('loaded');
+            //     }
+            // });
         }
     }
 }
