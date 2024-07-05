@@ -286,6 +286,16 @@ export default {
             <h2 style="color: #b21818;font-weight: 200">2 Smart edu</h2>
             <h3 style="color: #b21818;font-weight: 200">2.1 Smart edu</h3>
             <h3 style="color: #b21818;font-weight: 200">2.2 Smart edu</h3>
+
+            <h1 style="color: #b21818;text-transform: uppercase">II. Smart edu</h1>
+            <h1 style="color: #b21818;text-transform: uppercase">III. Smart edu</h1>
+            <h1 style="color: #b21818;text-transform: uppercase">VI. Smart edu</h1>
+            <h1 style="color: #b21818;text-transform: uppercase">V. Smart edu</h1>
+            <h1 style="color: #b21818;text-transform: uppercase">VI. Smart edu</h1>
+            <h1 style="color: #b21818;text-transform: uppercase">VII. Smart edu</h1>
+            <h1 style="color: #b21818;text-transform: uppercase">VIII. Smart edu</h1>
+            <h1 style="color: #b21818;text-transform: uppercase">XI. Smart edu</h1>
+            <h1 style="color: #b21818;text-transform: uppercase">X. Smart edu</h1>
             `;
             this.thumbnail = null;
             this.formType = true;
