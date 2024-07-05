@@ -179,9 +179,11 @@ export default {
                             <img src="https://via.placeholder.com/150" alt="qr-university" style="align-self: flex-end;">
                         </div>
                     </div>
-                    <p>I. Smart edu<h1>
-                    <p>II. Smart edu<h1>
-                    <p>III. Smart edu<h1>
+                </div>
+                <div style="width: 100%">
+                    <p>I. Smart edu</p>
+                    <p>II. Smart edu</p>
+                    <p>III. Smart edu</p>
                 </div>`,
             // apiKey: 'ok7t7t5acz8af0vod6gap5of3whu45jtqowlv37j3kao6s7y',
             editorConfig: {
@@ -401,12 +403,12 @@ export default {
                 target: this.$refs.editor2,
                 ...this.editorConfig,
                 setup: (editor) => {
-                    editor.on('change', () => {
-                        this.editorContent = editor.getContent();
-                    });
                     editor.on('init', () => {
                         editor.setContent(this.editorContent || '');
                     });
+                    // editor.on('change', () => {
+                    //     this.editorContent = editor.getContent();
+                    // });
                 },
             });
 
@@ -414,14 +416,22 @@ export default {
                 target: this.$refs.editor1,
                 ...this.editorConfig,
                 setup: (editor) => {
-                    editor.on('change', () => {
-                        this.contentUniversity = editor.getContent();
-                    });
                     editor.on('init', () => {
                         editor.setContent(this.contentUniversity || '');
                     });
+                    // editor.on('change', () => {
+                    //     this.contentUniversity = editor.getContent();
+                    // });
                 },
             });
+        },
+        getTextEditContent() {
+            if (this.$refs.editor1 && tinymce.get(this.$refs.editor1.id)) {
+                this.contentUniversity = tinymce.get(this.$refs.editor1.id).getContent();
+            }
+            if (this.$refs.editor2 && tinymce.get(this.$refs.editor2.id)) {
+                this.editorContent = tinymce.get(this.$refs.editor2.id).getContent();
+            }
         },
         transformData(rawData) {
             let parsedData;
@@ -522,6 +532,7 @@ export default {
             return this.posts;
         },
         getData() {
+            this.getTextEditContent();
             return {
                 title: this.title,
                 slug: this.slug,
