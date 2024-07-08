@@ -318,7 +318,7 @@ export default {
 
 <style scoped>
 .responsive-table >>> table td{
-    padding: 10px 30px;
+    padding: 10px;
 }
 .responsive-table >>> table {
     width: 100%;
@@ -424,6 +424,9 @@ hr{
 }
 .university-info >>> p{
     margin: 0 !important;
+}
+.responsive-table >>> ul{
+    padding-left: 35px;
 }
 .responsive-table >>> li{
     display: list-item !important;
