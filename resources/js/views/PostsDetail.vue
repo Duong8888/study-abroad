@@ -419,4 +419,10 @@ hr{
     width: 50px;
     margin-right: 10px;
 }
+.responsive-table >>> p{
+    margin: 0 !important;
+}
+.responsive-table >>> li{
+    display: list-item !important;
+}
 </style>
