@@ -431,4 +431,12 @@ hr{
 .responsive-table >>> li{
     display: list-item !important;
 }
+.responsive-table >>> h1,
+.responsive-table >>> h2,
+.responsive-table >>> h3,
+.responsive-table >>> h4,
+.responsive-table >>> h5,
+.responsive-table >>> h6{
+    margin: 0 0 10px 0 !important;
+}
 </style>
