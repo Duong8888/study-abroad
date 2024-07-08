@@ -125,7 +125,7 @@
                         </ul>
                     </div>
                     <div class="mt-5 mb-2 university-info" v-html="postsDetail?.university_info"></div>
-                    <div class="responsive-table" v-html="postsDetail?.content"></div>
+                    <div class="responsive-table mb-5" v-html="postsDetail?.content"></div>
                 </div>
             </div>
         </div>
@@ -428,8 +428,8 @@ hr{
 .responsive-table >>> ul{
     padding-left: 35px;
 }
-.responsive-table >>> li{
-    display: list-item !important;
+.responsive-table >>> ul{
+    list-style: disc !important;
 }
 .responsive-table >>> h1,
 .responsive-table >>> h2,
