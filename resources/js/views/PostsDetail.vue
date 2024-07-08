@@ -124,7 +124,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="my-5" v-html="postsDetail?.university_info"></div>
+                    <div class="mt-5 mb-2 university-info" v-html="postsDetail?.university_info"></div>
                     <div class="responsive-table" v-html="postsDetail?.content"></div>
                 </div>
             </div>
@@ -420,6 +420,9 @@ hr{
     margin-right: 10px;
 }
 .responsive-table >>> p{
+    margin: 0 !important;
+}
+.university-info >>> p{
     margin: 0 !important;
 }
 .responsive-table >>> li{
