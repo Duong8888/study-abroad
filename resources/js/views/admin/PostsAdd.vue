@@ -98,9 +98,28 @@
                 <div v-if="errors.imageUrl" class="text-danger">{{ errors.imageUrl }}</div>
             </div>
             <div class="col-12 py-4 d-flex justify-content-end">
-                <router-link :to="{name:'Posts'}">
-                    <button class="btn btn-light mx-1">Hủy</button>
-                </router-link>
+                <button class="btn btn-light mx-1" data-toggle="modal" data-target="#deleteModal">Hủy</button>
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Hủy</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Dữ liệu chưa được lưu bạn có muốn quay về ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                <button type="button" class="btn btn-danger" @click="backPage" data-dismiss="modal">Đồng ý
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <button class="btn btn-primary" @click="actionBtn(getData)">{{ formType ? "Lưu" : "Cập nhật" }}
                 </button>
             </div>
@@ -393,6 +412,9 @@ export default {
     methods: {
         ...mapActions('category', ['fetchCategory',]),
         ...mapActions('posts', ['addPost', 'getOnePost', 'updatePost']),
+        backPage(){
+            this.$router.push({ name: 'Posts' });
+        },
         createSlug(title) {
             let slug = title.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             slug = slug.toLowerCase().replace(/\s+/g, '-');
