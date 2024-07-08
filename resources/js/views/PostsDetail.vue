@@ -437,6 +437,6 @@ hr{
 .responsive-table >>> h4,
 .responsive-table >>> h5,
 .responsive-table >>> h6{
-    margin: 0 0 10px 0 !important;
+    margin: 0 0 15px 0 !important;
 }
 </style>
