@@ -21,7 +21,7 @@
                                   stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <router-link :to="{name:'PostsList'}">
-                            <span class="ms-2 text-white">Back to Blogs</span>
+                            <span class="ms-2 text-white">Quay lại Blogs</span>
                         </router-link>
                     </a>
                     <div>
