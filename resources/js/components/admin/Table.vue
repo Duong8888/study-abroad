@@ -96,7 +96,7 @@ export default {
         initDataTable() {
             this.$nextTick(() => {
                 this.dataTable = $(this.$refs.dataTableContainer).find('table').DataTable({
-                    "order": [[5, "desc"]],
+                    "order": [[4, "desc"]],
                     scrollX: true,
                     language: {
                         "sProcessing": "Đang xử lý...",
@@ -143,7 +143,7 @@ export default {
             minutes = minutes.toString().padStart(2, '0');
             day = day.toString().padStart(2, '0');
             month = month.toString().padStart(2, '0');
-            return `${day}/${month}/${year}`;
+            return `${hours}:${minutes} ${day}/${month}/${year}`;
         },
         updateStatus(id){
             this.$emit('update',id);
