@@ -448,5 +448,8 @@ hr{
     .responsive-table >>> h6{
         margin: 0 0 5px 0 !important;
     }
+    .responsive-table >>> h1{
+        line-height: 1;
+    }
 }
 </style>
