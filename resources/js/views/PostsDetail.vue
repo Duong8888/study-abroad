@@ -324,15 +324,6 @@ export default {
     width: 100%;
     overflow-x: auto;
 }
-@media only screen and (max-width: 600px) {
-    .responsive-table >>> table td{
-        padding: 5px 20px;
-    }
-    .responsive-table >>> table {
-        width: 100%;
-        display: block;
-    }
-}
 
 /* CSS để tạo mục lục */
 .toc-container {
@@ -438,5 +429,24 @@ hr{
 .responsive-table >>> h5,
 .responsive-table >>> h6{
     margin: 0 0 15px 0 !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .responsive-table >>> table td{
+        padding: 0;
+    }
+    .responsive-table >>> table {
+        width: 100%;
+        display: block;
+    }
+
+    .responsive-table >>> h1,
+    .responsive-table >>> h2,
+    .responsive-table >>> h3,
+    .responsive-table >>> h4,
+    .responsive-table >>> h5,
+    .responsive-table >>> h6{
+        margin: 0 0 5px 0 !important;
+    }
 }
 </style>
