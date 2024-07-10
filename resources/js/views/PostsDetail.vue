@@ -435,8 +435,11 @@ hr{
 }
 
 @media only screen and (max-width: 600px) {
+    .responsive-table {
+        box-sizing: border-box;
+    }
     .responsive-table >>> table td{
-        padding: 0;
+        padding: 5px;
     }
     .responsive-table >>> table {
         width: 100%;
