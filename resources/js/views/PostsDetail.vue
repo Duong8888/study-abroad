@@ -223,7 +223,6 @@ export default {
 
                 if (numColumns > maxColumns)  {
                     table.style.display = "block";
-                    table.style.background = "red";
                     table.style.overflowX = "auto";
                 }
             });
@@ -438,6 +437,10 @@ hr{
 @media only screen and (max-width: 600px) {
     .responsive-table >>> table td{
         padding: 0;
+    }
+    .responsive-table >>> table td {
+        padding: 8px;
+        box-sizing: border-box;
     }
     .responsive-table >>> table {
         width: 100%;
