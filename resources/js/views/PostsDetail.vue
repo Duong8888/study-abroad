@@ -440,7 +440,7 @@ hr{
     }
     .responsive-table >>> table {
         width: 100%;
-        display: block;
+        /*display: block;*/
     }
 
     .responsive-table >>> h1,
