@@ -430,6 +430,9 @@ hr{
 .responsive-table >>> h6{
     margin: 0 0 15px 0 !important;
 }
+.responsive-table >>> span{
+    display: inline-block;
+}
 
 @media only screen and (max-width: 600px) {
     .responsive-table >>> table td{
