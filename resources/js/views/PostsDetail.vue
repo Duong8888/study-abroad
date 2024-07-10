@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="my-12 border-bottom"></div>
-                <div class="mw-4xl mx-auto show-content container">
+                <div class="mw-4xl mx-auto show-content container p-0">
                     <div v-if="toc.length" class="toc-container">
                         <h2 @click="tocOpen = !tocOpen">
                             Nội dung chính
@@ -223,6 +223,7 @@ export default {
 
                 if (numColumns > maxColumns)  {
                     table.style.display = "block";
+                    table.style.background = "red";
                     table.style.overflowX = "auto";
                 }
             });
