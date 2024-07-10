@@ -216,7 +216,7 @@ export default {
         },
         addOverflowXToTables() {
             const tables = this.$el.querySelectorAll('table');
-            const maxColumns = window.innerWidth <= 768 ? 4 : 8;
+            const maxColumns = window.innerWidth <= 768 ? 3 : 8;
             tables.forEach((table) => {
                 const columns = table.querySelectorAll('th, td');
                 const numColumns = columns.length / table.querySelectorAll('tr').length;
@@ -441,7 +441,7 @@ hr{
     }
     .responsive-table >>> table {
         width: 100%;
-        /*display: block;*/
+        display: block;
     }
 
     .responsive-table >>> h1,
