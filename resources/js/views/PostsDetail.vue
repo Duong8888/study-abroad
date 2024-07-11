@@ -3,13 +3,13 @@
         <div class="position-absolute top-0 start-0 w-100 bg-primary-light">
             <div class="d-flex justify-content-center overflow-hidden pt-lg-24 pb-44 pb-md-64 pb-lg-80">
                 <div class="flex-shrink-0 mt-n40 mt-sm-n6 me-6"
-                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #b21818 100%);"></div>
+                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #ffffff 100%);"></div>
                 <div class="flex-shrink-0 mt-n40 mt-sm-n32 me-6"
-                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #b21818 100%);"></div>
+                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #ffffff 100%);"></div>
                 <div class="flex-shrink-0 mt-n40 mt-sm-n32 me-6"
-                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #b21818 100%);"></div>
+                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #ffffff 100%);"></div>
                 <div class="flex-shrink-0 mt-n40 mt-sm-n6"
-                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #b21818 100%);"></div>
+                     style="width: 324px; height: 340px; background: linear-gradient(0deg, rgba(255, 234, 194, 0.00) 0%, #ffffff 100%);"></div>
             </div>
         </div>
         <div class="container position-relative">
@@ -17,16 +17,16 @@
                 <div class="mw-3xl mx-auto text-center mb-12">
                     <a class="d-inline-flex mb-12 align-items-center text-dark fw-bold mt-12" href="#">
                         <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path class="text-white" d="M15.4167 10H5M5 10L10 5M5 10L10 15" stroke="currentColor" stroke-width="1.5"
+                            <path class="text-black-50" d="M15.4167 10H5M5 10L10 5M5 10L10 15" stroke="currentColor" stroke-width="1.5"
                                   stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <router-link :to="{name:'PostsList'}">
-                            <span class="ms-2 text-white">Quay lại trước</span>
+                            <span class="ms-2 text-black-50">Quay lại trước</span>
                         </router-link>
                     </a>
                     <div>
                         <span v-if="postsDetail" v-for="item in JSON.parse(postsDetail?.post_type_id)" :key="item"
-                              class="badge bg-white mb-4 me-3 text-dark-light fw-medium border border-light rounded-1 mx-1">{{ item.name }}</span>
+                              class="badge bg-white mb-4 me-3 text-dark-light fw-medium border rounded-1 mx-1">{{ item.name }}</span>
                     </div>
                     <h3 class="font-heading">{{ postsDetail?.title }}</h3>
                 </div>
