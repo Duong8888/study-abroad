@@ -15,16 +15,16 @@
         <div class="container position-relative">
             <div class="mw-6xl mx-auto">
                 <div class="mw-3xl mx-auto text-center mb-12">
-                    <a class="d-inline-flex mb-12 align-items-center text-dark fw-bold mt-12" href="#">
-                        <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path class="text-black-50" d="M15.4167 10H5M5 10L10 5M5 10L10 15" stroke="currentColor" stroke-width="1.5"
-                                  stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                        <router-link :to="{name:'PostsList'}">
-                            <span class="ms-2 text-black-50">Quay lại trước</span>
-                        </router-link>
-                    </a>
-                    <div>
+<!--                    <a class="d-inline-flex mb-12 align-items-center text-dark fw-bold mt-12" href="#">-->
+<!--                        <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                            <path class="text-black-50" d="M15.4167 10H5M5 10L10 5M5 10L10 15" stroke="currentColor" stroke-width="1.5"-->
+<!--                                  stroke-linecap="round" stroke-linejoin="round"></path>-->
+<!--                        </svg>-->
+<!--                        <router-link :to="{name:'PostsList'}">-->
+<!--                            <span class="ms-2 text-black-50">Quay lại trước</span>-->
+<!--                        </router-link>-->
+<!--                    </a>-->
+                    <div class="mt-4">
                         <span v-if="postsDetail" v-for="item in JSON.parse(postsDetail?.post_type_id)" :key="item"
                               class="badge bg-white mb-4 me-3 text-dark-light fw-medium border rounded-1 mx-1">{{ item.name }}</span>
                     </div>
@@ -439,12 +439,12 @@ hr{
         padding: 0;
     }
     .responsive-table >>> table td {
-        padding: 8px;
+        padding: 5px;
         box-sizing: border-box;
     }
     .responsive-table >>> table {
         width: 100%;
-        display: block;
+        /*display: block;*/
     }
 
     .responsive-table >>> h1,
