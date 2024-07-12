@@ -620,5 +620,11 @@ export default {
 
 .text-custom{
     font-size: 20px !important;
+    line-height: 1.5;
+    text-align: justify;
+    text-justify: inter-word;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>

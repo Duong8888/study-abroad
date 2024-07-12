@@ -7,8 +7,8 @@
         <Posts :items="item.posts" :title="category[index].type_name"></Posts>
     </template>
     <!--    <SubBanner></SubBanner>-->
-    <AdsBanner :formShow="false"></AdsBanner>
     <Tiktok></Tiktok>
+    <AdsBanner :formShow="false"></AdsBanner>
     <Comments></Comments>
 </template>
 
