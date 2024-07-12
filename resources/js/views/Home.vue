@@ -8,6 +8,7 @@
     </template>
     <!--    <SubBanner></SubBanner>-->
     <AdsBanner :formShow="false"></AdsBanner>
+    <Tiktok></Tiktok>
     <Comments></Comments>
 </template>
 
@@ -19,6 +20,7 @@ import Introduce from '@/components/Introduce.vue';
 import Universities from '@/components/Universities.vue';
 import SubBanner from '@/components/SubBanner.vue';
 import Comments from '@/components/Comments.vue';
+import Tiktok from '@/components/TikTokVideo.vue';
 import {API_ENDPOINT} from "../store/api-endpoint";
 import {mapActions, mapGetters} from "vuex";
 import AdsBanner from "@/views/admin/AdsBanner.vue";
@@ -130,7 +132,8 @@ export default {
         Introduce,
         SubBanner,
         Comments,
-        AdsBanner
+        AdsBanner,
+        Tiktok
     },
 }
 </script>

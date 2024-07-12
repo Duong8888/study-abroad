@@ -67,7 +67,13 @@ export default {
         SwiperSlide,
     },
     setup() {
-        return {};
+        return {
+            videos: [
+                'https://www.tiktok.com/@smarteduchuyn.du/video/7367021187509128455?_r=1&_t=8mkQxX6ywT4',
+                'https://www.tiktok.com/@smarteduchuyn.du/video/7364801746012507410?_r=1&_t=8mkQxX6ywT4',
+                'https://www.tiktok.com/@smarteduchuyn.du/video/7362106197454966034?_r=1&_t=8mkQxX6ywT4'
+            ]
+        };
     },
 };
 </script>
