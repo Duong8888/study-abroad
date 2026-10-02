@@ -138,6 +138,14 @@
             </router-link>
         </li>
 
+        <li class="nav-item" :class="{ active: $route.name === 'TikTok' }">
+            <router-link :to="{name:'TikTok'}">
+                <span class="nav-link">
+                    <i class="fab fa-fw fa-tiktok"></i>
+                    <span>Video TikTok</span></span>
+            </router-link>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\TikTokVideo;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TikTokVideosTableSeeder extends Seeder
@@ -15,27 +14,23 @@ class TikTokVideosTableSeeder extends Seeder
     {
         $data = [
             [
-                'video_title' => 'Tiktok duongna',
-                'video_url' => 'https://www.tiktok.com/@thobaymau_anime/video/7359591894101364011',
-                'author_username' => '@anhduong',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],[
-                'video_title' => 'Tiktok duongna',
-                'video_url' => 'https://www.tiktok.com/@thobaymau_anime/video/7359591894101364011',
-                'author_username' => '@anhduong',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],[
-                'video_title' => 'Tiktok duongna',
-                'video_url' => 'https://www.tiktok.com/@thobaymau_anime/video/7359591894101364011',
-                'author_username' => '@anhduong',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'video_title' => 'Con Trai Thì Nên Học Ngành Gì Tại Hàn Quốc',
+                'video_url' => 'https://www.tiktok.com/@du.hc.smartedu/video/7379230454425193729',
+                'author_username' => '@du.hc.smartedu',
+            ],
+            [
+                'video_title' => 'Ai Hiểu Biết Về Điện Ảnh Và Ẩm Thực Của Hàn Quốc Hơn',
+                'video_url' => 'https://www.tiktok.com/@du.hc.smartedu/video/7378117177376836881',
+                'author_username' => '@du.hc.smartedu',
+            ],
+            [
+                'video_title' => 'Chia Sẻ Kinh Nghiệm Du Học Hàn Quốc',
+                'video_url' => 'https://www.tiktok.com/@du.hc.smartedu/video/7384067532929518865',
+                'author_username' => '@du.hc.smartedu',
             ],
         ];
 
-        // Insert dữ liệu vào bảng
+        // Trang chủ hiển thị video mới thêm trước, nên video cuối mảng sẽ đứng đầu
         foreach ($data as $i) {
             TikTokVideo::create($i);
         }

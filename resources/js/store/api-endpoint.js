@@ -13,6 +13,7 @@ export const API_ENDPOINT = {
         UNIVERSITY : `/university`,
         PROFILE : `/profile`,
         FILES : `/files`,
+        TIKTOK : `/tiktok`,
     },
     API_USER: {
         SEND_REQUEST : `${API}/consultation-request`,

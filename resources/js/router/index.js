@@ -21,6 +21,7 @@ import Team from "@/views/admin/Team.vue";
 import Universities from "@/views/admin/Universities.vue";
 import Profile from "@/views/admin/Profile.vue";
 import FileManager from "@/views/admin/FileManager.vue";
+import TikTok from "@/views/admin/TikTok.vue";
 
 const routes = [
 
@@ -132,6 +133,11 @@ const routes = [
                 path: 'files',
                 name: 'FileManager',
                 component: FileManager
+            },
+            {
+                path: 'tiktok',
+                name: 'TikTok',
+                component: TikTok
             },
         ]
     },
