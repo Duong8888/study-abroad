@@ -38,156 +38,141 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
+                    <!-- Toàn bộ nội dung footer sửa trong admin: /admin/settings -->
                     <div class="col-lg-4 col-md-12 col-sm-12 footer-widget">
                         <div class="footer-logo md-mb-30 mb-lg-4">
-                            <a href="index.html"><img src="@/assets/images/common/logo-footer.png" alt=""></a>
+                            <a href="/"><img src="@/assets/images/common/logo-footer.png" alt=""></a>
                         </div>
-                        <div class="textwidget"><p>Du học SMARTEDU có 4 năm kinh nghiệm trong lĩnh vực du học cả ở thị
-                            trường Việt Nam và Hàn Quốc</p>
-                        </div>
+                        <div class="textwidget" v-if="settings.footer_intro"><p>{{ settings.footer_intro }}</p></div>
                         <ul class="footer-social md-mb-30">
-                            <li>
-                                <a href="https://www.tiktok.com/@smarteduchuyn.du?_t=8mkQxX6ywT4&_r=1" target="_blank">
+                            <li v-if="settings.footer_tiktok">
+                                <a :href="settings.footer_tiktok" target="_blank">
                                     <img src="@/assets/images/common/tiktok_logo.png">
                                 </a>
                             </li>
-                            <li>
-                                <a href="https://www.facebook.com/profile.php?id=61555208818668" target="_blank">
+                            <li v-if="settings.footer_facebook">
+                                <a :href="settings.footer_facebook" target="_blank">
                                     <img src="@/assets/images/common/Facebook.png">
                                 </a>
                             </li>
-                            <li>
-                                <a href="https://zalo.me/0328021619" target="_blank">
+                            <li v-if="settings.footer_zalo">
+                                <a :href="settings.footer_zalo" target="_blank">
                                     <img src="@/assets/images/common/Logo-zalo.svg">
                                 </a>
                             </li>
                         </ul>
                     </div>
 
-                    <!--                    <div class="col-lg-4 col-md-12 col-sm-12 pl-45 md-pl-15 md-mb-30">-->
-                    <!--                        <h3 class="widget-title">Liên hệ</h3>-->
-                    <!--                        <div class="textwidget"><p>SDT Hàn Quốc: 010 7621 1292</p></div>-->
-                    <!--                        <div class="textwidget"><p><i class="fa fa-phone-volume"></i>SDT Việt Nam: 032 915 5366</p></div>-->
-                    <!--                        <div class="textwidget"><p>Zalo: +840328021619</p></div>-->
-                    <!--                        <div class="textwidget"><p>Email: duhochanquoc.smartedu@gmail.com</p></div>-->
-                    <!--                    </div>-->
-
                     <div class="col-lg-4 col-md-12 col-sm-12 md-mb-30">
-                        <h3 class="widget-title mb-10">Dịch vụ</h3>
-                        <div class="textwidget"><p>Du học Hàn Quốc</p></div>
-                        <div class="textwidget"><p>Lên chuyên ngành</p></div>
-                        <div class="textwidget mb-40"><p>Tìm việc và đổi visa</p></div>
+                        <template v-if="services.length">
+                            <h3 class="widget-title mb-10">Dịch vụ</h3>
+                            <div v-for="(item, index) in services" :key="item"
+                                 class="textwidget" :class="{ 'mb-40': index === services.length - 1 }"><p>{{ item }}</p></div>
+                        </template>
 
-                        <h3 class="widget-title">Văn Phòng Việt Nam</h3>
-                        <div class="textwidget">
-                            <p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     style="fill: #B21818;transform: ;msFilter:;">
-                                    <path
-                                        d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
-                                </svg>
-                                CN1: Số 48, đường Nguyễn Khang, quận Cầu Giấy, Hà Nội
-                            </p>
-                        </div>
-                        <div class="textwidget mb-40">
-                            <p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     style="fill: #B21818;transform: ;msFilter:;">
-                                    <path
-                                        d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
-                                </svg>
-                                CN2: 358/1, đường Bắc Kạn, Tổ 5 Hoàng Văn Thụ, TP Thái
-                                Nguyên
-                            </p>
-                        </div>
+                        <template v-if="officesVn.length">
+                            <h3 class="widget-title">Văn Phòng Việt Nam</h3>
+                            <div v-for="(item, index) in officesVn" :key="item"
+                                 class="textwidget" :class="{ 'mb-40': index === officesVn.length - 1 }">
+                                <p><svg-icon :paths="icons.location"></svg-icon>{{ item }}</p>
+                            </div>
+                        </template>
 
-                        <h3 class="widget-title">Văn Phòng Hàn Quốc</h3>
-                        <div class="textwidget">
-                            <p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     style="fill: #B21818;transform: ;msFilter:;">
-                                    <path
-                                        d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
-                                </svg>
-                                Địa chỉ: Tầng 2, 572-1, Changsin-dong, Jongno-gu, Seoul
-                            </p>
-                        </div>
+                        <template v-if="officesKr.length">
+                            <h3 class="widget-title">Văn Phòng Hàn Quốc</h3>
+                            <div v-for="item in officesKr" :key="item" class="textwidget">
+                                <p><svg-icon :paths="icons.location"></svg-icon>{{ item }}</p>
+                            </div>
+                        </template>
                     </div>
 
                     <div class="col-lg-4 col-md-12 col-sm-12 footer-widget">
+                        <template v-if="contacts.length">
+                            <h3 class="widget-title">Liên hệ</h3>
+                            <div v-for="(item, index) in contacts" :key="item.label"
+                                 class="textwidget" :class="{ 'mb-40': index === contacts.length - 1 }">
+                                <p>
+                                    <svg-icon :paths="item.icon"></svg-icon>
+                                    <a :href="item.href">{{ item.label }}</a>
+                                </p>
+                            </div>
+                        </template>
 
-                        <h3 class="widget-title">Liên hệ</h3>
-                        <div class="textwidget">
-                            <p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     style="fill: #B21818;transform: ;msFilter:;">
-                                    <path
-                                        d="M16.57 22a2 2 0 0 0 1.43-.59l2.71-2.71a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0l-1.6 1.59a7.55 7.55 0 0 1-3-1.59 7.62 7.62 0 0 1-1.59-3l1.59-1.6a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0L2.59 6A2 2 0 0 0 2 7.43 15.28 15.28 0 0 0 6.3 17.7 15.28 15.28 0 0 0 16.57 22zM6 5.41 8.59 8 7.3 9.29a1 1 0 0 0-.3.91 10.12 10.12 0 0 0 2.3 4.5 10.08 10.08 0 0 0 4.5 2.3 1 1 0 0 0 .91-.27L16 15.41 18.59 18l-2 2a13.28 13.28 0 0 1-8.87-3.71A13.28 13.28 0 0 1 4 7.41zM20 11h2a8.81 8.81 0 0 0-9-9v2a6.77 6.77 0 0 1 7 7z"></path>
-                                    <path d="M13 8c2.1 0 3 .9 3 3h2c0-3.22-1.78-5-5-5z"></path>
-                                </svg>
-                                SĐT Hàn Quốc: (+82)10 2253 9715
-                            </p>
-                        </div>
-                        <div class="textwidget">
-                            <p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     style="fill: #B21818;transform: ;msFilter:;">
-                                    <path
-                                        d="M16.57 22a2 2 0 0 0 1.43-.59l2.71-2.71a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0l-1.6 1.59a7.55 7.55 0 0 1-3-1.59 7.62 7.62 0 0 1-1.59-3l1.59-1.6a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0L2.59 6A2 2 0 0 0 2 7.43 15.28 15.28 0 0 0 6.3 17.7 15.28 15.28 0 0 0 16.57 22zM6 5.41 8.59 8 7.3 9.29a1 1 0 0 0-.3.91 10.12 10.12 0 0 0 2.3 4.5 10.08 10.08 0 0 0 4.5 2.3 1 1 0 0 0 .91-.27L16 15.41 18.59 18l-2 2a13.28 13.28 0 0 1-8.87-3.71A13.28 13.28 0 0 1 4 7.41zM20 11h2a8.81 8.81 0 0 0-9-9v2a6.77 6.77 0 0 1 7 7z"></path>
-                                    <path d="M13 8c2.1 0 3 .9 3 3h2c0-3.22-1.78-5-5-5z"></path>
-                                </svg>
-                                SĐT Việt Nam: 0329 155 366
-                            </p>
-                        </div>
-                        <div class="textwidget">
-                            <p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     style="fill: #B21818;transform: ;msFilter:;">
-                                    <path
-                                        d="M16.57 22a2 2 0 0 0 1.43-.59l2.71-2.71a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0l-1.6 1.59a7.55 7.55 0 0 1-3-1.59 7.62 7.62 0 0 1-1.59-3l1.59-1.6a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0L2.59 6A2 2 0 0 0 2 7.43 15.28 15.28 0 0 0 6.3 17.7 15.28 15.28 0 0 0 16.57 22zM6 5.41 8.59 8 7.3 9.29a1 1 0 0 0-.3.91 10.12 10.12 0 0 0 2.3 4.5 10.08 10.08 0 0 0 4.5 2.3 1 1 0 0 0 .91-.27L16 15.41 18.59 18l-2 2a13.28 13.28 0 0 1-8.87-3.71A13.28 13.28 0 0 1 4 7.41zM20 11h2a8.81 8.81 0 0 0-9-9v2a6.77 6.77 0 0 1 7 7z"></path>
-                                    <path d="M13 8c2.1 0 3 .9 3 3h2c0-3.22-1.78-5-5-5z"></path>
-                                </svg>
-                                Zalo: 0329 155 366
-                            </p>
-                        </div>
-                        <div class="textwidget mb-40">
-                            <p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     style="fill: #B21818;transform: ;msFilter:;">
-                                    <path
-                                        d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
-                                </svg>
-                                duhochanquoc.smartedu@gmail.com
-                            </p>
-                        </div>
-
-                        <h3 class="widget-title">Vị trí</h3>
-                        <!--                        <div class="textwidget"><p>Văn Phòng Hàn Quốc: 서울시 종로구 창신동 572-1, 2층</p>-->
-                        <!--                        </div>-->
-                        <!--                        <div class="textwidget"><p>Văn Phòng Việt Nam: B9/D6 ngõ 56 Trương Công Giai, Dịch Vọng, Cầu Giấy, Hà Nội</p>-->
-                        <!--                        </div>-->
-                        <div class="w-100">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.2802340463045!2d105.79750437343355!3d21.021470288032482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab5c841661ef%3A0x50d07b06ce1fd6fe!2zNDggxJAuIE5ndXnhu4VuIEtoYW5nLCBZw6puIEhvw6AsIEPhuqd1IEdp4bqleSwgSMOgIE7hu5lpLCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1717644148353!5m2!1sen!2s"
-                                width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
+                        <template v-if="settings.footer_map">
+                            <h3 class="widget-title">Vị trí</h3>
+                            <div class="w-100">
+                                <iframe
+                                    :src="settings.footer_map"
+                                    width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </template>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom" v-if="settings.footer_copyright">
             <div class="copyright text-center">
-                <p style="color: white !important;">COPYRIGHT &copy; <a style="color: white !important;" href="#">DU HỌC
-                    HÀN QUỐC SMARTEDU</a></p>
+                <p style="color: white !important;">COPYRIGHT &copy; <a style="color: white !important;" href="/">{{ settings.footer_copyright }}</a></p>
             </div>
         </div>
     </footer>
 </template>
 
 <script>
+import {h} from 'vue';
+import {mapGetters} from "vuex";
+
+const ICONS = {
+    location: [
+        'M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z',
+    ],
+    phone: [
+        'M16.57 22a2 2 0 0 0 1.43-.59l2.71-2.71a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0l-1.6 1.59a7.55 7.55 0 0 1-3-1.59 7.62 7.62 0 0 1-1.59-3l1.59-1.6a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0L2.59 6A2 2 0 0 0 2 7.43 15.28 15.28 0 0 0 6.3 17.7 15.28 15.28 0 0 0 16.57 22zM6 5.41 8.59 8 7.3 9.29a1 1 0 0 0-.3.91 10.12 10.12 0 0 0 2.3 4.5 10.08 10.08 0 0 0 4.5 2.3 1 1 0 0 0 .91-.27L16 15.41 18.59 18l-2 2a13.28 13.28 0 0 1-8.87-3.71A13.28 13.28 0 0 1 4 7.41zM20 11h2a8.81 8.81 0 0 0-9-9v2a6.77 6.77 0 0 1 7 7z',
+        'M13 8c2.1 0 3 .9 3 3h2c0-3.22-1.78-5-5-5z',
+    ],
+    email: [
+        'M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z',
+    ],
+};
+
+// Icon đỏ 24x24 dùng chung cho địa chỉ, điện thoại, email
+const SvgIcon = (props) => h('svg', {
+    xmlns: 'http://www.w3.org/2000/svg', width: 24, height: 24, viewBox: '0 0 24 24', style: 'fill: #B21818;',
+}, props.paths.map(d => h('path', {d})));
+SvgIcon.props = ['paths'];
+
+// Tách ô nhiều dòng thành mảng, bỏ dòng trống
+const lines = (text) => (text || '').split('\n').map(line => line.trim()).filter(Boolean);
+
 export default {
-    name: "Footer"
+    name: "Footer",
+    components: {SvgIcon},
+    data() {
+        return {icons: ICONS};
+    },
+    computed: {
+        ...mapGetters('settings', {settings: 'settingsAll'}),
+        services() {
+            return lines(this.settings.footer_services);
+        },
+        officesVn() {
+            return lines(this.settings.footer_office_vn);
+        },
+        officesKr() {
+            return lines(this.settings.footer_office_kr);
+        },
+        contacts() {
+            const s = this.settings;
+            const tel = (phone) => 'tel:' + phone.replace(/[^\d+]/g, '');
+            return [
+                s.contact_phone_kr && {icon: ICONS.phone, label: 'SĐT Hàn Quốc: ' + s.contact_phone_kr, href: tel(s.contact_phone_kr)},
+                s.contact_phone_vn && {icon: ICONS.phone, label: 'SĐT Việt Nam: ' + s.contact_phone_vn, href: tel(s.contact_phone_vn)},
+                s.contact_zalo && {icon: ICONS.phone, label: 'Zalo: ' + s.contact_zalo, href: 'https://zalo.me/' + s.contact_zalo.replace(/\D/g, '')},
+                s.contact_email && {icon: ICONS.email, label: s.contact_email, href: 'mailto:' + s.contact_email},
+            ].filter(Boolean);
+        },
+    },
 }
 </script>
 <style scoped>

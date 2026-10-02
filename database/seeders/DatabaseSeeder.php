@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StudentsTableSeeder::class);
         $this->call(TikTokVideosTableSeeder::class);
         $this->call(MenuSeeder::class);
+        $this->call(SettingsTableSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

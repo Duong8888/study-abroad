@@ -7,6 +7,7 @@ use App\Http\Controllers\FileManagerController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PostsTypeController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TikTokVideoController;
 use App\Http\Controllers\UniversityController;
@@ -43,6 +44,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/team', [TeamController::class, 'index']);
     Route::get('/university', [UniversityController::class, 'index']);
     Route::get('/tiktok', [TikTokVideoController::class, 'index']);
+    Route::get('/settings', [SettingController::class, 'index']);
 });
 Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -99,6 +101,8 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::get('/tiktok/{tiktok}', [TikTokVideoController::class, 'show']);
     Route::put('/tiktok/{tiktok}', [TikTokVideoController::class, 'update']);
     Route::delete('/tiktok/{tiktok}', [TikTokVideoController::class, 'destroy']);
+
+    Route::put('/settings', [SettingController::class, 'update']);
 
     Route::get('/profile', [UserController::class, 'showProfile']);
     Route::post('/profile', [UserController::class, 'updateProfile']);

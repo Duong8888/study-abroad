@@ -12,13 +12,14 @@
     <FormRequest @send-request="sendRequest" :statusBtn="statusBtn"></FormRequest>
     <Footer></Footer>
     <div class="social-icon">
-        <a href="https://www.tiktok.com/@du.hc.smartedu?_t=8nxQi2Mintn&_r=1" target="_blank">
+        <!-- Link quản lý trong admin: /admin/settings, để trống thì ẩn nút -->
+        <a v-if="settingsAll.social_tiktok" :href="settingsAll.social_tiktok" target="_blank">
             <img src="@/assets/images/common/tiktok_logo.png">
         </a>
-        <a href="https://www.facebook.com/profile.php?id=61555208818668" target="_blank">
+        <a v-if="settingsAll.social_facebook" :href="settingsAll.social_facebook" target="_blank">
             <img src="@/assets/images/common/Facebook.png">
         </a>
-        <a href="https://zalo.me/0329155366" target="_blank">
+        <a v-if="settingsAll.social_zalo" :href="settingsAll.social_zalo" target="_blank">
             <img src="@/assets/images/common/Logo-zalo.svg">
         </a>
     </div>
@@ -29,6 +30,7 @@ import Footer from '@/components/Footer.vue';
 import Header from '@/components/Header.vue';
 import FormRequest from '@/components/FormRequestFull.vue';
 import {API_ENDPOINT} from "@/store/api-endpoint.js";
+import {mapActions, mapGetters} from "vuex";
 
 
 export default {
@@ -38,7 +40,14 @@ export default {
             statusBtn: false,
         }
     },
+    computed: {
+        ...mapGetters('settings', ['settingsAll']),
+    },
+    created() {
+        this.fetchSettings();
+    },
     methods:{
+        ...mapActions('settings', ['fetchSettings']),
         async sendRequest(value) {
             this.statusBtn = true;
             try {

@@ -146,6 +146,14 @@
             </router-link>
         </li>
 
+        <li class="nav-item" :class="{ active: $route.name === 'Settings' }">
+            <router-link :to="{name:'Settings'}">
+                <span class="nav-link">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Cài đặt chung</span></span>
+            </router-link>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
