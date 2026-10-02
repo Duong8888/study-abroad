@@ -3,9 +3,13 @@ import api from '../../utils/axios.js';
 import defaultLogoMain from '@/assets/images/common/logo.png';
 import defaultLogoWhite from '@/assets/images/common/logo-new.png';
 
+// Cài đặt được server gửi sẵn trong app.blade.php, có ngay khi trang mở nên logo không bị nháy
+const preloaded = window.__SETTINGS__ || null;
+
 const state = {
-    settings: {},
-    loading: null,
+    settings: preloaded || {},
+    // Đã có sẵn từ server thì không cần gọi API lần đầu nữa
+    loading: preloaded ? Promise.resolve() : null,
 };
 
 const mutations = {

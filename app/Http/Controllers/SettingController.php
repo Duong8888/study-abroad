@@ -52,11 +52,18 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $settings = Setting::query()
-            ->whereIn('setting_key', array_merge(array_keys(self::RULES), self::LOGO_KEYS))
-            ->pluck('setting_value', 'setting_key');
+        return response()->json(self::publicSettings());
+    }
 
-        return response()->json($settings);
+    /**
+     * Các cài đặt hiển thị ra web. Dùng cả trong app.blade.php để gửi sẵn kèm HTML, tránh logo bị nháy.
+     */
+    public static function publicSettings(): array
+    {
+        return Setting::query()
+            ->whereIn('setting_key', array_merge(array_keys(self::RULES), self::LOGO_KEYS))
+            ->pluck('setting_value', 'setting_key')
+            ->all();
     }
 
     /**

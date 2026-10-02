@@ -30,6 +30,13 @@
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 
+    {{-- Gửi sẵn cài đặt (logo, footer...) kèm HTML để giao diện không phải chờ API, tránh logo mặc định bị nháy --}}
+    @php($siteSettings = rescue(fn() => \App\Http\Controllers\SettingController::publicSettings(), [], false))
+    <script>window.__SETTINGS__ = @json((object) $siteSettings);</script>
+    @foreach (array_unique(array_filter([$siteSettings['logo_white'] ?? $siteSettings['logo_main'] ?? null])) as $logo)
+        <link rel="preload" as="image" href="{{ $logo }}">
+    @endforeach
+
     <!-- Favicon -->
 @vite('resources/js/app.js')
     <!-- favicon -->
@@ -51,8 +58,7 @@
 
 
     {{-- Favicon dùng logo chính upload trong admin (Cài đặt chung), chưa upload thì dùng logo mặc định --}}
-    @php($favicon = rescue(fn() => \App\Models\Setting::query()->where('setting_key', 'logo_main')->value('setting_value'), null, false))
-    <link rel="shortcut icon" href="{{ $favicon ?: asset('assets/images/logo.png') }}">
+    <link rel="shortcut icon" href="{{ $siteSettings['logo_main'] ?? asset('assets/images/logo.png') }}">
     <!-- Bootstrap v4.4.1 css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
     <!-- font-awesome css -->
