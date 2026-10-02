@@ -10,35 +10,48 @@ class MenuSeeder extends Seeder
     /**
      * Run the database seeds.
      *
+     * Header hiển thị menu theo thứ tự id, menu cha có menu con sẽ chỉ mở dropdown (href = '#').
+     * Chỉ dùng các route đang có trong resources/js/router/index.js.
+     *
      * @return void
      */
     public function run()
     {
-        // Create main menu items
-        $home = Menu::create([
-            'title' => 'Home',
+        // Menu chính
+        Menu::create([
+            'title' => 'Trang chủ',
             'url' => '/',
+            'order' => 1,
+            'is_active' => true,
         ]);
 
-        $about = Menu::create([
-            'title' => 'About',
-            'url' => '/about',
-        ]);
-
-        $blog = Menu::create([
-            'title' => 'Blog',
+        Menu::create([
+            'title' => 'Tin tức',
             'url' => '/blogs',
+            'order' => 2,
+            'is_active' => true,
         ]);
 
-        // Create sub menu items
-        $about->subMenus()->create([
-            'title' => 'Team',
-            'url' => '/about/team',
+        $notice = Menu::create([
+            'title' => 'Thông báo',
+            'url' => null,
+            'order' => 3,
+            'is_active' => true,
         ]);
 
-        $blog->subMenus()->create([
-            'title' => 'News',
-            'url' => '/blog/news',
+        // Menu con
+        $notice->subMenus()->create([
+            'title' => 'Lịch nghỉ lễ 30/4 – 1/5',
+            'url' => '/blogs/lich-nghi-le-30-4',
+            'order' => 1,
+            'is_active' => true,
+        ]);
+
+        $notice->subMenus()->create([
+            'title' => 'Tất cả bài viết',
+            'url' => '/blogs',
+            'order' => 2,
+            'is_active' => true,
         ]);
     }
 }
