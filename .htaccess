@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    Options -Indexes
+    RewriteEngine On
+
+    # Chuyển mọi request vào thư mục public/
+    # (nhờ vậy .env, vendor, app... ở thư mục gốc không bao giờ được truy cập trực tiếp)
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Phòng khi mod_rewrite bị tắt: chặn đọc trực tiếp các file nhạy cảm
+<FilesMatch "^(\.env.*|composer\.(json|lock)|package(-lock)?\.json|artisan)$">
+    Require all denied
+</FilesMatch>
