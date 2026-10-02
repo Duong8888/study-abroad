@@ -6,18 +6,16 @@
             </div>
             <div class="tiktok-embed-container">
                 <div v-for="video in videos" :key="video.id" class="tiktok-embed-item">
-                    <!-- embed.js của TikTok tự tải mô tả, hashtag, nhạc từ link -->
-                    <blockquote
-                        class="tiktok-embed"
-                        :cite="video.video_url"
-                        :data-video-id="video.video_id"
-                        style="max-width: 605px; min-width: 325px;"
-                    >
-                        <section>
-                            <a :href="`https://www.tiktok.com/${video.author_username}`" target="_blank">{{ video.author_username }}</a>
-                            {{ video.video_title }}
-                        </section>
-                    </blockquote>
+                    <!-- Nhúng thẳng iframe, loading="lazy" để chỉ tải khi cuộn tới, tránh bị TikTok chặn vì gọi quá nhiều -->
+                    <iframe
+                        class="tiktok-iframe"
+                        :src="`https://www.tiktok.com/embed/v2/${video.video_id}`"
+                        :title="video.video_title || video.author_username"
+                        loading="lazy"
+                        allow="encrypted-media; fullscreen"
+                        allowfullscreen
+                        frameborder="0"
+                    ></iframe>
                 </div>
             </div>
         </div>
@@ -25,28 +23,11 @@
 </template>
 
 <script setup>
-import { computed, nextTick, onMounted, watch } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
-const videos = computed(() => store.getters['tiktok/tiktokAll']);
-
-// embed.js chỉ quét các blockquote có sẵn lúc nó chạy, nên phải nạp lại mỗi khi danh sách video thay đổi
-const loadEmbedScript = () => {
-    document.getElementById('tiktok-embed-script')?.remove();
-    const script = document.createElement('script');
-    script.id = 'tiktok-embed-script';
-    script.src = 'https://www.tiktok.com/embed.js';
-    script.async = true;
-    document.body.appendChild(script);
-};
-
-watch(videos, async (newValue) => {
-    if (newValue.length > 0) {
-        await nextTick();
-        loadEmbedScript();
-    }
-}, { immediate: true });
+const videos = computed(() => store.getters['tiktok/tiktokAll'].filter(video => video.video_id));
 
 onMounted(() => {
     store.dispatch('tiktok/fetchTiktok');
@@ -67,6 +48,16 @@ onMounted(() => {
 .tiktok-embed-item {
     flex: 1 1 calc(33.333% - 10px); /* 3 khối mỗi hàng */
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.tiktok-iframe {
+    width: 100%;
+    max-width: 325px;
+    height: 740px; /* chiều cao chuẩn của khung video TikTok */
+    border-radius: 8px;
+    background: #fff;
 }
 
 /* Responsive cho mobile */
@@ -74,11 +65,5 @@ onMounted(() => {
     .tiktok-embed-item {
         flex: 1 1 100%; /* 1 khối mỗi hàng */
     }
-}
-blockquote:before{
-    display: none;
-}
-blockquote{
-    padding: 0 !important;
 }
 </style>
