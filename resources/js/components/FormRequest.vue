@@ -4,14 +4,15 @@
         <div class="container flex-column d-flex align-items-center">
             <div class="title-form">
                 <p class="font-weight-bold fs-6 text-form">{{ displayText }} <span class="text-cursor" :class="{run:cursor}"></span></p>
-                <p class="d-flex align-items-center font-weight-bold fs-6 text-form hotline">
+                <!-- Số hotline lấy từ "SĐT Việt Nam" trong Cài đặt chung (giống footer) -->
+                <p v-if="phone_vn" class="d-flex align-items-center font-weight-bold fs-6 text-form hotline">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                          style="fill: #FFFFFF;transform: ;msFilter:;">
                         <path
                             d="M16.57 22a2 2 0 0 0 1.43-.59l2.71-2.71a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0l-1.6 1.59a7.55 7.55 0 0 1-3-1.59 7.62 7.62 0 0 1-1.59-3l1.59-1.6a1 1 0 0 0 0-1.41l-4-4a1 1 0 0 0-1.41 0L2.59 6A2 2 0 0 0 2 7.43 15.28 15.28 0 0 0 6.3 17.7 15.28 15.28 0 0 0 16.57 22zM6 5.41 8.59 8 7.3 9.29a1 1 0 0 0-.3.91 10.12 10.12 0 0 0 2.3 4.5 10.08 10.08 0 0 0 4.5 2.3 1 1 0 0 0 .91-.27L16 15.41 18.59 18l-2 2a13.28 13.28 0 0 1-8.87-3.71A13.28 13.28 0 0 1 4 7.41zM20 11h2a8.81 8.81 0 0 0-9-9v2a6.77 6.77 0 0 1 7 7z"></path>
                         <path d="M13 8c2.1 0 3 .9 3 3h2c0-3.22-1.78-5-5-5z"></path>
                     </svg>
-                    <span> 0329.155.366</span>
+                    <a class="hotline-link" :href="'tel:' + phone_vn.replace(/[^\d+]/g, '')"> {{ phone_vn }}</a>
                 </p>
             </div>
             <form class="newsletter-form mx-0 row w-100">
@@ -29,6 +30,8 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
     name: "FormRequest",
     data(){
@@ -53,9 +56,13 @@ export default {
         statusBtn:Boolean,
     },
     computed: {
+        ...mapGetters('settings', ['settingsAll']),
         displayText() {
             return this.currentText;
-        }
+        },
+        phone_vn() {
+            return this.settingsAll.contact_phone_vn || '';
+        },
     },
     created() {
         this.startTyping();
@@ -245,6 +252,10 @@ form {
 }
 .rs-seo-website.style1 .newsletter-form button:hover{
     opacity: 1;
+}
+.hotline-link {
+    color: inherit !important;
+    margin-left: 4px;
 }
 </style>
 

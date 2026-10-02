@@ -98,9 +98,9 @@ export default {
                 title: 'Footer - Liên hệ',
                 fields: [
                     {key: 'contact_phone_kr', label: 'SĐT Hàn Quốc', placeholder: '(+82)10 2253 9715'},
-                    {key: 'contact_phone_vn', label: 'SĐT Việt Nam', placeholder: '0329 155 366'},
+                    {key: 'contact_phone_vn', label: 'SĐT Việt Nam', placeholder: '0329 155 366', hint: 'Dùng cả cho hotline ở thanh đăng ký tư vấn trên banner và form tư vấn cuối trang.'},
                     {key: 'contact_zalo', label: 'Số Zalo', placeholder: '0329 155 366'},
-                    {key: 'contact_email', label: 'Email', type: 'email'},
+                    {key: 'contact_email', label: 'Email', type: 'email', hint: 'Dùng cả cho form tư vấn cuối trang.'},
                 ],
             },
             {
