@@ -44,10 +44,10 @@ export default {
         ...mapGetters('settings', ['settingsAll']),
     },
     created() {
-        this.fetchSettings();
+        this.loadSettings();
     },
     methods:{
-        ...mapActions('settings', ['fetchSettings']),
+        ...mapActions('settings', ['loadSettings']),
         async sendRequest(value) {
             this.statusBtn = true;
             try {

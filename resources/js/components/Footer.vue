@@ -41,7 +41,7 @@
                     <!-- Toàn bộ nội dung footer sửa trong admin: /admin/settings -->
                     <div class="col-lg-4 col-md-12 col-sm-12 footer-widget">
                         <div class="footer-logo md-mb-30 mb-lg-4">
-                            <a href="/"><img src="@/assets/images/common/logo-footer.png" alt=""></a>
+                            <a href="/"><img :src="logoMain" alt="logo"></a>
                         </div>
                         <div class="textwidget" v-if="settings.footer_intro"><p>{{ settings.footer_intro }}</p></div>
                         <ul class="footer-social md-mb-30">
@@ -152,7 +152,7 @@ export default {
         return {icons: ICONS};
     },
     computed: {
-        ...mapGetters('settings', {settings: 'settingsAll'}),
+        ...mapGetters('settings', {settings: 'settingsAll', logoMain: 'logoMain'}),
         services() {
             return lines(this.settings.footer_services);
         },

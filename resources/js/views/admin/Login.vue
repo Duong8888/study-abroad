@@ -5,7 +5,7 @@
                 <div class="card-body p-4">
                     <router-link :to="{name:'Home'}">
                         <div class="text-center mb-4">
-                            <img src="@/assets/images/common/logo.png" alt="" height="22" class="mx-auto logo-custom">
+                            <img :src="logoMain" alt="logo" height="22" class="mx-auto logo-custom">
                             <h4 class="text-uppercase mt-0">Sign In</h4>
                         </div>
                     </router-link>
@@ -54,7 +54,7 @@
 <script>
 import {API_ENDPOINT} from "../../store/api-endpoint.js";
 import api from '../../utils/axios.js';
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
     name: "Login",
@@ -64,8 +64,15 @@ export default {
             password: '',
         }
     },
+    computed: {
+        ...mapGetters('settings', ['logoMain']),
+    },
+    created() {
+        this.loadSettings();
+    },
     methods: {
         ...mapActions('auth',['login']),
+        ...mapActions('settings', ['loadSettings']),
         // async login() {
         //     try {
         //         const response = await api.post(API_ENDPOINT.API_ADMIN.LOGIN, {

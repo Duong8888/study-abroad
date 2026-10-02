@@ -50,7 +50,9 @@
     {{--admin--}}
 
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/logo.png')}}">
+    {{-- Favicon dùng logo chính upload trong admin (Cài đặt chung), chưa upload thì dùng logo mặc định --}}
+    @php($favicon = rescue(fn() => \App\Models\Setting::query()->where('setting_key', 'logo_main')->value('setting_value'), null, false))
+    <link rel="shortcut icon" href="{{ $favicon ?: asset('assets/images/logo.png') }}">
     <!-- Bootstrap v4.4.1 css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
     <!-- font-awesome css -->

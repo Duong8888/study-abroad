@@ -6,7 +6,7 @@
             <span class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon rotate-n-15">
 <!--                    <i class="fas fa-laugh-wink"></i>-->
-                    <img class="normal-logo" src="@/assets/images/common/logo-white.png" alt="logo">
+                    <img class="normal-logo" :src="logoWhite" alt="logo">
                 </div>
                 <div class="sidebar-brand-text mx-3">SMART EDU</div>
             </span>
@@ -219,7 +219,7 @@
 </template>
 
 <script>
-// import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
     name: "SideBar",
@@ -228,7 +228,14 @@ export default {
             status: true,
         }
     },
+    computed: {
+        ...mapGetters('settings', ['logoWhite']),
+    },
+    created() {
+        this.loadSettings();
+    },
     methods: {
+        ...mapActions('settings', ['loadSettings']),
         // ...mapActions('auth', ['logout']),
         // logoutBtn() {
         //     this.logout();

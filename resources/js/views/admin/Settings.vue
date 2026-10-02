@@ -3,6 +3,32 @@
         <h4 class="mb-1">Cài đặt chung</h4>
         <p class="text-muted small">Các thông tin lặt vặt hiển thị trên web. Để trống ô nào thì phần đó sẽ bị ẩn.</p>
 
+        <!-- Logo: upload là lưu ngay, không cần bấm "Lưu tất cả" -->
+        <div class="card mb-4" style="max-width: 760px">
+            <div class="card-header font-weight-bold">Logo</div>
+            <div class="card-body">
+                <p class="text-muted small">Thay logo ở đây là thay cho toàn web. Ảnh PNG/JPG/WEBP, tối đa 2MB, nên dùng PNG nền trong suốt.</p>
+                <div class="row">
+                    <div class="col-md-6 mb-3" v-for="logo in logos" :key="logo.key">
+                        <label class="font-weight-bold mb-1">{{ logo.label }}</label>
+                        <small class="d-block text-muted mb-2">{{ logo.hint }}</small>
+                        <div class="logo-preview" :style="{ background: logo.background }">
+                            <img :src="logo.src()" alt="logo">
+                        </div>
+                        <div class="mt-2 d-flex align-items-center">
+                            <label class="btn btn-sm btn-outline-primary mb-0">
+                                {{ uploading === logo.key ? 'Đang tải...' : 'Chọn ảnh mới' }}
+                                <input type="file" accept="image/png,image/jpeg,image/webp" hidden
+                                       :disabled="uploading" @change="onLogoChange(logo.key, $event)">
+                            </label>
+                            <button v-if="settingsAll[logo.key]" type="button" class="btn btn-sm btn-link text-danger"
+                                    @click="resetLogo(logo.key)">Dùng logo mặc định</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <form @submit.prevent="submitForm" style="max-width: 760px">
             <div class="card mb-4" v-for="group in groups" :key="group.title">
                 <div class="card-header font-weight-bold">{{ group.title }}</div>
@@ -97,10 +123,27 @@ export default {
             groups,
             form,
             loading: false,
+            uploading: null,
+            logos: [
+                {
+                    key: 'logo_main',
+                    label: 'Logo chính (màu)',
+                    hint: 'Dùng trên nền sáng: footer, trang đăng nhập, bài viết, icon tab trình duyệt.',
+                    background: '#ffffff',
+                    src: () => this.logoMain,
+                },
+                {
+                    key: 'logo_white',
+                    label: 'Logo trắng',
+                    hint: 'Dùng trên nền đỏ: header, sidebar admin. Để trống thì dùng logo chính.',
+                    background: '#B21818',
+                    src: () => this.logoWhite,
+                },
+            ],
         }
     },
     computed: {
-        ...mapGetters('settings', ['settingsAll']),
+        ...mapGetters('settings', ['settingsAll', 'logoMain', 'logoWhite']),
     },
     watch: {
         settingsAll: {
@@ -116,7 +159,20 @@ export default {
         this.fetchSettings();
     },
     methods: {
-        ...mapActions('settings', ['fetchSettings', 'updateSettings']),
+        ...mapActions('settings', ['fetchSettings', 'updateSettings', 'uploadLogo', 'deleteLogo']),
+        async onLogoChange(key, event) {
+            const file = event.target.files[0];
+            event.target.value = '';
+            if (!file) return;
+            this.uploading = key;
+            await this.uploadLogo({key, file, toast: this.$toast});
+            this.uploading = null;
+        },
+        async resetLogo(key) {
+            if (confirm('Xóa logo đã tải lên và dùng lại logo mặc định?')) {
+                await this.deleteLogo({key, toast: this.$toast});
+            }
+        },
         async submitForm() {
             this.loading = true;
             await this.updateSettings({data: {...this.form}, toast: this.$toast});
@@ -129,6 +185,20 @@ export default {
 </script>
 
 <style scoped>
+.logo-preview {
+    height: 120px;
+    border: 1px solid #e3e6f0;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.logo-preview img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
 .save-bar {
     position: sticky;
     bottom: 0;

@@ -34,7 +34,7 @@
                 <div class="d-flex mb-n6 flex-wrap align-items-center justify-content-between py-md-3">
                     <div class="mb-6">
                         <div class="d-flex align-items-center">
-                            <img class="img-profile" src="@/assets/images/common/logo.png">
+                            <img class="img-profile" :src="logoMain">
                             <div class="ms-4">
                                 <span class="d-block fw-semibold">Admin</span>
                                 <span class="text-light-dark fw-medium d-flex align-items-center justify-content-center">
@@ -284,6 +284,7 @@ export default {
     },
     computed: {
         ...mapGetters('posts', ['posts','postsAll']),
+        ...mapGetters('settings', ['logoMain']),
     },
     watch: {
         posts: {

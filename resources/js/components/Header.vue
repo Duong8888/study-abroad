@@ -10,7 +10,7 @@
                         <div class="col-cell">
                             <div class="logo-area">
                                 <a href="/">
-                                    <img class="normal-logo" src="@/assets/images/common/logo-new.png" alt="logo">
+                                    <img class="normal-logo" :src="logoWhite" alt="logo">
                                 </a>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                     </a>
                 </div>
                 <div class="canvas-logo">
-                    <a href="index.html"><img src="@/assets/images/logo-dark.png" alt="logo"></a>
+                    <a href="/"><img :src="logoMain" alt="logo"></a>
                 </div>
                 <div class="offcanvas-text">
                     <p>Developing software applications and mobile apps for clients all over the world. From its
@@ -184,6 +184,7 @@ export default {
     },
     computed: {
         ...mapGetters('menu', ['menuAll']),
+        ...mapGetters('settings', ['logoMain', 'logoWhite']),
         activeParent() {
             return true;
         },
@@ -209,9 +210,11 @@ export default {
     },
     created() {
         this.fetchMenu();
+        this.loadSettings();
     },
     methods: {
         ...mapActions('menu', ['fetchMenu']),
+        ...mapActions('settings', ['loadSettings']),
         getChildItems(parentId) {
             return this.menuItems.filter(item => item.parent_id == parentId);
         },

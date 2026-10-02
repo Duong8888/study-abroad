@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class SettingController extends Controller
 {
@@ -40,15 +42,75 @@ class SettingController extends Controller
     ];
 
     /**
+     * Logo: logo_main (logo màu, dùng cho nền sáng + favicon), logo_white (dùng cho nền đỏ/tối).
+     * Chỉ thay đổi qua uploadLogo / deleteLogo.
+     */
+    const LOGO_KEYS = ['logo_main', 'logo_white'];
+
+    /**
      * Trả về dạng { key: value } để giao diện dùng trực tiếp.
      */
     public function index()
     {
         $settings = Setting::query()
-            ->whereIn('setting_key', array_keys(self::RULES))
+            ->whereIn('setting_key', array_merge(array_keys(self::RULES), self::LOGO_KEYS))
             ->pluck('setting_value', 'setting_key');
 
         return response()->json($settings);
+    }
+
+    /**
+     * Upload logo mới, xóa file logo cũ.
+     */
+    public function uploadLogo(Request $request)
+    {
+        $request->validate([
+            'key' => ['required', Rule::in(self::LOGO_KEYS)],
+            'logo' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
+        ], [
+            'logo.required' => 'Vui lòng chọn ảnh logo.',
+            'logo.image' => 'File phải là ảnh.',
+            'logo.mimes' => 'Logo phải là ảnh PNG, JPG hoặc WEBP.',
+            'logo.max' => 'Ảnh logo tối đa 2MB.',
+        ]);
+
+        try {
+            $key = $request->input('key');
+            $this->deleteLogoFile($key);
+
+            $path = $request->file('logo')->store('uploads/logo', 'public');
+            // Lưu đường dẫn tương đối để không phụ thuộc APP_URL
+            $url = '/storage/' . $path;
+            Setting::query()->updateOrCreate(['setting_key' => $key], ['setting_value' => $url]);
+
+            return response()->json(['success' => true, 'message' => 'Cập nhật logo thành công.', 'data' => $url]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['success' => false, 'message' => 'Cập nhật logo thất bại.'], 500);
+        }
+    }
+
+    /**
+     * Xóa logo đã upload, web quay về dùng logo mặc định.
+     */
+    public function deleteLogo($key)
+    {
+        if (!in_array($key, self::LOGO_KEYS)) {
+            return response()->json(['success' => false, 'message' => 'Logo không hợp lệ.'], 404);
+        }
+
+        $this->deleteLogoFile($key);
+        Setting::query()->where('setting_key', $key)->delete();
+
+        return response()->json(['success' => true, 'message' => 'Đã khôi phục logo mặc định.']);
+    }
+
+    private function deleteLogoFile(string $key): void
+    {
+        $oldUrl = Setting::query()->where('setting_key', $key)->value('setting_value');
+        if ($oldUrl && str_starts_with($oldUrl, '/storage/')) {
+            Storage::disk('public')->delete(substr($oldUrl, strlen('/storage/')));
+        }
     }
 
     /**

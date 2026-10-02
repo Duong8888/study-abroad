@@ -103,6 +103,8 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::delete('/tiktok/{tiktok}', [TikTokVideoController::class, 'destroy']);
 
     Route::put('/settings', [SettingController::class, 'update']);
+    Route::post('/settings/logo', [SettingController::class, 'uploadLogo']);
+    Route::delete('/settings/logo/{key}', [SettingController::class, 'deleteLogo']);
 
     Route::get('/profile', [UserController::class, 'showProfile']);
     Route::post('/profile', [UserController::class, 'updateProfile']);
