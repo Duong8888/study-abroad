@@ -4,7 +4,7 @@
         <!-- Sidebar - Brand -->
         <router-link :to="{name:'Home'}">
             <span class="sidebar-brand d-flex align-items-center justify-content-center">
-                <div class="sidebar-brand-icon rotate-n-15">
+                <div class="sidebar-brand-icon">
 <!--                    <i class="fas fa-laugh-wink"></i>-->
                     <img class="normal-logo" :src="logoWhite" alt="logo">
                 </div>
