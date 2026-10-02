@@ -6,16 +6,17 @@
             </div>
             <div class="tiktok-embed-container">
                 <div v-for="video in videos" :key="video.id" class="tiktok-embed-item">
-                    <!-- Nhúng thẳng iframe, loading="lazy" để chỉ tải khi cuộn tới, tránh bị TikTok chặn vì gọi quá nhiều -->
+                    <!-- Dùng player/v1 (player nhúng chính thức), embed/v2 hay bị TikTok chặn "overload-protect triggered" -->
                     <iframe
                         class="tiktok-iframe"
-                        :src="`https://www.tiktok.com/embed/v2/${video.video_id}`"
+                        :src="`https://www.tiktok.com/player/v1/${video.video_id}?description=1&music_info=1&rel=0`"
                         :title="video.video_title || video.author_username"
                         loading="lazy"
-                        allow="encrypted-media; fullscreen"
+                        allow="encrypted-media; fullscreen; picture-in-picture"
                         allowfullscreen
                         frameborder="0"
                     ></iframe>
+                    <a class="tiktok-link" :href="video.video_url" target="_blank">Xem trên TikTok</a>
                 </div>
             </div>
         </div>
@@ -49,15 +50,21 @@ onMounted(() => {
     flex: 1 1 calc(33.333% - 10px); /* 3 khối mỗi hàng */
     box-sizing: border-box;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding-bottom: 20px;
+}
+.tiktok-link {
+    margin-top: 8px;
+    font-size: 14px;
+    color: rgb(178, 24, 24);
 }
 .tiktok-iframe {
     width: 100%;
     max-width: 325px;
-    height: 740px; /* chiều cao chuẩn của khung video TikTok */
+    aspect-ratio: 9 / 16; /* tỉ lệ video dọc TikTok */
     border-radius: 8px;
-    background: #fff;
+    background: #000;
 }
 
 /* Responsive cho mobile */

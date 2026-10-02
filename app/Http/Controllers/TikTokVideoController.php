@@ -24,7 +24,9 @@ class TikTokVideoController extends Controller
     public function store(Request $request)
     {
         try {
-            $video = TikTokVideo::create($this->validateVideo($request));
+            $data = $this->validateVideo($request);
+            $this->ensureNotDuplicate($data['video_url']);
+            $video = TikTokVideo::create($data);
             return response()->json(['success' => true, 'message' => 'Thêm video thành công.', 'data' => $video]);
         } catch (ValidationException $e) {
             throw $e;
@@ -53,7 +55,9 @@ class TikTokVideoController extends Controller
     {
         try {
             $video = TikTokVideo::query()->findOrFail($id);
-            $video->update($this->validateVideo($request));
+            $data = $this->validateVideo($request);
+            $this->ensureNotDuplicate($data['video_url'], $video->id);
+            $video->update($data);
             return response()->json(['success' => true, 'message' => 'Cập nhật video thành công.', 'data' => $video]);
         } catch (ValidationException $e) {
             throw $e;
@@ -74,6 +78,21 @@ class TikTokVideoController extends Controller
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['success' => false, 'message' => 'Xóa video thất bại.'], 500);
+        }
+    }
+
+    /**
+     * Không cho thêm cùng một video 2 lần (TikTok chặn khi nhúng trùng video trên một trang).
+     */
+    private function ensureNotDuplicate(string $videoUrl, $exceptId = null): void
+    {
+        $exists = TikTokVideo::query()
+            ->where('video_url', $videoUrl)
+            ->when($exceptId, fn($query) => $query->where('id', '!=', $exceptId))
+            ->exists();
+
+        if ($exists) {
+            throw ValidationException::withMessages(['video_url' => 'Video này đã có trong danh sách.']);
         }
     }
 
