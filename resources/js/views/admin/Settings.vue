@@ -9,7 +9,7 @@
             <div class="card-body">
                 <p class="text-muted small">Thay logo ở đây là thay cho toàn web. Ảnh PNG/JPG/WEBP, tối đa 2MB, nên dùng PNG nền trong suốt.</p>
                 <div class="row">
-                    <div class="col-md-6 mb-3" v-for="logo in logos" :key="logo.key">
+                    <div class="col-md-4 mb-3" v-for="logo in logos" :key="logo.key">
                         <label class="font-weight-bold mb-1">{{ logo.label }}</label>
                         <small class="d-block text-muted mb-2">{{ logo.hint }}</small>
                         <div class="logo-preview" :style="{ background: logo.background }">
@@ -128,7 +128,7 @@ export default {
                 {
                     key: 'logo_main',
                     label: 'Logo chính (màu)',
-                    hint: 'Dùng trên nền sáng: footer, trang đăng nhập, bài viết, icon tab trình duyệt.',
+                    hint: 'Dùng trên nền sáng: trang đăng nhập, bài viết, menu điện thoại, icon tab trình duyệt.',
                     background: '#ffffff',
                     src: () => this.logoMain,
                 },
@@ -139,11 +139,18 @@ export default {
                     background: '#B21818',
                     src: () => this.logoWhite,
                 },
+                {
+                    key: 'logo_footer',
+                    label: 'Logo footer',
+                    hint: 'Logo riêng ở chân trang (nền trắng). Để trống thì dùng logo chính.',
+                    background: '#ffffff',
+                    src: () => this.logoFooter,
+                },
             ],
         }
     },
     computed: {
-        ...mapGetters('settings', ['settingsAll', 'logoMain', 'logoWhite']),
+        ...mapGetters('settings', ['settingsAll', 'logoMain', 'logoWhite', 'logoFooter']),
     },
     watch: {
         settingsAll: {

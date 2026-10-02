@@ -42,10 +42,10 @@ class SettingController extends Controller
     ];
 
     /**
-     * Logo: logo_main (logo màu, dùng cho nền sáng + favicon), logo_white (dùng cho nền đỏ/tối).
-     * Chỉ thay đổi qua uploadLogo / deleteLogo.
+     * Logo: logo_main (logo màu, dùng cho nền sáng + favicon), logo_white (dùng cho nền đỏ/tối),
+     * logo_footer (riêng cho footer). Chỉ thay đổi qua uploadLogo / deleteLogo.
      */
-    const LOGO_KEYS = ['logo_main', 'logo_white'];
+    const LOGO_KEYS = ['logo_main', 'logo_white', 'logo_footer'];
 
     /**
      * Trả về dạng { key: value } để giao diện dùng trực tiếp.

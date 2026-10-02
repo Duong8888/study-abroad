@@ -6,12 +6,12 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-Bgql7OWX.js",
+    "file": "assets/app-BxlJ0zVv.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-B29gGgLK.css"
+      "assets/app-CIjumLZD.css"
     ],
     "assets": [
       "assets/banner-2-64q1SVUB.jpg",
@@ -49,6 +49,7 @@
       "assets/3-BwkjUzy5.png",
       "assets/logo-CC-onA3W.png",
       "assets/logo-new-BINlqo5z.png",
+      "assets/logo-footer-f4kQemEh.png",
       "assets/footer-bg4-CvV5pQPD.jpg"
     ]
   },
@@ -127,6 +128,10 @@
   "resources/js/assets/images/common/logo-admin.jpg": {
     "file": "assets/logo-admin-BInM1UjF.jpg",
     "src": "resources/js/assets/images/common/logo-admin.jpg"
+  },
+  "resources/js/assets/images/common/logo-footer.png": {
+    "file": "assets/logo-footer-f4kQemEh.png",
+    "src": "resources/js/assets/images/common/logo-footer.png"
   },
   "resources/js/assets/images/common/logo-new.png": {
     "file": "assets/logo-new-BINlqo5z.png",

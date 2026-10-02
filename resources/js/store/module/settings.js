@@ -2,6 +2,7 @@ import {API_ENDPOINT} from "../api-endpoint.js";
 import api from '../../utils/axios.js';
 import defaultLogoMain from '@/assets/images/common/logo.png';
 import defaultLogoWhite from '@/assets/images/common/logo-new.png';
+import defaultLogoFooter from '@/assets/images/common/logo-footer.png';
 
 // Cài đặt được server gửi sẵn trong app.blade.php, có ngay khi trang mở nên logo không bị nháy
 const preloaded = window.__SETTINGS__ || null;
@@ -97,6 +98,8 @@ const getters = {
     logoMain: (state) => state.settings.logo_main || defaultLogoMain,
     // Logo trắng, dùng trên nền đỏ (header, sidebar admin). Chưa upload logo trắng mà đã có logo chính thì dùng logo chính
     logoWhite: (state) => state.settings.logo_white || state.settings.logo_main || defaultLogoWhite,
+    // Logo riêng cho footer (nền trắng). Chưa upload thì dùng logo chính
+    logoFooter: (state) => state.settings.logo_footer || state.settings.logo_main || defaultLogoFooter,
 };
 
 export default {
