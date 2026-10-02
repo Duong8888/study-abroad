@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Menu;
-use http\Message;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PostsTableSeeder::class);
         $this->call(StudentsTableSeeder::class);
         $this->call(TikTokVideosTableSeeder::class);
-        $this->call(Menu::class);
+        $this->call(MenuSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

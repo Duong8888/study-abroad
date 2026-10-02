@@ -19,7 +19,7 @@ class PostsTableSeeder extends Seeder
                 'content' => '<figure id="attachment_3079" aria-describedby="caption-attachment-3079" style="width: 2048px" class="wp-caption aligncenter"><figcaption id="caption-attachment-3079" class="wp-caption-text"> <span style="font-size: 110%;">Lịch nghỉ lễ 30/4 – 1/5</span></figcaption></figure>',
                 'author_id' => 1,
                 'thumbnail' => './images/1.png',
-                'post_type_id' => 1,
+                'post_type_id' => json_encode([['id' => 1, 'name' => 'Tin tức và sự kiện']]),
                 'description' => 'description',
                 'slug'=>'lich-nghi-le-30-4',
                 'created_at' => now(),
