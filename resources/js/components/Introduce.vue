@@ -204,7 +204,7 @@
                             <h2 class="title pb-30" style="font-weight: 900">
                                 Du học Hàn Quốc cùng <span class="" style="color: #B21818">SMARTEDU</span>
                             </h2>
-                            <p class="margin-0 pb-55 md-pb-20 text-custom">SMART EDU được thành lập từ năm 2020, có trụ sở chính đặt tại Seoul (Hàn Quốc), 3 chi nhánh tại Ansan (Hàn Quốc) và Hà Nội, Thái Nguyên (Việt Nam). Chỉ sau vài năm hoạt động, chúng tôi đã có nhiều thành tích đáng kể như ký hợp đồng liên kết với hơn 20 trường Đại học, Cao đẳng lớn, nhỏ tại Hàn Quốc; đào tạo được rất nhiều học viên du học Hàn Quốc thành công.  Một điều vô cùng trân trọng nữa là Smart Edu đã nhận được sự ủng hộ nhiệt tình từ các bậc phụ huynh, các bạn học sinh, sinh viên. Bởi lẽ đó chúng tôi luôn ý thức được sứ mệnh và tầm nhìn của mình.</p>
+                            <p class="margin-0 pb-55 md-pb-20 text-custom">SMART EDU được thành lập từ năm 2020, có trụ sở chính đặt tại Seoul (Hàn Quốc), 2 chi nhánh tại Ansan (Hàn Quốc) và Hà Nội. Chỉ sau vài năm hoạt động, chúng tôi đã có nhiều thành tích đáng kể như ký hợp đồng liên kết với hơn 20 trường Đại học, Cao đẳng lớn, nhỏ tại Hàn Quốc; đào tạo được rất nhiều học viên du học Hàn Quốc thành công.  Một điều vô cùng trân trọng nữa là Smart Edu đã nhận được sự ủng hộ nhiệt tình từ các bậc phụ huynh, các bạn học sinh, sinh viên. Bởi lẽ đó chúng tôi luôn ý thức được sứ mệnh và tầm nhìn của mình.</p>
                         </div>
                     </div>
                 </div>
