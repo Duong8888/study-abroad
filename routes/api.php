@@ -9,6 +9,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PostsTypeController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TikTokVideoController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\UserController;
@@ -45,6 +46,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/university', [UniversityController::class, 'index']);
     Route::get('/tiktok', [TikTokVideoController::class, 'index']);
     Route::get('/settings', [SettingController::class, 'index']);
+    Route::get('/testimonial', [TestimonialController::class, 'index']);
 });
 Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -101,6 +103,11 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::get('/tiktok/{tiktok}', [TikTokVideoController::class, 'show']);
     Route::put('/tiktok/{tiktok}', [TikTokVideoController::class, 'update']);
     Route::delete('/tiktok/{tiktok}', [TikTokVideoController::class, 'destroy']);
+
+    Route::post('/testimonial', [TestimonialController::class, 'store']);
+    Route::get('/testimonial/{testimonial}', [TestimonialController::class, 'show']);
+    Route::post('/testimonial/{testimonial}', [TestimonialController::class, 'update']);
+    Route::delete('/testimonial/{testimonial}', [TestimonialController::class, 'destroy']);
 
     Route::put('/settings', [SettingController::class, 'update']);
     Route::post('/settings/logo', [SettingController::class, 'uploadLogo']);

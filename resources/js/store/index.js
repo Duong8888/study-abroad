@@ -10,6 +10,7 @@ import universities from './module/universities.js';
 import files from './module/files.js';
 import tiktok from './module/tiktok.js';
 import settings from './module/settings.js';
+import testimonial from './module/testimonial.js';
 
 const store = createStore({
     modules: {
@@ -24,6 +25,7 @@ const store = createStore({
         files,
         tiktok,
         settings,
+        testimonial,
     },
 });
 

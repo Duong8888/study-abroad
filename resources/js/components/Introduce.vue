@@ -38,7 +38,7 @@
                             <div class="bg"></div>
                             <div class="icon-content">
                                 <img src="@/assets/images/common/icon-3.svg" style="transform: translateY(10px)" alt="logo">
-                                <div class="feature-title">99%</div>
+                                <div class="feature-title">90%+</div>
                             </div>
 
                         </div>
@@ -54,7 +54,7 @@
                                 <div class="feature-title">100%</div>
                             </div>
                         </div>
-                        <div class="feature-subtitle mt-3 mb-3">HOÀN PHÍ NẾU TRƯỢT</div>
+                        <div class="feature-subtitle mt-3 mb-3">CHI PHÍ MINH BẠCH</div>
                     </div>
                 </div>
             </div>

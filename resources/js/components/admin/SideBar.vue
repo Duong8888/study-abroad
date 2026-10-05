@@ -138,6 +138,14 @@
             </router-link>
         </li>
 
+        <li class="nav-item" :class="{ active: $route.name === 'StudentsFeelings' }">
+            <router-link :to="{name:'StudentsFeelings'}">
+                <span class="nav-link">
+                    <i class="fas fa-fw fa-comments"></i>
+                    <span>Cảm nhận học viên</span></span>
+            </router-link>
+        </li>
+
         <li class="nav-item" :class="{ active: $route.name === 'TikTok' }">
             <router-link :to="{name:'TikTok'}">
                 <span class="nav-link">

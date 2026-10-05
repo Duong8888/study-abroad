@@ -23,6 +23,7 @@ import Profile from "@/views/admin/Profile.vue";
 import FileManager from "@/views/admin/FileManager.vue";
 import TikTok from "@/views/admin/TikTok.vue";
 import Settings from "@/views/admin/Settings.vue";
+import StudentsFeelings from "@/views/admin/StudentsFeelings.vue";
 
 const routes = [
 
@@ -128,7 +129,7 @@ const routes = [
             {
                 path: 'students-feelings',
                 name: 'StudentsFeelings',
-                component: Profile
+                component: StudentsFeelings
             },
             {
                 path: 'files',

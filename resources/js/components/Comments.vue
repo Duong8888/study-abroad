@@ -1,6 +1,6 @@
 <template>
     <div id="comment"></div>
-    <div id="rs-about" class="rs-about main-home pt-50 pb-100 md-pt-80 md-pb-0 gray-bg2">
+    <div v-if="items.length > 0" id="rs-about" class="rs-about main-home pt-50 pb-100 md-pt-80 md-pb-0 gray-bg2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -12,44 +12,16 @@
                 </div>
             </div>
             <swiper :watchSlidesProgress="true" :slidesPerView="1" class="mySwiper">
-                <swiper-slide>
+                <swiper-slide v-for="item in items" :key="item.id">
                     <div class="test-item">
                         <div class="author-desc">
-                            <div class="desc"><img width="40px" class="quote" src="@/assets/images/testimonial/main-home/quote.png" alt=""><p style="padding: 0 20px">Cảm nhận của em về trung tâm SMARTEDU là có chương trình du học rõ ràng về học phí, phí Visa, hỗ trợ học sinh cả bên Việt Nam và Hàn Quốc (gồm cả Lên chuyên ngành và chuyển trường)</p></div>
+                            <div class="desc"><img width="40px" class="quote" src="@/assets/images/testimonial/main-home/quote.png" alt=""><p style="padding: 0 20px; white-space: pre-line">{{ item.content }}</p></div>
                         </div>
                         <div class="author-part">
                             <div class="author-img">
-                                <img src="@/assets/images/testimonial/main-home/avatar/1.jpg" alt="">
+                                <img :src="item.avatar || defaultAvatar" :alt="item.name">
                             </div>
-                            <a class="name" href="#">Ánh Dương</a>
-                        </div>
-                    </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                    <div class="test-item">
-                        <div class="author-desc">
-                            <div class="desc"><img width="40px" class="quote" src="@/assets/images/testimonial/main-home/quote.png" alt=""><p style="padding: 0 20px">Mục tiêu của em là sau 3 tháng có thể giao tiếp cơ bản tiếng Hàn và sang Hàn để học tiếp, em thấy mình đã chọn đúng trung tâm SMARTEDU</p></div>
-                        </div>
-                        <div class="author-part">
-                            <div class="author-img">
-                                <img src="@/assets/images/testimonial/main-home/avatar/1.jpg" alt="">
-                            </div>
-                            <a class="name" href="#">An</a>
-                        </div>
-                    </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                    <div class="test-item">
-                        <div class="author-desc">
-                            <div class="desc"><img width="40px" class="quote" src="@/assets/images/testimonial/main-home/quote.png" alt=""><p style="padding: 0 20px">Mục tiêu của em là sau 3 tháng có thể giao tiếp cơ bản tiếng Hàn và sang Hàn để học tiếp, em thấy mình đã chọn đúng trung tâm SMARTEDU</p></div>
-                        </div>
-                        <div class="author-part">
-                            <div class="author-img">
-                                <img src="@/assets/images/testimonial/main-home/avatar/1.jpg" alt="">
-                            </div>
-                            <a class="name" href="#">Thịnh</a>
+                            <a class="name" href="#" @click.prevent>{{ item.name }}</a>
                         </div>
                     </div>
                 </swiper-slide>
@@ -60,19 +32,22 @@
 <script>
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import 'swiper/css';
+import defaultAvatar from '@/assets/images/testimonial/main-home/avatar/1.jpg';
 
 export default {
     components: {
         Swiper,
         SwiperSlide,
     },
-    setup() {
+    props: {
+        items: {
+            type: Array,
+            default: () => [],
+        },
+    },
+    data() {
         return {
-            videos: [
-                'https://www.tiktok.com/@smarteduchuyn.du/video/7367021187509128455?_r=1&_t=8mkQxX6ywT4',
-                'https://www.tiktok.com/@smarteduchuyn.du/video/7364801746012507410?_r=1&_t=8mkQxX6ywT4',
-                'https://www.tiktok.com/@smarteduchuyn.du/video/7362106197454966034?_r=1&_t=8mkQxX6ywT4'
-            ]
+            defaultAvatar,
         };
     },
 };

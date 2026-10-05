@@ -6,12 +6,12 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-v0fbJx7T.js",
+    "file": "assets/app-DRMZtssG.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-DkEJtz_T.css"
+      "assets/app-DcGl20rD.css"
     ],
     "assets": [
       "assets/banner-2-64q1SVUB.jpg",
@@ -34,8 +34,8 @@
       "assets/2-CNOOmG77.svg",
       "assets/sub-banner-BiLQ9IGi.jpg",
       "assets/banner-CXwGdm21.jpg",
-      "assets/quote-fiXjn-DC.png",
       "assets/1-BRo8ec-0.jpg",
+      "assets/quote-fiXjn-DC.png",
       "assets/logo-admin-BInM1UjF.jpg",
       "assets/tiktok_logo-BIo8F8g6.png",
       "assets/Facebook-qmfsK7Y5.png",

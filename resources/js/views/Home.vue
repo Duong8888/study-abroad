@@ -9,7 +9,7 @@
     <!--    <SubBanner></SubBanner>-->
     <Tiktok></Tiktok>
     <AdsBanner :formShow="false"></AdsBanner>
-    <Comments></Comments>
+    <Comments :items="testimonialAll"></Comments>
 </template>
 
 <script>
@@ -67,6 +67,7 @@ export default {
     computed: {
         ...mapGetters('banner', ['topBanner']),
         ...mapGetters('team', ['teamAll']),
+        ...mapGetters('testimonial', ['testimonialAll']),
         ...mapGetters('posts', ['postsAll']),
         ...mapGetters('universities', ['universityAll']),
         ...mapGetters('category', ['categoryAll'])
@@ -75,11 +76,13 @@ export default {
         this.fetchBanner(0);
         this.fetchCategory();
         this.fetchTeam();
+        this.fetchTestimonial();
         this.fetchItem();
     },
     methods: {
         ...mapActions('banner', ['fetchBanner',]),
         ...mapActions('team', ['fetchTeam',]),
+        ...mapActions('testimonial', ['fetchTestimonial']),
         ...mapActions('posts', ['fetchPost',]),
         ...mapActions('universities', ['fetchItem',]),
         ...mapActions('category', ['fetchCategory']),
