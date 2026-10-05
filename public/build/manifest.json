@@ -1,4 +1,8 @@
 {
+  "D:/laragon/www/study-abroad/resources/css/post-content.css": {
+    "file": "assets/post-content-uKbg7knW.css",
+    "src": "D:/laragon/www/study-abroad/resources/css/post-content.css"
+  },
   "resources/css/app.css": {
     "file": "assets/app-l0sNRNKZ.js",
     "name": "app",
@@ -6,12 +10,12 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-DRMZtssG.js",
+    "file": "assets/app-LjHgnCGi.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-DcGl20rD.css"
+      "assets/app-GOn0VrrV.css"
     ],
     "assets": [
       "assets/banner-2-64q1SVUB.jpg",

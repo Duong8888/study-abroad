@@ -1,7 +1,8 @@
 <template>
     <div class="container mt-5">
         <!-- Button to trigger modal -->
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">Menu hiển thị tối đa 3 cấp, sắp xếp theo ô "Thứ tự" (số nhỏ đứng trước).</small>
             <button type="button" class="btn btn-outline-primary" @click="openAddModal">
                 Thêm mới menu
             </button>
@@ -38,7 +39,9 @@
                                     class="form-control"
                                     id="menuUrl"
                                     v-model="currentMenuItem.url"
+                                    placeholder="/blogs/ten-bai-viet"
                                 />
+                                <small class="form-text text-muted">Menu có menu con thì không cần URL (bấm vào sẽ mở menu con).</small>
                             </div>
                             <div class="form-group">
                                 <label for="parentMenu">Menu cha</label>
@@ -46,17 +49,30 @@
                                     class="form-control"
                                     id="parentMenu"
                                     v-model="currentMenuItem.parent_id"
-                                    @change="clearUrl"
                                 >
-                                    <option :value="null">None</option>
+                                    <option :value="null">Không có (menu cấp 1)</option>
                                     <option
-                                        v-for="item in menuItems.filter(item => item.parent_id === null)"
+                                        v-for="item in parentOptions"
                                         :key="item.id"
                                         :value="item.id"
                                     >
-                                        {{ item.title }}
+                                        {{ item.depth === 2 ? '   — ' : '' }}{{ item.title }}
                                     </option>
                                 </select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="menuOrder">Thứ tự</label>
+                                    <input type="number" class="form-control" id="menuOrder" min="0"
+                                           v-model.number="currentMenuItem.order">
+                                </div>
+                                <div class="form-group col-6 d-flex align-items-end">
+                                    <div class="custom-control custom-switch mb-2">
+                                        <input type="checkbox" class="custom-control-input" id="menuActive"
+                                               v-model="currentMenuItem.is_active">
+                                        <label class="custom-control-label" for="menuActive">Hiển thị</label>
+                                    </div>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary">{{ isEdit ? 'Lưu' : 'Thêm mới' }}</button>
                             <button type="button" class="btn btn-secondary mx-2" @click="closeModal">Hủy</button>
@@ -72,38 +88,24 @@
         <div class="mt-4">
             <h6>Cấu trúc Menu</h6>
             <ul class="list-group">
-                <li v-for="item in menuItems.filter(item => item.parent_id === null)" :key="item.id"
-                    class="list-group-item">
+                <li v-for="item in flatTree" :key="item.id" class="list-group-item"
+                    :class="[`depth-${item.depth}`, {inactive: !isActive(item)}]">
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <div>
-                            <a :href="item.url">{{ item.title }}</a>
+                            <span class="menu-order" title="Thứ tự">{{ item.order ?? '–' }}</span>
+                            <a :href="item.url || '#'">{{ item.title }}</a>
+                            <small v-if="item.url" class="text-muted ml-2">{{ item.url }}</small>
+                            <span v-if="!isActive(item)" class="badge badge-secondary ml-2">Đang ẩn</span>
                         </div>
-                        <div>
-                            <button class="btn btn-sm" @click="openEditModal(item)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(0,123,255);transform: ;msFilter:;"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg>
+                        <div class="text-nowrap">
+                            <button class="btn btn-sm" title="Sửa" @click="openEditModal(item)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(0,123,255);"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg>
                             </button>
-                            <button class="btn btn-sm" @click="idDelete = (item.id)" data-toggle="modal" data-target="#exampleModal">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(190,21,16);transform: ;msFilter:;"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
+                            <button class="btn btn-sm" title="Xóa" @click="idDelete = (item.id)" data-toggle="modal" data-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(190,21,16);"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
                             </button>
                         </div>
                     </div>
-                    <ul class="list-group mt-2 w-100">
-                        <li v-for="child in getChildItems(item.id)" :key="child.id" class="list-group-item">
-                            <div class="d-flex justify-content-between align-items-center w-100">
-                                <div>
-                                    <a :href="child.url">{{ child.title }}</a>
-                                </div>
-                                <div>
-                                    <button class="btn btn-sm" @click="openEditModal(child)">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(0,123,255);transform: ;msFilter:;"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg>
-                                    </button>
-                                    <button class="btn btn-sm" @click="idDelete = (child.id)" data-toggle="modal" data-target="#exampleModal">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(190,21,16);transform: ;msFilter:;"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </div>
@@ -114,33 +116,42 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import Modal from "@/components/admin/Modal.vue";
+
+const emptyItem = () => ({id: null, title: '', url: '', parent_id: null, order: null, is_active: true});
+
 export default {
     data() {
         return {
-            newMenuItem: {
-                title: '',
-                url: '',
-                parent_id: null,
-            },
-            currentMenuItem: {
-                id: null,
-                title: '',
-                url: '',
-                parent_id: null,
-            },
-            menuItems: [
-                {id: 1, title: 'Home', url: '/', parent_id: null},
-                {id: 2, title: 'About', url: '/about', parent_id: null},
-                {id: 3, title: 'Team', url: '/about/team', parent_id: 2},
-            ],
-            nextId: 4,
+            currentMenuItem: emptyItem(),
+            menuItems: [],
             errorMessage: '',
             isEdit: false,
-            idDelete:'',
+            idDelete: '',
         };
     },
     computed: {
         ...mapGetters('menu', ['menuAll']),
+        // Cây menu dàn phẳng kèm độ sâu (1-3), sắp theo thứ tự
+        flatTree() {
+            const sorted = [...this.menuItems].sort((a, b) => (a.order ?? 9999) - (b.order ?? 9999) || a.id - b.id);
+            const result = [];
+            const walk = (parentId, depth) => {
+                sorted.filter(item => (item.parent_id ?? null) == parentId).forEach(item => {
+                    result.push({...item, depth});
+                    if (depth < 3) walk(item.id, depth + 1);
+                });
+            };
+            walk(null, 1);
+            return result;
+        },
+        // Menu cha chỉ được là cấp 1 hoặc 2 (để tối đa 3 cấp), không chọn chính nó
+        parentOptions() {
+            const editingId = this.currentMenuItem.id;
+            const hasChildren = editingId && this.menuItems.some(item => item.parent_id == editingId);
+            return this.flatTree.filter(item =>
+                (!editingId || (item.id !== editingId && item.parent_id != editingId))
+                && (item.depth === 1 || (item.depth === 2 && !hasChildren)));
+        },
     },
     watch: {
         menuAll: function (newValue) {
@@ -151,78 +162,65 @@ export default {
         this.fetchMenu();
     },
     methods: {
-        ...mapActions('menu', ['fetchMenu', 'addMenu','updateMenu','deleteMenu']),
+        ...mapActions('menu', ['fetchMenu', 'addMenu', 'updateMenu', 'deleteMenu']),
+        isActive(item) {
+            return item.is_active === null || item.is_active === undefined || !!Number(item.is_active);
+        },
         openAddModal() {
             this.isEdit = false;
-            this.currentMenuItem = {id: null, title: '', url: '', parent_id: null};
+            this.currentMenuItem = emptyItem();
             this.errorMessage = '';
             $('#menuModal').modal('show');
         },
         openEditModal(item) {
             this.isEdit = true;
-            this.currentMenuItem = {...item};
+            this.currentMenuItem = {...emptyItem(), ...item, is_active: this.isActive(item)};
             this.errorMessage = '';
             $('#menuModal').modal('show');
         },
         validateAndSubmitMenuItem() {
             this.errorMessage = '';
-
             if (!this.currentMenuItem.title) {
                 this.errorMessage = 'Tên là bắt buộc.';
                 return;
             }
-
-            if (this.currentMenuItem.parent_id && !this.currentMenuItem.url) {
-                this.errorMessage = 'URL là bắt buộc khi một menu cha được chọn.';
-                return;
-            }
-
             if (this.isEdit) {
                 this.updateMenuItem();
             } else {
                 this.addMenuItem();
             }
         },
-        async addMenuItem() {
-            const data = {
-                title: this.currentMenuItem.title,
-                url: this.currentMenuItem.url,
-                parent_id: this.currentMenuItem.parent_id,
+        payload() {
+            const item = this.currentMenuItem;
+            return {
+                title: item.title,
+                url: item.url || null,
+                parent_id: item.parent_id,
+                order: item.order === '' || item.order === null ? null : Number(item.order),
+                is_active: item.is_active ? 1 : 0,
             };
-            await this.addMenu({data: data, toast: this.$toast});
+        },
+        async addMenuItem() {
+            await this.addMenu({data: this.payload(), toast: this.$toast});
             await this.fetchMenu();
-            this.currentMenuItem = {id: null, title: '', url: '', parent_id: null};
+            this.currentMenuItem = emptyItem();
             $('#menuModal').modal('hide');
         },
         async updateMenuItem() {
-            const data = {
-                id: this.currentMenuItem.id,
-                title: this.currentMenuItem.title,
-                url: this.currentMenuItem.url,
-                parent_id: this.currentMenuItem.parent_id,
-            };
-            await this.updateMenu({data: data, toast: this.$toast});
+            await this.updateMenu({data: {id: this.currentMenuItem.id, ...this.payload()}, toast: this.$toast});
             await this.fetchMenu();
-            this.currentMenuItem = {id: null, title: '', url: '', parent_id: null};
+            this.currentMenuItem = emptyItem();
             $('#menuModal').modal('hide');
         },
-        async deleteItem(){
+        async deleteItem() {
             await this.deleteMenu({id: this.idDelete, toast: this.$toast});
             await this.fetchMenu();
-        },
-        getChildItems(parentId) {
-            return this.menuItems.filter(item => item.parent_id == parentId);
-        },
-        clearUrl() {
-            if (this.currentMenuItem.parent_id === null) {
-                this.currentMenuItem.url = '';
-            }
         },
         closeModal() {
             $('#menuModal').modal('hide');
         },
     },
-    components:{
+    components: {
         Modal,
     }
 };
@@ -252,9 +250,29 @@ export default {
     text-decoration: underline;
 }
 
-.list-group-item > .list-group {
-    margin-left: 20px;
-    padding-left: 10px;
+.list-group-item.depth-2 {
+    margin-left: 32px;
+    border-left-color: #60a5fa;
+    font-weight: 600;
+}
+.list-group-item.depth-3 {
+    margin-left: 64px;
+    border-left-color: #bfdbfe;
+    font-weight: 500;
+}
+.list-group-item.inactive {
+    opacity: .6;
+}
+.menu-order {
+    display: inline-block;
+    min-width: 26px;
+    margin-right: 8px;
+    padding: 0 6px;
+    border-radius: 6px;
+    background: #f1f5f9;
+    color: #64748b;
+    font-size: 12px;
+    text-align: center;
 }
 
 .modal-header, .modal-footer {

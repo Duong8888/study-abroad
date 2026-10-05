@@ -108,7 +108,8 @@
             <router-link :to="{name:'Request'}">
                 <span class="nav-link">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Yêu cầu tư vấn</span></span>
+                    <span>Yêu cầu tư vấn</span>
+                    <span v-if="newRequestCount" class="sidebar-badge" :title="newRequestCount + ' yêu cầu mới chưa xử lý'">{{ newRequestCount > 99 ? '99+' : newRequestCount }}</span></span>
             </router-link>
         </li>
 
@@ -238,6 +239,7 @@ export default {
     },
     computed: {
         ...mapGetters('settings', ['logoWhite']),
+        ...mapGetters('request', ['newRequestCount']),
     },
     created() {
         this.loadSettings();
@@ -253,6 +255,20 @@ export default {
 </script>
 
 <style scoped>
+.sidebar-badge {
+    display: inline-block;
+    min-width: 20px;
+    margin-left: 6px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #fff;
+    color: #b21818;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 18px;
+    text-align: center;
+}
+
 .normal-logo {
     width: 30px;
     height: 30px;

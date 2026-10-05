@@ -163,6 +163,21 @@ class PostsController extends Controller
 
     public function uploadImage(Request $request): \Illuminate\Http\JsonResponse
     {
+        $validator = validator($request->all(), [
+            'upload' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+        ], [
+            'upload.required' => 'Chưa chọn ảnh.',
+            'upload.image' => 'File tải lên phải là ảnh.',
+            'upload.mimes' => 'Chỉ hỗ trợ ảnh jpeg, png, jpg, gif, webp.',
+            'upload.max' => 'Ảnh không được vượt quá 5MB.',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'uploaded' => false,
+                'error' => ['message' => $validator->errors()->first()],
+            ], 422);
+        }
+
         if ($request->hasFile('upload')) {
             $file = $request->file('upload');
             $path = $file->store('uploads/images', 'public');

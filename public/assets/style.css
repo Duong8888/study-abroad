@@ -60,6 +60,8 @@ body {
   line-height: 26px;
   font-weight: 400;
   overflow-x: hidden;
+  /* clip: vẫn chặn cuộn ngang nhưng không tạo vùng cuộn riêng, để position: sticky hoạt động */
+  overflow-x: clip;
 }
 img {
   max-width: 100%;

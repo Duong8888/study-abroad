@@ -1,6 +1,26 @@
 import {API_ENDPOINT} from "../api-endpoint.js";
 import api from '../../utils/axios.js';
-import router from '../../router';
+
+// Gọi API lưu bài viết, hiện thông báo và trả về true nếu thành công
+async function savePost(request, toast) {
+    try {
+        const response = await request();
+        toast.open({
+            message: response.data.message,
+            type: response.data.success ? 'success' : 'error',
+            position: 'top'
+        });
+        return !!response.data.success;
+    } catch (error) {
+        console.error('Error save posts:', error);
+        toast.open({
+            message: error?.response?.data?.message || 'Error! An error occurred. Please try again later',
+            type: 'error',
+            position: 'top'
+        });
+        return false;
+    }
+}
 const state = {
     postsList: [],
     posts:[],
@@ -33,58 +53,16 @@ const actions = {
             console.error('Error fetching user:', error);
         }
     },
-    async addPost({commit}, { data, toast }) {
-        try {
-            const response = await api.post(API_ENDPOINT.API_ADMIN.POSTS,data);
-            if(response.data.success){
-                toast.open({
-                    message: response.data.message,
-                    type: 'success',
-                    position: 'top'
-                });
-                await router.push({name: 'Posts'});
-            } else {
-                toast.open({
-                    message: response.data.message,
-                    type: 'error',
-                    position: 'top'
-                });
-            }
-        } catch (error) {
-            console.error('Error add posts:', error);
-            toast.open({
-                message: 'Error! An error occurred. Please try again later',
-                type: 'error',
-                position: 'top'
-            });
-        }
+    async addPost(_, { data, toast }) {
+        return savePost(() => api.post(API_ENDPOINT.API_ADMIN.POSTS, data), toast);
     },
 
-    async updatePost({commit}, { data, toast }) {
-        try {
-            const response = await api.put(`${API_ENDPOINT.API_ADMIN.POSTS}/${data.id}`,data);
-            if(response.data.success){
-                toast.open({
-                    message: response.data.message,
-                    type: 'success',
-                    position: 'top'
-                });
-                await router.push({name: 'Posts'});
-            } else {
-                toast.open({
-                    message: response.data.message,
-                    type: 'error',
-                    position: 'top'
-                });
-            }
-        } catch (error) {
-            console.error('Error add posts:', error);
-            toast.open({
-                message: 'Error! An error occurred. Please try again later',
-                type: 'error',
-                position: 'top'
-            });
-        }
+    async updatePost(_, { data, toast }) {
+        return savePost(() => api.put(`${API_ENDPOINT.API_ADMIN.POSTS}/${data.id}`, data), toast);
+    },
+
+    clearPost({commit}) {
+        commit('SET_POSTS', []);
     },
 
     async getOnePost({commit}, slug) {

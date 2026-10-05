@@ -61,6 +61,11 @@ const routes = [
         component: AdminLayout,
         children: [
             {
+                // Vào /admin (vd. sau khi đăng nhập) thì mở thẳng trang Yêu cầu tư vấn
+                path: '',
+                redirect: {name: 'Request'},
+            },
+            {
                 path: 'request',
                 name: 'Request',
                 component: Request

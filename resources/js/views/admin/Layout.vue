@@ -51,12 +51,16 @@ export default {
         async sendRequest(value) {
             this.statusBtn = true;
             try {
-                const data = await axios.post(API_ENDPOINT.API_USER.SEND_REQUEST, value)
+                const data = await axios.post(API_ENDPOINT.API_USER.SEND_REQUEST, {...value, source: window.location.pathname})
                 if (data.data.success) {
                     this.showToast(data.data.message, 'success');
                     this.statusBtn = false;
                 }
             } catch (e) {
+                this.statusBtn = false;
+                if (!e.response || ![422, 429].includes(e.response.status)) {
+                    this.showToast('Gửi yêu cầu thất bại, vui lòng thử lại.', 'error');
+                }
                 if (e.response) {
                     const statusCode = e.response.status;
                     console.log(statusCode);

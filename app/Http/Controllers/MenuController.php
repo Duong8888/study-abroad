@@ -13,7 +13,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::query()->orderBy('id','asc')->get();
+        $menus = Menu::query()->orderByRaw('COALESCE(`order`, 9999)')->orderBy('id')->get();
         return response()->json($menus);
     }
 

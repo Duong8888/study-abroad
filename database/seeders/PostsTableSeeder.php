@@ -3,33 +3,52 @@
 namespace Database\Seeders;
 
 use App\Models\Posts;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\PostType;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class PostsTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Bài viết mẫu (nội dung trong database/seeders/data/posts_*.php).
+     * Chạy lại nhiều lần không bị trùng: bài có cùng slug sẽ được cập nhật.
+     * Cần chạy PostTypesTableSeeder trước để có danh mục.
      */
     public function run(): void
     {
-        $data = [
-            [
-                'title' => 'THÔNG BÁO LỊCH NGHỈ LỄ 30/4 – 1/5',
-                'content' => '<figure id="attachment_3079" aria-describedby="caption-attachment-3079" style="width: 2048px" class="wp-caption aligncenter"><figcaption id="caption-attachment-3079" class="wp-caption-text"> <span style="font-size: 110%;">Lịch nghỉ lễ 30/4 – 1/5</span></figcaption></figure>',
-                'author_id' => 1,
-                'thumbnail' => './images/1.png',
-                'post_type_id' => json_encode([['id' => 1, 'name' => 'Tin tức và sự kiện']]),
-                'description' => 'description',
-                'slug'=>'lich-nghi-le-30-4',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ];
+        $posts = array_merge(
+            require __DIR__ . '/data/posts_tuyen_sinh.php',
+            require __DIR__ . '/data/posts_du_hoc.php',
+        );
 
-        // Insert dữ liệu vào bảng
-        foreach ($data as $i) {
-            Posts::create($i);
+        $categories = PostType::query()->get(['id', 'type_name'])
+            ->keyBy(fn ($type) => mb_strtolower($type->type_name));
+        $authorId = User::query()->value('id') ?? 1;
+
+        foreach ($posts as $index => $data) {
+            $postTypes = collect($data['categories'])
+                ->map(fn ($name) => $categories->get(mb_strtolower($name)))
+                ->filter()
+                ->map(fn ($type) => ['id' => $type->id, 'name' => $type->type_name])
+                ->values()
+                ->all();
+
+            $post = Posts::query()->firstOrNew(['slug' => $data['slug']]);
+            $post->fill([
+                'title' => $data['title'],
+                'description' => $data['description'],
+                'content' => implode("\n", $data['content']),
+                'thumbnail' => '/assets/images/blog/' . $data['image'],
+                'post_type_id' => json_encode($postTypes, JSON_UNESCAPED_UNICODE),
+                'author_id' => $authorId,
+                'type' => '0',
+                'university_info' => null,
+            ]);
+            // Rải ngày đăng để danh sách bài trông tự nhiên
+            $publishedAt = now()->subDays($data['days_ago'])->setTime(8 + $index % 10, ($index * 7) % 60);
+            $post->created_at = $publishedAt;
+            $post->updated_at = $publishedAt;
+            $post->save();
         }
     }
 }

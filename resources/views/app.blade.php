@@ -28,7 +28,7 @@
     <!-- Canonical Link -->
     <link rel="canonical" href="https://smartedu.com.vn">
     <!-- google font -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     {{-- Gửi sẵn cài đặt (logo, footer...) kèm HTML để giao diện không phải chờ API, tránh logo mặc định bị nháy --}}
     @php($siteSettings = rescue(fn() => \App\Http\Controllers\SettingController::publicSettings(), [], false))

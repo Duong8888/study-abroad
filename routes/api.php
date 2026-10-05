@@ -31,10 +31,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::middleware('throttle:1,1')->group(function () {
-//    Route::resource('/consultation-request', ConsultationRequestController::class);
-//});
-Route::resource('/consultation-request', ConsultationRequestController::class);
+// Form tư vấn công khai: chỉ cho phép gửi, tối đa 5 lần/phút mỗi IP để chống spam
+Route::post('/consultation-request', [ConsultationRequestController::class, 'store'])->middleware('throttle:5,1');
 Route::group(['prefix' => 'admin'], function () {
     Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/posts', [PostsController::class, 'index']);
@@ -51,7 +49,13 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::resource('/user-list', UserController::class);
-    Route::resource('/request-list', ConsultationRequestController::class);
+    Route::get('/request-list', [ConsultationRequestController::class, 'index']);
+    Route::get('/request-list/stats', [ConsultationRequestController::class, 'stats']);
+    Route::get('/request-list/export', [ConsultationRequestController::class, 'export']);
+    Route::post('/request-list/bulk-update', [ConsultationRequestController::class, 'bulkUpdate']);
+    Route::post('/request-list/bulk-delete', [ConsultationRequestController::class, 'bulkDestroy']);
+    Route::put('/request-list/{id}', [ConsultationRequestController::class, 'update']);
+    Route::delete('/request-list/{id}', [ConsultationRequestController::class, 'destroy']);
 
     Route::get('/posts/create', [PostsController::class, 'create']);
     Route::post('/posts', [PostsController::class, 'store']);
@@ -124,5 +128,5 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'admin'], function () 
     Route::post('/files/{files}', [FileManagerController::class, 'update']);
     Route::delete('/files/{files}', [FileManagerController::class, 'destroy']);
 
+    Route::post('/upload-image', [PostsController::class, 'uploadImage'])->name('upload-image');
 });
-Route::post('/upload-image', [PostsController::class, 'uploadImage'])->name('upload-image');

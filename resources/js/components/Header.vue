@@ -17,7 +17,7 @@
                         <div class="col-cell">
                             <div class="rs-menu-area">
                                 <div class="main-menu">
-                                    <div class="mobile-menu">
+                                    <div class="mobile-menu" @click="openMobileMenu">
                                         <a class="rs-menu-toggle" id="nav-expander2">
                                             <span class="dot1 nav-dots"></span>
                                             <span class="dot2 nav-dots"></span>
@@ -27,22 +27,33 @@
                                     </div>
                                     <nav class="rs-menu hidden-md">
                                         <ul class="nav-menu">
-                                            <li v-for="menu in menuItems.filter(item => item.parent_id == null)" :class="{ 'active-menu': isActiveMenu(menu) }"
-                                                :key="menu.id" >
+                                            <li v-for="menu in menuTree" :key="menu.id"
+                                                :class="{ 'active-menu': isActiveMenu(menu) }">
                                                 <a style="font-weight: 900" class="mx-3 uppercase d-inline parent-menu"
-                                                   :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">
+                                                   :href="menu.children.length ? '#' : menu.url"
+                                                   @click="menu.children.length && $event.preventDefault()">
                                                     {{ menu.title }}
-                                                    <svg v-if="getChildItems(menu.id).length > 0"
+                                                    <svg v-if="menu.children.length"
                                                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                                         <path
                                                             d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z"></path>
                                                     </svg>
                                                 </a>
-                                                <ul class="sub-menu">
-                                                    <!--                                                    class="menu-item-has-children current-menu-item"-->
-                                                    <li v-for="child in getChildItems(menu.id)" :key="child"
-                                                        :class="{ 'active-menu': isActiveMenu(child) }">
-                                                        <a :href="child.url" class="child-menu">{{ child.title }}</a>
+                                                <ul v-if="menu.children.length" class="sub-menu">
+                                                    <li v-for="child in menu.children" :key="child.id"
+                                                        :class="{ 'active-menu': isActiveMenu(child), 'has-grandchild': child.children.length }">
+                                                        <a :href="child.children.length ? '#' : child.url" class="child-menu"
+                                                           @click="child.children.length && $event.preventDefault()">
+                                                            {{ child.title }}
+                                                            <span v-if="child.children.length" class="child-menu__arrow">›</span>
+                                                        </a>
+                                                        <!-- Menu cấp 3: bung sang phải -->
+                                                        <ul v-if="child.children.length" class="sub-menu">
+                                                            <li v-for="grandchild in child.children" :key="grandchild.id"
+                                                                :class="{ 'active-menu': isActiveMenu(grandchild) }">
+                                                                <a :href="grandchild.url" class="child-menu">{{ grandchild.title }}</a>
+                                                            </li>
+                                                        </ul>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -59,7 +70,7 @@
             <!-- Canvas Menu start -->
             <nav class="right_menu_togle hidden-md">
                 <div class="close-btn">
-                    <a id="nav-close" class="nav-close">
+                    <a id="nav-close" class="nav-close" @click="closeMobileMenu">
                         <div class="line">
                             <span class="line1"></span>
                             <span class="line2"></span>
@@ -130,7 +141,7 @@
             <!-- Canvas Menu start -->
             <nav class="right_menu_togle mobile-navbar-menu" id="mobile-navbar-menu">
                 <div class="close-btn">
-                    <a id="nav-close2" class="nav-close">
+                    <a id="nav-close2" class="nav-close" @click="closeMobileMenu">
                         <div class="line">
                             <span class="line1"></span>
                             <span class="line2"></span>
@@ -138,14 +149,23 @@
                     </a>
                 </div>
                 <ul class="nav-menu">
-                    <li class="menu-item-has-children has-sub"
-                        v-for="menu in menuItems.filter(item => item.parent_id == null)" :key="menu">
-                        <a :href="(getChildItems(menu.id).length > 0) ? '#' : menu.url">{{ menu.title }}</a>
-                        <span v-if="(getChildItems(menu.id).length > 0)" @click="showItem"
-                              class="submenu-button"></span>
-                        <ul class="sub-menu">
-                            <li v-for="child in getChildItems(menu.id)" :key="child"><a
-                                :href="child.url">{{ child.title }}</a></li>
+                    <li v-for="menu in menuTree" :key="menu.id"
+                        :class="{ 'menu-item-has-children has-sub': menu.children.length }">
+                        <a :href="menu.children.length ? '#' : menu.url"
+                           @click="menu.children.length && toggleSubmenu($event)">{{ menu.title }}</a>
+                        <span v-if="menu.children.length" @click="toggleSubmenu" class="submenu-button"></span>
+                        <ul v-if="menu.children.length" class="sub-menu">
+                            <li v-for="child in menu.children" :key="child.id"
+                                :class="{ 'menu-item-has-children has-sub': child.children.length }">
+                                <a :href="child.children.length ? '#' : child.url"
+                                   @click="child.children.length && toggleSubmenu($event)">{{ child.title }}</a>
+                                <span v-if="child.children.length" @click="toggleSubmenu" class="submenu-button"></span>
+                                <ul v-if="child.children.length" class="sub-menu">
+                                    <li v-for="grandchild in child.children" :key="grandchild.id">
+                                        <a :href="grandchild.url">{{ grandchild.title }}</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                 </ul> <!-- //.nav-menu -->
@@ -166,18 +186,12 @@ export default {
     data() {
         return {
             action: true,
-            menuItems: [
-                {id: 1, title: 'Home', url: '/', parent_id: null},
-            ],
-            currentUrl: ''
+            menuItems: [],
         }
     },
     mounted() {
         this.handleScroll();
         window.addEventListener('scroll', this.handleScroll);
-        this.showMenu();
-        this.currentUrl = window.location.href;
-        console.log(this.currentUrl);
     },
     beforeDestroy() {
         window.removeEventListener('scroll', this.handleScroll);
@@ -185,20 +199,27 @@ export default {
     computed: {
         ...mapGetters('menu', ['menuAll']),
         ...mapGetters('settings', ['logoMain', 'logoWhite']),
-        activeParent() {
-            return true;
+        // Cây menu tối đa 3 cấp: chỉ lấy mục đang bật, sắp xếp theo "order" rồi theo id
+        menuTree() {
+            const active = this.menuItems.filter(item => item.is_active === null || item.is_active === undefined || !!Number(item.is_active));
+            const sorted = [...active].sort((a, b) => (a.order ?? 9999) - (b.order ?? 9999) || a.id - b.id);
+            const build = (parentId, depth) => sorted
+                .filter(item => (item.parent_id ?? null) == parentId)
+                .map(item => ({...item, children: depth < 3 ? build(item.id, depth + 1) : []}));
+            return build(null, 1);
+        },
+        currentPath() {
+            return this.$route.path;
         },
         isActiveMenu() {
-            return menu => {
-                if (menu.url == this.currentUrl) {
-                    return true;
-                }
-                const children = this.menuItems.filter(item => item.parent_id == menu.id);
-                if (children && children.length) {
-                    return children.some(child => child.url == this.currentUrl);
-                }
-                return false;
+            const matches = (item) => {
+                if (!item.url || item.url === '#') return false;
+                const path = item.url.replace(/^https?:\/\/[^/]+/, '').split(/[?#]/)[0] || '/';
+                const normalize = value => value.replace(/\/+$/, '') || '/';
+                return normalize(path) === normalize(this.currentPath);
             };
+            const check = (item) => matches(item) || (item.children || []).some(check);
+            return check;
         }
     },
     watch: {
@@ -215,23 +236,19 @@ export default {
     methods: {
         ...mapActions('menu', ['fetchMenu']),
         ...mapActions('settings', ['loadSettings']),
-        getChildItems(parentId) {
-            return this.menuItems.filter(item => item.parent_id == parentId);
+        // Mở/đóng menu con trên điện thoại (chỉ menu con trực tiếp của mục được bấm)
+        toggleSubmenu(event) {
+            event.preventDefault();
+            const subMenu = event.target.closest('li').querySelector(':scope > .sub-menu');
+            if (subMenu) subMenu.style.display = (subMenu.style.display == 'block') ? 'none' : 'block';
         },
-        showItem() {
-            const subMenu = event.target.closest('.menu-item-has-children').querySelector('.sub-menu');
-            subMenu.style.display = (subMenu.style.display == 'block') ? 'none' : 'block';
+        // Mở/đóng menu điện thoại. Dùng add/remove (không toggle) để không xung đột
+        // với đoạn toggle sẵn có của theme trong public/assets/js/main.js
+        openMobileMenu() {
+            document.body.classList.add('nav-expanded');
         },
-        showMenu() {
-            $('.mobile-menu, .line').on('click', function () {
-                const body = document.querySelector('body');
-                if (this.action) {
-                    body.classList.add('nav-expanded');
-                } else {
-                    body.classList.remove('nav-expanded');
-                }
-                this.action = !this.action;
-            });
+        closeMobileMenu() {
+            document.body.classList.remove('nav-expanded');
         },
         handleScroll() {
             // const header = document.querySelector('.menu-sticky');
@@ -277,6 +294,34 @@ export default {
 
 .sub-menu{
     padding: 0px !important;
+}
+.has-grandchild {
+    position: relative;
+}
+/* Giữ đúng chữ hoa/thường như khi nhập trong admin (theme mặc định viết hoa mỗi từ) */
+.nav-menu .sub-menu a {
+    text-transform: none !important;
+}
+.has-grandchild > a {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.child-menu__arrow {
+    font-size: 20px;
+    line-height: 1;
+}
+/* Menu con giãn theo độ dài chữ (theme cố định 260px làm chữ bị xuống dòng) */
+.rs-menu .nav-menu .sub-menu a {
+    width: auto !important;
+    min-width: 260px;
+    white-space: nowrap;
+}
+/* Menu cấp 3 bung sang phải, ngang hàng với mục cha (chỉ menu desktop) */
+.rs-menu .nav-menu .sub-menu .sub-menu {
+    top: 0 !important;
+    left: 100% !important;
 }
 .sub-menu > li > a{
     border-bottom: 1px solid #f2f2f2;
