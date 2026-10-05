@@ -52,6 +52,16 @@ export default {
 </script>
 
 <style>
+/* Chặn cuộn ngang nhưng không biến html/body thành vùng cuộn riêng, để position: sticky
+   (header admin, sidebar, mục lục bài viết...) hoạt động. Rule này cũng có trong
+   public/assets/style.css, nhưng đặt thêm ở đây (file build có mã phiên bản) để không phụ thuộc
+   việc trình duyệt/hosting còn giữ style.css bản cũ. Selector có độ ưu tiên cao hơn style.css. */
+html:root,
+html body {
+    overflow-x: hidden;
+    overflow-x: clip;
+}
+
 /* Header admin và sidebar đứng yên khi cuộn trang.
    sb-admin đặt overflow-x: hidden cho #content-wrapper, làm position: sticky bám vào khung này
    (không bao giờ cuộn) thay vì cửa sổ. clip vẫn chặn cuộn ngang nhưng không tạo vùng cuộn riêng.

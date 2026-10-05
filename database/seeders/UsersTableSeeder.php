@@ -32,9 +32,9 @@ class UsersTableSeeder extends Seeder
             // Thêm dữ liệu mẫu khác nếu cần
         ];
 
-        // Insert dữ liệu vào bảng
+        // Chạy lại nhiều lần không lỗi: chỉ tạo tài khoản chưa có, không ghi đè mật khẩu đã đổi
         foreach ($users as $user) {
-            User::create($user);
+            User::query()->firstOrCreate(['email' => $user['email']], $user);
         }
     }
 }

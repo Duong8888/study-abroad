@@ -31,6 +31,10 @@ class TikTokVideosTableSeeder extends Seeder
         ];
 
         // Trang chủ hiển thị video mới thêm trước, nên video cuối mảng sẽ đứng đầu
+        // Video mẫu: chỉ thêm khi cài mới (bảng còn trống), không đụng video đã quản lý trong admin
+        if (TikTokVideo::query()->exists()) {
+            return;
+        }
         foreach ($data as $i) {
             TikTokVideo::create($i);
         }

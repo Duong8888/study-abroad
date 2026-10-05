@@ -39,6 +39,10 @@ class ConsultationRequestsTableSeeder extends Seeder
         ];
 
         // Insert dữ liệu vào bảng
+        // Yêu cầu tư vấn giả: chỉ thêm khi cài mới (bảng còn trống), không chèn vào hệ thống đang chạy
+        if (ConsultationRequest::query()->exists()) {
+            return;
+        }
         foreach ($data as $i) {
             ConsultationRequest::create($i);
         }

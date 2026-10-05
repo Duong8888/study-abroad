@@ -78,7 +78,7 @@
     <!-- spacing css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/rs-spacing.css')}}">
     <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/style.css')}}?v={{ filemtime(public_path('assets/style.css')) }}">
     <!-- responsive css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}">
     <!--[if lt IE 9]>

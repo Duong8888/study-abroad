@@ -45,6 +45,10 @@ class StudentsTableSeeder extends Seeder
         ];
 
         // Insert dữ liệu vào bảng
+        // Dữ liệu giả: chỉ thêm khi cài mới (bảng còn trống)
+        if (Student::query()->exists()) {
+            return;
+        }
         foreach ($data as $i) {
             Student::create($i);
         }
